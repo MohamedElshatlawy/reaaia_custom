@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/build/google_maps_flutter/intermediates/res/merged/release/color/common_google_signin_btn_tint.xml",
+        "source": "/Users/macbookpro/.gradle/caches/transforms-2/files-2.1/d31be0547c32b9992c6d9a3ed20a2431/play-services-base-17.0.0/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/build/google_maps_flutter/intermediates/res/merged/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/Users/macbookpro/.gradle/caches/transforms-2/files-2.1/d31be0547c32b9992c6d9a3ed20a2431/play-services-base-17.0.0/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/build/google_maps_flutter/intermediates/res/merged/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/macbookpro/.gradle/caches/transforms-2/files-2.1/d31be0547c32b9992c6d9a3ed20a2431/play-services-base-17.0.0/res/color/common_google_signin_btn_text_dark.xml"
+    }
+]

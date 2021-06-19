@@ -1,0 +1,138 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.reaaia"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="20"
+9        android:targetSdkVersion="30" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/debug/AndroidManifest.xml:6:22-64
+15    <!-- Include required permissions for Google Maps API to run. -->
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+16-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
+17
+18    <uses-feature
+18-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+19        android:glEsVersion="0x00020000"
+19-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+20        android:required="true" />
+20-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+21
+22    <application
+22-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:3:4-44:19
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.1.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/2e94107f30f39be366a17347c2bf100b/core-1.1.0/AndroidManifest.xml:24:18-86
+24        android:debuggable="true"
+25        android:icon="@mipmap/ic_launcher"
+25-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:5:9-43
+26        android:label="reaaia" >
+26-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:4:9-31
+27        <meta-data
+27-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:6:9-7:73
+28            android:name="com.google.android.geo.API_KEY"
+28-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:6:20-65
+29            android:value="AIzaSyBICAjtO4reqgnoW1tOlZ2MEgPi9HIS0zg" />
+29-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:7:16-71
+30
+31        <activity
+31-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:8:9-38:20
+32            android:name="com.example.reaaia.MainActivity"
+32-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:9:13-41
+33            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+33-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:12:13-163
+34            android:hardwareAccelerated="true"
+34-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:13:13-47
+35            android:launchMode="singleTop"
+35-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:10:13-43
+36            android:theme="@style/LaunchTheme"
+36-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:11:13-47
+37            android:windowSoftInputMode="adjustResize" >
+37-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:14:13-55
+38
+39            <!--
+40                 Specifies an Android theme to apply to this Activity as soon as
+41                 the Android process has started. This theme is visible to the user
+42                 while the Flutter UI initializes. After that, this theme continues
+43                 to determine the Window background behind the Flutter UI.
+44            -->
+45            <meta-data
+45-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:6:9-7:73
+46                android:name="com.google.android.geo.API_KEY"
+46-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:6:20-65
+47                android:value="AIzaSyBICAjtO4reqgnoW1tOlZ2MEgPi9HIS0zg" />
+47-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:7:16-71
+48            <meta-data
+48-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:21:9-24:17
+49                android:name="io.flutter.embedding.android.NormalTheme"
+49-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:22:15-70
+50                android:resource="@style/NormalTheme" />
+50-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:23:15-52
+51            <!--
+52                 Displays an Android View that continues showing the launch screen
+53                 Drawable until Flutter paints its first frame, then this splash
+54                 screen fades out. A splash screen is useful to avoid any visual
+55                 gap between the end of Android's launch screen and the painting of
+56                 Flutter's first frame.
+57            -->
+58            <meta-data
+58-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:30:13-33:17
+59                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+59-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:31:15-79
+60                android:resource="@drawable/launch_background" />
+60-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:32:15-61
+61
+62            <intent-filter>
+62-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:34:13-37:29
+63                <action android:name="android.intent.action.MAIN" />
+63-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:35:17-68
+63-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:35:25-66
+64
+65                <category android:name="android.intent.category.LAUNCHER" />
+65-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:36:17-76
+65-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:36:27-74
+66            </intent-filter>
+67        </activity>
+68        <!--
+69             Don't delete the meta-data below.
+70             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+71        -->
+72        <meta-data
+72-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:41:9-43:33
+73            android:name="flutterEmbedding"
+73-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:42:13-44
+74            android:value="2" />
+74-->/Users/macbookpro/Desktop/Reaaia-Projects/reaaia/android/app/src/main/AndroidManifest.xml:43:13-30
+75        <!-- Needs to be explicitly declared on P+ -->
+76        <uses-library
+76-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+77            android:name="org.apache.http.legacy"
+77-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+78            android:required="false" />
+78-->[com.google.android.gms:play-services-maps:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/c5de8972dacd649c27c247c9e16de3ac/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+79
+80        <activity
+80-->[com.google.android.gms:play-services-base:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/7c879cb157fab2c9a5d74c3d70fd64e3/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+81            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+81-->[com.google.android.gms:play-services-base:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/7c879cb157fab2c9a5d74c3d70fd64e3/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+82            android:exported="false"
+82-->[com.google.android.gms:play-services-base:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/7c879cb157fab2c9a5d74c3d70fd64e3/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+83            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+83-->[com.google.android.gms:play-services-base:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/7c879cb157fab2c9a5d74c3d70fd64e3/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+84
+85        <meta-data
+85-->[com.google.android.gms:play-services-basement:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/3c8e7eb3d21ac94d08f658f6d8a1c9f3/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+86            android:name="com.google.android.gms.version"
+86-->[com.google.android.gms:play-services-basement:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/3c8e7eb3d21ac94d08f658f6d8a1c9f3/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+87            android:value="@integer/google_play_services_version" />
+87-->[com.google.android.gms:play-services-basement:17.0.0] /Users/macbookpro/.gradle/caches/transforms-2/files-2.1/3c8e7eb3d21ac94d08f658f6d8a1c9f3/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+88    </application>
+89
+90</manifest>
