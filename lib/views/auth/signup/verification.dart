@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
+import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:reaaia/views/auth/login/data_validation_msg.dart';
 import 'package:reaaia/views/auth/login/password_success_changed.dart';
 import 'package:reaaia/views/customFunctions.dart';
@@ -9,8 +11,15 @@ import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
 
 class Verification extends StatelessWidget {
+  final String mobileNumber;
+
+  const Verification({@required this.mobileNumber});
+
   @override
   Widget build(BuildContext context) {
+    String verificationCode;
+    Map<String,dynamic> _verifyForm;
+    final signUpProvider = Provider.of<SignUpProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Container(
@@ -103,7 +112,9 @@ class Verification extends StatelessWidget {
                                     defaultBorderColor: ColorsUtils.borderColor,
                                     hasTextBorderColor: ColorsUtils.greenBorder,
                                     maxLength: 5,
-                                    onTextChanged: (text) {},
+                                    onTextChanged: (text) {
+                                      verificationCode=text;
+                                    },
                                     onDone: (text) {},
                                     pinBoxWidth: 50,
                                     pinBoxHeight: 55,
@@ -146,10 +157,31 @@ class Verification extends StatelessWidget {
                           backgroundColor: ColorsUtils.primaryGreen,
                           borderColor: ColorsUtils.primaryGreen,
                           text: 'Verify',
-                          pressed: () {
-                            CustomFunctions.pushScreen(
-                                context: context,
-                                widget: PasswordSuccessChanged());
+                          pressed: () async{
+
+                            if(verificationCode!=null||verificationCode.isNotEmpty){
+                              _verifyForm={
+                                "mobile_number":mobileNumber,
+                                "code":verificationCode,
+                              };
+                              print(_verifyForm.toString());
+                              await signUpProvider.verifyWithMobileNumber(_verifyForm);
+
+
+                              if (signUpProvider.messageResponseVerify == 'api.success.success') {
+                                CustomFunctions.pushScreen(
+                                    context: context,
+                                    widget: PasswordSuccessChanged());
+                                print('Succeed verify');
+                              } else  {
+                                print('Error verify');
+                              }
+
+
+                            }else{
+
+                            }
+
                           },
                           textColor: Colors.white,
                         ),
@@ -166,12 +198,24 @@ class Verification extends StatelessWidget {
                                 color: ColorsUtils.onBoardingTextGrey,
                                 fontSize: ScreenUtil().setSp(13)),
                           ),
-                          Text(
-                            'Resend Code',
-                            style: TextStyle(
-                                color: ColorsUtils.blueColor,
-                                fontWeight: FontWeight.w800,
-                                fontSize: ScreenUtil().setSp(15)),
+                          GestureDetector(
+                            onTap: ()async{
+
+                              await signUpProvider
+                                  .resendCode(mobileNumber);
+                              if (signUpProvider.messageResponseSignUp == 'Accepted') {
+                                print('Resend Succeed');
+                              } else  {
+                                print('Resend Error');
+                              }
+                            },
+                            child: Text(
+                              'Resend Code',
+                              style: TextStyle(
+                                  color: ColorsUtils.blueColor,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: ScreenUtil().setSp(15)),
+                            ),
                           ),
                         ],
                       ),

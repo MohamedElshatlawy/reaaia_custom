@@ -21,6 +21,9 @@ class CustomTextField extends StatefulWidget {
   bool isEditable;
   bool isNotes;
   bool hasBorder;
+  Function onFieldSubmitted;
+  Function onChanged;
+  Function onSaved;
 
   CustomTextField(
       {this.icon,
@@ -38,7 +41,10 @@ class CustomTextField extends StatefulWidget {
       this.hasPassword = false,
       this.controller,
       this.sufficIcon,
-      this.errorMessage});
+      this.errorMessage,
+      this.onFieldSubmitted,
+      this.onChanged,
+      this.onSaved});
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -67,7 +73,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       },
       controller: widget.controller,
       enabled: widget.isEditable,
-      onFieldSubmitted: (v) {},
+      onFieldSubmitted: widget.onFieldSubmitted,
+      onChanged: widget.onChanged,
+      onSaved: widget.onSaved,
       textInputAction: TextInputAction.next,
       obscureText: (widget.hasPassword) ? showPassword : widget.hasPassword,
       maxLines: (widget.isNotes) ? 3 : 1,

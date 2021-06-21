@@ -31,6 +31,8 @@ dependencies:
   country_code_picker: any
   pin_code_text_field: any
   google_maps_flutter: any
+  flutter_spinkit: ^4.1.2
+  flutter_svg: ^0.19.1
 
   provider: any
   dots_indicator: any
@@ -63,6 +65,7 @@ flutter:
     - assets/onBoarding/
     - i18n/ar.json
     - i18n/en.json
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

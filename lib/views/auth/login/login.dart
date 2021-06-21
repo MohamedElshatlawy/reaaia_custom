@@ -1,169 +1,251 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
+import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/views/auth/login/forget_password.dart';
 import 'package:reaaia/views/auth/signup/complete_reg1.dart';
-import 'package:reaaia/views/auth/signup/congrats.dart';
-import 'package:reaaia/views/auth/signup/request_sent_success.dart';
 import 'package:reaaia/views/auth/signup/signup.dart';
-import 'package:reaaia/views/auth/signup/sorry.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+
+  Map<String, dynamic> _loginInfo = {};
+
+  bool loading = false;
+
+  void checkPlatForm() {
+    if (Platform.isAndroid) {
+      _loginInfo['client_id'] = 2;
+      _loginInfo['client_secret'] = '6sjRgmybLz8iR9pUQi1BHmHGCPAuAN7PiJRMWK6h';
+    } else if (Platform.isIOS) {
+      _loginInfo['client_id'] = 3;
+      _loginInfo['client_secret'] = 'X0hau6BzbHnxL2XsvDigbQ6FeItpqcldsbiivrr0';
+    } else if (kIsWeb) {
+      _loginInfo['client_id'] = 4;
+      _loginInfo['client_secret'] = 'VFzrXDR9DBNzZl6YYIsgum4HdOTEML6tAFAAx7WB';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
-        child: Column(
-          children: [
-            SizedBox(
-              height: ScreenUtil().setHeight(82.5),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(
-                  "assets/reaaia_doctor.png",
-                  scale: 2.3,
-                ),
-                SizedBox(
-                  width: ScreenUtil().setWidth(8),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: ScreenUtil().setHeight(14),
-                    ),
-                    Text(
-                      'Reaaia',
-                      style: TextStyle(
-                          color: ColorsUtils.textGrey,
-                          fontWeight: FontWeight.w800,
-                          fontSize: ScreenUtil().setSp(25)),
-                    ),
-                    Text(
-                      'For Doctor',
-                      style: TextStyle(
-                          color: ColorsUtils.textGrey,
-                          fontSize: ScreenUtil().setSp(11)),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            SizedBox(
-              height: ScreenUtil().setHeight(37),
-            ),
-            Expanded(
-                child: Container(
-              margin: EdgeInsets.only(left: ScreenUtil().setWidth(8)),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Log in',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w800,
-                              fontSize: ScreenUtil().setSp(24)),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: ScreenUtil().setHeight(37),
-                    ),
-                    CustomTextField(
-                      lablel: 'Email / Phone Number*',
-                      hasBorder: true,
-                    ),
-                    SizedBox(
-                      height: ScreenUtil().setHeight(20),
-                    ),
-                    CustomTextField(
-                      lablel: 'Password*',
-                      hasBorder: true,
-                      hasPassword: true,
-                    ),
-                    SizedBox(
-                      height: ScreenUtil().setHeight(14),
-                    ),
-                    Row(
-                      textDirection: TextDirection.rtl,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            CustomFunctions.pushScreen(
-                                context: context, widget: ForgetPassword());
-                          },
-                          child: Text(
-                            'Forget Password?',
+      body: Form(
+        key: _loginFormKey,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
+          child: Column(
+            children: [
+              SizedBox(
+                height: ScreenUtil().setHeight(82.5),
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    "assets/reaaia_doctor.png",
+                    scale: 2.3,
+                  ),
+                  SizedBox(
+                    width: ScreenUtil().setWidth(8),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: ScreenUtil().setHeight(14),
+                      ),
+                      Text(
+                        'Reaaia',
+                        style: TextStyle(
+                            color: ColorsUtils.textGrey,
+                            fontWeight: FontWeight.w800,
+                            fontSize: ScreenUtil().setSp(25)),
+                      ),
+                      Text(
+                        'For Doctor',
+                        style: TextStyle(
+                            color: ColorsUtils.textGrey,
+                            fontSize: ScreenUtil().setSp(11)),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              SizedBox(
+                height: ScreenUtil().setHeight(37),
+              ),
+              Expanded(
+                  child: Container(
+                margin: EdgeInsets.only(left: ScreenUtil().setWidth(8)),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Log in',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                                fontSize: ScreenUtil().setSp(24)),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(37),
+                      ),
+                      CustomTextField(
+                        lablel: 'Email / Phone Number*',
+                        hasBorder: true,
+                        onSaved: (value) {
+                          _loginInfo['username'] = value;
+                        },
+                        errorMessage: 'Enter a valid phone Number',
+                      ),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(20),
+                      ),
+                      CustomTextField(
+                        lablel: 'Password*',
+                        hasBorder: true,
+                        hasPassword: true,
+                        onSaved: (value) {
+                          _loginInfo['password'] = value;
+                        },
+                        errorMessage: 'Enter a valid password',
+                      ),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(14),
+                      ),
+                      Row(
+                        textDirection: TextDirection.rtl,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              CustomFunctions.pushScreen(
+                                  context: context, widget: ForgetPassword());
+                            },
+                            child: Text(
+                              'Forget Password?',
+                              style: TextStyle(
+                                  color: ColorsUtils.onBoardingTextGrey,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: ScreenUtil().setSp(13)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(23),
+                      ),
+                      loading
+                          ? CircularProgressIndicator()
+                          : Container(
+                              height: ScreenUtil().setHeight(50),
+                              width: 236,
+                              child: CustomRoundedButton(
+                                backgroundColor: ColorsUtils.primaryGreen,
+                                borderColor: ColorsUtils.primaryGreen,
+                                text: 'Log in',
+                                textColor: Colors.white,
+                                pressed: () async {
+                                  // if (_loginFormKey.currentState.validate()) {
+                                  //   _loginFormKey.currentState.save();
+                                  //
+                                  //   checkPlatForm();
+                                  //   _loginInfo['grant_type'] = 'password';
+                                  //   _loginInfo['scope'] = '';
+                                  //   setState(() {
+                                  //     loading = true;
+                                  //   });
+                                  //   print(_loginInfo.toString());
+                                  //
+                                  //   try {
+                                  //     await loginProvider.login(_loginInfo);
+                                  //
+                                  //     if (loginProvider.loginResponse.message ==
+                                  //         'api.success.success') {
+                                  //       setState(() {
+                                  //         loading = false;
+                                  //       });
+                                  //       Navigator.push(
+                                  //           context,
+                                  //           MaterialPageRoute(
+                                  //               builder: (ctx) =>
+                                  //                   CompleteRegister1()));
+                                  //       print('Login Success');
+                                  //     } else {
+                                  //       setState(() {
+                                  //         loading = false;
+                                  //       });
+                                  //       print('Error Login');
+                                  //     }
+                                  //   } catch (error) {
+                                  //     setState(() {
+                                  //       loading = false;
+                                  //     });
+                                  //   }
+                                  // } else {
+                                  //   setState(() {
+                                  //     loading = false;
+                                  //   });
+                                  // }
+
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (ctx) =>
+                                              CompleteRegister1()));
+                                },
+                              ),
+                            ),
+                      SizedBox(
+                        height: 59,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don\'t have account? ',
                             style: TextStyle(
                                 color: ColorsUtils.onBoardingTextGrey,
-                                fontWeight: FontWeight.w800,
                                 fontSize: ScreenUtil().setSp(13)),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: ScreenUtil().setHeight(23),
-                    ),
-                    Container(
-                      height: ScreenUtil().setHeight(50),
-                      width: 236,
-                      child: CustomRoundedButton(
-                        backgroundColor: ColorsUtils.primaryGreen,
-                        borderColor: ColorsUtils.primaryGreen,
-                        text: 'Log in',
-                        textColor: Colors.white,
-                        pressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (ctx) => CompleteRegister1()));
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 59,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Don\'t have account? ',
-                          style: TextStyle(
-                              color: ColorsUtils.onBoardingTextGrey,
-                              fontSize: ScreenUtil().setSp(13)),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            CustomFunctions.pushScreen(
-                                context: context, widget: SignUp());
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                                color: ColorsUtils.blueColor,
-                                fontWeight: FontWeight.w800,
-                                fontSize: ScreenUtil().setSp(15)),
+                          InkWell(
+                            onTap: () {
+                              CustomFunctions.pushScreen(
+                                  context: context, widget: SignUp());
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                  color: ColorsUtils.blueColor,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: ScreenUtil().setSp(15)),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ))
-          ],
+              ))
+            ],
+          ),
         ),
       ),
     );

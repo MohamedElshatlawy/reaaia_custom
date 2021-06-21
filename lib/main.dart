@@ -7,8 +7,10 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/FontsUtils.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/locale/localizationProvider.dart';
+import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 import 'package:reaaia/viewModels/phoneCode_provider.dart';
+import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:reaaia/views/splash.dart';
 
 main(List<String> args) async {
@@ -18,6 +20,8 @@ main(List<String> args) async {
       ChangeNotifierProvider.value(value: OnBoardingIndicatorProvider()),
       ChangeNotifierProvider.value(value: LocalProvider()),
       ChangeNotifierProvider.value(value: PhoneCodeProvider()),
+      ChangeNotifierProvider.value(value: SignUpProvider()),
+      ChangeNotifierProvider.value(value: LoginProvider()),
     ],
     child: MyMaterial(),
   ));
