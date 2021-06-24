@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/views/auth/signup/compelete_reg2.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
 
@@ -219,7 +220,9 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                   hasBorder: true,
                   errorMessage: 'Enter Address!',
                   icon: Icon(Icons.location_on_outlined,color: ColorsUtils.blueColor,),
-                  sufficIcon: Icon(Icons.my_location,color: ColorsUtils.onBoardingTextGrey,),
+                  sufficIcon: IconButton(icon: Icon(Icons.my_location,color: ColorsUtils.onBoardingTextGrey,),onPressed: (){
+                    CustomFunctions.pushScreen(context: context,widget: CompleteRequest1Map());
+                  },),
                 ),
                 SizedBox(height: ScreenUtil().setHeight(20),),
                 Container(
@@ -232,7 +235,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     text: 'Continue',
                     pressed: () {
                       CustomFunctions.pushScreen(
-                          context: context, widget: CompleteRequest1Map());
+                          context: context, widget: CompleteRegister2());
                     },
                     textColor: Colors.white,
                   ),

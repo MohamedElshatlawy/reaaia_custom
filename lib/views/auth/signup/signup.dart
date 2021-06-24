@@ -13,9 +13,16 @@ import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
 
+class SignUp extends StatefulWidget {
+  @override
+  _SignUpState createState() => _SignUpState();
+}
 
-class SignUp extends StatelessWidget {
+class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> _signupFormKey = GlobalKey<FormState>();
+
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     String mobileNumber;
@@ -51,8 +58,8 @@ class SignUp extends StatelessWidget {
                 ),
                 Expanded(
                     child: Container(
-                  margin:
-                      EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(7)),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(7)),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -90,8 +97,8 @@ class SignUp extends StatelessWidget {
                               color: ColorsUtils.greyColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
-                                  side:
-                                      BorderSide(color: ColorsUtils.borderColor)),
+                                  side: BorderSide(
+                                      color: ColorsUtils.borderColor)),
                               child: CountryCodePicker(
                                 onChanged: print,
 
@@ -110,8 +117,9 @@ class SignUp extends StatelessWidget {
                                 lablel: 'Phone Number*',
                                 hasBorder: true,
                                 isMobile: true,
-                                onSaved: (value){
-                                  mobileNumber = phoneCodeProvider.phoneCode + value;
+                                onSaved: (value) {
+                                  mobileNumber =
+                                      phoneCodeProvider.phoneCode + value;
                                   print(mobileNumber);
                                 },
                                 errorMessage: 'Enter A valid Number',
@@ -154,35 +162,51 @@ class SignUp extends StatelessWidget {
                         SizedBox(
                           height: ScreenUtil().setHeight(53),
                         ),
-                        Container(
-                          height: ScreenUtil().setHeight(50),
-                          width: 236,
-                          child: CustomRoundedButton(
-                            backgroundColor: ColorsUtils.primaryGreen,
-                            borderColor: ColorsUtils.primaryGreen,
-                            text: 'Sign Up',
-                            pressed: () async {
-                              if (_signupFormKey.currentState.validate()) {
-                                _signupFormKey.currentState.save();
+                        loading
+                            ? CircularProgressIndicator()
+                            : Container(
+                                height: ScreenUtil().setHeight(50),
+                                width: 236,
+                                child: CustomRoundedButton(
+                                  backgroundColor: ColorsUtils.primaryGreen,
+                                  borderColor: ColorsUtils.primaryGreen,
+                                  text: 'Sign Up',
+                                  pressed: () async {
+                                    if (_signupFormKey.currentState
+                                        .validate()) {
+                                      _signupFormKey.currentState.save();
 
-                                await signUpProvider
-                                    .signUpWithMobileNumber(mobileNumber);
-                                if (signUpProvider.messageResponseSignUp == 'Accepted') {
-                                  CustomFunctions.pushScreen(
-                                      context: context, widget: Verification(mobileNumber: mobileNumber,));
-                                  print('Succeed Sign Up');
+                                      setState(() {
+                                        loading = true;
+                                      });
 
-
-                                } else if (signUpProvider.messageResponseSignUp ==
-                                    'Found') {
-                                  print('Error SignUp');
-                                }
-                              }
-
-                            },
-                            textColor: Colors.white,
-                          ),
-                        ),
+                                      await signUpProvider
+                                          .signUpWithMobileNumber(mobileNumber);
+                                      if (signUpProvider
+                                              .messageResponseSignUp ==
+                                          'Accepted') {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                        CustomFunctions.pushScreen(
+                                            context: context,
+                                            widget: Verification(
+                                              mobileNumber: mobileNumber,
+                                            ));
+                                        print('Succeed Sign Up');
+                                      } else if (signUpProvider
+                                              .messageResponseSignUp ==
+                                          'Found') {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                        print('Error SignUp');
+                                      }
+                                    }
+                                  },
+                                  textColor: Colors.white,
+                                ),
+                              ),
                         SizedBox(
                           height: 30,
                         ),

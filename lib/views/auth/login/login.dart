@@ -5,6 +5,7 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/views/auth/login/forget_password.dart';
 import 'package:reaaia/views/auth/signup/complete_reg1.dart';
+import 'package:reaaia/views/auth/signup/congrats.dart';
 import 'package:reaaia/views/auth/signup/signup.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
@@ -163,53 +164,53 @@ class _LoginState extends State<Login> {
                                 text: 'Log in',
                                 textColor: Colors.white,
                                 pressed: () async {
-                                  // if (_loginFormKey.currentState.validate()) {
-                                  //   _loginFormKey.currentState.save();
-                                  //
-                                  //   checkPlatForm();
-                                  //   _loginInfo['grant_type'] = 'password';
-                                  //   _loginInfo['scope'] = '';
-                                  //   setState(() {
-                                  //     loading = true;
-                                  //   });
-                                  //   print(_loginInfo.toString());
-                                  //
-                                  //   try {
-                                  //     await loginProvider.login(_loginInfo);
-                                  //
-                                  //     if (loginProvider.loginResponse.message ==
-                                  //         'api.success.success') {
-                                  //       setState(() {
-                                  //         loading = false;
-                                  //       });
-                                  //       Navigator.push(
-                                  //           context,
-                                  //           MaterialPageRoute(
-                                  //               builder: (ctx) =>
-                                  //                   CompleteRegister1()));
-                                  //       print('Login Success');
-                                  //     } else {
-                                  //       setState(() {
-                                  //         loading = false;
-                                  //       });
-                                  //       print('Error Login');
-                                  //     }
-                                  //   } catch (error) {
-                                  //     setState(() {
-                                  //       loading = false;
-                                  //     });
-                                  //   }
-                                  // } else {
-                                  //   setState(() {
-                                  //     loading = false;
-                                  //   });
-                                  // }
+                                  if (_loginFormKey.currentState.validate()) {
+                                    _loginFormKey.currentState.save();
 
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (ctx) =>
-                                              CompleteRegister1()));
+                                    checkPlatForm();
+                                    _loginInfo['grant_type'] = 'password';
+                                    _loginInfo['scope'] = '';
+                                    setState(() {
+                                      loading = true;
+                                    });
+                                    print(_loginInfo.toString());
+
+                                    try {
+                                      await loginProvider.login(_loginInfo);
+
+                                      if (loginProvider.loginResponse.message ==
+                                          'api.success.success') {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (ctx) =>
+                                                    Congrats()));
+                                        print('Login Success');
+                                      } else {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                        print('Error Login');
+                                      }
+                                    } catch (error) {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                    }
+                                  } else {
+                                    setState(() {
+                                      loading = false;
+                                    });
+                                  }
+
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (ctx) =>
+                                  //             CompleteRegister1()));
                                 },
                               ),
                             ),

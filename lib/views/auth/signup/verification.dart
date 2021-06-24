@@ -6,19 +6,27 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:reaaia/views/auth/login/data_validation_msg.dart';
 import 'package:reaaia/views/auth/login/password_success_changed.dart';
+import 'package:reaaia/views/auth/signup/complete_reg1.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
 
-class Verification extends StatelessWidget {
+class Verification extends StatefulWidget {
   final String mobileNumber;
 
   const Verification({@required this.mobileNumber});
 
   @override
+  _VerificationState createState() => _VerificationState();
+}
+
+class _VerificationState extends State<Verification> {
+  bool loading = false;
+
+  @override
   Widget build(BuildContext context) {
     String verificationCode;
-    Map<String,dynamic> _verifyForm;
+    Map<String, dynamic> _verifyForm;
     final signUpProvider = Provider.of<SignUpProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
@@ -113,7 +121,7 @@ class Verification extends StatelessWidget {
                                     hasTextBorderColor: ColorsUtils.greenBorder,
                                     maxLength: 5,
                                     onTextChanged: (text) {
-                                      verificationCode=text;
+                                      verificationCode = text;
                                     },
                                     onDone: (text) {},
                                     pinBoxWidth: 50,
@@ -150,42 +158,49 @@ class Verification extends StatelessWidget {
                       SizedBox(
                         height: ScreenUtil().setHeight(34),
                       ),
-                      Container(
-                        height: ScreenUtil().setHeight(50),
-                        width: 236,
-                        child: CustomRoundedButton(
-                          backgroundColor: ColorsUtils.primaryGreen,
-                          borderColor: ColorsUtils.primaryGreen,
-                          text: 'Verify',
-                          pressed: () async{
+                      loading
+                          ? CircularProgressIndicator()
+                          : Container(
+                              height: ScreenUtil().setHeight(50),
+                              width: 236,
+                              child: CustomRoundedButton(
+                                backgroundColor: ColorsUtils.primaryGreen,
+                                borderColor: ColorsUtils.primaryGreen,
+                                text: 'Verify',
+                                pressed: () async {
+                                  if (verificationCode != null ||
+                                      verificationCode.isNotEmpty) {
+                                    _verifyForm = {
+                                      "mobile_number": widget.mobileNumber,
+                                      "code": verificationCode,
+                                    };
+                                    print(_verifyForm.toString());
+                                    setState(() {
+                                      loading = true;
+                                    });
+                                    await signUpProvider
+                                        .verifyWithMobileNumber(_verifyForm);
 
-                            if(verificationCode!=null||verificationCode.isNotEmpty){
-                              _verifyForm={
-                                "mobile_number":mobileNumber,
-                                "code":verificationCode,
-                              };
-                              print(_verifyForm.toString());
-                              await signUpProvider.verifyWithMobileNumber(_verifyForm);
-
-
-                              if (signUpProvider.messageResponseVerify == 'api.success.success') {
-                                CustomFunctions.pushScreen(
-                                    context: context,
-                                    widget: PasswordSuccessChanged());
-                                print('Succeed verify');
-                              } else  {
-                                print('Error verify');
-                              }
-
-
-                            }else{
-
-                            }
-
-                          },
-                          textColor: Colors.white,
-                        ),
-                      ),
+                                    if (signUpProvider.messageResponseVerify ==
+                                        'api.success.success') {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      CustomFunctions.pushScreen(
+                                          context: context,
+                                          widget: CompleteRegister1());
+                                      print('Succeed verify');
+                                    } else {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      print('Error verify');
+                                    }
+                                  } else {}
+                                },
+                                textColor: Colors.white,
+                              ),
+                            ),
                       SizedBox(
                         height: ScreenUtil().setHeight(24),
                       ),
@@ -199,13 +214,13 @@ class Verification extends StatelessWidget {
                                 fontSize: ScreenUtil().setSp(13)),
                           ),
                           GestureDetector(
-                            onTap: ()async{
-
+                            onTap: () async {
                               await signUpProvider
-                                  .resendCode(mobileNumber);
-                              if (signUpProvider.messageResponseSignUp == 'Accepted') {
+                                  .resendCode(widget.mobileNumber);
+                              if (signUpProvider.messageResponseSignUp ==
+                                  'Accepted') {
                                 print('Resend Succeed');
-                              } else  {
+                              } else {
                                 print('Resend Error');
                               }
                             },

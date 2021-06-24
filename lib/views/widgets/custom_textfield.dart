@@ -24,6 +24,8 @@ class CustomTextField extends StatefulWidget {
   Function onFieldSubmitted;
   Function onChanged;
   Function onSaved;
+  bool readOnly;
+  TextStyle style;
 
   CustomTextField(
       {this.icon,
@@ -44,7 +46,8 @@ class CustomTextField extends StatefulWidget {
       this.errorMessage,
       this.onFieldSubmitted,
       this.onChanged,
-      this.onSaved});
+      this.onSaved,
+      this.readOnly,this.style});
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -64,6 +67,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     var phoneCodeProvider = Provider.of<PhoneCodeProvider>(context);
     return TextFormField(
+      readOnly: widget.readOnly ??false,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return widget.errorMessage;
@@ -71,6 +75,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
         return null;
       },
+      style: widget.style,
       controller: widget.controller,
       enabled: widget.isEditable,
       onFieldSubmitted: widget.onFieldSubmitted,
@@ -106,7 +111,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ? InputBorder.none
             : OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: ColorsUtils.greenBorder)),
+                borderSide: BorderSide(color: ColorsUtils.borderColor)),
         labelText: widget.lablel,
         labelStyle: TextStyle(color: ColorsUtils.onBoardingTextGrey),
         prefixIcon: widget.icon,
