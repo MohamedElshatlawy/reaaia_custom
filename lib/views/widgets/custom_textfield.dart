@@ -12,7 +12,7 @@ class CustomTextField extends StatefulWidget {
   bool isMobile;
   bool centerText;
   TextEditingController controller;
-  String errorMessage;
+
   bool hasPassword;
   bool isEmail;
   bool passwordIdentical;
@@ -26,6 +26,7 @@ class CustomTextField extends StatefulWidget {
   Function onSaved;
   bool readOnly;
   TextStyle style;
+  Function validator;
 
   CustomTextField(
       {this.icon,
@@ -43,11 +44,10 @@ class CustomTextField extends StatefulWidget {
       this.hasPassword = false,
       this.controller,
       this.sufficIcon,
-      this.errorMessage,
       this.onFieldSubmitted,
       this.onChanged,
       this.onSaved,
-      this.readOnly,this.style});
+      this.readOnly,this.style,this.validator});
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -67,14 +67,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     var phoneCodeProvider = Provider.of<PhoneCodeProvider>(context);
     return TextFormField(
-      readOnly: widget.readOnly ??false,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return widget.errorMessage;
-        }
 
-        return null;
-      },
+      validator: widget.validator,
+      readOnly: widget.readOnly ??false,
       style: widget.style,
       controller: widget.controller,
       enabled: widget.isEditable,

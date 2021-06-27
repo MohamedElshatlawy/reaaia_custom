@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/FontsUtils.dart';
+import 'package:reaaia/viewModels/data_provider.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/locale/localizationProvider.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
@@ -22,6 +23,7 @@ main(List<String> args) async {
       ChangeNotifierProvider.value(value: PhoneCodeProvider()),
       ChangeNotifierProvider.value(value: SignUpProvider()),
       ChangeNotifierProvider.value(value: LoginProvider()),
+      ChangeNotifierProvider.value(value: DataProvider()),
     ],
     child: MyMaterial(),
   ));

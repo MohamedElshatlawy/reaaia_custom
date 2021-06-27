@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -15,7 +16,7 @@ class ApiClient {
       HttpHeaders.connectionHeader: 'keep-alive',
       HttpHeaders.cacheControlHeader: 'no-cache',
       HttpHeaders.contentTypeHeader: 'application/json',
-      "Abp.TenantId": '1'
+      "Abp.TenantId": '1',
     };
     mHeaders["Accept-Language"] =
         SettingsSession.instance().languageCode != null
@@ -40,21 +41,51 @@ class ApiClient {
     Uri url = Uri(
         scheme: ServicesURLs.development_environment_scheme,
         host: ServicesURLs.development_environment_without_http,
-        port: ServicesURLs.development_environment_port,
+        //port: ServicesURLs.development_environment_port,
         path: endPoint,
         queryParameters: queryParams);
-
+    //String url = ServicesURLs.development_environment + endPoint;
     //network logger
     print(url.toString() + "\n" + headers().toString());
-    print(url.queryParameters.toString());
+    //print(url.queryParameters.toString());
     //GET network request call
     final response = await http.get(url, headers: headers());
 
     return response;
   }
 
+  // static Future<http.Response> postRequest(String endPoint, dynamic requestBody,
+  //     {bool isMultipart = false}) async {
+  //   //create url of (baseUrl + endPoint)
+  //   String url = ServicesURLs.development_environment + endPoint;
+  //   //network logger
+  //   print(url + "\n" + headers().toString());
+  //   if (requestBody != null) log(requestBody.toString());
+  //   //POST network request call
+  //
+  //   var response;
+  //   if (!isMultipart) {
+  //     log("**InideNotMultiPart**");
+  //     response = await http.post(Uri.parse(url),
+  //         headers: headers(), body: requestBody);
+  //   } else {
+  //     var uri = Uri.parse(url);
+  //     var request = http.MultipartRequest('POST', uri)
+  //       ..headers.addAll(headers())
+  //       ..files.add(await http.MultipartFile.fromPath(
+  //         '',
+  //         requestBody.path,
+  //       ));
+  //     response = await http.Response.fromStream(await request.send());
+  //   }
+  //
+  //   return response;
+  // }
+
+
   static Future<http.Response> postRequest(String endPoint, dynamic requestBody,
-      {bool isMultipart = false}) async {
+      {bool isMultipart = false,
+        List<http.MultipartFile> multiPartValues}) async {
     //create url of (baseUrl + endPoint)
     String url = ServicesURLs.development_environment + endPoint;
     //network logger
@@ -64,20 +95,32 @@ class ApiClient {
 
     var response;
     if (!isMultipart) {
-      log("**InideNotMultiPart**");
+      log("*NotMultipart*");
       response = await http.post(Uri.parse(url),
           headers: headers(), body: requestBody);
     } else {
       var uri = Uri.parse(url);
+      Map<String, dynamic> p = jsonDecode(requestBody);
+      Map<String, String> convertedMap = {};
+      p.forEach((key, value) {
+        convertedMap[key] = value;
+      });
+
+      // log("Params:${p.runtimeType}");
       var request = http.MultipartRequest('POST', uri)
         ..headers.addAll(headers())
-        ..files.add(await http.MultipartFile.fromPath(
-          '',
-          requestBody.path,
-        ));
+        ..fields.addAll(convertedMap)
+        ..files.addAll(multiPartValues);
+
+      // ..files.add(await http.MultipartFile.fromPath(
+      //   '',
+      //   requestBody.path,
+      // )
       response = await http.Response.fromStream(await request.send());
     }
 
     return response;
   }
+
+
 }

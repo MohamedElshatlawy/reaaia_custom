@@ -16,8 +16,8 @@ class Congrats extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => SorryScreen()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (ctx) => SorryScreen()));
               },
               child: Image.asset(
                 "assets/congrats.png",

@@ -6,13 +6,14 @@ import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
 
 import '../../customFunctions.dart';
-import 'congrats.dart';
+
 
 class CompleteRequest1Map extends StatelessWidget {
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
+  LatLng latLng;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +50,12 @@ class CompleteRequest1Map extends StatelessWidget {
                       filledColor: ColorsUtils.containerHealthCareColor,
                       lablel: ' Enter address or zip code...',
                       hasBorder: true,
-                      errorMessage: 'Enter Address!',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'This Field Required';
+                        }
+                        return null;
+                      },
                       sufficIcon: Icon(
                         Icons.my_location,
                         color: ColorsUtils.primaryGreen,
@@ -114,6 +120,12 @@ class CompleteRequest1Map extends StatelessWidget {
               child: GoogleMap(
                 mapType: MapType.normal,
                 initialCameraPosition: _kGooglePlex,
+                onTap: (val){
+
+                  latLng=val;
+                  print(latLng.latitude);
+                  print(latLng.longitude);
+                },
                 onMapCreated: (GoogleMapController controller) {
                   //_controller.complete(controller);
                 },
@@ -128,7 +140,7 @@ class CompleteRequest1Map extends StatelessWidget {
                 borderColor: ColorsUtils.primaryGreen,
                 text: 'Choose Location',
                 pressed: () {
-                  CustomFunctions.popScreen(context);
+                  Navigator.pop(context,latLng);
                 },
                 textColor: Colors.white,
               ),

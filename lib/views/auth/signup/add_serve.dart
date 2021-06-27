@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/data/signupModels/serve_model.dart';
+import 'package:reaaia/data/signupModels/serving_health_care_model.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
@@ -54,52 +55,70 @@ class _AddServeState extends State<AddServe> {
                     filledColor: Colors.white,
                     lablel: ' Hospital / Clinic Name',
                     hasBorder: true,
-                    errorMessage: 'Enter Hospital / Clinic Name!',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'This Field Required';
+                        }
+                        return null;
+                      },
                     onSaved: (val){
                       hospitalName=val;
                     },
                   ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
-                  CustomTextField(
-                    readOnly: true,
-                      controller: _controller,
-                      filledColor: Colors.white,
-                      lablel: ' Started from',
-                      hasBorder: true,
-                      errorMessage: 'Enter Date!',
-                      onSaved: (val){
-                        startForm=val;
-                      },
-                      sufficIcon: IconButton(
-                        icon: Icon(
-                          Icons.date_range,
-                          color: ColorsUtils.blueColor,
-                        ),
-                        onPressed: () {
-                          showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2019, 1),
-                            lastDate: DateTime(2021, 12),
-                          ).then((pickedDate) {
-                            if(pickedDate!=null) {
-                              setState(() {
-                                _controller.text = DateFormat(" d MMM y")
-                                    .format(pickedDate)
-                                    .toString();
-                                pickedDataStartFrom=pickedDate;
+                  InkWell(
+                    onTap: (){
+                      showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2019, 1),
+                        lastDate: DateTime(2021, 12),
+                      ).then((pickedDate) {
+                        if(pickedDate!=null) {
+                          setState(() {
+                            _controller.text = DateFormat(" d MMM y")
+                                .format(pickedDate)
+                                .toString();
+                            pickedDataStartFrom=pickedDate;
 
-                              });
-                            }
                           });
+                        }
+                      });
+                    },
+                    child: IgnorePointer(
+                      child: CustomTextField(
+                        readOnly: true,
+                          controller: _controller,
+                          filledColor: Colors.white,
+                          lablel: ' Started from',
+                          hasBorder: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This Field Required';
+                          }
+                          return null;
                         },
-                      )),
+                          onSaved: (val){
+                            startForm=val;
+                          },
+                          sufficIcon: Icon(
+                            Icons.date_range,
+                            color: ColorsUtils.blueColor,
+                          ),
+                      ),
+                    ),
+                  ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
                   CustomTextField(
                     filledColor: Colors.white,
                     lablel: ' Job Title',
                     hasBorder: true,
-                    errorMessage: 'Enter Job Title!',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'This Field Required';
+                      }
+                      return null;
+                    },
                     onSaved: (val){
                       jobTitle=val;
                     },
@@ -117,10 +136,11 @@ class _AddServeState extends State<AddServe> {
                         pressed: () {
                            if (_formKey.currentState.validate()) {
                              _formKey.currentState.save();
-                             Provider.of<SignUpProvider>(context,listen: false).addServe(ServeModel(
-                               hospitalName: hospitalName,
-                               jobTitle: jobTitle,
-                               startedFrom: pickedDataStartFrom,
+                             Provider.of<SignUpProvider>(context,listen: false).addServe(ServingInHealthcare(
+                               hospitalName:  hospitalName,
+                               hospitalJobTitle:  jobTitle,
+                               hospitalStartedFrom: pickedDataStartFrom.toIso8601String(),
+                               hospitalPhoneNumber: '01156984563'
                              ));
                              Navigator.pop(context);
                            }

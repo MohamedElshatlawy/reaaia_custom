@@ -109,7 +109,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         CustomTextField(
                           lablel: 'Email / Phone Number*',
                           hasBorder: true,
-                          errorMessage: 'enter a valid Mobile Number',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'This Field Required';
+                            }else if(value.length<11){
+                              return 'this Field Should no less than 11 digits';
+                            }
+                            return null;
+                          },
                           onSaved: (value) {
                             _forgetPassInfo['username'] = value;
                           },

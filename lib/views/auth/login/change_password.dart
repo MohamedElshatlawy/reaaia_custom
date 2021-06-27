@@ -91,25 +91,41 @@ class _ChangePasswordState extends State<ChangePassword> {
                             height: ScreenUtil().setHeight(33),
                           ),
                           CustomTextField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'This Field Required';
+                              }else if(value.length<8){
+                                return 'this Field Should more than 8 digits';
+                              }
+                              return null;
+                            },
+
                             lablel: 'New Password*',
                             hasBorder: true,
                             hasPassword: true,
                             onSaved: (val) {
                               _forgetPassInfo['password'] = val;
                             },
-                            errorMessage: 'Enter Password!',
                           ),
                           SizedBox(
                             height: ScreenUtil().setHeight(20),
                           ),
                           CustomTextField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'This Field Required';
+                              }else if(value.length<8){
+                                return 'this Field Should more than 8 digits';
+                              }
+                              return null;
+                            },
                               lablel: 'Confirm New Password*',
                               hasBorder: true,
                               hasPassword: true,
                               onSaved: (val) {
                                 _forgetPassInfo['password_confirmation'] = val;
                               },
-                              errorMessage: 'Enter Password!'),
+                             ),
                           SizedBox(
                             height: ScreenUtil().setHeight(30.5),
                           ),
