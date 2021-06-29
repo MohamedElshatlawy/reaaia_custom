@@ -16,12 +16,6 @@ class ColorsUtils {
   static const modalSheetBarrierColor = Color(0xff71718D);
   static const containerHealthCareColor = Color(0xffF1F1F9);
 
-
-
-
-
-
-
-
+  static const homeBackGroundColor = Color(0xffFAFAFA);
   static const greenBorder = Color(0xff00d65b);
 }

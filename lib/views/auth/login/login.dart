@@ -267,7 +267,7 @@ class _LoginState extends State<Login> {
                                     context: context, widget: SignUp());
                                 // CustomFunctions.pushScreen(
                                 //     context: context,
-                                //     widget: CompleteRegister3());
+                                //     widget: CompleteRegister2());
                               },
                               child: Text(
                                 'Sign Up',

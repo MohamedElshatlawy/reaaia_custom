@@ -57,31 +57,13 @@ class ForgetPassResponseData {
 
 
 class Data {
-  Response response;
-
-  Data({this.response});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    response = json['response'] != null ? new Response.fromJson(json['response']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.response != null) {
-      data['response'] = this.response.toJson();
-    }
-    return data;
-  }
-}
-
-class Response {
   String token;
   int expiryTime;
 
 
-  Response({this.token, this.expiryTime, });
+  Data({this.token, this.expiryTime, });
 
-  Response.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     token = json['token'];
     expiryTime = json['expiry_time'];
 
@@ -94,3 +76,24 @@ class Response {
     return data;
   }
 }
+
+// class Response {
+//   String token;
+//   int expiryTime;
+//
+//
+//   Response({this.token, this.expiryTime, });
+//
+//   Response.fromJson(Map<String, dynamic> json) {
+//     token = json['token'];
+//     expiryTime = json['expiry_time'];
+//
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['token'] = this.token;
+//     data['expiry_time'] = this.expiryTime;
+//     return data;
+//   }
+// }

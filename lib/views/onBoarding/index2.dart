@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/onBoardingUtil.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 import 'package:reaaia/views/auth/login/login.dart';
 
@@ -39,8 +40,8 @@ class Index2 extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    CustomFunctions.pushScreen(
-                        context: context, widget: Login());
+                    OnBoardingUtil.saveKeyOnBoarding('isBoarding');
+                    CustomFunctions.pushScreenRepcalement(context: context, widget: Login());
                   },
                   child: Text(
                     'Skip',

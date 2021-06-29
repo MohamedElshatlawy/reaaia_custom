@@ -37,6 +37,7 @@ dependencies:
   image_picker: any
   http_parser: ^3.1.4
   validators: any
+  percent_indicator: any
 
   provider: any
   dots_indicator: any
@@ -70,6 +71,7 @@ flutter:
     - i18n/ar.json
     - i18n/en.json
     - assets/icons/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

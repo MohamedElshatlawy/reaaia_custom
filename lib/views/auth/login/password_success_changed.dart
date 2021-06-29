@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/views/auth/login/login.dart';
 
-class PasswordSuccessChanged extends StatelessWidget {
+import '../../customFunctions.dart';
+
+class PasswordSuccessChanged extends StatefulWidget {
+  @override
+  _PasswordSuccessChangedState createState() => _PasswordSuccessChangedState();
+}
+
+class _PasswordSuccessChangedState extends State<PasswordSuccessChanged> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 2), () {
+      CustomFunctions.pushScreenRepcalement(
+          widget: Login(), context: context);
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

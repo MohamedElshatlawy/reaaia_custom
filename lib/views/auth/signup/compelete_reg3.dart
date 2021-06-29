@@ -59,6 +59,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
   List<int> _filters2 = [];
 
   List<TextEditingController> _textFieldControllers = [];
+
   int counterPhoneNumbers = 1;
   List<String> phoneNumbersList = [];
 
@@ -738,15 +739,6 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   margin: EdgeInsets.symmetric(vertical: 5.0),
                                   child: CustomTextField(
                                     controller: _textFieldControllers[index],
-                                    // onFieldSubmitted: (val) {
-                                    //   setState(() {
-                                    //     phoneNumbersList.clear();
-                                    //     _textFieldControllers.map((e) {
-                                    //       phoneNumbersList.add(e.text);
-                                    //     }).toList();
-                                    //   });
-                                    //   print(phoneNumbersList.toString());
-                                    // },
                                     onChanged: (val) {
                                       setState(() {
                                         phoneNumbersList.clear();
@@ -776,8 +768,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'This Field Required';
-                                      }
-                                      else if(value.length!=11){
+                                      } else if (value.length != 11) {
                                         return 'this Field Should no less than 11 digits';
                                       }
                                       return null;

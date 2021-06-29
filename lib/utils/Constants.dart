@@ -1,5 +1,6 @@
 class Constants {
   static const token = "Token";
+  static const keyOnBoarding = "keyOnBoarding";
 
   static const unAuthorizedError = "Unauthorized Error";
 

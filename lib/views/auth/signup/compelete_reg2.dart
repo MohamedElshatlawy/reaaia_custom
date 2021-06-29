@@ -41,11 +41,30 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
   bool isSelectedSpeciality = false;
   bool isSelectedSubSpeciality = false;
 
-  File licenceImage, certificateImage, awardImage;
+  File licenceImage;
+  List<File> certificateImage = [];
+  List<File> awardImage = [];
   CompleteReg2Model _completeReg2Model = CompleteReg2Model();
-  Languages _languages = Languages();
-  Certifications _certifications = Certifications();
-  Awards _awards = Awards();
+  List<Languages> _languages = [];
+  List<Certifications> _certifications = [];
+  List<Awards> _awards = [];
+
+  List<TextEditingController> _controllersCertificationName = [];
+  List<TextEditingController> _controllersCertificationYear = [];
+  List<TextEditingController> _controllersAwardName = [];
+  List<TextEditingController> _controllersAwardYear = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _languages.add(Languages());
+    _controllersCertificationName.add(TextEditingController());
+    _controllersCertificationYear.add(TextEditingController());
+    _certifications.add(Certifications());
+    certificateImage.add(null);
+    _awards.add(Awards());
+    awardImage.add(null);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +78,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
     OutlineInputBorder border = OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(color: ColorsUtils.borderColor));
-    final signUpProvider= Provider.of<SignUpProvider>(context,listen: false);
+    final signUpProvider = Provider.of<SignUpProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
@@ -469,7 +488,8 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                           });
                           try {
                             await signUpProvider.uploadPicture(
-                                collection: 'Doctor license image', file: licenceImage);
+                                collection: 'Doctor license image',
+                                file: licenceImage);
                             if (signUpProvider.tokenPicture != null) {
                               _completeReg2Model.practiceLicenceImage = [
                                 signUpProvider.tokenPicture
@@ -585,134 +605,150 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                 fontSize: ScreenUtil().setSp(16),
                                 color: ColorsUtils.primaryGreen),
                           ),
-                          SizedBox(height: ScreenUtil().setHeight(16)),
-                          DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-                              labelText: 'Language',
-                              labelStyle: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: ScreenUtil().setSp(15)),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10.0, vertical: 5.0),
-                              border: border,
-                              disabledBorder: border,
-                              enabledBorder: border,
-                              errorBorder: border,
-                              focusedBorder: border,
-                              focusedErrorBorder: border,
-                              fillColor: Colors.white,
-                              filled: true,
-                            ),
-                            style: TextStyle(
-                                color: ColorsUtils.blackColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: ScreenUtil().setSp(16)),
-                            icon:
-                                const Icon(Icons.keyboard_arrow_down_outlined),
-                            isExpanded: true,
-                            value: selectedLanguage,
-                            iconSize: 24,
-                            onChanged: (newValue) {
-                              setState(() {
-                                selectedLanguage = newValue;
-                                // MainModel models = providerData.languages
-                                //     .firstWhere(
-                                //         (element) => element.name == newValue);
-                                // print(newValue + '  ' + models.id.toString());
-                              });
-                            },
-                            onSaved: (val) {
-                              MainModel models = providerData.languages
-                                  .firstWhere((element) => element.name == val);
-                              print(val + '  ' + models.id.toString());
-                              _languages.languageId = models.id;
-                            },
-                            items: providerData.languages
-                                .map<DropdownMenuItem<String>>(
-                                    (MainModel value) {
-                              return new DropdownMenuItem(
-                                child: new Text(value.name),
-                                value: value.name,
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: ScrollPhysics(),
+                            itemCount: _languages.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  SizedBox(height: ScreenUtil().setHeight(16)),
+                                  DropdownButtonFormField<String>(
+                                    decoration: InputDecoration(
+                                      labelText: 'Language',
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: ScreenUtil().setSp(15)),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 10.0, vertical: 5.0),
+                                      border: border,
+                                      disabledBorder: border,
+                                      enabledBorder: border,
+                                      errorBorder: border,
+                                      focusedBorder: border,
+                                      focusedErrorBorder: border,
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                    ),
+                                    style: TextStyle(
+                                        color: ColorsUtils.blackColor,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: ScreenUtil().setSp(16)),
+                                    icon: const Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    isExpanded: true,
+                                    //value: selectedLanguage[index],
+                                    iconSize: 24,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedLanguage = newValue;
+                                        // print(selectedLanguage.toString());
+                                      });
+                                    },
+                                    onSaved: (val) {
+                                      MainModel models = providerData.languages
+                                          .firstWhere(
+                                              (element) => element.name == val);
+                                      print(val + '  ' + models.id.toString());
+                                      _languages[index].languageId = models.id;
+                                    },
+                                    items: providerData.languages
+                                        .map<DropdownMenuItem<String>>(
+                                            (MainModel value) {
+                                      return new DropdownMenuItem(
+                                        child: new Text(value.name),
+                                        value: value.name,
+                                      );
+                                    }).toList(),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Select Language';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  SizedBox(height: ScreenUtil().setHeight(20)),
+                                  DropdownButtonFormField<String>(
+                                    decoration: InputDecoration(
+                                      labelText: 'Level of Language',
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: ScreenUtil().setSp(15)),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 10.0, vertical: 5.0),
+                                      border: border,
+                                      disabledBorder: border,
+                                      enabledBorder: border,
+                                      errorBorder: border,
+                                      focusedBorder: border,
+                                      focusedErrorBorder: border,
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                    ),
+                                    style: TextStyle(
+                                        color: ColorsUtils.blackColor,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: ScreenUtil().setSp(16)),
+                                    icon: const Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    isExpanded: true,
+                                    //value: selectedLevelLanguage,
+                                    iconSize: 24,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedLevelLanguage = newValue;
+                                      });
+                                    },
+                                    onSaved: (val) {
+                                      MainModel models = providerData
+                                          .languageLevels
+                                          .firstWhere(
+                                              (element) => element.name == val);
+                                      print(val + '  ' + models.id.toString());
+                                      _languages[index].languageLevelId =
+                                          models.id;
+                                    },
+                                    items: providerData.languageLevels
+                                        .map<DropdownMenuItem<String>>(
+                                            (MainModel value) {
+                                      return new DropdownMenuItem(
+                                        child: new Text(value.name),
+                                        value: value.name,
+                                      );
+                                    }).toList(),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Select Level Of Language';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                  SizedBox(
+                                    height: ScreenUtil().setHeight(20),
+                                  ),
+                                ],
                               );
-                            }).toList(),
-                            validator: (value){
-                              if (value == null || value.isEmpty){
-                                return 'Select Language';
-                              }
-                              return null;
                             },
                           ),
-                          SizedBox(height: ScreenUtil().setHeight(20)),
-                          DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-                              labelText: 'Level of Language',
-                              labelStyle: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: ScreenUtil().setSp(15)),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10.0, vertical: 5.0),
-                              border: border,
-                              disabledBorder: border,
-                              enabledBorder: border,
-                              errorBorder: border,
-                              focusedBorder: border,
-                              focusedErrorBorder: border,
-                              fillColor: Colors.white,
-                              filled: true,
+                          Container(
+                            height: ScreenUtil().setHeight(50),
+                            child: CustomRoundedButton(
+                              iconLeft: true,
+                              backgroundColor: ColorsUtils.buttonColorLight,
+                              borderColor: ColorsUtils.buttonColorLight,
+                              icon: Icon(
+                                Icons.add,
+                                color: ColorsUtils.primaryGreen,
+                              ),
+                              text: 'Add More Language ',
+                              pressed: () {
+                                setState(() {
+                                  _languages.add(Languages());
+                                });
+                              },
+                              textColor: ColorsUtils.primaryGreen,
                             ),
-                            style: TextStyle(
-                                color: ColorsUtils.blackColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: ScreenUtil().setSp(16)),
-                            icon:
-                                const Icon(Icons.keyboard_arrow_down_outlined),
-                            isExpanded: true,
-                            value: selectedLevelLanguage,
-                            iconSize: 24,
-                            onChanged: (newValue) {
-                              setState(() {
-                                selectedLevelLanguage = newValue;
-                              });
-                            },
-                            onSaved: (val) {
-                              MainModel models = providerData.languageLevels
-                                  .firstWhere((element) => element.name == val);
-                              print(val + '  ' + models.id.toString());
-                              _languages.languageLevelId = models.id;
-                            },
-                            items: providerData.languageLevels
-                                .map<DropdownMenuItem<String>>(
-                                    (MainModel value) {
-                              return new DropdownMenuItem(
-                                child: new Text(value.name),
-                                value: value.name,
-                              );
-                            }).toList(),
-                            validator: (value){
-                              if (value == null || value.isEmpty){
-                                return 'Select Level Of Language';
-                              }
-                              return null;
-                            },
                           ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(20),
-                          ),
-                          // Container(
-                          //   height: ScreenUtil().setHeight(50),
-                          //   child: CustomRoundedButton(
-                          //     iconLeft: true,
-                          //     backgroundColor: ColorsUtils.buttonColorLight,
-                          //     borderColor: ColorsUtils.buttonColorLight,
-                          //     icon: Icon(
-                          //       Icons.add,
-                          //       color: ColorsUtils.primaryGreen,
-                          //     ),
-                          //     text: 'Add More Language ',
-                          //     pressed: () {},
-                          //     textColor: ColorsUtils.primaryGreen,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
@@ -737,147 +773,186 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                 fontSize: ScreenUtil().setSp(16),
                                 color: ColorsUtils.primaryGreen),
                           ),
-                          SizedBox(height: ScreenUtil().setHeight(16)),
-                          CustomTextField(
-                            filledColor: Colors.white,
-                            lablel: ' Certificate Name',
-                            hasBorder: true,
-                            onSaved: (val) {
-                              _certifications.name = val;
-                            },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'This Field Required';
-                              }
-                              return null;
-                            },
-                          ),
-                          SizedBox(height: ScreenUtil().setHeight(20)),
-                          CustomTextField(
-                            filledColor: Colors.white,
-                            lablel: ' Year',
-                            hasBorder: true,
-                            onSaved: (val) {
-                              _certifications.year = val;
-                            },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'This Field Required';
-                              }
-                              return null;
-                            },
-                          ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(20),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              final pickedImage = await Functions.pickImage();
-                              if (pickedImage != null) {
-                                setState(() {
-                                  certificateImage = pickedImage;
-                                });
-                                try {
-                                  await signUpProvider.uploadPicture(
-                                      collection: 'Doctor certification images', file: certificateImage);
-                                  if (signUpProvider.tokenPicture != null) {
-                                    _certifications.image = [
-                                      signUpProvider.tokenPicture
-                                    ];
-                                    print(
-                                        'we found token ${signUpProvider.tokenPicture}');
-                                    Functions.showCustomSnackBar(
-                                      context: context,
-                                      text: 'Picture Upload Successfully',
-                                      hasIcon: true,
-                                      iconType: Icons.done,
-                                      iconColor: Colors.green,
-                                    );
-                                  } else {
-                                    Functions.showCustomSnackBar(
-                                      context: context,
-                                      text: 'Picture Upload Failed!',
-                                      hasIcon: true,
-                                      iconType: Icons.error_outline,
-                                      iconColor: Colors.red,
-                                    );
-                                  }
-                                } catch (err) {
-                                  Functions.showCustomSnackBar(
-                                    context: context,
-                                    text: 'Picture Upload Failed!',
-                                    hasIcon: true,
-                                    iconType: Icons.error_outline,
-                                    iconColor: Colors.red,
-                                  );
-                                }
-                              } else {
-                                Functions.showCustomSnackBar(
-                                  context: context,
-                                  text: 'Picture Upload Failed!',
-                                  hasIcon: true,
-                                  iconType: Icons.error_outline,
-                                  iconColor: Colors.red,
+                          ListView.builder(
+                              physics: ScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: _certifications.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    SizedBox(
+                                        height: ScreenUtil().setHeight(16)),
+                                    CustomTextField(
+                                      filledColor: Colors.white,
+                                      lablel: ' Certificate Name',
+                                      hasBorder: true,
+                                      onSaved: (val) {
+                                        _certifications[index].name = val;
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'This Field Required';
+                                        }
+                                        return null;
+                                      },
+                                      onChanged: (val) {
+                                        _certifications[index].name = val;
+                                      },
+                                    ),
+                                    SizedBox(
+                                        height: ScreenUtil().setHeight(20)),
+                                    CustomTextField(
+                                      filledColor: Colors.white,
+                                      lablel: ' Year',
+                                      hasBorder: true,
+                                      onSaved: (val) {
+                                        _certifications[index].year = val;
+                                      },
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'This Field Required';
+                                        }
+                                        return null;
+                                      },
+                                      onChanged: (val) {
+                                        _certifications[index].year = val;
+                                      },
+                                    ),
+                                    SizedBox(
+                                      height: ScreenUtil().setHeight(20),
+                                    ),
+                                    InkWell(
+                                      onTap: () async {
+                                        final pickedImage =
+                                            await Functions.pickImage();
+                                        if (pickedImage != null) {
+                                          setState(() {
+                                            certificateImage[index] =
+                                                pickedImage;
+                                          });
+                                          try {
+                                            await signUpProvider.uploadPicture(
+                                                collection:
+                                                    'Doctor certification images',
+                                                file: certificateImage[index]);
+                                            if (signUpProvider.tokenPicture !=
+                                                null) {
+                                              _certifications[index].image = [
+                                                signUpProvider.tokenPicture
+                                              ];
+                                              print(jsonEncode(_certifications)
+                                                  .toString());
+                                              Functions.showCustomSnackBar(
+                                                context: context,
+                                                text:
+                                                    'Picture Upload Successfully',
+                                                hasIcon: true,
+                                                iconType: Icons.done,
+                                                iconColor: Colors.green,
+                                              );
+                                            } else {
+                                              Functions.showCustomSnackBar(
+                                                context: context,
+                                                text: 'Picture Upload Failed!',
+                                                hasIcon: true,
+                                                iconType: Icons.error_outline,
+                                                iconColor: Colors.red,
+                                              );
+                                            }
+                                          } catch (err) {
+                                            Functions.showCustomSnackBar(
+                                              context: context,
+                                              text: 'Picture Upload Failed!',
+                                              hasIcon: true,
+                                              iconType: Icons.error_outline,
+                                              iconColor: Colors.red,
+                                            );
+                                          }
+                                        } else {
+                                          Functions.showCustomSnackBar(
+                                            context: context,
+                                            text: 'Picture Upload Failed!',
+                                            hasIcon: true,
+                                            iconType: Icons.error_outline,
+                                            iconColor: Colors.red,
+                                          );
+                                        }
+                                      },
+                                      child: Container(
+                                        width: ScreenUtil().screenWidth,
+                                        height: ScreenUtil().setHeight(50),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            border: Border.all(
+                                                color: Colors.grey[300]),
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              width: ScreenUtil().setWidth(24),
+                                              height:
+                                                  ScreenUtil().setHeight(24),
+                                              //margin: EdgeInsets.symmetric(horizontal: 10.0),
+                                              child: SvgPicture.asset(
+                                                'assets/icons/fi-rr-cloud-upload.svg',
+                                                color: ColorsUtils.blueColor,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: ScreenUtil().setWidth(10),
+                                            ),
+                                            Flexible(
+                                              child: Text(
+                                                certificateImage[index] != null
+                                                    ? path.basename(
+                                                        certificateImage[index]
+                                                            .path)
+                                                    : 'Attach Certificate Photo',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(13),
+                                                    color:
+                                                        ColorsUtils.textGrey),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: ScreenUtil().setHeight(20),
+                                    ),
+                                  ],
                                 );
-                              }
-                            },
-                            child: Container(
-                              width: ScreenUtil().screenWidth,
-                              height: ScreenUtil().setHeight(50),
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: Colors.grey[300]),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: ScreenUtil().setWidth(24),
-                                    height: ScreenUtil().setHeight(24),
-                                    //margin: EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/fi-rr-cloud-upload.svg',
-                                      color: ColorsUtils.blueColor,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: ScreenUtil().setWidth(10),
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      certificateImage != null
-                                          ? path.basename(certificateImage.path)
-                                          : 'Attach Certificate Photo',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: ScreenUtil().setSp(13),
-                                          color: ColorsUtils.textGrey),
-                                    ),
-                                  )
-                                ],
+                              }),
+                          Container(
+                            height: ScreenUtil().setHeight(50),
+                            child: CustomRoundedButton(
+                              iconLeft: true,
+                              backgroundColor: ColorsUtils.buttonColorLight,
+                              borderColor: ColorsUtils.buttonColorLight,
+                              icon: Icon(
+                                Icons.add,
+                                color: ColorsUtils.primaryGreen,
                               ),
+                              text: 'Add More Certificate ',
+                              pressed: () {
+                                setState(() {
+                                  _certifications.add(Certifications());
+                                  certificateImage.add(null);
+                                });
+                              },
+                              textColor: ColorsUtils.primaryGreen,
                             ),
                           ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(20),
-                          ),
-                          // Container(
-                          //   height: ScreenUtil().setHeight(50),
-                          //   child: CustomRoundedButton(
-                          //     iconLeft: true,
-                          //     backgroundColor: ColorsUtils.buttonColorLight,
-                          //     borderColor: ColorsUtils.buttonColorLight,
-                          //     icon: Icon(
-                          //       Icons.add,
-                          //       color: ColorsUtils.primaryGreen,
-                          //     ),
-                          //     text: 'Add More Certificate ',
-                          //     pressed: () {},
-                          //     textColor: ColorsUtils.primaryGreen,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
@@ -902,147 +977,167 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                 fontSize: ScreenUtil().setSp(16),
                                 color: ColorsUtils.primaryGreen),
                           ),
-                          SizedBox(height: ScreenUtil().setHeight(16)),
-                          CustomTextField(
-                            filledColor: Colors.white,
-                            lablel: ' Award Name ',
-                            hasBorder: true,
-                            onSaved: (val) {
-                              _awards.name = val;
-                            },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'This Field Required';
-                              }
-                              return null;
-                            },
-                          ),
-                          SizedBox(height: ScreenUtil().setHeight(20)),
-                          CustomTextField(
-                            filledColor: Colors.white,
-                            lablel: ' Year',
-                            hasBorder: true,
-                            onSaved: (val) {
-                              _awards.year = val;
-                            },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'This Field Required';
-                              }
-                              return null;
-                            },
-                          ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(20),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              final pickedImage = await Functions.pickImage();
-                              if (pickedImage != null) {
-                                setState(() {
-                                  awardImage = pickedImage;
-                                });
-                                try {
-                                  await signUpProvider.uploadPicture(
-                                      collection: 'Doctor award images', file: awardImage);
-                                  if (signUpProvider.tokenPicture != null) {
-                                    _awards.image = [
-                                      signUpProvider.tokenPicture
-                                    ];
-                                    print(
-                                        'we found token ${signUpProvider.tokenPicture}');
-                                    Functions.showCustomSnackBar(
-                                      context: context,
-                                      text: 'Picture Upload Successfully',
-                                      hasIcon: true,
-                                      iconType: Icons.done,
-                                      iconColor: Colors.green,
-                                    );
-                                  } else {
-                                    Functions.showCustomSnackBar(
-                                      context: context,
-                                      text: 'Picture Upload Failed!',
-                                      hasIcon: true,
-                                      iconType: Icons.error_outline,
-                                      iconColor: Colors.red,
-                                    );
-                                  }
-                                } catch (err) {
-                                  Functions.showCustomSnackBar(
-                                    context: context,
-                                    text: 'Picture Upload Failed!',
-                                    hasIcon: true,
-                                    iconType: Icons.error_outline,
-                                    iconColor: Colors.red,
-                                  );
-                                }
-                              } else {
-                                Functions.showCustomSnackBar(
-                                  context: context,
-                                  text: 'Picture Upload Failed!',
-                                  hasIcon: true,
-                                  iconType: Icons.error_outline,
-                                  iconColor: Colors.red,
-                                );
-                              }
-                            },
-                            child: Container(
-                              width: ScreenUtil().screenWidth,
-                              height: ScreenUtil().setHeight(50),
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: Colors.grey[300]),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: ScreenUtil().setWidth(24),
-                                    height: ScreenUtil().setHeight(24),
-                                    //margin: EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/fi-rr-cloud-upload.svg',
-                                      color: ColorsUtils.blueColor,
+                          ListView.builder(
+                              physics: ScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: _awards.length,
+                              itemBuilder: (context, index) {
+                                return Column(children: [
+                                  SizedBox(height: ScreenUtil().setHeight(16)),
+                                  CustomTextField(
+                                    filledColor: Colors.white,
+                                    lablel: ' Award Name ',
+                                    hasBorder: true,
+                                    onSaved: (val) {
+                                      _awards[index].name = val;
+                                    },
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'This Field Required';
+                                      }
+                                      return null;
+                                    },
+                                    onChanged: (val){
+                                      _awards[index].name = val;
+                                    },
+                                  ),
+                                  SizedBox(height: ScreenUtil().setHeight(20)),
+                                  CustomTextField(
+                                    filledColor: Colors.white,
+                                    lablel: ' Year',
+                                    hasBorder: true,
+                                    onSaved: (val) {
+                                      _awards[index].year = val;
+                                    },
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'This Field Required';
+                                      }
+                                      return null;
+                                    },
+                                    onChanged: (val) {
+                                      _awards[index].year = val;
+                                    },
+                                  ),
+                                  SizedBox(height: ScreenUtil().setHeight(20),),
+                                  InkWell(
+                                    onTap: () async {
+                                      final pickedImage = await Functions.pickImage();
+                                      if (pickedImage != null) {
+                                        setState(() {
+                                          awardImage[index] = pickedImage;
+                                        });
+                                        try {
+                                          await signUpProvider.uploadPicture(
+                                              collection: 'Doctor award images',
+                                              file: awardImage[index]);
+                                          if (signUpProvider.tokenPicture != null) {
+                                            _awards[index].image = [
+                                              signUpProvider.tokenPicture
+                                            ];
+                                            print(jsonEncode(_awards)
+                                                .toString());
+                                            print(
+                                                'we found token ${signUpProvider.tokenPicture}');
+                                            Functions.showCustomSnackBar(
+                                              context: context,
+                                              text: 'Picture Upload Successfully',
+                                              hasIcon: true,
+                                              iconType: Icons.done,
+                                              iconColor: Colors.green,
+                                            );
+                                          } else {
+                                            Functions.showCustomSnackBar(
+                                              context: context,
+                                              text: 'Picture Upload Failed!',
+                                              hasIcon: true,
+                                              iconType: Icons.error_outline,
+                                              iconColor: Colors.red,
+                                            );
+                                          }
+                                        } catch (err) {
+                                          Functions.showCustomSnackBar(
+                                            context: context,
+                                            text: 'Picture Upload Failed!',
+                                            hasIcon: true,
+                                            iconType: Icons.error_outline,
+                                            iconColor: Colors.red,
+                                          );
+                                        }
+                                      } else {
+                                        Functions.showCustomSnackBar(
+                                          context: context,
+                                          text: 'Picture Upload Failed!',
+                                          hasIcon: true,
+                                          iconType: Icons.error_outline,
+                                          iconColor: Colors.red,
+                                        );
+                                      }
+                                    },
+                                    child: Container(
+                                      width: ScreenUtil().screenWidth,
+                                      height: ScreenUtil().setHeight(50),
+                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.all(color: Colors.grey[300]),
+                                          borderRadius: BorderRadius.circular(8)),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: ScreenUtil().setWidth(24),
+                                            height: ScreenUtil().setHeight(24),
+                                            //margin: EdgeInsets.symmetric(horizontal: 10.0),
+                                            child: SvgPicture.asset(
+                                              'assets/icons/fi-rr-cloud-upload.svg',
+                                              color: ColorsUtils.blueColor,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: ScreenUtil().setWidth(10),
+                                          ),
+                                          Flexible(
+                                            child: Text(
+                                              awardImage[index] != null
+                                                  ? path.basename(awardImage[index].path)
+                                                  : 'Attach Award Photo',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: ScreenUtil().setSp(13),
+                                                  color: ColorsUtils.textGrey),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: ScreenUtil().setWidth(10),
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      awardImage != null
-                                          ? path.basename(awardImage.path)
-                                          : 'Attach Award Photo',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: ScreenUtil().setSp(13),
-                                          color: ColorsUtils.textGrey),
-                                    ),
-                                  )
-                                ],
+                                  SizedBox(height: ScreenUtil().setHeight(20),),
+
+                                ]);
+                              }),
+
+                          Container(
+                            height: ScreenUtil().setHeight(50),
+                            child: CustomRoundedButton(
+                              iconLeft: true,
+                              backgroundColor: ColorsUtils.buttonColorLight,
+                              borderColor: ColorsUtils.buttonColorLight,
+                              icon: Icon(
+                                Icons.add,
+                                color: ColorsUtils.primaryGreen,
                               ),
+                              text: 'Add More Award ',
+                              pressed: () {
+                                setState(() {
+                                  _awards.add(Awards());
+                                  awardImage.add(null);
+                                });
+                              },
+                              textColor: ColorsUtils.primaryGreen,
                             ),
                           ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(20),
-                          ),
-                          // Container(
-                          //   height: ScreenUtil().setHeight(50),
-                          //   child: CustomRoundedButton(
-                          //     iconLeft: true,
-                          //     backgroundColor: ColorsUtils.buttonColorLight,
-                          //     borderColor: ColorsUtils.buttonColorLight,
-                          //     icon: Icon(
-                          //       Icons.add,
-                          //       color: ColorsUtils.primaryGreen,
-                          //     ),
-                          //     text: 'Add More Award ',
-                          //     pressed: () {},
-                          //     textColor: ColorsUtils.primaryGreen,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
@@ -1066,26 +1161,26 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
                               FocusManager.instance.primaryFocus.unfocus();
-                              if(licenceImage!=null && certificateImage!=null && awardImage!=null){
-                                _completeReg2Model.languages = [_languages];
-                                _completeReg2Model.certifications = [
-                                  _certifications
-                                ];
-                                _completeReg2Model.awards = [_awards];
+                              if (licenceImage != null &&
+                                  certificateImage.isNotEmpty &&
+                                  awardImage.isNotEmpty ) {
+                                _completeReg2Model.languages = _languages;
+                                _completeReg2Model.certifications =
+                                    _certifications;
+                                _completeReg2Model.awards = _awards;
                                 Provider.of<SignUpProvider>(context,
-                                    listen: false)
+                                        listen: false)
                                     .setCompleteReg2Model(_completeReg2Model);
                                 CustomFunctions.pushScreen(
                                     context: context,
                                     widget: CompleteRegister3());
-                              }else{
+                              } else {
                                 Functions.showCustomSnackBar(
                                   context: context,
                                   text: 'all Image Fields Required!',
                                   hasIcon: false,
                                 );
                               }
-
                             }
                           },
                           textColor: Colors.white,

@@ -31,8 +31,8 @@ class NetworkCall {
           NetworkStatusCodes.ServerInternalError.value ||
           response.statusCode == NetworkStatusCodes.BadRequest.value) {
         //Api logger
-        //log("API Error: ${response.statusCode} - ${response.reasonPhrase} - ${response.body}");
-        log("API Error:${response.body}");
+        log("API Error: ${response.statusCode} - ${response.reasonPhrase} - ${response.body}");
+        //log("API Error:${response.body}");
 
         return jsonDecode(response.body);
       } else if (response.statusCode ==

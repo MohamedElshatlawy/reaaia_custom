@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
-import 'package:reaaia/views/auth/login/data_validation_msg.dart';
 import 'package:reaaia/views/auth/login/recovery_password.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
@@ -21,6 +21,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   final GlobalKey<FormState> _forgetPassFormKey = GlobalKey<FormState>();
 
   Map<String, dynamic> _forgetPassInfo = {};
+  bool loading = false;
 
   void checkPlatForm() {
     if (Platform.isAndroid) {
@@ -43,128 +44,159 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     final loginProvider = Provider.of<LoginProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
-      body: Form(
-        key: _forgetPassFormKey,
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+      body: Builder(
+        builder:(context)=> Form(
+          key: _forgetPassFormKey,
           child: Container(
-            child: Column(
-              children: [
-                SizedBox(height: ScreenUtil().setHeight(50)),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        CustomFunctions.popScreen(context);
-                      },
-                      child: Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[300]),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          )),
-                    ),
-                  ],
-                ),
-                Expanded(
-                    child: Container(
-                  margin: EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().setWidth(7)),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(height: ScreenUtil().setHeight(40)),
-                        Row(
-                          children: [
-                            Text(
-                              'Forget Password',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: ScreenUtil().setSp(24)),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: ScreenUtil().setHeight(17),
-                        ),
-                        Row(
-                          children: [
-                            Flexible(
-                              child: Text(
-                                'Please enter your email below to receive your password reset instructions.',
-                                style: TextStyle(
-                                    color: ColorsUtils.onBoardingTextGrey,
-                                    fontSize: ScreenUtil().setSp(13)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: ScreenUtil().setHeight(31),
-                        ),
-                        CustomTextField(
-                          lablel: 'Email / Phone Number*',
-                          hasBorder: true,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'This Field Required';
-                            }else if(value.length<11){
-                              return 'this Field Should no less than 11 digits';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _forgetPassInfo['username'] = value;
-                          },
-                        ),
-                        SizedBox(
-                          height: ScreenUtil().setHeight(30.5),
-                        ),
-                        Container(
-                          height: ScreenUtil().setHeight(50),
-                          width: 236,
-                          child: CustomRoundedButton(
-                            backgroundColor: ColorsUtils.primaryGreen,
-                            borderColor: ColorsUtils.primaryGreen,
-                            text: 'Send Email',
-                            pressed: () async {
-                              if (_forgetPassFormKey.currentState.validate()) {
-                                _forgetPassFormKey.currentState.save();
-                                checkPlatForm();
-                                _forgetPassInfo['grant_type'] = 'activation';
-                                print(_forgetPassInfo.toString());
-                                try {
-                                  await loginProvider
-                                      .forgetPasswordSendOtp(_forgetPassInfo);
-                                  if (loginProvider.forgetPassResponse.status ==
-                                      200) {
-                                    print('Success');
-                                    CustomFunctions.pushScreen(
-                                        context: context,
-                                        widget: RecoveryPassword(
-                                          forgetPassResponse:
-                                              loginProvider.forgetPassResponse,
-                                        ));
-                                  } else {
-                                    print('Falid');
-                                  }
-                                } catch (error) {
-                                  print('Failed Eroorrrr');
-                                }
-                              }
-                            },
-                            textColor: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+            margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+            child: Container(
+              child: Column(
+                children: [
+                  SizedBox(height: ScreenUtil().setHeight(50)),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          CustomFunctions.popScreen(context);
+                        },
+                        child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.black,
+                            )),
+                      ),
+                    ],
                   ),
-                ))
-              ],
+                  Expanded(
+                      child: Container(
+                    margin: EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().setWidth(7)),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(height: ScreenUtil().setHeight(40)),
+                          Row(
+                            children: [
+                              Text(
+                                'Forget Password',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: ScreenUtil().setSp(24)),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: ScreenUtil().setHeight(17),
+                          ),
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  'Please enter your email below to receive your password reset instructions.',
+                                  style: TextStyle(
+                                      color: ColorsUtils.onBoardingTextGrey,
+                                      fontSize: ScreenUtil().setSp(13)),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: ScreenUtil().setHeight(31),
+                          ),
+                          CustomTextField(
+                            lablel: 'Email / Phone Number*',
+                            hasBorder: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'This Field Required';
+                              } else if (value.length < 11) {
+                                return 'this Field Should no less than 11 digits';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _forgetPassInfo['username'] = value;
+                            },
+                          ),
+                          SizedBox(
+                            height: ScreenUtil().setHeight(30.5),
+                          ),
+                          loading
+                              ? CircularProgressIndicator()
+                              : Container(
+                                  height: ScreenUtil().setHeight(50),
+                                  width: 236,
+                                  child: CustomRoundedButton(
+                                    backgroundColor: ColorsUtils.primaryGreen,
+                                    borderColor: ColorsUtils.primaryGreen,
+                                    text: 'Send Email',
+                                    pressed: () async {
+                                      if (_forgetPassFormKey.currentState
+                                          .validate()) {
+                                        _forgetPassFormKey.currentState.save();
+                                        setState(() {
+                                          loading=true;
+                                        });
+                                        checkPlatForm();
+                                        _forgetPassInfo['grant_type'] =
+                                            'activation';
+                                        print(_forgetPassInfo.toString());
+                                        try {
+                                          await loginProvider
+                                              .forgetPasswordSendOtp(
+                                                  _forgetPassInfo);
+                                          if (loginProvider.forgetPassResponse.status == 200) {
+                                            setState(() {
+                                              loading=false;
+                                            });
+                                            CustomFunctions.pushScreen(
+                                                context: context,
+                                                widget: RecoveryPassword(
+                                                  forgetPassResponse:
+                                                      loginProvider
+                                                          .forgetPassResponse,
+                                                ));
+                                          } else {
+                                            setState(() {
+                                              loading=false;
+                                            });
+                                            Functions.showCustomSnackBar(
+                                              context: context,
+                                              text: 'Invalid Phone Number!',
+                                              hasIcon: true,
+                                              iconType: Icons.error_outline,
+                                              iconColor: Colors.red,
+                                            );
+                                          }
+                                        } catch (error) {
+                                          setState(() {
+                                            loading=false;
+                                          });
+                                          Functions.showCustomSnackBar(
+                                            context: context,
+                                            text: 'Server Error! $error',
+                                            hasIcon: true,
+                                            iconType: Icons.error_outline,
+                                            iconColor: Colors.red,
+                                          );
+
+                                        }
+                                      }
+                                    },
+                                    textColor: Colors.white,
+                                  ),
+                                ),
+                        ],
+                      ),
+                    ),
+                  ))
+                ],
+              ),
             ),
           ),
         ),

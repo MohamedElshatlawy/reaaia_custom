@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/views/auth/login/password_success_changed.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
@@ -20,6 +21,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Map<String, dynamic> _forgetPassInfo = {};
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +131,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           SizedBox(
                             height: ScreenUtil().setHeight(30.5),
                           ),
-                          Container(
+                         loading?CircularProgressIndicator(): Container(
                             height: ScreenUtil().setHeight(50),
                             width: 236,
                             child: CustomRoundedButton(
@@ -144,33 +146,56 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   if (_forgetPassInfo['password'] ==
                                       _forgetPassInfo[
                                           'password_confirmation']) {
+                                    setState(() {
+                                      loading=true;
+                                    });
                                     try {
                                       await loginProvider
                                           .resetPassword(
                                               _forgetPassInfo);
-                                      if (loginProvider
-                                              .forgetPassResponse.status ==
+                                      if (loginProvider.status ==
                                           200) {
-                                        print('Success');
+                                        setState(() {
+                                          loading=false;
+                                        });
                                         CustomFunctions.pushScreen(
                                             context: context,
                                             widget: PasswordSuccessChanged());
                                       } else {
-                                        print('Falid');
+                                        setState(() {
+                                          loading=false;
+                                        });
+                                        Functions.showCustomSnackBar(
+                                          context: context,
+                                          text: 'Can\'t Change Passwrod',
+                                          hasIcon: true,
+                                          iconType: Icons.error_outline,
+                                          iconColor: Colors.red,
+                                        );
                                       }
                                     } catch (error) {
-                                      print('Failed Eroorrrr');
+                                      setState(() {
+                                        loading=false;
+                                      });
+                                      Functions.showCustomSnackBar(
+                                        context: context,
+                                        text: 'Server Error! $error',
+                                        hasIcon: true,
+                                        iconType: Icons.error_outline,
+                                        iconColor: Colors.red,
+                                      );
                                     }
                                   } else {
-                                    Scaffold.of(context).showSnackBar(SnackBar(
-                                      content: Text('Password didn\'t match'),
-                                    ));
+                                    Functions.showCustomSnackBar(
+                                      context: context,
+                                      text: 'Password didn\'t match',
+                                      hasIcon: true,
+                                      iconType: Icons.error_outline,
+                                      iconColor: Colors.red,
+                                    );
                                   }
                                 }
 
-                                // CustomFunctions.pushScreen(
-                                //     context: context,
-                                //     widget: PasswordSuccessChanged());
                               },
                               textColor: Colors.white,
                             ),
