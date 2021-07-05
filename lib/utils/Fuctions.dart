@@ -1,5 +1,7 @@
 import 'dart:io';
 
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
@@ -55,6 +57,22 @@ class Functions {
     }
 
   }
+
+static Future<List<File>> pickMultipleImage() async {
+
+  try {
+    final result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: FileType.image,
+
+    );
+    return result != null ?  (result.paths.map((path) => File(path)).toList()) : null;
+
+  }catch(err){
+
+    return null;
+  }
+}
 
 
 }

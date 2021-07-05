@@ -6,7 +6,7 @@ import 'package:reaaia/views/home/account_page.dart';
 import 'package:reaaia/views/home/care_page.dart';
 import 'package:reaaia/views/home/chat_page.dart';
 import 'package:reaaia/views/home/reaaia_page.dart';
-import 'package:reaaia/views/home/work_page.dart';
+import 'file:///C:/Users/ahmed/AndroidStudioProjects/reaaia_custom/lib/views/home/work/work_page.dart';
 import 'package:reaaia/views/widgets/custom_bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {

@@ -85,7 +85,7 @@ void addServe(ServingInHealthcare serveModel){
   notifyListeners();
 }
 
-void updateTask(ServingInHealthcare serveModel,int index){
+void updateServe(ServingInHealthcare serveModel,int index){
   serves.insert(index,serveModel);
   notifyListeners();
 }

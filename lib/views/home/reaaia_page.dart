@@ -6,6 +6,7 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/views/widgets/custom_badge.dart';
 import 'package:reaaia/views/widgets/custom_card.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
+import 'package:reaaia/views/widgets/reaaia__icons_icons.dart';
 
 class ReaaiaPage extends StatelessWidget {
   @override
@@ -82,7 +83,7 @@ class ReaaiaPage extends StatelessWidget {
                           width: 40.0,
                           padding: EdgeInsets.all(5.0),
                           child: Icon(
-                            Icons.add_alert_outlined,
+                            Reaaia_Icons.notification_icon,
                             color: Colors.red,
                           ),
                         ),
@@ -97,7 +98,7 @@ class ReaaiaPage extends StatelessWidget {
               CustomTextField(
                 filledColor: Colors.white,
                 hintText: 'Search patient, health issue, ...',
-                icon: Icon(Icons.search),
+                icon: Icon(Reaaia_Icons.search_icon),
               ),
               SizedBox(height: ScreenUtil().setHeight(30)),
               Row(

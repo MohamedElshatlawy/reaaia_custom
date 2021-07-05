@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reaaia/views/customFunctions.dart';
+import 'package:reaaia/views/home/work/clinics_page.dart';
 import 'package:reaaia/views/widgets/custom_card.dart';
 
 class WorkPage extends StatelessWidget {
@@ -29,7 +31,9 @@ class WorkPage extends StatelessWidget {
                   crossAxisSpacing: 7,
                   mainAxisSpacing: 7),
               children: [
-                CustomCardView(namePic: 'assets/images/003-folder.png',nameText: 'Clinics',onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/003-folder.png',nameText: 'Clinics',onPressed: (){
+                  CustomFunctions.pushScreen(context: context,widget: ClinicsPage());
+                },),
                 CustomCardView(namePic: 'assets/images/img_health_feed.png',nameText: 'Library',onPressed: (){},),
                 CustomCardView(namePic: 'assets/images/img_consult_mange.png',nameText: 'Appointments Management',onPressed: (){},),
                 CustomCardView(namePic: 'assets/images/img_work_profile.png',nameText: 'Profile Management',onPressed: (){},),

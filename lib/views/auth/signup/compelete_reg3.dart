@@ -14,7 +14,6 @@ import 'package:reaaia/viewModels/data_provider.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:reaaia/views/auth/signup/add_serve.dart';
 import 'package:reaaia/views/auth/signup/complete_req1_map.dart';
-import 'package:reaaia/views/auth/signup/congrats.dart';
 import 'package:reaaia/views/auth/signup/request_sent_success.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
@@ -523,16 +522,6 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 selectedShadowColor: null,
                                 onDeleted: true ? null : () {},
                                 onSelected: (val) {
-                                  // setState(() {
-                                  //   if (val) {
-                                  //     _filters.add('hi');
-                                  //   } else {
-                                  //     _filters.removeWhere((String name) {
-                                  //       return name == 'hi';
-                                  //     });
-                                  //   }
-                                  //   print(_filters.toString());
-                                  // });
                                 },
                               ),
                             ),
@@ -799,30 +788,6 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 textColor: ColorsUtils.primaryGreen,
                               ),
                             ),
-                            // SizedBox(height: ScreenUtil().setHeight(10)),
-                            // Container(
-                            //   height: ScreenUtil().setHeight(40),
-                            //   child: CustomRoundedButton(
-                            //     iconLeft: true,
-                            //     backgroundColor: ColorsUtils.buttonColorLight,
-                            //     borderColor: ColorsUtils.buttonColorLight,
-                            //     icon: Icon(
-                            //       Icons.add,
-                            //       color: ColorsUtils.primaryGreen,
-                            //     ),
-                            //     text: 'test List ',
-                            //     pressed: () {
-                            //       setState(() {
-                            //         testList.clear();
-                            //        _textFieldControllers.map((e) {
-                            //          testList.add(e.text);
-                            //        }).toList();
-                            //       });
-                            //       print(testList.toString());
-                            //     },
-                            //     textColor: ColorsUtils.primaryGreen,
-                            //   ),
-                            // ),
 
                             SizedBox(height: ScreenUtil().setHeight(20)),
                             Divider(
@@ -1076,7 +1041,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                     //     ],
                                     //   )
                                     ? Center(
-                                        child: Text('No Places Added Yes'),
+                                        child: Text('No Places Added Yet'),
                                       )
                                     : ListView.builder(
                                         physics: ScrollPhysics(),
@@ -1175,9 +1140,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 textColor: ColorsUtils.primaryGreen,
                               ),
                             ),
-                            SizedBox(
-                              height: ScreenUtil().setHeight(15),
-                            ),
+                            SizedBox(height: ScreenUtil().setHeight(15),),
                             Align(
                               alignment: Alignment.center,
                               child: loading

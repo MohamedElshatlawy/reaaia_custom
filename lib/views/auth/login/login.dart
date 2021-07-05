@@ -5,12 +5,10 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/views/auth/login/forget_password.dart';
-import 'package:reaaia/views/auth/signup/compelete_reg2.dart';
-import 'package:reaaia/views/auth/signup/compelete_reg3.dart';
-import 'package:reaaia/views/auth/signup/complete_reg1.dart';
 import 'package:reaaia/views/auth/signup/congrats.dart';
 import 'package:reaaia/views/auth/signup/signup.dart';
 import 'package:reaaia/views/customFunctions.dart';
+import 'package:reaaia/views/home/home_page.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/views/widgets/custom_textfield.dart';
 import 'dart:io' show Platform;
@@ -206,7 +204,7 @@ class _LoginState extends State<Login> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (ctx) =>
-                                                      Congrats()));
+                                                      HomePage()));
                                           print('Login Success');
                                         } else {
                                           setState(() {

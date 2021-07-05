@@ -13,6 +13,7 @@ import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 import 'package:reaaia/viewModels/phoneCode_provider.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
+import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 import 'package:reaaia/views/splash.dart';
 
 
@@ -20,13 +21,16 @@ main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
+
       ChangeNotifierProvider.value(value: OnBoardingIndicatorProvider()),
       ChangeNotifierProvider.value(value: LocalProvider()),
       ChangeNotifierProvider.value(value: PhoneCodeProvider()),
-      ChangeNotifierProvider.value(value: SignUpProvider()),
       ChangeNotifierProvider.value(value: LoginProvider()),
       ChangeNotifierProvider.value(value: DataProvider()),
       ChangeNotifierProvider.value(value: AppNavigationProvider()),
+      ChangeNotifierProvider.value(value: ClinicsProvider()),
+      ChangeNotifierProvider.value(value: SignUpProvider()),
+
     ],
     child: MyMaterial(),
   ));

@@ -28,6 +28,8 @@ class CustomTextField extends StatefulWidget {
   TextStyle style;
   Function validator;
   String hintText;
+  String initialValue;
+  TextStyle hintStyle;
 
   CustomTextField(
       {this.icon,
@@ -48,7 +50,11 @@ class CustomTextField extends StatefulWidget {
       this.onFieldSubmitted,
       this.onChanged,
       this.onSaved,
-      this.readOnly,this.style,this.validator,this.hintText});
+      this.readOnly,
+      this.style,
+      this.validator,
+      this.hintText,
+      this.initialValue,this.hintStyle});
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -68,9 +74,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     var phoneCodeProvider = Provider.of<PhoneCodeProvider>(context);
     return TextFormField(
-
+      initialValue: widget.initialValue,
       validator: widget.validator,
-      readOnly: widget.readOnly ??false,
+      readOnly: widget.readOnly ?? false,
       style: widget.style,
       controller: widget.controller,
       enabled: widget.isEditable,
@@ -88,6 +94,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               : TextInputType.text,
       decoration: InputDecoration(
         hintText: widget.hintText,
+        hintStyle: widget.hintStyle,
         contentPadding: EdgeInsets.all(5),
         enabledBorder: (!widget.hasBorder)
             ? InputBorder.none

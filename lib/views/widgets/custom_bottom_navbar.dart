@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/homeProvider/navigation_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/views/widgets/reaaia__icons_icons.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   @override
@@ -36,26 +37,26 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         iconSize: 30.0,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Reaaia_Icons.reaaia_icon),
             label: 'Reaaia',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Reaaia_Icons.chat_icon),
             label: 'Chat',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Care',
+            icon: Icon(Reaaia_Icons.icon),
+            label: 'Care+',
             backgroundColor: Colors.purple,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Reaaia_Icons.work_icon),
             label: 'Work',
             backgroundColor: Colors.pink,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Reaaia_Icons.account_icon),
             label: 'Account',
             backgroundColor: Colors.pink,
           ),

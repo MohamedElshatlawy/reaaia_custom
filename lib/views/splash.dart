@@ -16,20 +16,24 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+
   @override
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<DataProvider>(context, listen: false).getAppData().then(
           (value) async{
-            await  OnBoardingUtil.loadKeyOnBoardingToMemory();
-            if(OnBoardingUtil.getKeyOnBoardingFromMemory()==''){
-              CustomFunctions.pushScreenRepcalement(
-                  widget: OnBoardingHome(), context: context);
-            }else{
-              CustomFunctions.pushScreenRepcalement(
-                  widget: HomePage(), context: context);
-            }
+            // TODO: implement again  in last
+            // await  OnBoardingUtil.loadKeyOnBoardingToMemory();
+            // if(OnBoardingUtil.getKeyOnBoardingFromMemory()==''){
+            //   CustomFunctions.pushScreenRepcalement(
+            //       widget: OnBoardingHome(), context: context);
+            // }else{
+            //   CustomFunctions.pushScreenRepcalement(
+            //       widget: HomePage(), context: context);
+            // }
+            CustomFunctions.pushScreenRepcalement(
+                widget: HomePage(), context: context);
 
           });
     });
