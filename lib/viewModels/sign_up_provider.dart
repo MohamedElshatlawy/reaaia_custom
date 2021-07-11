@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:reaaia/data/signupModels/complete_reg1_model.dart';
-import 'package:reaaia/data/signupModels/complete_reg2_model.dart';
-import 'package:reaaia/data/signupModels/complete_reg3_model.dart';
-import 'package:reaaia/data/signupModels/profile_store_model.dart';
-
-import 'package:reaaia/data/signupModels/serving_health_care_model.dart';
-import 'package:reaaia/data/signupModels/verification_response_model.dart';
-import 'package:reaaia/repos/sign_up_repo.dart';
+import 'package:reaaia/model/data/signupModels/complete_reg1_model.dart';
+import 'package:reaaia/model/data/signupModels/complete_reg2_model.dart';
+import 'package:reaaia/model/data/signupModels/complete_reg3_model.dart';
+import 'package:reaaia/model/data/signupModels/profile_store_model.dart';
+import 'package:reaaia/model/data/signupModels/serving_health_care_model.dart';
+import 'package:reaaia/model/data/signupModels/verification_response_model.dart';
+import 'package:reaaia/repository/sign_up_repo.dart';
 
 class SignUpProvider extends ChangeNotifier {
 

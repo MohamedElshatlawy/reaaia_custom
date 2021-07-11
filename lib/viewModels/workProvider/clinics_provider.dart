@@ -3,15 +3,16 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:reaaia/data/clinicsModel/add_service_model.dart';
-import 'package:reaaia/data/clinicsModel/branch_model.dart';
-import 'package:reaaia/data/clinicsModel/clinics_model.dart';
-import 'package:reaaia/data/clinicsModel/service_model.dart';
-import 'package:reaaia/data/clinicsModel/service_model_new.dart';
-import 'package:reaaia/data/clinicsModel/teamModels/job_natures_model.dart';
-import 'package:reaaia/data/clinicsModel/teamModels/team_model.dart';
-import 'package:reaaia/data/signupModels/serving_health_care_model.dart';
-import 'package:reaaia/repos/clinics_repo.dart';
+import 'package:reaaia/model/data/clinicsModel/add_service_model.dart';
+import 'package:reaaia/model/data/clinicsModel/branch_model.dart';
+import 'package:reaaia/model/data/clinicsModel/clinics_model.dart';
+import 'package:reaaia/model/data/clinicsModel/service_model.dart';
+import 'package:reaaia/model/data/clinicsModel/service_model_new.dart';
+import 'package:reaaia/model/data/clinicsModel/teamModels/job_natures_model.dart';
+import 'package:reaaia/model/data/clinicsModel/teamModels/team_model.dart';
+import 'package:reaaia/model/data/signupModels/serving_health_care_model.dart';
+import 'package:reaaia/repository/clinics_repo.dart';
+
 
 class ClinicsProvider extends ChangeNotifier {
 

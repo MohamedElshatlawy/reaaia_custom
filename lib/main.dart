@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 
 import 'package:provider/provider.dart';
+import 'package:reaaia/screens/splash.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/FontsUtils.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
@@ -14,7 +15,7 @@ import 'package:reaaia/viewModels/onBoardingProvider.dart';
 import 'package:reaaia/viewModels/phoneCode_provider.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
-import 'package:reaaia/views/splash.dart';
+
 
 
 main(List<String> args) async {

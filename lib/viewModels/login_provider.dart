@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reaaia/data/loginResponse/foreget_pass_response.dart';
-import 'package:reaaia/data/loginResponse/login_response.dart';
-import 'package:reaaia/repos/login_repo.dart';
+import 'package:reaaia/model/data/loginResponse/foreget_pass_response.dart';
+import 'package:reaaia/model/data/loginResponse/login_response.dart';
+import 'package:reaaia/repository/login_repo.dart';
 
 class LoginProvider extends ChangeNotifier {
   LoginResponse loginResponse;
