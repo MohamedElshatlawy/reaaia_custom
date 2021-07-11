@@ -5,6 +5,8 @@ class HttpMethod extends Enum {
 
   static final HttpMethod GET = HttpMethod('GET');
   static final HttpMethod POST = HttpMethod('POST');
+  static final HttpMethod PUT = HttpMethod('PUT');
+  static final HttpMethod DELETE = HttpMethod('DELETE');
 }
 
 class NetworkStatusCodes extends Enum {

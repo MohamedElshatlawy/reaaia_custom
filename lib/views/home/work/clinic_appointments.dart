@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:reaaia/data/clinicsModel/branch_model.dart';
+import 'package:reaaia/repos/clinics_repo.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/home/work/add_appointment_clnic.dart';
+import 'package:reaaia/views/home/work/edit_branch_clinic.dart';
 import 'package:reaaia/views/widgets/reaaia__icons_icons.dart';
 
 class ClinicAppointments extends StatefulWidget {
-  final BranchModel branch;
+  final BranchData branch;
 
   ClinicAppointments(this.branch);
   @override
@@ -15,6 +20,16 @@ class ClinicAppointments extends StatefulWidget {
 }
 
 class _ClinicAppointmentsState extends State<ClinicAppointments> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp)  {
+      ClinicsRepository.getBranchDetail(widget.branch.id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,43 +110,77 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                     padding:
                         EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: ColorsUtils.lightBlueColor,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Icon(
-                            Icons.location_on_outlined,
-                            color: ColorsUtils.blueColor,
-                          ),
-                          height: 35.0,
-                          width: 35.0,
-                        ),
-                        SizedBox(
-                          width: 15.0,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            Text(
-                              '${widget.branch.city}, ${widget.branch.area}',
-                              style: TextStyle(
-                                  color: ColorsUtils.blueColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: ScreenUtil().setSp(16)),
+                            Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: ColorsUtils.lightBlueColor,
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Icon(
+                                Icons.location_on_outlined,
+                                color: ColorsUtils.blueColor,
+                              ),
+                              height: 35.0,
+                              width: 35.0,
                             ),
                             SizedBox(
-                              height: 5.0,
+                              width: 15.0,
                             ),
-                            Text(
-                              widget.branch.address,
-                              style: TextStyle(
-                                  color: ColorsUtils.onBoardingTextGrey,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: ScreenUtil().setSp(13)),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${widget.branch.city}, ${widget.branch.area}',
+                                  style: TextStyle(
+                                      color: ColorsUtils.blueColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: ScreenUtil().setSp(16)),
+                                ),
+                                SizedBox(
+                                  height: 5.0,
+                                ),
+                                Text(
+                                  widget.branch.detailedAddress,
+                                  style: TextStyle(
+                                      color: ColorsUtils.onBoardingTextGrey,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: ScreenUtil().setSp(13)),
+                                ),
+                              ],
                             ),
                           ],
+                        ),
+                        InkWell(
+                          onTap: () async {
+                            await showModalBottomSheet(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(24),
+                                    topLeft: Radius.circular(24),
+                                  )),
+                              barrierColor: ColorsUtils.modalSheetBarrierColor,
+                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                              context: context,
+                              //isScrollControlled: true,
+                              builder: (context) {
+                                return EditBranchClinic(widget.branch);
+                              },
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: ColorsUtils.lightBlueColor,
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Icon(
+                                Icons.edit,
+                                color: ColorsUtils.primaryGreen,
+                              )),
                         ),
                       ],
                     ),

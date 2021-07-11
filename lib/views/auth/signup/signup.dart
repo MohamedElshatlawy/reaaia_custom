@@ -200,7 +200,7 @@ class _SignUpState extends State<SignUp> {
 
                                             await signUpProvider
                                                 .signUpWithMobileNumber(mobileNumber);
-                                            if (signUpProvider.messageResponseSignUp == 'Accepted') {
+                                            if (signUpProvider.messageResponseSignUp == 'Created') {
                                               setState(() {
                                                 loading = false;
                                               });
@@ -210,7 +210,7 @@ class _SignUpState extends State<SignUp> {
                                                     mobileNumber: mobileNumber,
                                                   ));
                                               print('Succeed Sign Up');
-                                            } else if (signUpProvider.messageResponseSignUp == 'Found') {
+                                            } else if (signUpProvider.messageResponseSignUp == 'Accepted') {
                                               setState(() {
                                                 loading = false;
                                               });

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/data/clinicsModel/service_model.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 import 'package:reaaia/views/customFunctions.dart';
@@ -9,15 +11,37 @@ import 'package:reaaia/views/home/work/clinic_service_detail.dart';
 import 'package:reaaia/views/widgets/reaaia__icons_icons.dart';
 
 class ClinicServices extends StatefulWidget {
+  final int clinicId;
+
+  ClinicServices(this.clinicId);
+
   @override
   _ClinicServicesState createState() => _ClinicServicesState();
 }
 
 class _ClinicServicesState extends State<ClinicServices> {
 
+  bool loading;
+
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      loading = true;
+    });
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Provider.of<ClinicsProvider>(context, listen: false)
+          .getServiceData(widget.clinicId);
+      setState(() {
+        loading = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final services = Provider.of<ClinicsProvider>(context).services;
+    final services = Provider.of<ClinicsProvider>(context).serviceClinic;
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Container(
@@ -46,9 +70,12 @@ class _ClinicServicesState extends State<ClinicServices> {
                         )),
                   ),
                   InkWell(
-                    onTap: () {
-                      CustomFunctions.pushScreen(context: context,widget: AddServiceClinic());
-                    },
+                    onTap: () async{
+                      //CustomFunctions.pushScreen(context: context,widget: AddServiceClinic(widget.clinicId));
+                     await Navigator.push(context, MaterialPageRoute(builder: (ctx) => AddServiceClinic(widget.clinicId)));
+                     await Provider.of<ClinicsProvider>(context, listen: false)
+                         .getServiceData(widget.clinicId);
+                      },
                     child: Container(
                       //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                         padding: EdgeInsets.all(5),
@@ -75,7 +102,13 @@ class _ClinicServicesState extends State<ClinicServices> {
                 ],
               ),
               SizedBox(height: ScreenUtil().setHeight(15)),
-              services.length == 0
+              loading
+                  ? Container(
+                margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.3),
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ):  services.length == 0
                   ? Center(
                 child: Text('No Services Found '),
               )
@@ -85,6 +118,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                 shrinkWrap: true,
                 itemCount: services.length,
                 itemBuilder: (context, index) {
+                  final priceInt=num.parse(services[index].price);
                   return Card(
                     margin: EdgeInsets.only(bottom: 15.0),
                     elevation: 4,
@@ -92,8 +126,8 @@ class _ClinicServicesState extends State<ClinicServices> {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: InkWell(
-                      onTap: (){
-                        showModalBottomSheet(
+                      onTap: ()async{
+                    await    showModalBottomSheet(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
@@ -105,9 +139,12 @@ class _ClinicServicesState extends State<ClinicServices> {
                           context: context,
                           isScrollControlled: true,
                           builder: (context) {
-                            return ClinicServiceDetail(services[index],index);
+                            return ClinicServiceDetail(services[index],index,widget.clinicId);
                           },
                         );
+                    await Provider.of<ClinicsProvider>(context, listen: false)
+                        .getServiceData(widget.clinicId);
+
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(
@@ -138,7 +175,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                   CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      services[index].serviceName,
+                                      services[index].name,
                                       style: TextStyle(
                                           color: ColorsUtils.blueColor,
                                           fontWeight: FontWeight.bold,
@@ -146,7 +183,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                     ),
                                     SizedBox(height: 5.0,),
                                     Text(
-                                      services[index].serviceDiscount+' % OFF',
+                                      services[index].discountPercentage.toString()+' % OFF',
                                       style: TextStyle(
                                           color: ColorsUtils
                                               .onBoardingTextGrey,
@@ -159,13 +196,13 @@ class _ClinicServicesState extends State<ClinicServices> {
                             ),
                             Column(
                               crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                              CrossAxisAlignment.end,
                               children: [
                                 Text.rich(
                                   TextSpan(
                                     children: [
                                       TextSpan(
-                                        text:  '2000',
+                                        text:  ( priceInt-(priceInt*(services[index].discountPercentage/100))).toStringAsFixed(0),
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,
@@ -186,7 +223,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                     TextSpan(
                                       children: [
                                         TextSpan(
-                                          text:  services[index].serviceCost,
+                                          text:  num.parse(services[index].price).toStringAsFixed(0),
 
                                           style: TextStyle(
                                               color: ColorsUtils.textGrey,
@@ -195,7 +232,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                               decoration: TextDecoration.lineThrough),
                                         ),
                                         TextSpan(
-                                          text:  ' EGP',
+                                          text:  '  EGP',
                                           style: TextStyle(
                                               color: ColorsUtils.onBoardingTextGrey,
                                               fontWeight: FontWeight.bold,

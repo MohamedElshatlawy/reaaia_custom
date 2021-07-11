@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/TokenUtil.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
 import 'package:reaaia/views/auth/login/login.dart';
@@ -16,26 +17,37 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<DataProvider>(context, listen: false).getAppData().then(
-          (value) async{
-            // TODO: implement again  in last
-            // await  OnBoardingUtil.loadKeyOnBoardingToMemory();
-            // if(OnBoardingUtil.getKeyOnBoardingFromMemory()==''){
-            //   CustomFunctions.pushScreenRepcalement(
-            //       widget: OnBoardingHome(), context: context);
-            // }else{
-            //   CustomFunctions.pushScreenRepcalement(
-            //       widget: HomePage(), context: context);
-            // }
-            CustomFunctions.pushScreenRepcalement(
-                widget: HomePage(), context: context);
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      final dataProvider = Provider.of<DataProvider>(context, listen: false);
+      await Provider.of<DataProvider>(context, listen: false).getAppData();
 
-          });
+      if (dataProvider.appDataModel.status == 200) {
+
+        // TODO: implement again  in last
+        await TokenUtil.loadTokenToMemory();
+        if(TokenUtil.getTokenFromMemory().isEmpty){
+
+          await  OnBoardingUtil.loadKeyOnBoardingToMemory();
+          if(OnBoardingUtil.getKeyOnBoardingFromMemory()==''){
+            CustomFunctions.pushScreenRepcalement(
+                widget: OnBoardingHome(), context: context);
+          }else{
+            CustomFunctions.pushScreenRepcalement(
+                widget: Login(), context: context);
+          }
+
+        }else{
+          CustomFunctions.pushScreenRepcalement(
+              widget: HomePage(), context: context);
+        }
+
+      } else {
+        return;
+      }
+
     });
     // Future.delayed(Duration(seconds: 2), () {
     //   CustomFunctions.pushScreenRepcalement(

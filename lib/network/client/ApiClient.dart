@@ -43,10 +43,10 @@ class ApiClient {
         host: ServicesURLs.development_environment_without_http,
         //port: ServicesURLs.development_environment_port,
         path: endPoint,
-        queryParameters: queryParams);
+        queryParameters: queryParams,);
     //String url = ServicesURLs.development_environment + endPoint;
     //network logger
-    print(url.toString() + "\n" + headers().toString());
+    log(url.toString() + "\n" + headers().toString());
     //print(url.queryParameters.toString());
     //GET network request call
     final response = await http.get(url, headers: headers());
@@ -121,6 +121,67 @@ class ApiClient {
 
     return response;
   }
+
+
+  static Future<http.Response> putRequest(String endPoint, dynamic requestBody,
+      {bool isMultipart = false,
+        List<http.MultipartFile> multiPartValues}) async {
+    //create url of (baseUrl + endPoint)
+    String url = ServicesURLs.development_environment + endPoint;
+    //network logger
+    print(url + "\n" + headers().toString());
+    if (requestBody != null) log(requestBody.toString());
+    //POST network request call
+
+    var response;
+    if (!isMultipart) {
+      log("*NotMultipart*");
+      response = await http.put(Uri.parse(url),
+          headers: headers(), body: requestBody);
+    } else {
+      var uri = Uri.parse(url);
+      Map<String, dynamic> p = jsonDecode(requestBody);
+      Map<String, String> convertedMap = {};
+      p.forEach((key, value) {
+        convertedMap[key] = value;
+      });
+
+      // log("Params:${p.runtimeType}");
+      var request = http.MultipartRequest('PUT', uri)
+        ..headers.addAll(headers())
+        ..fields.addAll(convertedMap)
+        ..files.addAll(multiPartValues);
+
+      // ..files.add(await http.MultipartFile.fromPath(
+      //   '',
+      //   requestBody.path,
+      // )
+      response = await http.Response.fromStream(await request.send());
+    }
+
+    return response;
+  }
+
+
+  static Future<Response> deleteRequest(
+      String endPoint, Map<String, dynamic> queryParams) async {
+    //create url with (baseUrl + endPoint) and query Params if any
+    Uri url = Uri(
+      scheme: ServicesURLs.development_environment_scheme,
+      host: ServicesURLs.development_environment_without_http,
+      //port: ServicesURLs.development_environment_port,
+      path: endPoint,
+      queryParameters: queryParams,);
+    //String url = ServicesURLs.development_environment + endPoint;
+    //network logger
+    log(url.toString() + "\n" + headers().toString());
+    //print(url.queryParameters.toString());
+    //GET network request call
+    final response = await http.delete(url, headers: headers());
+
+    return response;
+  }
+
 
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reaaia/data/clinicsModel/clinics_model.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/home/work/clinic_booking_info.dart';
@@ -11,6 +12,11 @@ import 'package:reaaia/views/home/work/custom_container_view.dart';
 import 'package:reaaia/views/widgets/reaaia__icons_icons.dart';
 
 class ClinicDetailPage extends StatelessWidget {
+
+  final ClinicData clinicData;
+
+  ClinicDetailPage({@required this.clinicData});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +80,7 @@ class ClinicDetailPage extends StatelessWidget {
                       children: [
                         CustomContainerView(
                           imageName: 'assets/images/Hospital Logo.png',
-                          docName: 'Dr.Mohamed Gaawan Clinic',
+                          docName: clinicData.name,
                           address: 'Allergy & Immunology',
                           rate: 4.8,
                           numOfReviews: 1387,
@@ -137,7 +143,7 @@ class ClinicDetailPage extends StatelessWidget {
 
                         CustomListTile(
                           onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicBranches());
+                            CustomFunctions.pushScreen(context: context,widget: ClinicBranches(clinicData.id));
 
                           },
                           name: 'Branches/Appointments',
@@ -149,7 +155,7 @@ class ClinicDetailPage extends StatelessWidget {
                         ),
                         CustomListTile(
                           onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicServices());
+                            CustomFunctions.pushScreen(context: context,widget: ClinicServices(clinicData.id));
                           },
                           name: 'Services',
                           decs: 'Clinic main services and offers',
@@ -173,7 +179,7 @@ class ClinicDetailPage extends StatelessWidget {
                         ),
                         CustomListTile(
                           onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicTeamPage());
+                            CustomFunctions.pushScreen(context: context,widget: ClinicTeamPage(clinicData.id));
 
                           },
                           name: 'Team',

@@ -57,10 +57,11 @@ class SignUpRepository {
       endPoint: "uploader/media/upload",
       method: HttpMethod.POST,
       requestBody: jsonEncode({"collection":collection}),
-      // multiPartValues: [
-      //   await MultipartFile.fromPath(
-      //       "files[]", file.path),
-      // ],
+      isMultipart: true,
+      multiPartValues: [
+        await MultipartFile.fromPath(
+            "files[]", file.path),
+      ],
 
     );
     print("my Response: ${response.toString()}");

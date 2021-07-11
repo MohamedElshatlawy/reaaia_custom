@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -65,6 +68,10 @@ class _ClinicsPageState extends State<ClinicsPage> {
   void initState() {
     super.initState();
     _textFieldControllers.add(TextEditingController());
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp)  {
+       Provider.of<ClinicsProvider>(context, listen: false).getClinicsData();
+    });
+
   }
 
   @override
@@ -178,163 +185,186 @@ class _ClinicsPageState extends State<ClinicsPage> {
                           ? !_addPlace
 
                               /// list of Clinics
-                              ? Column(
-                                  children: [
-                                    _list.length == 0
-                                        ? Center(
-                                            child: Text('No Places Added Yet'),
-                                          )
-                                        : Container(
-                                            child: ListView.builder(
-                                              physics: ScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemCount: _list.length,
-                                              itemBuilder: (context, index) {
-                                                return Card(
-                                                  margin: EdgeInsets.only(
-                                                      bottom: 15.0),
-                                                  elevation: 4,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  child: InkWell(
-                                                    onTap: (){
-                                                      CustomFunctions.pushScreen(context: context,widget: ClinicDetailPage());
+                              ? Consumer<ClinicsProvider>(
+                        builder: (_, clinicsProvider, __) => clinicsProvider.loadingClinicsData
+                                    ? Container(
+                          margin: EdgeInsets.symmetric(vertical: 50.0),
+                                      child: Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                    )
+                                    : Column(
+                                        children: [
+                                          clinicsProvider.clinics.length == 0
+                                              ? Center(
+                                                  child:
+                                                      Text('No Places Added Yet'),
+                                                )
+                                              : Container(
+                                                  child: ListView.builder(
+                                                    physics: ScrollPhysics(),
+                                                    shrinkWrap: true,
+                                                    itemCount: clinicsProvider.clinics.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      return Card(
+                                                        margin: EdgeInsets.only(
+                                                            bottom: 15.0),
+                                                        elevation: 4,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15.0),
+                                                        ),
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            CustomFunctions
+                                                                .pushScreen(
+                                                                    context:
+                                                                        context,
+                                                                    widget:
+                                                                        ClinicDetailPage(clinicData: clinicsProvider.clinics[index],));
+                                                          },
+                                                          child:
+                                                              CustomContainerView(
+                                                            imageName:
+                                                                'assets/images/Hospital Logo.png',
+                                                            docName:
+                                                            clinicsProvider.clinics[index].name,
+                                                            address:
+                                                                '2 5th Ave Suite 8, NY 10011',
+                                                            rate: 4.8,
+                                                            numOfReviews: 141,
+                                                            hasBorder: false,
+                                                            hasIcon: false,
+                                                          ),
+                                                        ),
+                                                        // Container(
+                                                        //   padding:
+                                                        //       EdgeInsets.symmetric(
+                                                        //           horizontal: 15.0,
+                                                        //           vertical: 20.0),
+                                                        //   child: Row(
+                                                        //     crossAxisAlignment:
+                                                        //         CrossAxisAlignment
+                                                        //             .start,
+                                                        //     children: [
+                                                        //       Container(
+                                                        //         padding:
+                                                        //             EdgeInsets.all(
+                                                        //                 5.0),
+                                                        //         width: ScreenUtil()
+                                                        //                 .screenWidth *
+                                                        //             0.2,
+                                                        //         child: Image.asset(
+                                                        //           'assets/images/Hospital Logo.png',
+                                                        //           fit: BoxFit.cover,
+                                                        //         ),
+                                                        //       ),
+                                                        //       SizedBox(
+                                                        //         width: 20.0,
+                                                        //       ),
+                                                        //       Container(
+                                                        //         width: ScreenUtil()
+                                                        //                 .screenWidth *
+                                                        //             0.53,
+                                                        //         child: Column(
+                                                        //           crossAxisAlignment:
+                                                        //               CrossAxisAlignment
+                                                        //                   .start,
+                                                        //           children: [
+                                                        //             Text(
+                                                        //               'Dr.Mohamed Gaawan Clinic',
+                                                        //               style: TextStyle(
+                                                        //                   color: ColorsUtils
+                                                        //                       .blueColor,
+                                                        //                   fontWeight:
+                                                        //                       FontWeight
+                                                        //                           .bold,
+                                                        //                   fontSize: ScreenUtil()
+                                                        //                       .setSp(
+                                                        //                           15)),
+                                                        //             ),
+                                                        //             Text(
+                                                        //               '2 5th Ave Suite 8, NY 10011',
+                                                        //               style: TextStyle(
+                                                        //                   color: ColorsUtils
+                                                        //                       .onBoardingTextGrey,
+                                                        //                   fontWeight:
+                                                        //                       FontWeight
+                                                        //                           .w600,
+                                                        //                   fontSize: ScreenUtil()
+                                                        //                       .setSp(
+                                                        //                           12)),
+                                                        //             ),
+                                                        //             SizedBox(height: 10.0,),
+                                                        //             Row(
+                                                        //               crossAxisAlignment: CrossAxisAlignment.end,
+                                                        //               children: [
+                                                        //                 Icon(Icons.star,color: ColorsUtils.starColor,size: 22,),
+                                                        //                 Text(
+                                                        //                   ' 4.8',
+                                                        //                   style: TextStyle(
+                                                        //                       color: Colors.black,
+                                                        //                       fontWeight: FontWeight.w600,
+                                                        //                       fontSize: ScreenUtil().setSp(13)),
+                                                        //                 ),
+                                                        //                 Text(
+                                                        //                   '  (141 reviews)',
+                                                        //                   style: TextStyle(
+                                                        //                       color: ColorsUtils
+                                                        //                           .copyRightsColor,
+                                                        //                       fontSize: ScreenUtil()
+                                                        //                           .setSp(
+                                                        //                           13)),
+                                                        //                 ),
+                                                        //               ],
+                                                        //             ),
+                                                        //           ],
+                                                        //         ),
+                                                        //       ),
+                                                        //     ],
+                                                        //   ),
+                                                        // ),
+                                                      );
                                                     },
-                                                    child: CustomContainerView(
-                                                      imageName: 'assets/images/Hospital Logo.png',
-                                                      docName: 'Dr.Mohamed Gaawan Clinic',
-                                                      address: '2 5th Ave Suite 8, NY 10011',
-                                                      rate: 4.8,
-                                                      numOfReviews: 141,
-                                                      hasBorder: false,
-                                                      hasIcon: false,
-                                                    ),
                                                   ),
-                                                  // Container(
-                                                  //   padding:
-                                                  //       EdgeInsets.symmetric(
-                                                  //           horizontal: 15.0,
-                                                  //           vertical: 20.0),
-                                                  //   child: Row(
-                                                  //     crossAxisAlignment:
-                                                  //         CrossAxisAlignment
-                                                  //             .start,
-                                                  //     children: [
-                                                  //       Container(
-                                                  //         padding:
-                                                  //             EdgeInsets.all(
-                                                  //                 5.0),
-                                                  //         width: ScreenUtil()
-                                                  //                 .screenWidth *
-                                                  //             0.2,
-                                                  //         child: Image.asset(
-                                                  //           'assets/images/Hospital Logo.png',
-                                                  //           fit: BoxFit.cover,
-                                                  //         ),
-                                                  //       ),
-                                                  //       SizedBox(
-                                                  //         width: 20.0,
-                                                  //       ),
-                                                  //       Container(
-                                                  //         width: ScreenUtil()
-                                                  //                 .screenWidth *
-                                                  //             0.53,
-                                                  //         child: Column(
-                                                  //           crossAxisAlignment:
-                                                  //               CrossAxisAlignment
-                                                  //                   .start,
-                                                  //           children: [
-                                                  //             Text(
-                                                  //               'Dr.Mohamed Gaawan Clinic',
-                                                  //               style: TextStyle(
-                                                  //                   color: ColorsUtils
-                                                  //                       .blueColor,
-                                                  //                   fontWeight:
-                                                  //                       FontWeight
-                                                  //                           .bold,
-                                                  //                   fontSize: ScreenUtil()
-                                                  //                       .setSp(
-                                                  //                           15)),
-                                                  //             ),
-                                                  //             Text(
-                                                  //               '2 5th Ave Suite 8, NY 10011',
-                                                  //               style: TextStyle(
-                                                  //                   color: ColorsUtils
-                                                  //                       .onBoardingTextGrey,
-                                                  //                   fontWeight:
-                                                  //                       FontWeight
-                                                  //                           .w600,
-                                                  //                   fontSize: ScreenUtil()
-                                                  //                       .setSp(
-                                                  //                           12)),
-                                                  //             ),
-                                                  //             SizedBox(height: 10.0,),
-                                                  //             Row(
-                                                  //               crossAxisAlignment: CrossAxisAlignment.end,
-                                                  //               children: [
-                                                  //                 Icon(Icons.star,color: ColorsUtils.starColor,size: 22,),
-                                                  //                 Text(
-                                                  //                   ' 4.8',
-                                                  //                   style: TextStyle(
-                                                  //                       color: Colors.black,
-                                                  //                       fontWeight: FontWeight.w600,
-                                                  //                       fontSize: ScreenUtil().setSp(13)),
-                                                  //                 ),
-                                                  //                 Text(
-                                                  //                   '  (141 reviews)',
-                                                  //                   style: TextStyle(
-                                                  //                       color: ColorsUtils
-                                                  //                           .copyRightsColor,
-                                                  //                       fontSize: ScreenUtil()
-                                                  //                           .setSp(
-                                                  //                           13)),
-                                                  //                 ),
-                                                  //               ],
-                                                  //             ),
-                                                  //           ],
-                                                  //         ),
-                                                  //       ),
-                                                  //     ],
-                                                  //   ),
-                                                  // ),
-                                                );
-                                              },
-                                            ),
+                                                ),
+                                          SizedBox(
+                                            height: ScreenUtil().setHeight(20),
                                           ),
-                                    SizedBox(
-                                      height: ScreenUtil().setHeight(20),
-                                    ),
-                                    _list.length == 0
-                                        ? Container(
-                                            height: ScreenUtil().setHeight(40),
-                                            child: CustomRoundedButton(
-                                              iconLeft: true,
-                                              backgroundColor:
-                                                  ColorsUtils.buttonColorLight,
-                                              borderColor:
-                                                  ColorsUtils.buttonColorLight,
-                                              icon: Icon(
-                                                Icons.add,
-                                                color: ColorsUtils.primaryGreen,
-                                              ),
-                                              text: _list.length == 0
-                                                  ? 'Add Place'
-                                                  : 'Add Another Place',
-                                              pressed: () {
-                                                setState(() {
-                                                  _addPlace = true;
-                                                });
-                                              },
-                                              textColor:
-                                                  ColorsUtils.primaryGreen,
-                                            ),
-                                          )
-                                        : Container(),
-                                  ],
-                                )
+                                          clinicsProvider.clinics.length == 0
+                                              ? Container(
+                                                  height:
+                                                      ScreenUtil().setHeight(40),
+                                                  child: CustomRoundedButton(
+                                                    iconLeft: true,
+                                                    backgroundColor: ColorsUtils
+                                                        .buttonColorLight,
+                                                    borderColor: ColorsUtils
+                                                        .buttonColorLight,
+                                                    icon: Icon(
+                                                      Icons.add,
+                                                      color: ColorsUtils
+                                                          .primaryGreen,
+                                                    ),
+                                                    text: clinicsProvider.clinics.length == 0
+                                                        ? 'Add Place'
+                                                        : 'Add Another Place',
+                                                    pressed: () {
+                                                      setState(() {
+                                                        _addPlace = true;
+                                                      });
+                                                    },
+                                                    textColor:
+                                                        ColorsUtils.primaryGreen,
+                                                  ),
+                                                )
+                                              : Container(),
+                                        ],
+                                      ),
+                              )
 
                               /// add Clinic
                               : Column(
@@ -1177,7 +1207,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                               setState(() {
                                                 //_isOwn = false;
                                                 _addPlace = false;
-                                                _list.add('');
+                                               // _list.add('');
                                               });
                                             }
                                           },

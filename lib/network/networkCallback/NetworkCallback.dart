@@ -18,9 +18,14 @@ class NetworkCall {
       Response response;
       if (method == HttpMethod.GET) {
         response = (await ApiClient.getRequest(endPoint, queryParams));
-      } else {
+      } else if (method == HttpMethod.POST){
         response = (await ApiClient.postRequest(endPoint, requestBody,
             isMultipart: isMultipart, multiPartValues: multiPartValues));
+      } else if (method == HttpMethod.PUT){
+        response = (await ApiClient.putRequest(endPoint, requestBody,
+            isMultipart: isMultipart, multiPartValues: multiPartValues));
+      }else if (method == HttpMethod.DELETE){
+        response = (await ApiClient.deleteRequest(endPoint, queryParams));
       }
 
       if (response.statusCode == NetworkStatusCodes.OK_200.value) {

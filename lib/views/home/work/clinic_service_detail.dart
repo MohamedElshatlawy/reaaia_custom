@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/data/clinicsModel/service_model.dart';
+import 'package:reaaia/data/clinicsModel/service_model_new.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 import 'package:reaaia/views/customFunctions.dart';
@@ -10,10 +11,11 @@ import 'package:reaaia/views/home/work/edit_service_clinic.dart';
 import 'package:reaaia/views/widgets/custom_rounded_btn.dart';
 
 class ClinicServiceDetail extends StatefulWidget {
-  final ServiceModel serviceModel;
+  final ServiceData serviceModel;
   final int index;
+  final int clinicID;
 
-  ClinicServiceDetail(this.serviceModel, this.index);
+  ClinicServiceDetail(this.serviceModel, this.index,this.clinicID);
 
   @override
   _ClinicServiceDetailState createState() => _ClinicServiceDetailState();
@@ -22,6 +24,8 @@ class ClinicServiceDetail extends StatefulWidget {
 class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
   @override
   Widget build(BuildContext context) {
+    print(widget.index);
+
     return Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -37,23 +41,23 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
               SizedBox(height: ScreenUtil().setHeight(20)),
               CustomText(
                 name: 'Service Name',
-                decs: widget.serviceModel.serviceName,
+                decs: widget.serviceModel.name,
               ),
               CustomText(
                 name: 'Service Description',
-                decs: widget.serviceModel.serviceDesc,
+                decs: widget.serviceModel.description,
               ),
               CustomText(
                 name: 'Service Requirements',
-                decs: widget.serviceModel.serviceRequirements,
+                decs: widget.serviceModel.requirements,
               ),
               CustomText(
                 name: 'Service Cost',
-                decs: widget.serviceModel.serviceCost + ' EGP',
+                decs: widget.serviceModel.price + ' EGP',
               ),
               CustomText(
                 name: 'DisCount %',
-                decs: widget.serviceModel.serviceDiscount + ' %',
+                decs: widget.serviceModel.discountPercentage.toString() + ' %',
               ),
               SizedBox(height: ScreenUtil().setHeight(10)),
               Card(
@@ -80,7 +84,7 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.file(
+                            child: Image.network(
                               widget.serviceModel.images[index],
                               fit: BoxFit.cover,
                             ),
@@ -107,9 +111,9 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
                         backgroundColor: Colors.white,
                         borderColor: ColorsUtils.primaryGreen,
                         text: 'Delete',
-                        pressed: () {
-                          Provider.of<ClinicsProvider>(context, listen: false)
-                              .deleteServiceClinic(widget.index);
+                        pressed: () async{
+                        await  Provider.of<ClinicsProvider>(context, listen: false)
+                              .deleteService(widget.serviceModel.id,widget.index);
                           CustomFunctions.popScreen(context);
                         },
                         textColor: ColorsUtils.primaryGreen,
@@ -127,7 +131,7 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
                         borderColor: ColorsUtils.primaryGreen,
                         text: 'Edit Service',
                         pressed: ()  {
-                          CustomFunctions.pushScreen(context: context,widget: EditServiceClinic(serviceModel: widget.serviceModel, index: widget.index));
+                          CustomFunctions.pushScreen(context: context,widget: EditServiceClinic(serviceModel: widget.serviceModel, index: widget.index,clinicID: widget.clinicID,));
 
                         },
                         textColor: Colors.white,

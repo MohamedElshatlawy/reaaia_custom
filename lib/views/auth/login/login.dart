@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/screen_util.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/utils/TokenUtil.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 import 'package:reaaia/views/auth/login/forget_password.dart';
-import 'package:reaaia/views/auth/signup/congrats.dart';
+
 import 'package:reaaia/views/auth/signup/signup.dart';
 import 'package:reaaia/views/customFunctions.dart';
 import 'package:reaaia/views/home/home_page.dart';
@@ -200,11 +201,8 @@ class _LoginState extends State<Login> {
                                           setState(() {
                                             loading = false;
                                           });
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (ctx) =>
-                                                      HomePage()));
+                                          TokenUtil.saveToken(loginProvider.loginResponse.response.data.accessToken);
+                                         CustomFunctions.pushScreenRepcalement(context: context,widget:  HomePage());
                                           print('Login Success');
                                         } else {
                                           setState(() {

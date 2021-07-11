@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class ServiceModel{
+class ServiceModelNew{
 
   String serviceName;
   String serviceDesc;
@@ -9,6 +9,6 @@ class ServiceModel{
   String serviceDiscount;
   List<File> images;
 
-  ServiceModel({this.serviceName,this.serviceDesc,this.serviceRequirements,this.serviceCost,this.serviceDiscount,this.images});
+  ServiceModelNew({this.serviceName,this.serviceDesc,this.serviceRequirements,this.serviceCost,this.serviceDiscount,this.images});
 
 }

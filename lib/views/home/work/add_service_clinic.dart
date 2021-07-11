@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/data/clinicsModel/service_model.dart';
+import 'package:reaaia/data/clinicsModel/add_service_model.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
@@ -14,19 +15,42 @@ import 'package:reaaia/views/widgets/custom_textfield.dart';
 import 'package:path/path.dart' as path;
 
 class AddServiceClinic extends StatefulWidget {
+
+  final int id;
+  AddServiceClinic(this.id);
   @override
   _AddServiceClinicState createState() => _AddServiceClinicState();
 }
 
 class _AddServiceClinicState extends State<AddServiceClinic> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool loading=false;
+  bool imageLoaded=false;
 
   List<File> images=[];
+  List<MultipartFile> multipartImages=[];
 
-  ServiceModel _serviceModel=ServiceModel();
+
+  Name serviceName=Name();
+  Name serviceDesc=Name();
+  Name serviceReq =Name();
+  AddServiceModel _addServiceModel=AddServiceModel();
+
+  // ignore: missing_return
+  Future<void> convertImagesToFiles(List<File> files) async{
+    multipartImages.clear();
+    files.map((e)async{
+      multipartImages.add(
+
+          await MultipartFile.fromPath(
+              "files[]", e.path)
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final clinicProvider = Provider.of<ClinicsProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
@@ -77,7 +101,9 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                     lablel: ' Service Name',
                     hasBorder: true,
                     onSaved: (val) {
-                      _serviceModel.serviceName=val;
+                      serviceName.en=val;
+                      serviceName.ar=val;
+                      _addServiceModel.name=serviceName;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -92,7 +118,9 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                     lablel: ' Service Description',
                     hasBorder: true,
                     onSaved: (val) {
-                      _serviceModel.serviceDesc=val;
+                      serviceDesc.en=val;
+                      serviceDesc.ar=val;
+                      _addServiceModel.description=serviceDesc;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -107,7 +135,9 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                     lablel: ' Service requirements',
                     hasBorder: true,
                     onSaved: (val) {
-                      _serviceModel.serviceRequirements=val;
+                      serviceReq.en=val;
+                      serviceReq.ar=val;
+                      _addServiceModel.requirements=serviceReq;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -122,7 +152,7 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                     lablel: ' Service Cost',
                     hasBorder: true,
                     onSaved: (val) {
-                      _serviceModel.serviceCost=val;
+                      _addServiceModel.price=int.tryParse(val);
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -137,7 +167,7 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                     lablel: ' DisCount %',
                     hasBorder: true,
                     onSaved: (val) {
-                      _serviceModel.serviceDiscount=val;
+                      _addServiceModel.discountPercentage=int.tryParse(val);
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -149,22 +179,59 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                   SizedBox(height: ScreenUtil().setHeight(15)),
                   InkWell(
                     onTap: () async {
+
                       final pickedImages =
                       await Functions.pickMultipleImage();
                       if (pickedImages != null) {
                         setState(() {
                           images = pickedImages;
-                          _serviceModel.images=images;
                         });
+                        await convertImagesToFiles(images);
 
-                        Functions.showCustomSnackBar(
-                          context: context,
-                          text:
-                          'Picture Upload Successfully',
-                          hasIcon: true,
-                          iconType: Icons.done,
-                          iconColor: Colors.green,
-                        );
+                        try{
+                          setState(() {
+                            imageLoaded=true;
+                          });
+                          await  clinicProvider.uploadServiceImages(collection: 'Services Images',files: images);
+                          if( clinicProvider.tokenImages!=null){
+
+                           _addServiceModel.files=[clinicProvider.tokenImages];
+                            print('we found token ${clinicProvider.tokenImages.toString()}');
+                            Functions.showCustomSnackBar(
+                              context: context,
+                              text: 'Picture Upload Successfully',
+                              hasIcon: true,
+                              iconType: Icons.done,
+                              iconColor: Colors.green,
+                            );
+                           setState(() {
+                             imageLoaded=false;
+                           });
+                          }else{
+                            Functions.showCustomSnackBar(
+                              context: context,
+                              text: 'Picture Upload Failed!',
+                              hasIcon: true,
+                              iconType: Icons.error_outline,
+                              iconColor: Colors.red,
+                            );
+                            setState(() {
+                              imageLoaded=false;
+                            });
+                          }
+                        }catch(err){
+                          Functions.showCustomSnackBar(
+                            context: context,
+                            text: 'Images Upload Failed!',
+                            hasIcon: true,
+                            iconType: Icons.error_outline,
+                            iconColor: Colors.red,
+                          );
+
+                          setState(() {
+                            imageLoaded=false;
+                          });
+                        }
                       } else {
                         Functions.showCustomSnackBar(
                           context: context,
@@ -174,6 +241,7 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                           iconColor: Colors.red,
                         );
                       }
+
                     },
                     child: Container(
                       width: ScreenUtil().screenWidth,
@@ -224,7 +292,7 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                     ),
                   ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
-                  Align(
+                imageLoaded?  Center(child: Text('Uploading Images....')) : loading?Center(child: CircularProgressIndicator()):   Align(
                     alignment: Alignment.center,
                     child: Container(
                       height: ScreenUtil().setHeight(50),
@@ -233,15 +301,52 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                         backgroundColor: ColorsUtils.primaryGreen,
                         borderColor: ColorsUtils.primaryGreen,
                         text: 'Save',
-                        pressed: () {
+                        pressed: () async{
+
                           if (_formKey.currentState.validate()) {
                             _formKey.currentState.save();
-
                             if(images.isNotEmpty){
-                              Provider.of<ClinicsProvider>(context,listen: false).addServiceClinic(_serviceModel);
-                              Navigator.pop(context);
-                            }else{
+                              print('our Images ${multipartImages.toString()}');
+                              _addServiceModel.clinicId=widget.id;
 
+                              setState(() {
+                                loading = true;
+                              });
+                              try {
+                              final responseStatus=  await clinicProvider.addService(_addServiceModel,multipartImages);
+                                if (responseStatus == 201) {
+                                  setState(() {
+                                    loading = false;
+                                  });
+                                  Navigator.pop(context);
+                                } else {
+                                  setState(() {
+                                    loading = false;
+                                  });
+                                  Functions.showCustomSnackBar(
+                                    context: context,
+                                    text: 'The given data was invalid!',
+                                    hasIcon: true,
+                                    iconType: Icons.error_outline,
+                                    iconColor: Colors.red,
+                                  );
+                                }
+                              } catch (err) {
+                                print(err);
+                                setState(() {
+                                  loading = false;
+                                });
+                                Functions.showCustomSnackBar(
+                                  context: context,
+                                  text: 'The given data  invalid!',
+                                  hasIcon: true,
+                                  iconType: Icons.error_outline,
+                                  iconColor: Colors.red,
+                                );
+                              }
+
+
+                            }else{
                               Functions.showCustomSnackBar(
                                 context: context,
                                 text: 'The Field Images Required!',
