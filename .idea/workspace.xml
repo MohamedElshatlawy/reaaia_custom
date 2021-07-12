@@ -2,6 +2,99 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b7c41bf-2dda-46b5-a74b-9c2104e727e2" name="Default Changelist" comment="sprint 2 Desgin 5/7/2021 03:39 AM">
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-af.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-am.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-as.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-az.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-b+sr+Latn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-be.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-bg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-bn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-bs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ca.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-cs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-da.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-de.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-el.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-en-rAU.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-en-rCA.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-en-rGB.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-en-rIN.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-en-rXC.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-es-rUS.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-es.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-et.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-eu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-fa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-fi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-fr-rCA.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-fr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-gl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-gu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-hi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-hr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-hu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-hy.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-in.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-is.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-it.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-iw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ja.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ka.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-kk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-km.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-kn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ko.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ky.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-lo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-lt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-lv.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-mk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ml.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-mn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-mr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ms.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-my.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-nb.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ne.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-night-v8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-nl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-or.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-pa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-pl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-pt-rBR.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-pt-rPT.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-pt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ro.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ru.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-si.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-sk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-sl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-sq.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-sr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-sv.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-sw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ta.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-te.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-th.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-tl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-tr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-uk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-ur.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-uz.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-v16.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-v21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-vi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-zh-rCN.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-zh-rHK.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-zh-rTW.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values-zu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/multi-v2/values.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/bundle_manifest/debug/bundle-manifest/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/bundle_manifest/debug/bundle-manifest/output.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_assets/assets/default-avatar.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_assets/assets/icons/fi-rr-cloud-upload.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/release/flutter_assets/assets/icons/ic_allergiesonly.svg" afterDir="false" />
@@ -146,6 +239,8 @@
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/release-mergeNativeLibs/zip-cache/vKxjWVK5Duuk4ktEOt_ItZFSV3U=" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/release-mergeNativeLibs/zip-cache/xx49BEqiJ9TOq7Wz1R11OPB26og=" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/release-mergeNativeLibs/zip-cache/y8qKhpXOa+XiXmZoVWJH3+bkIGc=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/instant_app_manifest/debug/output.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/release/out/flutter_assets/assets/default-avatar.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/release/out/flutter_assets/assets/icons/fi-rr-cloud-upload.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/release/out/flutter_assets/assets/icons/ic_allergiesonly.svg" afterDir="false" />
@@ -165,6 +260,7 @@
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/release/out/flutter_assets/assets/images/img_schedule.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/release/out/flutter_assets/assets/images/img_work_profile.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/release/out/flutter_assets/fonts/Reaaia_Icons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/metadata_feature_manifest/debug/metadata-feature/output.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/intermediates/processed_res/debug/out/output.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/outputs/apk/release/app-release.apk" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/app/outputs/apk/release/output-metadata.json" afterDir="false" />
@@ -248,11 +344,17 @@
       <change afterPath="$PROJECT_DIR$/build/file_picker/intermediates/navigation_json/release/navigation.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/file_picker/intermediates/runtime_library_classes_jar/release/classes.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/file_picker/intermediates/symbol_list_with_package_name/release/package-aware-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_plugin_android_lifecycle/.transforms/e84a9001b5e42bd2a21e3a65315f5aac.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_plugin_android_lifecycle/.transforms/e84a9001b5e42bd2a21e3a65315f5aac/classes/classes.dex" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/flutter_plugin_android_lifecycle/intermediates/aapt_friendly_merged_manifests/debug/aapt/output.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_plugin_android_lifecycle/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_plugin_android_lifecycle/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_plugin_android_lifecycle/intermediates/merged_manifests/debug/output.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/aar_main_jar/release/classes.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/annotations_typedef_file/release/typedefs.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/compile_library_classes_jar/release/classes.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/compile_symbol_list/release/R.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/local_only_symbol_list/release/R-def.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/navigation_json/release/navigation.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/google_maps_flutter/intermediates/runtime_library_classes_jar/release/classes.jar" afterDir="false" />
@@ -736,21 +838,17 @@
       <change afterPath="$PROJECT_DIR$/build/image_picker/intermediates/symbol_list_with_package_name/release/package-aware-r.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/image_picker/outputs/aar/image_picker-release.aar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/image_picker/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/shared_preferences/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/debug_android_application.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/flutter_assets.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/kernel_snapshot.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/15778f0c3e48f7043e21ea7df6bb624e/kernel_snapshot.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/.filecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/aot_android_asset_bundle.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/aot_android_asset_bundle.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/outputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5471c20ee7a1efe6f1d7123426230e59/outputs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/4ba28050299b8c54040457c450227e8f/gen_localizations.stamp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/647fa92c23aa2689b9fc849e1b92e91e/gen_localizations.stamp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/generated/not_namespaced_r_class_sources/release/r/androidx/activity/R.java" beforeDir="false" />
@@ -3780,98 +3878,11 @@
       <change beforePath="$PROJECT_DIR$/build/shared_preferences/outputs/logs/manifest-merger-release-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/shared_preferences/outputs/logs/manifest-merger-release-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/shared_preferences/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/shared_preferences/tmp/compileReleaseJavaWithJavac/source-classes-mapping.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/add_service_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/add_service_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/branch_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/branch_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/clinics_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/clinics_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/service_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/service_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/service_model_new.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/service_model_new.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/teamModels/job_natures_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/teamModels/job_natures_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/clinicsModel/teamModels/team_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/clinicsModel/teamModels/team_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dataApi/data_api_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/data/data_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dataApi/data_details_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/data/data_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dataApi/data_response_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/data/data_response.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dataApi/response_data_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/data/response_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/loginResponse/errors_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/loginResponse/errors_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/loginResponse/foreget_pass_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/loginResponse/foreget_pass_response.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/loginResponse/login_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/loginResponse/login_response.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/loginResponse/response_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/loginResponse/response_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/address_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/address_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/awards_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/awards_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/certifications_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/certifications_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/clinic_address_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/clinic_address_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/complete_reg1_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/complete_reg1_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/complete_reg2_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/complete_reg2_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/complete_reg3_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/complete_reg3_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/languages_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/languages_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/owned_clinic_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/owned_clinic_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/profile_store_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/profile_store_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/serve_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/serve_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/serving_health_care_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/serving_health_care_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/signupModels/verification_response_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/data/signupModels/verification_response_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/network/ServicesURLs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/network/ServicesURLs.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repos/clinics_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repository/clinics_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repos/data_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repository/data_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repos/login_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repository/login_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repos/sign_up_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repository/sign_up_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/viewModels/data_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/viewModels/data_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/viewModels/login_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/viewModels/login_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/viewModels/sign_up_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/viewModels/sign_up_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/viewModels/workProvider/clinics_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/viewModels/workProvider/clinics_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/login/change_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/change_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/login/data_validation_msg.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/data_validation_msg.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/login/forget_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/forget_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/login/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/login/password_success_changed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/password_success_changed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/login/recovery_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/recovery_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/add_serve.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/add_serve.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/compelete_reg2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/compelete_reg3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg3.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/complete_reg1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/complete_req1_map.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/complete_req1_map.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/congrats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/congrats.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/request_sent_success.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/request_sent_success.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/signup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/sorry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/sorry.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/auth/signup/verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/verification.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/customFunctions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/customFunctions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/account_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/account_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/care_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/care_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/chat_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/reaaia_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/reaaia_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/add_appointment_clnic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_appointment_clnic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/add_branch_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_branch_clinic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/add_employee_team.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_employee_team.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/add_serve_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_serve_clinic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/add_service_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_service_clinic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_appointments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_appointments.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_booking_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_booking_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_branches.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_branches.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_detail_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_service_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_service_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_services.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinic_team.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_team.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/clinics_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/custom_container_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/custom_container_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/edit_branch_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/edit_branch_clinic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/edit_employee_team.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/edit_employee_team.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/edit_service_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/edit_service_clinic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/filter_team_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/filter_team_clinic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/work/work_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/work_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/onBoarding/index1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/onBoarding/index2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/onBoarding/index3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index3.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/onBoarding/index4.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index4.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/onBoarding/onBoardingHome.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/onBoardingHome.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/splash.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/splash.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/widgets/custom_badge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_badge.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/widgets/custom_bottom_navbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_bottom_navbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/widgets/custom_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/widgets/custom_rounded_btn.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_rounded_btn.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/widgets/custom_textfield.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_textfield.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/widgets/reaaia__icons_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/reaaia__icons_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/account_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_rounded_btn.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_rounded_btn.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/ColorsUtils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/ColorsUtils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/Constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Constants.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3905,15 +3916,15 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\assets\icons" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\profile" />
       <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\model" />
       <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\views\widgets" />
       <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\fonts" />
       <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\viewModels" />
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\assets\images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\assets\icons" />
     </key>
   </component>
   <component name="RunManager">
@@ -3982,7 +3993,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626000783087</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="sprint 2  refactor Code and files 11/7/2021 07:15 PM">
+      <created>1626023659914</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1626023659914</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -3993,7 +4011,8 @@
     <MESSAGE value="sprint 2 Desgin 5/7/2021 03:39 AM" />
     <MESSAGE value="sprint 2 logic not complete 11/7/2021  01:59 AM" />
     <MESSAGE value="sprint 2 Design and logic 5/7/2021 03:39 AM" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprint 2 Design and logic 5/7/2021 03:39 AM" />
+    <MESSAGE value="sprint 2  refactor Code and files 11/7/2021 07:15 PM" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprint 2  refactor Code and files 11/7/2021 07:15 PM" />
   </component>
   <component name="WindowStateProjectService">
     <state x="333" y="222" key="#Scopes" timestamp="1624144656101">
@@ -4004,14 +4023,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1624795771270" />
-    <state x="100" y="100" width="882" height="528" key="AVDManager" timestamp="1626018507716">
+    <state x="100" y="100" width="882" height="528" key="AVDManager" timestamp="1626099196264">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="100" y="100" width="882" height="528" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1626018507716" />
-    <state x="60" y="0" key="CommitChangelistDialog2" timestamp="1626000742738">
+    <state x="100" y="100" width="882" height="528" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1626099196264" />
+    <state x="60" y="0" key="CommitChangelistDialog2" timestamp="1626023620667">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="60" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1626000742738" />
+    <state x="60" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1626023620667" />
     <state x="0" y="55" key="DiffContextDialog" timestamp="1625449305242">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -4020,22 +4039,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="318" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1625187880295" />
-    <state width="1015" height="237" key="GridCell.Tab.0.bottom" timestamp="1626023367871">
+    <state width="1323" height="154" key="GridCell.Tab.0.bottom" timestamp="1626110196656">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1015" height="237" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626023367871" />
-    <state width="1015" height="237" key="GridCell.Tab.0.center" timestamp="1626023367871">
+    <state width="1323" height="154" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626110196656" />
+    <state width="1323" height="154" key="GridCell.Tab.0.center" timestamp="1626110196655">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1015" height="237" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626023367871" />
-    <state width="1015" height="237" key="GridCell.Tab.0.left" timestamp="1626023367871">
+    <state width="1323" height="154" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626110196655" />
+    <state width="1323" height="154" key="GridCell.Tab.0.left" timestamp="1626110196655">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1015" height="237" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626023367871" />
-    <state width="1015" height="237" key="GridCell.Tab.0.right" timestamp="1626023367871">
+    <state width="1323" height="154" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626110196655" />
+    <state width="1323" height="154" key="GridCell.Tab.0.right" timestamp="1626110196656">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1015" height="237" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626023367871" />
+    <state width="1323" height="154" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626110196656" />
     <state x="122" y="110" key="IDE.errors.dialog" timestamp="1625444527148">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -4048,10 +4067,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1625182289660" />
-    <state x="133" y="97" key="Vcs.Push.Dialog.v2" timestamp="1626000763135">
+    <state x="133" y="97" key="Vcs.Push.Dialog.v2" timestamp="1626023692448">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="133" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1626000763135" />
+    <state x="133" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1626023692448" />
     <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1625961584831">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -4078,6 +4097,26 @@
           <url>file://$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart</url>
           <line>177</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/home/profile/edit_education.dart</url>
+          <line>35</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart</url>
+          <line>590</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/home/profile/edit_certificates.dart</url>
+          <line>49</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart</url>
+          <line>759</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

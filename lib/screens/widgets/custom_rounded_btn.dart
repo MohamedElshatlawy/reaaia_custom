@@ -11,6 +11,7 @@ class CustomRoundedButton extends StatelessWidget {
   Color borderColor;
   Icon icon;
   double width;
+  double height;
   bool iconLeft;
   CustomRoundedButton({
     this.pressed,
@@ -21,11 +22,13 @@ class CustomRoundedButton extends StatelessWidget {
     this.textColor,
     this.width,
     this.iconLeft=false,
+    this.height,
   });
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
+      height: height,
       child: RaisedButton(
         elevation: 0,
         shape: RoundedRectangleBorder(

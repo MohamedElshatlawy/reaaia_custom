@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:reaaia/utils/ColorsUtils.dart';
+
 class Constants {
   static const token = "Token";
   static const keyOnBoarding = "keyOnBoarding";
@@ -31,4 +34,9 @@ class Constants {
 
   static String fleetErrorImgUrl =
       "http://ejar-st.alwefaq.com:5400/Common/Images/no_vehicle.png";
+
+  static  OutlineInputBorder border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: ColorsUtils.borderColor));
+
 }

@@ -21,4 +21,6 @@ class ColorsUtils {
   static const greenBorder = Color(0xff00d65b);
   static const starColor = Color(0xffFE9870);
   static const darkGreenColor = Color(0xff4AD3D3);
+  static const lightGreenColor = Color(0xff4AD3D3);
+
 }

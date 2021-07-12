@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reaaia/screens/home/account_page.dart';
 import 'package:reaaia/screens/home/care_page.dart';
 import 'package:reaaia/screens/home/chat_page.dart';
+import 'package:reaaia/screens/home/profile/profile_page.dart';
 import 'package:reaaia/screens/home/reaaia_page.dart';
 import 'package:reaaia/screens/home/work/work_page.dart';
 import 'package:reaaia/screens/widgets/custom_bottom_navbar.dart';
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             ChatPage(),
             CarePage(),
             WorkPage(),
-            AccountPage(),
+            ProfilePage(),
           ],
         ),
         bottomNavigationBar:  CustomBottomNavBar(),
