@@ -5,6 +5,7 @@ import 'package:reaaia/model/data/signupModels/certifications_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/profile/add_certificate.dart';
 import 'package:reaaia/screens/home/profile/add_language.dart';
+import 'package:reaaia/screens/home/profile/custom_view_image.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
@@ -30,9 +31,6 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
   }
   @override
   Widget build(BuildContext context) {
-    OutlineInputBorder border = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: ColorsUtils.borderColor));
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
@@ -177,7 +175,29 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                                     color: ColorsUtils.blueColor,
                                   ),
                                 ),
-                                onTap: (){},
+                                onTap: (){
+                                  showModalBottomSheet(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(24),
+                                          topLeft: Radius.circular(24),
+                                        )),
+                                    barrierColor: ColorsUtils.modalSheetBarrierColor,
+                                    backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) {
+                                      return CustomViewImage(
+                                        image:'assets/default-avatar.png',
+                                        btnRemoveName: 'Remove Certificate',
+                                        btnChangeName: 'Change Certificate',
+                                        onChange: (){},
+                                        onRemove: (){},
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                               SizedBox(height: ScreenUtil().setHeight(20),),
                               Container(

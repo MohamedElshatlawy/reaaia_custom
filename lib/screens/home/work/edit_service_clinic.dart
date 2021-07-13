@@ -33,6 +33,7 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
   List<String> images=[];
   List<File> imagesFiles=[];
   List<MultipartFile> multipartImages=[];
+  bool imageLoaded=false;
 
   //ServiceData _serviceModel=ServiceData();
 
@@ -56,8 +57,6 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
   void initState() {
     super.initState();
     images=widget.serviceModel.images;
-    _addServiceModel.files=widget.serviceModel.images;
-    //_serviceModel.images=widget.serviceModel.images;
   }
 
   @override
@@ -201,9 +200,11 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
                       if (pickedImages != null) {
                         setState(() {
                           imagesFiles = pickedImages;
+                          imageLoaded=true;
                         });
+
                         try{
-                          await  clinicProvider.uploadServiceImages(collection: 'Services Images',files: imagesFiles);
+                          await  clinicProvider.uploadServiceImages(collection: 'clinic-service-images',files: imagesFiles);
                           if( clinicProvider.tokenImages!=null){
 
                             _addServiceModel.files=[clinicProvider.tokenImages];
@@ -215,6 +216,9 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
                               iconType: Icons.done,
                               iconColor: Colors.green,
                             );
+                            setState(() {
+                              imageLoaded=false;
+                            });
                           }else{
                             Functions.showCustomSnackBar(
                               context: context,
@@ -223,6 +227,9 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
                               iconType: Icons.error_outline,
                               iconColor: Colors.red,
                             );
+                            setState(() {
+                              imageLoaded=false;
+                            });
                           }
                         }catch(err){
                           Functions.showCustomSnackBar(
@@ -232,6 +239,9 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
                             iconType: Icons.error_outline,
                             iconColor: Colors.red,
                           );
+                          setState(() {
+                            imageLoaded=false;
+                          });
                         }
                       } else {
                         Functions.showCustomSnackBar(
@@ -292,7 +302,7 @@ class _EditServiceClinicState extends State<EditServiceClinic> {
                     ),
                   ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
-                  loading?Center(child: CircularProgressIndicator()):    Align(
+                  imageLoaded?  Center(child: Text('Uploading Images....')) :   loading?Center(child: CircularProgressIndicator()):    Align(
                     alignment: Alignment.center,
                     child: Container(
                       height: ScreenUtil().setHeight(50),

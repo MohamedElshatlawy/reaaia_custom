@@ -192,7 +192,7 @@ class _AddServiceClinicState extends State<AddServiceClinic> {
                           setState(() {
                             imageLoaded=true;
                           });
-                          await  clinicProvider.uploadServiceImages(collection: 'Services Images',files: images);
+                          await  clinicProvider.uploadServiceImages(collection: 'clinic-service-images',files: images);
                           if( clinicProvider.tokenImages!=null){
 
                            _addServiceModel.files=[clinicProvider.tokenImages];

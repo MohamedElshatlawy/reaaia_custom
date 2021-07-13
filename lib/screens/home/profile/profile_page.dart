@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/profile/custom_profile_container.dart';
+import 'package:reaaia/screens/home/profile/custom_view_image.dart';
+import 'package:reaaia/screens/home/profile/edit_awards.dart';
 import 'package:reaaia/screens/home/profile/edit_certificates.dart';
 import 'package:reaaia/screens/home/profile/edit_education.dart';
 import 'package:reaaia/screens/home/profile/edit_languages.dart';
@@ -165,7 +167,29 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(24),
+                                          topLeft: Radius.circular(24),
+                                        )),
+                                    barrierColor: ColorsUtils.modalSheetBarrierColor,
+                                    backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) {
+                                      return CustomViewImage(
+                                        image:'assets/default-avatar.png',
+                                        btnRemoveName: 'Remove Licence',
+                                        btnChangeName: 'Change Licence',
+                                        onChange: (){},
+                                        onRemove: (){},
+                                      );
+                                    },
+                                  );
+                                },
                                 child: Text(
                                   'View Licence',
                                   style: TextStyle(
@@ -382,7 +406,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               width: 8,
                                             ),
                                             Text(
-                                              '(2002)',
+                                              '(2003)',
                                               style: TextStyle(
                                                 fontSize: 14.0,
                                                 color: ColorsUtils.onBoardingTextGrey,
@@ -401,7 +425,29 @@ class _ProfilePageState extends State<ProfilePage> {
                                               color: ColorsUtils.blueColor,
                                             ),
                                           ),
-                                          onTap: (){},
+                                          onTap: (){
+                                            showModalBottomSheet(
+                                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.only(
+                                                    topRight: Radius.circular(24),
+                                                    topLeft: Radius.circular(24),
+                                                  )),
+                                              barrierColor: ColorsUtils.modalSheetBarrierColor,
+                                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                              context: context,
+                                              isScrollControlled: true,
+                                              builder: (context) {
+                                                return CustomViewImage(
+                                                  image:'assets/default-avatar.png',
+                                                  btnRemoveName: 'Remove Certificate',
+                                                  btnChangeName: 'Change Certificate',
+                                                  onChange: (){},
+                                                  onRemove: (){},
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),
@@ -455,19 +501,24 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontWeight: FontWeight.bold,
                                   color: ColorsUtils.textGrey),
                             ),
-                            trailing: Container(
-                                width: 35,
-                                height: 35,
-                                //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                    color:
-                                    ColorsUtils.blueColor.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Icon(
-                                  Icons.edit,
-                                  color: ColorsUtils.blueColor,
-                                )),
+                            trailing: InkWell(
+                              onTap: (){
+                                CustomFunctions.pushScreen(context: context,widget: EditAwardsPage());
+                              },
+                              child: Container(
+                                  width: 35,
+                                  height: 35,
+                                  //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                                  padding: EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                      color:
+                                      ColorsUtils.blueColor.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: ColorsUtils.blueColor,
+                                  )),
+                            ),
                           ),
                         ),
                         Divider(
@@ -523,7 +574,29 @@ class _ProfilePageState extends State<ProfilePage> {
                                               color: ColorsUtils.blueColor,
                                             ),
                                           ),
-                                          onTap: (){},
+                                          onTap: (){
+                                            showModalBottomSheet(
+                                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.only(
+                                                    topRight: Radius.circular(24),
+                                                    topLeft: Radius.circular(24),
+                                                  )),
+                                              barrierColor: ColorsUtils.modalSheetBarrierColor,
+                                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                              context: context,
+                                              isScrollControlled: true,
+                                              builder: (context) {
+                                                return CustomViewImage(
+                                                  image:'assets/default-avatar.png',
+                                                  btnRemoveName: 'Remove Award',
+                                                  btnChangeName: 'Change Award',
+                                                  onChange: (){},
+                                                  onRemove: (){},
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),

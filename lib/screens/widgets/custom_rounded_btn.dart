@@ -13,6 +13,7 @@ class CustomRoundedButton extends StatelessWidget {
   double width;
   double height;
   bool iconLeft;
+  double fontSize;
   CustomRoundedButton({
     this.pressed,
     this.text,
@@ -23,6 +24,7 @@ class CustomRoundedButton extends StatelessWidget {
     this.width,
     this.iconLeft=false,
     this.height,
+    this.fontSize
   });
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class CustomRoundedButton extends StatelessWidget {
               style: TextStyle(
                   color: textColor,
                   fontWeight: FontWeight.w800,
-                  fontSize: ScreenUtil().setSp(15)),
+                  fontSize: fontSize ?? ScreenUtil().setSp(15)),
             ),
             SizedBox(width: ScreenUtil().setWidth(10),),
             (icon == null) ? Container() : icon
