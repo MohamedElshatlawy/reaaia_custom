@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/job_natures_model.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/team_model.dart';
+import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
+import 'package:reaaia/model/clinics/teamModels/job_natures.dart';
+import 'package:reaaia/model/clinics/teamModels/team.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
@@ -22,20 +23,23 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool loading = false;
   Map<String, dynamic> _teamInfo = {};
-  final List<String> branches = [
-    'Alexandria, Smoha',
-    'Cairo, Nasr City',
-    'Elbeheira, Damanhur'
-  ];
+  // final List<String> branches = [
+  //   'Alexandria, Smoha',
+  //   'Cairo, Nasr City',
+  //   'Elbeheira, Damanhur'
+  // ];
 
   String selectedJobNature;
-  List<String> selectedBranch = [];
+  List<int> selectedBranch = [];
+  List<Branches> _branches=[];
 
 
   @override
   void initState() {
     super.initState();
-    selectedBranch.add('');
+    _branches=widget.teamDataModel.branches;
+    _branches.map((e) => selectedBranch.add(e.id)).toList();
+    print(selectedBranch.toString());
   }
 
   @override
@@ -86,6 +90,7 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                   ),
                   SizedBox(height: ScreenUtil().setHeight(15)),
                   CustomTextField(
+                    initialValue: widget.teamDataModel.mobileNumber,
                     filledColor: Colors.white,
                     lablel: 'Phone Number*',
                     hasBorder: true,
@@ -132,7 +137,7 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                         fontSize: ScreenUtil().setSp(16)),
                     icon: const Icon(Icons.keyboard_arrow_down_outlined),
                     isExpanded: true,
-                    value: widget.teamDataModel.jobNature.first,
+                    value: widget.teamDataModel.jobNature.first.jobNature,
                     iconSize: 24,
                     onChanged: (newValue) {
                       setState(() {
@@ -189,22 +194,26 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                               fontSize: ScreenUtil().setSp(16)),
                           icon: const Icon(Icons.keyboard_arrow_down_outlined),
                           isExpanded: true,
-                          //value: selectedBranch[index],
+                          value: selectedBranch[index].toString(),
                           iconSize: 24,
                           onChanged: (newValue) {
                             setState(() {
-                              selectedBranch[index] = newValue;
+                              selectedBranch[index] = int.tryParse(newValue);
                               print(selectedBranch.toString());
                             });
                           },
                           onSaved: (val) {
-                            // selectedBranch[index] = val;
-                            _teamInfo['branches']=[2,4];
+                            setState(() {
+                              selectedBranch[index] = int.tryParse(val);
+                              _teamInfo['branches']=selectedBranch;
+                            });
+
                           },
-                          items: branches.map<DropdownMenuItem<String>>((String value) {
+                          items: provider.branches
+                              .map<DropdownMenuItem<String>>((BranchData value) {
                             return new DropdownMenuItem(
-                              child: new Text(value),
-                              value: value,
+                              child: new Text(value.city+', '+value.area),
+                              value: value.id.toString(),
                             );
                           }).toList(),
                         ),
@@ -226,7 +235,8 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                       text: 'Add More Branch ',
                       pressed: () {
                         setState(() {
-                          selectedBranch.add('');
+                          selectedBranch.add(provider.branches.first.id);
+                          print(selectedBranch.toString());
                         });
                       },
                       textColor: ColorsUtils.primaryGreen,

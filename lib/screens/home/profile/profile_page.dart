@@ -9,6 +9,7 @@ import 'package:reaaia/screens/home/profile/edit_education.dart';
 import 'package:reaaia/screens/home/profile/edit_languages.dart';
 import 'package:reaaia/screens/home/profile/edit_profile.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
+import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -100,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         .withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Icon(
-                                  Icons.add,
+                                  Reaaia_Icons.education_icon,
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(
@@ -342,7 +343,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         .withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Icon(
-                                  Icons.clear,
+                                  Reaaia_Icons.certification,
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(
@@ -491,7 +492,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         .withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Icon(
-                                  Icons.clear,
+                                  Reaaia_Icons.award_icon,
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(

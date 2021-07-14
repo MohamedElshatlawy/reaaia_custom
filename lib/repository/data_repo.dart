@@ -1,6 +1,6 @@
 
 
-import 'package:reaaia/model/data/data/data_model.dart';
+import 'package:reaaia/model/app_data/data.dart';
 import 'package:reaaia/network/ServicesURLs.dart';
 import 'package:reaaia/network/networkCallback/NetworkCallback.dart';
 import 'package:reaaia/utils/Enums.dart';

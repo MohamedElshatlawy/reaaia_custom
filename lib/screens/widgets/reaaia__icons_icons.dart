@@ -33,4 +33,7 @@ class Reaaia_Icons {
   static const IconData search_icon = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData service_icon = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData work_icon = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData education_icon = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData certification = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData award_icon = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

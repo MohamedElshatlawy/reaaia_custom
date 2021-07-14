@@ -1,6 +1,7 @@
-import 'package:reaaia/model/data/signupModels/awards_model.dart';
-import 'package:reaaia/model/data/signupModels/certifications_model.dart';
-import 'package:reaaia/model/data/signupModels/languages_model.dart';
+
+import 'package:reaaia/model/data/signup/awards_model.dart';
+import 'package:reaaia/model/data/signup/certifications_model.dart';
+import 'package:reaaia/model/data/signup/languages_model.dart';
 
 class CompleteReg2Model{
 

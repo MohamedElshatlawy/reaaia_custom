@@ -1,10 +1,10 @@
 
-import 'package:reaaia/model/data/signupModels/address_model.dart';
-import 'package:reaaia/model/data/signupModels/awards_model.dart';
-import 'package:reaaia/model/data/signupModels/certifications_model.dart';
-import 'package:reaaia/model/data/signupModels/languages_model.dart';
-import 'package:reaaia/model/data/signupModels/owned_clinic_model.dart';
-import 'package:reaaia/model/data/signupModels/serving_health_care_model.dart';
+import 'package:reaaia/model/data/signup/address_model.dart';
+import 'package:reaaia/model/data/signup/awards_model.dart';
+import 'package:reaaia/model/data/signup/certifications_model.dart';
+import 'package:reaaia/model/data/signup/languages_model.dart';
+import 'package:reaaia/model/data/signup/owned_clinic_model.dart';
+import 'package:reaaia/model/data/signup/serving_health_care_model.dart';
 
 class ProfileStore {
   List<String> avatarImage;

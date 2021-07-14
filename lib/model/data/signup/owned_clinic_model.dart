@@ -1,5 +1,6 @@
 
-import 'package:reaaia/model/data/signupModels/clinic_address_model.dart';
+import 'package:reaaia/model/data/signup/clinic_address_model.dart';
+
 
 class OwnedClinic {
   String clinicName;

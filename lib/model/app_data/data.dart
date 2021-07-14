@@ -1,5 +1,6 @@
 
-import 'package:reaaia/model/data/data/response_data.dart';
+import 'package:reaaia/model/app_data/response_data.dart';
+
 
 class AppDataModel {
   int status;

@@ -1,4 +1,5 @@
-import 'package:reaaia/model/data/signupModels/address_model.dart';
+
+import 'package:reaaia/model/data/signup/address_model.dart';
 
 class CompleteReg1Model{
   List<String> avatarImage;

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:reaaia/model/data/data/data_model.dart';
+import 'package:reaaia/model/app_data/data.dart';
 import 'package:reaaia/repository/data_repo.dart';
 
 class DataProvider extends ChangeNotifier {

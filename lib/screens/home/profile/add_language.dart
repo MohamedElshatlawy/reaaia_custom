@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/data/data_details.dart';
-import 'package:reaaia/model/data/signupModels/languages_model.dart';
+import 'package:reaaia/model/app_data/details.dart';
+
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Constants.dart';
@@ -16,7 +16,7 @@ class AddLanguage extends StatefulWidget {
 class _AddLanguageState extends State<AddLanguage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  List<Languages> _languages = [];
+
   String selectedLanguage;
   String selectedLevelLanguage;
 

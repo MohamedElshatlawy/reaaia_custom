@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reaaia/model/data/signupModels/awards_model.dart';
+import 'package:reaaia/model/data/signup/awards_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/profile/add_award.dart';
 import 'package:reaaia/screens/home/profile/custom_view_image.dart';

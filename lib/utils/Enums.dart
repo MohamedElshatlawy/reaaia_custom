@@ -1,4 +1,5 @@
-import 'package:reaaia/extensions/enumeration.dart';
+
+import 'package:reaaia/helpers/enumeration.dart';
 
 class HttpMethod extends Enum {
   HttpMethod(value) : super(value);

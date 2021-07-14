@@ -1,4 +1,5 @@
-import 'package:reaaia/model/data/data/data_details.dart';
+import 'package:reaaia/model/app_data/details.dart';
+
 
 class Data {
   List<Cities> cities;

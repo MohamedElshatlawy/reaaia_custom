@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/signupModels/certifications_model.dart';
+import 'package:reaaia/model/data/signup/certifications_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/profile/add_certificate.dart';
-import 'package:reaaia/screens/home/profile/add_language.dart';
 import 'package:reaaia/screens/home/profile/custom_view_image.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';

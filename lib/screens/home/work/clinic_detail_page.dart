@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reaaia/model/data/clinicsModel/clinics_model.dart';
+import 'package:reaaia/model/clinics/clinics_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/clinic_booking_info.dart';
 import 'package:reaaia/screens/home/work/clinic_branches.dart';

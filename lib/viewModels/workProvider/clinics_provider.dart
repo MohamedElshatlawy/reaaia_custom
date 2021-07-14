@@ -3,14 +3,17 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:reaaia/model/data/clinicsModel/add_service_model.dart';
-import 'package:reaaia/model/data/clinicsModel/branch_model.dart';
-import 'package:reaaia/model/data/clinicsModel/clinics_model.dart';
-import 'package:reaaia/model/data/clinicsModel/service_model.dart';
-import 'package:reaaia/model/data/clinicsModel/service_model_new.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/job_natures_model.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/team_model.dart';
-import 'package:reaaia/model/data/signupModels/serving_health_care_model.dart';
+import 'package:reaaia/model/clinics/add_service.dart';
+import 'package:reaaia/model/clinics/branchModels/appointments_model.dart';
+import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
+
+import 'package:reaaia/model/clinics/clinics_model.dart';
+import 'package:reaaia/model/clinics/service_model.dart';
+import 'package:reaaia/model/clinics/teamModels/job_natures.dart';
+import 'package:reaaia/model/clinics/teamModels/sort_branch_model.dart';
+import 'package:reaaia/model/clinics/teamModels/sort_job_nature_model.dart';
+import 'package:reaaia/model/clinics/teamModels/team.dart';
+import 'package:reaaia/model/data/signup/serving_health_care_model.dart';
 import 'package:reaaia/repository/clinics_repo.dart';
 
 
@@ -22,11 +25,16 @@ class ClinicsProvider extends ChangeNotifier {
 
   BranchModel branchModel;
   List<BranchData> branches = [];
+  AppointmentsModel appointmentsModel;
+  List<AppointmentsData> appointments=[];
   ServiceModel serviceModel;
   List<ServiceData> serviceClinic = [];
 
   TeamModel teamModel;
+  SortBranchModel sortBranchModel;
+  SortJobNatureModel sortJobNatureModel;
   List<TeamDataModel> teams = [];
+  bool _isSortedByBranch;
 
   JobNaturesModel jobNaturesModel;
   List<JobNaturesData> jobNatures=[];
@@ -37,10 +45,19 @@ class ClinicsProvider extends ChangeNotifier {
 
   List<ServingInHealthcare> serves = [];
 
-  List<ServiceModelNew> services = [];
+
 
 
   bool loadingClinicsData = true;
+
+  bool get isSortedByBranch => _isSortedByBranch;
+
+  set isSortedByBranch(bool isSorted) {
+    _isSortedByBranch = isSorted;
+    notifyListeners();
+  }
+
+
 
 
   void addServeClinic(ServingInHealthcare serveModel) {
@@ -54,20 +71,10 @@ class ClinicsProvider extends ChangeNotifier {
   }
 
 
-  void addServiceClinic(ServiceModelNew serviceModel) {
-    services.add(serviceModel);
-    notifyListeners();
-  }
 
-  void editServiceClinic(int index, ServiceModelNew serviceModel) {
-    services[index] = serviceModel;
-    notifyListeners();
-  }
 
-  void deleteServiceClinic(int index) {
-    services.removeAt(index);
-    notifyListeners();
-  }
+
+
 
   /// get Clinics Data
 
@@ -166,6 +173,19 @@ class ClinicsProvider extends ChangeNotifier {
       rethrow;
     }
   }
+
+  /// Appointments
+
+  Future<void> getAppointmentsData(int id) async {
+    try {
+      appointmentsModel = await ClinicsRepository.getAppointmentsData(id);
+      appointments=appointmentsModel.response.data;
+      notifyListeners();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
 
 
   /// Services
@@ -282,6 +302,28 @@ class ClinicsProvider extends ChangeNotifier {
       jobNatures=jobNaturesModel.response.data;
       notifyListeners();
     } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  Future<void> getTeamDataByBranch(int id) async {
+    try {
+      sortBranchModel = await ClinicsRepository.getSortDataByBranch(id);
+      notifyListeners();
+    } catch (e) {
+
+      rethrow;
+    }
+  }
+
+
+  Future<void> getTeamDataByJonNature(int id) async {
+    try {
+      sortJobNatureModel = await ClinicsRepository.getSortDataByJobNature(id);
+      notifyListeners();
+    } catch (e) {
+
       rethrow;
     }
   }

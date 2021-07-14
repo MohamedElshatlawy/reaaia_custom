@@ -3,7 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/job_natures_model.dart';
+import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
+import 'package:reaaia/model/clinics/teamModels/job_natures.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
@@ -22,19 +23,15 @@ class _AddEmployeeTeamState extends State<AddEmployeeTeam> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool loading = false;
   Map<String, dynamic> _teamInfo = {};
-  final List<String> branches = [
-    'Alexandria, Smoha',
-    'Cairo, Nasr City',
-    'Elbeheira, Damanhur'
-  ];
+
 
   String selectedJobNature;
-  List<String> selectedBranch = [];
+  List<int> selectedBranch = [];
 
   @override
   void initState() {
     super.initState();
-    selectedBranch.add('');
+    selectedBranch.add(null);
   }
 
   @override
@@ -192,19 +189,19 @@ class _AddEmployeeTeamState extends State<AddEmployeeTeam> {
                           iconSize: 24,
                           onChanged: (newValue) {
                             setState(() {
-                              selectedBranch[index] = newValue;
+                              selectedBranch[index] = int.parse(newValue);
                               print(selectedBranch.toString());
                             });
                           },
                           onSaved: (val) {
                             // selectedBranch[index] = val;
-                            _teamInfo['branches']=[2,4];
+                            _teamInfo['branches']=selectedBranch;
                           },
-                          items: branches
-                              .map<DropdownMenuItem<String>>((String value) {
+                          items: provider.branches
+                              .map<DropdownMenuItem<String>>((BranchData value) {
                             return new DropdownMenuItem(
-                              child: new Text(value),
-                              value: value,
+                              child: new Text(value.city+', '+value.area),
+                              value: value.id.toString(),
                             );
                           }).toList(),
                         ),
@@ -225,7 +222,7 @@ class _AddEmployeeTeamState extends State<AddEmployeeTeam> {
                       text: 'Add More Branch ',
                       pressed: () {
                         setState(() {
-                          selectedBranch.add('');
+                          selectedBranch.add(null);
                         });
                       },
                       textColor: ColorsUtils.primaryGreen,

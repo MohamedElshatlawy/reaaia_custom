@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/data/data_details.dart';
-import 'package:reaaia/model/data/signupModels/languages_model.dart';
+import 'package:reaaia/model/app_data/details.dart';
+import 'package:reaaia/model/data/signup/languages_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/profile/add_language.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';

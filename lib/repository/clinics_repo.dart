@@ -3,12 +3,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
-import 'package:reaaia/model/data/clinicsModel/add_service_model.dart';
-import 'package:reaaia/model/data/clinicsModel/branch_model.dart';
-import 'package:reaaia/model/data/clinicsModel/clinics_model.dart';
-import 'package:reaaia/model/data/clinicsModel/service_model.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/job_natures_model.dart';
-import 'package:reaaia/model/data/clinicsModel/teamModels/team_model.dart';
+import 'package:reaaia/model/clinics/add_service.dart';
+import 'package:reaaia/model/clinics/branchModels/appointments_model.dart';
+import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
+import 'package:reaaia/model/clinics/clinics_model.dart';
+import 'package:reaaia/model/clinics/service_model.dart';
+import 'package:reaaia/model/clinics/teamModels/job_natures.dart';
+import 'package:reaaia/model/clinics/teamModels/sort_branch_model.dart';
+import 'package:reaaia/model/clinics/teamModels/sort_job_nature_model.dart';
+import 'package:reaaia/model/clinics/teamModels/team.dart';
 import 'package:reaaia/network/ServicesURLs.dart';
 import 'package:reaaia/network/networkCallback/NetworkCallback.dart';
 import 'package:reaaia/utils/Enums.dart';
@@ -85,6 +88,19 @@ class ClinicsRepository{
     );
     return response['status'];
   }
+
+  /// appointments repo
+
+  static Future<AppointmentsModel> getAppointmentsData(int branchId) async {
+
+    final response = await NetworkCall.makeCall(
+      endPoint: ServicesURLs.branches_url+"$branchId/appointments",
+      method: HttpMethod.GET,
+    );
+    return  AppointmentsModel.fromJson(response);
+  }
+
+
 
   /// service repo
 
@@ -208,6 +224,25 @@ class ClinicsRepository{
       method: HttpMethod.GET,
     );
     return  JobNaturesModel.fromJson(response);
+  }
+
+
+  static Future<SortBranchModel> getSortDataByBranch(int clinicId) async {
+
+    final response = await NetworkCall.makeCall(
+      endPoint: ServicesURLs.clinics_url+"$clinicId/team-by-branch",
+      method: HttpMethod.GET,
+    );
+    return  SortBranchModel.fromJson(response);
+  }
+
+  static Future<SortJobNatureModel> getSortDataByJobNature(int clinicId) async {
+
+    final response = await NetworkCall.makeCall(
+      endPoint: ServicesURLs.clinics_url+"$clinicId/team-by-job",
+      method: HttpMethod.GET,
+    );
+    return  SortJobNatureModel.fromJson(response);
   }
 
 }

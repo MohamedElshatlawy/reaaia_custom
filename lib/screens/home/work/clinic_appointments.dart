@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reaaia/model/data/clinicsModel/branch_model.dart';
+import 'package:provider/provider.dart';
+import 'package:reaaia/model/clinics/branchModels/appointments_model.dart';
+import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
 import 'package:reaaia/repository/clinics_repo.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/add_appointment_clnic.dart';
 import 'package:reaaia/screens/home/work/edit_branch_clinic.dart';
 import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
-
-
+import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicAppointments extends StatefulWidget {
   final BranchData branch;
@@ -20,18 +21,27 @@ class ClinicAppointments extends StatefulWidget {
 }
 
 class _ClinicAppointmentsState extends State<ClinicAppointments> {
+  bool loading;
 
   @override
   void initState() {
     super.initState();
 
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp)  {
-      ClinicsRepository.getBranchDetail(widget.branch.id);
+    setState(() {
+      loading = true;
+    });
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Provider.of<ClinicsProvider>(context, listen: false)
+          .getAppointmentsData(widget.branch.id);
+      setState(() {
+        loading = false;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final clinicProvider = Provider.of<ClinicsProvider>(context, listen: false);
     return Scaffold(
       body: Stack(
         children: [
@@ -72,9 +82,9 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(24),
-                                  topLeft: Radius.circular(24),
-                                )),
+                              topRight: Radius.circular(24),
+                              topLeft: Radius.circular(24),
+                            )),
                             barrierColor: ColorsUtils.modalSheetBarrierColor,
                             backgroundColor: ColorsUtils.modalSheetBarrierColor,
                             context: context,
@@ -83,7 +93,6 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                               return AddAppointmentPage();
                             },
                           );
-
                         },
                         child: Container(
                             height: 40.0,
@@ -159,11 +168,12 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(24),
-                                    topLeft: Radius.circular(24),
-                                  )),
+                                topRight: Radius.circular(24),
+                                topLeft: Radius.circular(24),
+                              )),
                               barrierColor: ColorsUtils.modalSheetBarrierColor,
-                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                              backgroundColor:
+                                  ColorsUtils.modalSheetBarrierColor,
                               context: context,
                               //isScrollControlled: true,
                               builder: (context) {
@@ -172,7 +182,7 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                             );
                           },
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              margin: EdgeInsets.symmetric(horizontal: 5.0),
                               padding: EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                   color: ColorsUtils.lightBlueColor,
@@ -186,7 +196,6 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                     ),
                   ),
                 ),
-
                 Flexible(
                   child: SingleChildScrollView(
                     child: Column(
@@ -202,48 +211,35 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                                 fontSize: ScreenUtil().setSp(17)),
                           ),
                         ),
-                        CustomAppointmentDayView(
-                          dayName: 'Saturday',
-                          to: '08:00 PM',
-                          from: '10:00 PM',
-                          duration: '15',
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        CustomAppointmentDayView(
-                          dayName: 'Sunday',
-                          to: '08:00 PM',
-                          from: '10:00 PM',
-                          duration: '15',
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        CustomAppointmentDayView(
-                          dayName: 'Monday',
-                          to: '08:00 PM',
-                          from: '10:00 PM',
-                          duration: '15',
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        CustomAppointmentDayView(
-                          dayName: 'Tuesday',
-                          to: '08:00 PM',
-                          from: '10:00 PM',
-                          duration: '15',
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        CustomAppointmentDayView(
-                          dayName: 'Wednesday',
-                          to: '08:00 PM',
-                          from: '10:00 PM',
-                          duration: '15',
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        CustomAppointmentDayView(
-                          dayName: 'Thursday',
-                          to: '08:00 PM',
-                          from: '10:00 PM',
-                          duration: '15',
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
+                        loading
+                            ? Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: MediaQuery.of(context).size.height * 0.25),
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        )
+                            :clinicProvider.appointments.length == 0
+                            ? Center(
+                          child: Container(
+                            child: Text(
+                              'No Appointments found',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
+                            :       ListView.builder(
+                            padding: EdgeInsets.zero,
+                            physics: ScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: clinicProvider.appointments.length,
+                            itemBuilder: (context, index) {
+                              return CustomAppointmentDayView(
+                                dayName: clinicProvider.appointments[index].day,
+                                appointments:clinicProvider.appointments[index].appointments ,
+
+                              );
+                            }),
                       ],
                     ),
                   ),
@@ -257,18 +253,16 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
   }
 }
 
-
-
 class CustomAppointmentDayView extends StatelessWidget {
   final String dayName;
-  final String to;
-  final String from;
-  final String duration;
+  final List<Appointments> appointments;
 
-  CustomAppointmentDayView({@required this.dayName,@required this.to,@required this.from,@required this.duration});
+  CustomAppointmentDayView(
+      {@required this.dayName, @required this.appointments});
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
@@ -322,31 +316,36 @@ class CustomAppointmentDayView extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 physics: ScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 2,
+                itemCount: appointments.length,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
-                      Icon(Icons.circle,size: 9,color: ColorsUtils.blueColor,),
-                      SizedBox(width: 5.0,),
-                      Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text:  '$to - $from',
-                                style: TextStyle(
-                                    color: ColorsUtils.blueColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: ScreenUtil().setSp(15)),
-                              ),
-                              TextSpan(
-                                text:  ' ($duration Mins)',
-                                style: TextStyle(
-                                    color: ColorsUtils.onBoardingTextGrey,
-                                    fontSize: ScreenUtil().setSp(14)),
-                              )
-                            ],
-                          )
+                      Icon(
+                        Icons.circle,
+                        size: 9,
+                        color: ColorsUtils.blueColor,
                       ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text.rich(TextSpan(
+                        children: [
+                          TextSpan(
+                            text:
+                                '${appointments[index].to} - ${appointments[index].from}',
+                            style: TextStyle(
+                                color: ColorsUtils.blueColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: ScreenUtil().setSp(15)),
+                          ),
+                          TextSpan(
+                            text: ' (${appointments[index].timeSlot} Mins)',
+                            style: TextStyle(
+                                color: ColorsUtils.onBoardingTextGrey,
+                                fontSize: ScreenUtil().setSp(14)),
+                          )
+                        ],
+                      )),
                     ],
                   );
                 },
@@ -358,4 +357,3 @@ class CustomAppointmentDayView extends StatelessWidget {
     );
   }
 }
-

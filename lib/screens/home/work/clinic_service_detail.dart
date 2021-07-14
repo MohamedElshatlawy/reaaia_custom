@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/clinicsModel/service_model.dart';
+import 'package:reaaia/model/clinics/service_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/edit_service_clinic.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';

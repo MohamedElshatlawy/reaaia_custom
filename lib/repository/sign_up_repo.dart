@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
-import 'package:reaaia/model/data/signupModels/profile_store_model.dart';
-import 'package:reaaia/model/data/signupModels/verification_response_model.dart';
+import 'package:reaaia/model/data/signup/profile_store_model.dart';
+import 'package:reaaia/model/data/signup/verification_response_model.dart';
 import 'package:reaaia/network/ServicesURLs.dart';
 import 'package:reaaia/network/networkCallback/NetworkCallback.dart';
 import 'package:reaaia/utils/Enums.dart';

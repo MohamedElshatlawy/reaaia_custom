@@ -23,7 +23,7 @@ class ServicesURLs {
   static const clinics_url= "api/doctor/clinics/";
   static const branches_url= "api/doctor/branches/";
   static const services_url= "api/doctor/clinic-services/";
-  static const teams_url= "api/doctor/clinic-teams/";
+  static const teams_url= "api/doctor/clinic-team/";
 
 
   static const job_nature_url= "api/doctor/job-natures";
