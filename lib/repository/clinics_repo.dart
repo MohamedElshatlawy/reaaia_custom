@@ -100,6 +100,26 @@ class ClinicsRepository{
     return  AppointmentsModel.fromJson(response);
   }
 
+  static Future<int> addAppointment(int branchId,Map<String,dynamic> body) async {
+
+    final response = await NetworkCall.makeCall(
+      endPoint: ServicesURLs.branches_url+"$branchId/appointments",
+      method: HttpMethod.POST,
+      requestBody: json.encode(body),
+    );
+    return  response['error']['code'];
+  }
+
+  static Future<int> editAppointment(int branchId,Map<String,dynamic> body) async {
+
+    final response = await NetworkCall.makeCall(
+      endPoint: ServicesURLs.branches_url+"$branchId/appointments",
+      method: HttpMethod.PUT,
+      requestBody: json.encode(body),
+    );
+    return  response['status'];
+  }
+
 
 
   /// service repo

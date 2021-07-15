@@ -187,6 +187,26 @@ class ClinicsProvider extends ChangeNotifier {
   }
 
 
+  Future<int> addAppointment(int id,Map<String,dynamic> body) async {
+    try {
+      final response = await ClinicsRepository.addAppointment(id,body);
+      notifyListeners();
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<int> editAppointment(int id,Map<String,dynamic> body) async {
+    try {
+      final response = await ClinicsRepository.editAppointment(id,body);
+      notifyListeners();
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
 
   /// Services
 

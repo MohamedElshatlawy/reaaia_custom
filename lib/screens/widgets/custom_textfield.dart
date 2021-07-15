@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
   String hintText;
   String initialValue;
   TextStyle hintStyle;
+  Key key;
 
   CustomTextField(
       {this.icon,
@@ -54,7 +55,9 @@ class CustomTextField extends StatefulWidget {
       this.style,
       this.validator,
       this.hintText,
-      this.initialValue,this.hintStyle});
+      this.initialValue,
+      this.hintStyle,
+      this.key});
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -74,6 +77,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     var phoneCodeProvider = Provider.of<PhoneCodeProvider>(context);
     return TextFormField(
+      key: widget.key,
       initialValue: widget.initialValue,
       validator: widget.validator,
       readOnly: widget.readOnly ?? false,

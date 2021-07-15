@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/model/clinics/branchModels/appointments_model.dart';
 import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
-import 'package:reaaia/repository/clinics_repo.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/add_appointment_clnic.dart';
+import 'package:reaaia/screens/home/work/edit_appointment_clinic.dart';
 import 'package:reaaia/screens/home/work/edit_branch_clinic.dart';
 import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
@@ -41,7 +41,7 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
 
   @override
   Widget build(BuildContext context) {
-    final clinicProvider = Provider.of<ClinicsProvider>(context, listen: false);
+    final clinicProvider = Provider.of<ClinicsProvider>(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -77,8 +77,8 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                             )),
                       ),
                       InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
+                        onTap: () async {
+                          await showModalBottomSheet(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
@@ -90,9 +90,14 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                             context: context,
                             isScrollControlled: true,
                             builder: (context) {
-                              return AddAppointmentPage();
+                              return Container(
+                                height: 510.0,
+                                child: AddAppointmentPage(widget.branch.id),
+                              );
                             },
                           );
+                          await clinicProvider
+                              .getAppointmentsData(widget.branch.id);
                         },
                         child: Container(
                             height: 40.0,
@@ -213,33 +218,62 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                         ),
                         loading
                             ? Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: MediaQuery.of(context).size.height * 0.25),
-                          child: Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        )
-                            :clinicProvider.appointments.length == 0
-                            ? Center(
-                          child: Container(
-                            child: Text(
-                              'No Appointments found',
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        )
-                            :       ListView.builder(
-                            padding: EdgeInsets.zero,
-                            physics: ScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: clinicProvider.appointments.length,
-                            itemBuilder: (context, index) {
-                              return CustomAppointmentDayView(
-                                dayName: clinicProvider.appointments[index].day,
-                                appointments:clinicProvider.appointments[index].appointments ,
-
-                              );
-                            }),
+                                margin: EdgeInsets.symmetric(
+                                    vertical:
+                                        MediaQuery.of(context).size.height *
+                                            0.25),
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              )
+                            : clinicProvider.appointments.length == 0
+                                ? Center(
+                                    child: Container(
+                                      child: Text(
+                                        'No Appointments found',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  )
+                                : ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    physics: ScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        clinicProvider.appointments.length,
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () async {
+                                          await showModalBottomSheet(
+                                            clipBehavior:
+                                                Clip.antiAliasWithSaveLayer,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(24),
+                                              topLeft: Radius.circular(24),
+                                            )),
+                                            barrierColor: ColorsUtils
+                                                .modalSheetBarrierColor,
+                                            backgroundColor: ColorsUtils
+                                                .modalSheetBarrierColor,
+                                            context: context,
+                                            isScrollControlled: true,
+                                            builder: (context) {
+                                              return EditAppointmentPage(widget.branch.id,clinicProvider.appointments[index]);
+                                            },
+                                          );
+                                          await clinicProvider
+                                              .getAppointmentsData(
+                                                  widget.branch.id);
+                                        },
+                                        child: CustomAppointmentDayView(
+                                          dayName: clinicProvider
+                                              .appointments[index].day,
+                                          appointments: clinicProvider
+                                              .appointments[index].appointments,
+                                        ),
+                                      );
+                                    }),
                       ],
                     ),
                   ),
@@ -332,7 +366,7 @@ class CustomAppointmentDayView extends StatelessWidget {
                         children: [
                           TextSpan(
                             text:
-                                '${appointments[index].to} - ${appointments[index].from}',
+                                '${appointments[index].from} - ${appointments[index].to}',
                             style: TextStyle(
                                 color: ColorsUtils.blueColor,
                                 fontWeight: FontWeight.bold,
