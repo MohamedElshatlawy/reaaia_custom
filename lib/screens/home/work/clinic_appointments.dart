@@ -4,12 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/model/clinics/branchModels/appointments_model.dart';
 import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
+
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/add_appointment_clnic.dart';
 import 'package:reaaia/screens/home/work/edit_appointment_clinic.dart';
 import 'package:reaaia/screens/home/work/edit_branch_clinic.dart';
-import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/reaaia_icons.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicAppointments extends StatefulWidget {
@@ -259,7 +260,10 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                                             context: context,
                                             isScrollControlled: true,
                                             builder: (context) {
-                                              return EditAppointmentPage(widget.branch.id,clinicProvider.appointments[index]);
+                                              return EditAppointmentPage(
+                                                  widget.branch.id,
+                                                  clinicProvider
+                                                      .appointments[index]);
                                             },
                                           );
                                           await clinicProvider
@@ -317,7 +321,7 @@ class CustomAppointmentDayView extends StatelessWidget {
                         color: ColorsUtils.lightBlueColor,
                         borderRadius: BorderRadius.circular(8)),
                     child: Icon(
-                      Reaaia_Icons.calendr_icon,
+                      ReaaiaIcons.calendr_icon,
                       color: ColorsUtils.primaryGreen,
                     ),
                     height: 35.0,

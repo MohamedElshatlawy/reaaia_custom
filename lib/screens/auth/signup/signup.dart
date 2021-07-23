@@ -1,6 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/auth/login/login.dart';
 import 'package:reaaia/screens/auth/signup/verification.dart';
@@ -30,7 +30,7 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
-        builder:(context)=> Form(
+        builder: (context) => Form(
           key: _signupFormKey,
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
@@ -120,13 +120,11 @@ class _SignUpState extends State<SignUp> {
                                   onSaved: (value) {
                                     mobileNumber =
                                         phoneCodeProvider.phoneCode + value;
-
                                   },
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'This Field Required';
-                                    }
-                                    else if(value.length<10){
+                                    } else if (value.length < 10) {
                                       return 'this Field Should no less than 10 digits';
                                     }
                                     return null;
@@ -183,24 +181,28 @@ class _SignUpState extends State<SignUp> {
                                       if (_signupFormKey.currentState
                                           .validate()) {
                                         _signupFormKey.currentState.save();
-                                        FocusManager.instance.primaryFocus.unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            .unfocus();
                                         print(mobileNumber);
-                                        if(mobileNumber.length==14 || mobileNumber.length==13){
+                                        if (mobileNumber.length == 14 ||
+                                            mobileNumber.length == 13) {
                                           setState(() {
                                             loading = true;
                                           });
 
-                                          mobileNumber= mobileNumber.trim();
+                                          mobileNumber = mobileNumber.trim();
                                           if (mobileNumber.length == 14) {
-                                            mobileNumber = mobileNumber.replaceFirst('0', '');
+                                            mobileNumber = mobileNumber
+                                                .replaceFirst('0', '');
                                           }
 
-
-                                          try{
-
+                                          try {
                                             await signUpProvider
-                                                .signUpWithMobileNumber(mobileNumber);
-                                            if (signUpProvider.messageResponseSignUp == 'Created') {
+                                                .signUpWithMobileNumber(
+                                                    mobileNumber);
+                                            if (signUpProvider
+                                                    .messageResponseSignUp ==
+                                                'Created') {
                                               setState(() {
                                                 loading = false;
                                               });
@@ -210,7 +212,9 @@ class _SignUpState extends State<SignUp> {
                                                     mobileNumber: mobileNumber,
                                                   ));
                                               print('Succeed Sign Up');
-                                            } else if (signUpProvider.messageResponseSignUp == 'Accepted') {
+                                            } else if (signUpProvider
+                                                    .messageResponseSignUp ==
+                                                'Accepted') {
                                               setState(() {
                                                 loading = false;
                                               });
@@ -221,7 +225,7 @@ class _SignUpState extends State<SignUp> {
                                                 iconType: Icons.error_outline,
                                                 iconColor: Colors.red,
                                               );
-                                            }else{
+                                            } else {
                                               setState(() {
                                                 loading = false;
                                               });
@@ -233,8 +237,7 @@ class _SignUpState extends State<SignUp> {
                                                 iconColor: Colors.red,
                                               );
                                             }
-
-                                          }catch(err){
+                                          } catch (err) {
                                             setState(() {
                                               loading = false;
                                             });
@@ -246,18 +249,16 @@ class _SignUpState extends State<SignUp> {
                                               iconColor: Colors.red,
                                             );
                                           }
-
-                                        }else{
+                                        } else {
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Enter A Valid Mobile Number!',
+                                            text:
+                                                'Enter A Valid Mobile Number!',
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
                                           );
-
                                         }
-
                                       }
                                     },
                                     textColor: Colors.white,

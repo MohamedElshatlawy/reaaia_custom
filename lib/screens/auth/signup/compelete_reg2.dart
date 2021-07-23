@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/data/signupModels/awards_model.dart';
+import 'package:reaaia/data/signupModels/certifications_model.dart';
+import 'package:reaaia/data/signupModels/complete_reg2_model.dart';
+import 'package:reaaia/data/signupModels/languages_model.dart';
 import 'package:reaaia/model/app_data/details.dart';
-import 'package:reaaia/model/data/signup/awards_model.dart';
-import 'package:reaaia/model/data/signup/certifications_model.dart';
-import 'package:reaaia/model/data/signup/complete_reg2_model.dart';
-import 'package:reaaia/model/data/signup/languages_model.dart';
 import 'package:reaaia/screens/auth/signup/compelete_reg3.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
@@ -997,7 +997,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                       }
                                       return null;
                                     },
-                                    onChanged: (val){
+                                    onChanged: (val) {
                                       _awards[index].name = val;
                                     },
                                   ),
@@ -1019,10 +1019,13 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                       _awards[index].year = val;
                                     },
                                   ),
-                                  SizedBox(height: ScreenUtil().setHeight(20),),
+                                  SizedBox(
+                                    height: ScreenUtil().setHeight(20),
+                                  ),
                                   InkWell(
                                     onTap: () async {
-                                      final pickedImage = await Functions.pickImage();
+                                      final pickedImage =
+                                          await Functions.pickImage();
                                       if (pickedImage != null) {
                                         setState(() {
                                           awardImage[index] = pickedImage;
@@ -1031,17 +1034,19 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                           await signUpProvider.uploadPicture(
                                               collection: 'Doctor award images',
                                               file: awardImage[index]);
-                                          if (signUpProvider.tokenPicture != null) {
+                                          if (signUpProvider.tokenPicture !=
+                                              null) {
                                             _awards[index].image = [
                                               signUpProvider.tokenPicture
                                             ];
-                                            print(jsonEncode(_awards)
-                                                .toString());
+                                            print(
+                                                jsonEncode(_awards).toString());
                                             print(
                                                 'we found token ${signUpProvider.tokenPicture}');
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Picture Upload Successfully',
+                                              text:
+                                                  'Picture Upload Successfully',
                                               hasIcon: true,
                                               iconType: Icons.done,
                                               iconColor: Colors.green,
@@ -1077,14 +1082,19 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                     child: Container(
                                       width: ScreenUtil().screenWidth,
                                       height: ScreenUtil().setHeight(50),
-                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
                                       decoration: BoxDecoration(
                                           color: Colors.white,
-                                          border: Border.all(color: Colors.grey[300]),
-                                          borderRadius: BorderRadius.circular(8)),
+                                          border: Border.all(
+                                              color: Colors.grey[300]),
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
                                       child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Container(
                                             width: ScreenUtil().setWidth(24),
@@ -1101,11 +1111,13 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                           Flexible(
                                             child: Text(
                                               awardImage[index] != null
-                                                  ? path.basename(awardImage[index].path)
+                                                  ? path.basename(
+                                                      awardImage[index].path)
                                                   : 'Attach Award Photo',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w600,
-                                                  fontSize: ScreenUtil().setSp(13),
+                                                  fontSize:
+                                                      ScreenUtil().setSp(13),
                                                   color: ColorsUtils.textGrey),
                                             ),
                                           )
@@ -1113,11 +1125,11 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: ScreenUtil().setHeight(20),),
-
+                                  SizedBox(
+                                    height: ScreenUtil().setHeight(20),
+                                  ),
                                 ]);
                               }),
-
                           Container(
                             height: ScreenUtil().setHeight(50),
                             child: CustomRoundedButton(
@@ -1163,7 +1175,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                               FocusManager.instance.primaryFocus.unfocus();
                               if (licenceImage != null &&
                                   certificateImage.isNotEmpty &&
-                                  awardImage.isNotEmpty ) {
+                                  awardImage.isNotEmpty) {
                                 _completeReg2Model.languages = _languages;
                                 _completeReg2Model.certifications =
                                     _certifications;

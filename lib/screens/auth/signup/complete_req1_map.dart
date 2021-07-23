@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
-import 'package:reaaia/screens/widgets/custom_textfield.dart';
+import 'package:reaaia/screens/widgets/custom_rounded_button_widget.dart';
+import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
-
-
-
-
 
 // ignore: must_be_immutable
 class CompleteRequest1Map extends StatelessWidget {
@@ -28,16 +24,17 @@ class CompleteRequest1Map extends StatelessWidget {
             // Image.asset('assets/complete_info1_map.png'),
             SizedBox(height: ScreenUtil().setHeight(48)),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(25)),
+              margin:
+                  EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(25)),
               child: Row(
-               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
                     onTap: () {
                       CustomFunctions.popScreen(context);
                     },
                     child: Container(
-                      //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                        //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey[300]),
@@ -70,51 +67,45 @@ class CompleteRequest1Map extends StatelessWidget {
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(25)),
+              margin:
+                  EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(25)),
               child: Row(
                 children: [
                   Container(
-                    height: ScreenUtil()
-                        .setHeight(40),
-                    width: ScreenUtil()
-                        .setWidth(40),
-                    padding:
-                    EdgeInsets.all(5.0),
+                    height: ScreenUtil().setHeight(40),
+                    width: ScreenUtil().setWidth(40),
+                    padding: EdgeInsets.all(5.0),
                     decoration: BoxDecoration(
-                      color: ColorsUtils
-                          .primaryGreen,
-                      borderRadius:
-                      BorderRadius.circular(
-                          15.0),
+                      color: ColorsUtils.primaryGreen,
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
-                    child: Icon(Icons.location_on_outlined,color: Colors.white,),
+                    child: Icon(
+                      Icons.location_on_outlined,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(width: ScreenUtil().setWidth(15)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                    Text(
-                    'Current Location',
-                      style: TextStyle(
-                          color:
-                          ColorsUtils.primaryGreen,
-                          fontWeight: FontWeight.bold,
-                          fontSize:
-                          ScreenUtil().setSp(13)),
-                    ),
-                    Text(
-                      '150 Greene St, New York, NY 10012',
-                      style: TextStyle(
-                          color: Colors
-                              .black,
-                          fontWeight: FontWeight.w600,
-                          fontSize:
-                          ScreenUtil().setSp(15)),
-                    ),
-                  ],),
+                      Text(
+                        'Current Location',
+                        style: TextStyle(
+                            color: ColorsUtils.primaryGreen,
+                            fontWeight: FontWeight.bold,
+                            fontSize: ScreenUtil().setSp(13)),
+                      ),
+                      Text(
+                        '150 Greene St, New York, NY 10012',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: ScreenUtil().setSp(15)),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),
             Container(
@@ -123,9 +114,8 @@ class CompleteRequest1Map extends StatelessWidget {
               child: GoogleMap(
                 mapType: MapType.normal,
                 initialCameraPosition: _kGooglePlex,
-                onTap: (val){
-
-                  latLng=val;
+                onTap: (val) {
+                  latLng = val;
                   print(latLng.latitude);
                   print(latLng.longitude);
                 },
@@ -143,7 +133,7 @@ class CompleteRequest1Map extends StatelessWidget {
                 borderColor: ColorsUtils.primaryGreen,
                 text: 'Choose Location',
                 pressed: () {
-                  Navigator.pop(context,latLng);
+                  Navigator.pop(context, latLng);
                 },
                 textColor: Colors.white,
               ),

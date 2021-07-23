@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/auth/signup/congrats.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
-
 
 class RequestSentSuccess extends StatelessWidget {
   @override
@@ -16,9 +15,9 @@ class RequestSentSuccess extends StatelessWidget {
               height: 124,
             ),
             InkWell(
-              onTap: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => Congrats()));
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (ctx) => Congrats()));
               },
               child: Image.asset(
                 "assets/success.png",

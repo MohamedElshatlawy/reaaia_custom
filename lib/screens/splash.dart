@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/screens/auth/login/login.dart';
+import 'package:reaaia/screens/auth/login/login_page.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/home_page.dart';
 import 'package:reaaia/screens/onBoarding/onBoardingHome.dart';
@@ -10,6 +10,7 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/TokenUtil.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+
 
 class Splash extends StatefulWidget {
   @override
@@ -25,29 +26,24 @@ class _SplashState extends State<Splash> {
       await Provider.of<DataProvider>(context, listen: false).getAppData();
 
       if (dataProvider.appDataModel.status == 200) {
-
         // TODO: implement again  in last
         await TokenUtil.loadTokenToMemory();
-        if(TokenUtil.getTokenFromMemory().isEmpty){
-
-          await  OnBoardingUtil.loadKeyOnBoardingToMemory();
-          if(OnBoardingUtil.getKeyOnBoardingFromMemory()==''){
+        if (TokenUtil.getTokenFromMemory().isEmpty) {
+          await OnBoardingUtil.loadKeyOnBoardingToMemory();
+          if (OnBoardingUtil.getKeyOnBoardingFromMemory() == '') {
             CustomFunctions.pushScreenRepcalement(
                 widget: OnBoardingHome(), context: context);
-          }else{
+          } else {
             CustomFunctions.pushScreenRepcalement(
-                widget: Login(), context: context);
+                widget: LoginPage(), context: context);
           }
-
-        }else{
+        } else {
           CustomFunctions.pushScreenRepcalement(
               widget: HomePage(), context: context);
         }
-
       } else {
         return;
       }
-
     });
     // Future.delayed(Duration(seconds: 2), () {
     //   CustomFunctions.pushScreenRepcalement(

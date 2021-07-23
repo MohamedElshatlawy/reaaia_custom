@@ -6,8 +6,8 @@ import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/add_employee_team.dart';
 import 'package:reaaia/screens/home/work/edit_employee_team.dart';
 import 'package:reaaia/screens/home/work/filter_team_clinic.dart';
-import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/reaaia_icons.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicTeamPage extends StatefulWidget {
@@ -35,7 +35,8 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
       loading = true;
     });
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
-      final clinicProvider=Provider.of<ClinicsProvider>(context, listen: false);
+      final clinicProvider =
+          Provider.of<ClinicsProvider>(context, listen: false);
       await clinicProvider.getTeamData(widget.clinicId);
       await clinicProvider.getTeamDataByBranch(widget.clinicId);
       await clinicProvider.getTeamDataByJonNature(widget.clinicId);
@@ -83,8 +84,8 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                   Row(
                     children: [
                       InkWell(
-                        onTap: () async{
-                        await   showModalBottomSheet(
+                        onTap: () async {
+                          await showModalBottomSheet(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
@@ -99,9 +100,11 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                               return FilterTeamClinicPage();
                             },
                           );
-                        await clinicProvider.getTeamData(widget.clinicId);
-                        await clinicProvider.getTeamDataByBranch(widget.clinicId);
-                        await clinicProvider.getTeamDataByJonNature(widget.clinicId);
+                          await clinicProvider.getTeamData(widget.clinicId);
+                          await clinicProvider
+                              .getTeamDataByBranch(widget.clinicId);
+                          await clinicProvider
+                              .getTeamDataByJonNature(widget.clinicId);
                         },
                         child: Container(
                             height: 35.0,
@@ -112,7 +115,7 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                 border: Border.all(color: Colors.grey[300]),
                                 borderRadius: BorderRadius.circular(8)),
                             child: Icon(
-                              Reaaia_Icons.filter_team_icon,
+                              ReaaiaIcons.filter_team_icon,
                               color: ColorsUtils.blueColor,
                               size: 20,
                             )),
@@ -137,10 +140,11 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                               return AddEmployeeTeam(widget.clinicId);
                             },
                           );
-                            await clinicProvider.getTeamData(widget.clinicId);
-                            await clinicProvider.getTeamDataByBranch(widget.clinicId);
-                            await clinicProvider.getTeamDataByJonNature(widget.clinicId);
-
+                          await clinicProvider.getTeamData(widget.clinicId);
+                          await clinicProvider
+                              .getTeamDataByBranch(widget.clinicId);
+                          await clinicProvider
+                              .getTeamDataByJonNature(widget.clinicId);
                         },
                         child: Container(
                             //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
@@ -274,9 +278,14 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                     teams[index]);
                                               },
                                             );
-                                            await clinicProvider.getTeamData(widget.clinicId);
-                                            await clinicProvider.getTeamDataByBranch(widget.clinicId);
-                                            await clinicProvider.getTeamDataByJonNature(widget.clinicId);
+                                            await clinicProvider
+                                                .getTeamData(widget.clinicId);
+                                            await clinicProvider
+                                                .getTeamDataByBranch(
+                                                    widget.clinicId);
+                                            await clinicProvider
+                                                .getTeamDataByJonNature(
+                                                    widget.clinicId);
                                           },
                                           child: Container(
                                             padding: EdgeInsets.symmetric(
@@ -337,7 +346,15 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                                     .setSp(14)),
                                                       ),
                                                       Text(
-                                                          teams[index].branches.first.city+', '+teams[index].branches.first.area,
+                                                        teams[index]
+                                                                .branches
+                                                                .first
+                                                                .city +
+                                                            ', ' +
+                                                            teams[index]
+                                                                .branches
+                                                                .first
+                                                                .area,
                                                         style: TextStyle(
                                                             color: ColorsUtils
                                                                 .onBoardingTextGrey,
@@ -364,23 +381,37 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                           child: ListView.builder(
                             physics: ScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount:  clinicProvider.isSortedByBranch ?clinicProvider.sortBranchModel.response.data.length:clinicProvider.sortJobNatureModel.response.data.length,
+                            itemCount: clinicProvider.isSortedByBranch
+                                ? clinicProvider
+                                    .sortBranchModel.response.data.length
+                                : clinicProvider
+                                    .sortJobNatureModel.response.data.length,
                             itemBuilder: (context, index) {
-                              final sortTeam= clinicProvider.isSortedByBranch ?clinicProvider.sortBranchModel.response.data[index].team:clinicProvider.sortJobNatureModel.response.data[index].team;
+                              final sortTeam = clinicProvider.isSortedByBranch
+                                  ? clinicProvider
+                                      .sortBranchModel.response.data[index].team
+                                  : clinicProvider.sortJobNatureModel.response
+                                      .data[index].team;
 
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  if(sortTeam.isNotEmpty)
-                                  Text(
-                                    clinicProvider.isSortedByBranch ?clinicProvider.sortBranchModel.response.data[index].branch:clinicProvider.sortJobNatureModel.response.data[index].jobNature,
-                                    style: TextStyle(
-                                        fontSize: 17.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                  ),
-                                  if(sortTeam.isNotEmpty)
-                                  SizedBox(height: 20.0,),
+                                  if (sortTeam.isNotEmpty)
+                                    Text(
+                                      clinicProvider.isSortedByBranch
+                                          ? clinicProvider.sortBranchModel
+                                              .response.data[index].branch
+                                          : clinicProvider.sortJobNatureModel
+                                              .response.data[index].jobNature,
+                                      style: TextStyle(
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    ),
+                                  if (sortTeam.isNotEmpty)
+                                    SizedBox(
+                                      height: 20.0,
+                                    ),
                                   // teams.length == 0
                                   //     ? Center(
                                   //         child: Container(
@@ -399,15 +430,13 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                     itemBuilder: (context, index) {
                                       return Dismissible(
                                         key: Key(sortTeam[index].id.toString()),
-                                        direction:
-                                        DismissDirection.endToStart,
+                                        direction: DismissDirection.endToStart,
                                         confirmDismiss: (dir) {
                                           return showDialog(
                                               context: context,
                                               builder: (ctx) {
                                                 return AlertDialog(
-                                                  title:
-                                                  Text('Are you Sure ?'),
+                                                  title: Text('Are you Sure ?'),
                                                   content: Text(
                                                       'Do you want to remove  This Branch from your Branches ?'),
                                                   actions: [
@@ -429,17 +458,16 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                         },
                                         onDismissed: (dir) async {
                                           await Provider.of<ClinicsProvider>(
-                                              context,
-                                              listen: false)
+                                                  context,
+                                                  listen: false)
                                               .deleteTeamMember(
-                                              sortTeam[index].id, index);
+                                                  sortTeam[index].id, index);
                                           sortTeam.removeAt(index);
                                         },
                                         background: Container(
                                           margin: EdgeInsets.symmetric(
                                               vertical: 10.0),
-                                          padding:
-                                          EdgeInsets.only(right: 30.0),
+                                          padding: EdgeInsets.only(right: 30.0),
                                           color: Theme.of(context).errorColor,
                                           alignment: Alignment.centerRight,
                                           child: Icon(
@@ -455,21 +483,19 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                           elevation: 2,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(15.0),
+                                                BorderRadius.circular(15.0),
                                           ),
                                           child: InkWell(
                                             onTap: () async {
                                               await showModalBottomSheet(
-                                                clipBehavior: Clip
-                                                    .antiAliasWithSaveLayer,
+                                                clipBehavior:
+                                                    Clip.antiAliasWithSaveLayer,
                                                 shape: RoundedRectangleBorder(
                                                     borderRadius:
-                                                    BorderRadius.only(
-                                                      topRight:
-                                                      Radius.circular(24),
-                                                      topLeft:
-                                                      Radius.circular(24),
-                                                    )),
+                                                        BorderRadius.only(
+                                                  topRight: Radius.circular(24),
+                                                  topLeft: Radius.circular(24),
+                                                )),
                                                 barrierColor: ColorsUtils
                                                     .modalSheetBarrierColor,
                                                 backgroundColor: ColorsUtils
@@ -481,9 +507,14 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                       teams[index]);
                                                 },
                                               );
-                                              await clinicProvider.getTeamData(widget.clinicId);
-                                              await clinicProvider.getTeamDataByBranch(widget.clinicId);
-                                              await clinicProvider.getTeamDataByJonNature(widget.clinicId);
+                                              await clinicProvider
+                                                  .getTeamData(widget.clinicId);
+                                              await clinicProvider
+                                                  .getTeamDataByBranch(
+                                                      widget.clinicId);
+                                              await clinicProvider
+                                                  .getTeamDataByJonNature(
+                                                      widget.clinicId);
                                             },
                                             child: Container(
                                               padding: EdgeInsets.symmetric(
@@ -493,17 +524,17 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                 children: [
                                                   Container(
                                                     padding:
-                                                    EdgeInsets.all(5.0),
+                                                        EdgeInsets.all(5.0),
                                                     width: ScreenUtil()
-                                                        .screenWidth *
+                                                            .screenWidth *
                                                         0.2,
                                                     decoration: BoxDecoration(
                                                       border: Border.all(
-                                                          color: Colors
-                                                              .grey[300]),
+                                                          color:
+                                                              Colors.grey[300]),
                                                       borderRadius:
-                                                      BorderRadius
-                                                          .circular(25),
+                                                          BorderRadius.circular(
+                                                              25),
                                                     ),
                                                     child: Image.asset(
                                                       'assets/onBoarding/onboard_index1.png',
@@ -516,8 +547,8 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                   Expanded(
                                                     child: Column(
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(
                                                           sortTeam[index].name,
@@ -525,12 +556,12 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                               color: ColorsUtils
                                                                   .blueColor,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .bold,
+                                                                  FontWeight
+                                                                      .bold,
                                                               fontSize:
-                                                              ScreenUtil()
-                                                                  .setSp(
-                                                                  16)),
+                                                                  ScreenUtil()
+                                                                      .setSp(
+                                                                          16)),
                                                         ),
                                                         Text(
                                                           sortTeam[index]
@@ -541,25 +572,33 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                                               color: ColorsUtils
                                                                   .textGrey,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                               fontSize:
-                                                              ScreenUtil()
-                                                                  .setSp(
-                                                                  14)),
+                                                                  ScreenUtil()
+                                                                      .setSp(
+                                                                          14)),
                                                         ),
                                                         Text(
-                                                          sortTeam[index].branches.first.city+', '+sortTeam[index].branches.first.area,
+                                                          sortTeam[index]
+                                                                  .branches
+                                                                  .first
+                                                                  .city +
+                                                              ', ' +
+                                                              sortTeam[index]
+                                                                  .branches
+                                                                  .first
+                                                                  .area,
                                                           style: TextStyle(
                                                               color: ColorsUtils
                                                                   .onBoardingTextGrey,
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                               fontSize:
-                                                              ScreenUtil()
-                                                                  .setSp(
-                                                                  13)),
+                                                                  ScreenUtil()
+                                                                      .setSp(
+                                                                          13)),
                                                         ),
                                                       ],
                                                     ),

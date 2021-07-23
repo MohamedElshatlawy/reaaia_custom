@@ -1,16 +1,15 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/screens/auth/login/login.dart';
+import 'package:reaaia/screens/auth/login/login_page.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 
-
 import '../customFunctions.dart';
 
-class Index2 extends StatelessWidget {
+class PrivateCareServicesOnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var onBoardingPageProvider =
@@ -42,7 +41,8 @@ class Index2 extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     OnBoardingUtil.saveKeyOnBoarding('isBoarding');
-                    CustomFunctions.pushScreenRepcalement(context: context, widget: Login());
+                    CustomFunctions.pushScreenRepcalement(
+                        context: context, widget: LoginPage());
                   },
                   child: Text(
                     'Skip',

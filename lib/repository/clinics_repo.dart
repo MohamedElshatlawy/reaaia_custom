@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -12,36 +11,33 @@ import 'package:reaaia/model/clinics/teamModels/job_natures.dart';
 import 'package:reaaia/model/clinics/teamModels/sort_branch_model.dart';
 import 'package:reaaia/model/clinics/teamModels/sort_job_nature_model.dart';
 import 'package:reaaia/model/clinics/teamModels/team.dart';
+
 import 'package:reaaia/network/ServicesURLs.dart';
 import 'package:reaaia/network/networkCallback/NetworkCallback.dart';
 import 'package:reaaia/utils/Enums.dart';
 
-class ClinicsRepository{
-
+class ClinicsRepository {
   static Future<ClinicsModel> getClinicsData() async {
-
     final response = await NetworkCall.makeCall(
       endPoint: ServicesURLs.clinics_url,
       method: HttpMethod.GET,
     );
-  return  ClinicsModel.fromJson(response);
+    return ClinicsModel.fromJson(response);
   }
 
-/// branches
+  /// branches
 
   static Future<BranchModel> getBranchesData(int clinicId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/branches",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/branches",
       method: HttpMethod.GET,
     );
-    return  BranchModel.fromJson(response);
+    return BranchModel.fromJson(response);
   }
 
-  static Future<int> addBranch(int clinicId,Map<String,dynamic> body) async {
-
+  static Future<int> addBranch(int clinicId, Map<String, dynamic> body) async {
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/branches",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/branches",
       method: HttpMethod.POST,
       requestBody: jsonEncode(body),
     );
@@ -49,18 +45,13 @@ class ClinicsRepository{
   }
 
   static Future<void> getBranchDetail(int branchId) async {
-
     final response = await NetworkCall.makeCall(
       endPoint: "${ServicesURLs.branches_url}$branchId",
       method: HttpMethod.GET,
     );
-
-
-
   }
 
-  static Future<int> editBranch(int branchId,Map<String,dynamic> body) async {
-
+  static Future<int> editBranch(int branchId, Map<String, dynamic> body) async {
     final response = await NetworkCall.makeCall(
       endPoint: "${ServicesURLs.branches_url}$branchId",
       method: HttpMethod.PUT,
@@ -70,20 +61,17 @@ class ClinicsRepository{
   }
 
   static Future<int> deleteBranch(int branchId) async {
-
     final response = await NetworkCall.makeCall(
       endPoint: "${ServicesURLs.branches_url}$branchId",
       method: HttpMethod.DELETE,
     );
 
     return response['error']['code'];
-
   }
 
   static Future<int> toggleStatusBranch(int branchId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.branches_url+"$branchId/toggle-status",
+      endPoint: ServicesURLs.branches_url + "$branchId/toggle-status",
       method: HttpMethod.POST,
     );
     return response['status'];
@@ -92,74 +80,73 @@ class ClinicsRepository{
   /// appointments repo
 
   static Future<AppointmentsModel> getAppointmentsData(int branchId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.branches_url+"$branchId/appointments",
+      endPoint: ServicesURLs.branches_url + "$branchId/appointments",
       method: HttpMethod.GET,
     );
-    return  AppointmentsModel.fromJson(response);
+    return AppointmentsModel.fromJson(response);
   }
 
-  static Future<int> addAppointment(int branchId,Map<String,dynamic> body) async {
-
+  static Future<int> addAppointment(
+      int branchId, Map<String, dynamic> body) async {
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.branches_url+"$branchId/appointments",
+      endPoint: ServicesURLs.branches_url + "$branchId/appointments",
       method: HttpMethod.POST,
       requestBody: json.encode(body),
     );
-    return  response['error']['code'];
+    return response['error']['code'];
   }
 
-  static Future<int> editAppointment(int branchId,Map<String,dynamic> body) async {
-
+  static Future<int> editAppointment(
+      int branchId, Map<String, dynamic> body) async {
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.branches_url+"$branchId/appointments",
+      endPoint: ServicesURLs.branches_url + "$branchId/appointments",
       method: HttpMethod.PUT,
       requestBody: json.encode(body),
     );
-    return  response['status'];
+    return response['status'];
   }
-
-
 
   /// service repo
 
-  static Future<String> uploadServiceImage(String collection,List<File> files) async {
+  static Future<String> uploadServiceImage(
+      String collection, List<File> files) async {
     final response = await NetworkCall.makeCall(
       endPoint: ServicesURLs.UPLOAD_MEDIA_URL,
       method: HttpMethod.POST,
-      requestBody: jsonEncode({"collection":collection}),
+      requestBody: jsonEncode({"collection": collection}),
       isMultipart: true,
-      multiPartValues:await Future.wait<MultipartFile>(
-          files.map((e) async => await MultipartFile.fromPath('files[]', e.path)).toList()),
-     // multiPartValues: files.map((e) => MultipartFile.fromBytes("files[]", e.readAsBytesSync())).toList(),
+      multiPartValues: await Future.wait<MultipartFile>(files
+          .map((e) async => await MultipartFile.fromPath('files[]', e.path))
+          .toList()),
+      // multiPartValues: files.map((e) => MultipartFile.fromBytes("files[]", e.readAsBytesSync())).toList(),
     );
     print("my Response: ${response.toString()}");
     return response['token'];
   }
 
   static Future<ServiceModel> getServicesData(int clinicId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/clinic-services",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/clinic-services",
       method: HttpMethod.GET,
     );
-    return  ServiceModel.fromJson(response);
+    return ServiceModel.fromJson(response);
   }
 
-  static Future<int> addService(AddServiceModel body,List<MultipartFile> files) async {
+  static Future<int> addService(
+      AddServiceModel body, List<MultipartFile> files) async {
     final response = await NetworkCall.makeCall(
       endPoint: ServicesURLs.services_url,
       method: HttpMethod.POST,
       requestBody: json.encode(body),
-       // isMultipart: true,
-       // multiPartValues: files,
+      // isMultipart: true,
+      // multiPartValues: files,
     );
     return response['error']['code'];
   }
 
-  static Future<int> editService(int clinicServiceId,AddServiceModel body) async {
-
+  static Future<int> editService(
+      int clinicServiceId, AddServiceModel body) async {
     final response = await NetworkCall.makeCall(
       endPoint: "${ServicesURLs.services_url}$clinicServiceId",
       method: HttpMethod.POST,
@@ -169,35 +156,28 @@ class ClinicsRepository{
   }
 
   static Future<int> deleteService(int clinicServiceId) async {
-
     final response = await NetworkCall.makeCall(
       endPoint: "${ServicesURLs.services_url}$clinicServiceId",
       method: HttpMethod.DELETE,
     );
 
     return response['status'];
-
   }
-
-
-
-
 
   /// team
 
   static Future<TeamModel> getTeamData(int clinicId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/team",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/team",
       method: HttpMethod.GET,
     );
-    return  TeamModel.fromJson(response);
+    return TeamModel.fromJson(response);
   }
 
-  static Future<int> addTeamMember(int clinicId,Map<String,dynamic> body) async {
-
+  static Future<int> addTeamMember(
+      int clinicId, Map<String, dynamic> body) async {
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/team",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/team",
       method: HttpMethod.POST,
       requestBody: jsonEncode(body),
     );
@@ -205,20 +185,16 @@ class ClinicsRepository{
   }
 
   static Future<void> getTeamMemberDetail(int assistantUserId) async {
-
     final response = await NetworkCall.makeCall(
       endPoint: "${ServicesURLs.teams_url}$assistantUserId",
       method: HttpMethod.GET,
     );
-
-
-
   }
 
-  static Future<int> editTeamMember(int assistantUserId,Map<String,dynamic> body) async {
-
+  static Future<int> editTeamMember(
+      int assistantUserId, Map<String, dynamic> body) async {
     final response = await NetworkCall.makeCall(
-      endPoint:  "${ServicesURLs.teams_url}$assistantUserId",
+      endPoint: "${ServicesURLs.teams_url}$assistantUserId",
       method: HttpMethod.PUT,
       requestBody: jsonEncode(body),
     );
@@ -226,43 +202,35 @@ class ClinicsRepository{
   }
 
   static Future<int> deleteTeamMember(int assistantUserId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint:  "${ServicesURLs.teams_url}$assistantUserId",
+      endPoint: "${ServicesURLs.teams_url}$assistantUserId",
       method: HttpMethod.DELETE,
     );
 
     return response['error']['code'];
-
   }
 
-
   static Future<JobNaturesModel> getJobNaturesData() async {
-
     final response = await NetworkCall.makeCall(
       endPoint: ServicesURLs.job_nature_url,
       method: HttpMethod.GET,
     );
-    return  JobNaturesModel.fromJson(response);
+    return JobNaturesModel.fromJson(response);
   }
 
-
   static Future<SortBranchModel> getSortDataByBranch(int clinicId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/team-by-branch",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/team-by-branch",
       method: HttpMethod.GET,
     );
-    return  SortBranchModel.fromJson(response);
+    return SortBranchModel.fromJson(response);
   }
 
   static Future<SortJobNatureModel> getSortDataByJobNature(int clinicId) async {
-
     final response = await NetworkCall.makeCall(
-      endPoint: ServicesURLs.clinics_url+"$clinicId/team-by-job",
+      endPoint: ServicesURLs.clinics_url + "$clinicId/team-by-job",
       method: HttpMethod.GET,
     );
-    return  SortJobNatureModel.fromJson(response);
+    return SortJobNatureModel.fromJson(response);
   }
-
 }

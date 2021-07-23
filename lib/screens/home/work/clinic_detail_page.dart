@@ -8,12 +8,11 @@ import 'package:reaaia/screens/home/work/clinic_info.dart';
 import 'package:reaaia/screens/home/work/clinic_services.dart';
 import 'package:reaaia/screens/home/work/clinic_team.dart';
 import 'package:reaaia/screens/home/work/custom_container_view.dart';
-import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/reaaia_icons.dart';
 
 class ClinicDetailPage extends StatelessWidget {
-
   final ClinicData clinicData;
 
   ClinicDetailPage({@required this.clinicData});
@@ -64,7 +63,7 @@ class ClinicDetailPage extends StatelessWidget {
                                   color: Colors.black12,
                                   borderRadius: BorderRadius.circular(8)),
                               child: Icon(
-                                Reaaia_Icons.forward_icon,
+                                ReaaiaIcons.forward_icon,
                                 color: Colors.white,
                               )),
                         ),
@@ -131,57 +130,69 @@ class ClinicDetailPage extends StatelessWidget {
                     child: Column(
                       children: [
                         CustomListTile(
-                          onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicInfoPage());
+                          onTap: () {
+                            CustomFunctions.pushScreen(
+                                context: context, widget: ClinicInfoPage());
                           },
                           name: 'Clinic Info',
                           decs: 'Basic Information of Clinic',
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
-                          child: Divider(color: ColorsUtils.lineColor,),
+                          child: Divider(
+                            color: ColorsUtils.lineColor,
+                          ),
                         ),
-
                         CustomListTile(
-                          onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicBranches(clinicData.id));
-
+                          onTap: () {
+                            CustomFunctions.pushScreen(
+                                context: context,
+                                widget: ClinicBranches(clinicData.id));
                           },
                           name: 'Branches/Appointments',
                           decs: 'Control branches and appointments',
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
-                          child: Divider(color: ColorsUtils.lineColor,),
+                          child: Divider(
+                            color: ColorsUtils.lineColor,
+                          ),
                         ),
                         CustomListTile(
-                          onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicServices(clinicData.id));
+                          onTap: () {
+                            CustomFunctions.pushScreen(
+                                context: context,
+                                widget: ClinicServices(clinicData.id));
                           },
                           name: 'Services',
                           decs: 'Clinic main services and offers',
                         ),
-
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
-                          child: Divider(color: ColorsUtils.lineColor,),
+                          child: Divider(
+                            color: ColorsUtils.lineColor,
+                          ),
                         ),
                         CustomListTile(
-                          onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicBookingInfoPage());
-
+                          onTap: () {
+                            CustomFunctions.pushScreen(
+                                context: context,
+                                widget: ClinicBookingInfoPage());
                           },
                           name: 'Booking Info',
                           decs: 'Clinic Fees and waiting time',
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
-                          child: Divider(color: ColorsUtils.lineColor,),
+                          child: Divider(
+                            color: ColorsUtils.lineColor,
+                          ),
                         ),
                         CustomListTile(
-                          onTap: (){
-                            CustomFunctions.pushScreen(context: context,widget: ClinicTeamPage(clinicData.id));
-
+                          onTap: () {
+                            CustomFunctions.pushScreen(
+                                context: context,
+                                widget: ClinicTeamPage(clinicData.id));
                           },
                           name: 'Team',
                           decs: 'add / view clinic employees',
@@ -234,20 +245,20 @@ class CustomListTile extends StatelessWidget {
   final Function onTap;
   final String name;
   final String decs;
-  CustomListTile({this.onTap,this.name,this.decs});
+  CustomListTile({this.onTap, this.name, this.decs});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      title:  Text(
+      title: Text(
         name,
         style: TextStyle(
             color: ColorsUtils.textGrey,
             fontWeight: FontWeight.w600,
             fontSize: ScreenUtil().setSp(15)),
       ),
-      subtitle:  Text(
+      subtitle: Text(
         decs,
         style: TextStyle(
             color: ColorsUtils.onBoardingTextGrey,
@@ -255,19 +266,23 @@ class CustomListTile extends StatelessWidget {
             fontSize: ScreenUtil().setSp(11)),
       ),
       leading: Container(
-       // padding: EdgeInsets.all(1.0),
+        // padding: EdgeInsets.all(1.0),
         width: 40.0,
         height: 40.0,
         decoration: BoxDecoration(
           color: ColorsUtils.darkGreenColor,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Icon(Reaaia_Icons.ic_doctor,color: Colors.white,size: 30,),
+        child: Icon(
+          ReaaiaIcons.ic_doctor,
+          color: Colors.white,
+          size: 30,
+        ),
       ),
-      trailing: Icon(Icons.keyboard_arrow_right,color: ColorsUtils.onBoardingTextGrey,),
-
-
+      trailing: Icon(
+        Icons.keyboard_arrow_right,
+        color: ColorsUtils.onBoardingTextGrey,
+      ),
     );
   }
 }
-

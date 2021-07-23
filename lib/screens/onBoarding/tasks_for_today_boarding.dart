@@ -1,14 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
-import 'package:reaaia/screens/auth/login/login.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reaaia/screens/auth/login/login_page.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
 
-
-
-class Index1 extends StatelessWidget {
+class TasksForTodayOnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +20,8 @@ class Index1 extends StatelessWidget {
               InkWell(
                 onTap: () {
                   OnBoardingUtil.saveKeyOnBoarding('isBoarding');
-                  CustomFunctions.pushScreenRepcalement(context: context, widget: Login());
+                  CustomFunctions.pushScreenRepcalement(
+                      context: context, widget: LoginPage());
                 },
                 child: Text(
                   'Skip',

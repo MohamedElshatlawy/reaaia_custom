@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/auth/login/forget_password.dart';
 import 'package:reaaia/screens/auth/signup/signup.dart';
@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
-        builder:(context)=> Form(
+        builder: (context) => Form(
           key: _loginFormKey,
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
@@ -120,7 +120,7 @@ class _LoginState extends State<Login> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'This Field Required';
-                            }else if(value.length<11){
+                            } else if (value.length < 11) {
                               return 'this Field Should no less than 11 digits';
                             }
                             return null;
@@ -139,7 +139,7 @@ class _LoginState extends State<Login> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'This Field Required';
-                            }else if(value.length<8){
+                            } else if (value.length < 8) {
                               return 'this Field Should no less than 8 digits';
                             }
                             return null;
@@ -182,7 +182,8 @@ class _LoginState extends State<Login> {
                                   pressed: () async {
                                     if (_loginFormKey.currentState.validate()) {
                                       _loginFormKey.currentState.save();
-                                      FocusManager.instance.primaryFocus.unfocus();
+                                      FocusManager.instance.primaryFocus
+                                          .unfocus();
 
                                       checkPlatForm();
                                       _loginInfo['grant_type'] = 'password';
@@ -195,13 +196,20 @@ class _LoginState extends State<Login> {
                                       try {
                                         await loginProvider.login(_loginInfo);
 
-                                        if (loginProvider.loginResponse.message ==
+                                        if (loginProvider
+                                                .loginResponse.message ==
                                             'api.success.success') {
                                           setState(() {
                                             loading = false;
                                           });
-                                          TokenUtil.saveToken(loginProvider.loginResponse.response.data.accessToken);
-                                         CustomFunctions.pushScreenRepcalement(context: context,widget:  HomePage());
+                                          TokenUtil.saveToken(loginProvider
+                                              .loginResponse
+                                              .response
+                                              .data
+                                              .accessToken);
+                                          CustomFunctions.pushScreenRepcalement(
+                                              context: context,
+                                              widget: HomePage());
                                           print('Login Success');
                                         } else {
                                           setState(() {
@@ -228,7 +236,6 @@ class _LoginState extends State<Login> {
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
                                         );
-
                                       }
                                     } else {
                                       setState(() {

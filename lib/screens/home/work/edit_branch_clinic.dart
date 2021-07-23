@@ -12,7 +12,6 @@ import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
-
 class EditBranchClinic extends StatefulWidget {
   final BranchData branchData;
   EditBranchClinic(this.branchData);
@@ -34,16 +33,18 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
   @override
   void initState() {
     super.initState();
-    _mapController.text=widget.branchData.detailedAddress;
-    Cities cityModel = Provider.of<DataProvider>(context, listen: false).appDataModel.response.data.cities
-        .firstWhere((element) =>
-    element.name == widget.branchData.city);
+    _mapController.text = widget.branchData.detailedAddress;
+    Cities cityModel = Provider.of<DataProvider>(context, listen: false)
+        .appDataModel
+        .response
+        .data
+        .cities
+        .firstWhere((element) => element.name == widget.branchData.city);
     _areas = cityModel.areas;
-    selectedCityArea=widget.branchData.area;
+    selectedCityArea = widget.branchData.area;
     _branchInfo['latitude'] = widget.branchData.latitude;
     _branchInfo['longitude'] = widget.branchData.longitude;
     _branchInfo['detailed_address'] = widget.branchData.detailedAddress;
-
   }
 
   @override
@@ -52,7 +53,7 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(color: ColorsUtils.borderColor));
     final clinicProvider = Provider.of<ClinicsProvider>(context, listen: false);
-    return  SingleChildScrollView(
+    return SingleChildScrollView(
       child: Consumer<DataProvider>(
         builder: (_, provider, __) {
           final providerData = provider.appDataModel.response.data;
@@ -63,8 +64,7 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               child: Container(
                 width: ScreenUtil().screenWidth,
-                padding:
-                EdgeInsets.symmetric(vertical: 35.0, horizontal: 25.0),
+                padding: EdgeInsets.symmetric(vertical: 35.0, horizontal: 25.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -113,8 +113,8 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                                 color: ColorsUtils.blackColor,
                                 fontWeight: FontWeight.w600,
                                 fontSize: ScreenUtil().setSp(16)),
-                            icon: const Icon(
-                                Icons.keyboard_arrow_down_outlined),
+                            icon:
+                                const Icon(Icons.keyboard_arrow_down_outlined),
                             isExpanded: true,
                             value: widget.branchData.city,
                             iconSize: 24,
@@ -124,29 +124,26 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                                 selectedCityArea = null;
                                 selectedCity = newValue;
                                 Cities cityModel = providerData.cities
-                                    .firstWhere((element) =>
-                                element.name == newValue);
+                                    .firstWhere(
+                                        (element) => element.name == newValue);
                                 _areas = cityModel.areas;
-                                print(newValue +
-                                    '  ' +
-                                    cityModel.id.toString());
+                                print(
+                                    newValue + '  ' + cityModel.id.toString());
                               });
                             },
                             onSaved: (val) {
                               selectedCity = val;
                               Cities cityModel = providerData.cities
-                                  .firstWhere(
-                                      (element) => element.name == val);
+                                  .firstWhere((element) => element.name == val);
                               _branchInfo['city_id'] = cityModel.id;
                             },
                             items: providerData.cities
-                                .map<DropdownMenuItem<String>>(
-                                    (Cities value) {
-                                  return new DropdownMenuItem(
-                                    child: new Text(value.name),
-                                    value: value.name,
-                                  );
-                                }).toList(),
+                                .map<DropdownMenuItem<String>>((Cities value) {
+                              return new DropdownMenuItem(
+                                child: new Text(value.name),
+                                value: value.name,
+                              );
+                            }).toList(),
                           ),
                         ),
                         SizedBox(
@@ -181,8 +178,8 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                                 color: ColorsUtils.blackColor,
                                 fontWeight: FontWeight.w600,
                                 fontSize: ScreenUtil().setSp(16)),
-                            icon: const Icon(
-                                Icons.keyboard_arrow_down_outlined),
+                            icon:
+                                const Icon(Icons.keyboard_arrow_down_outlined),
                             isExpanded: true,
                             iconSize: 24,
                             value: selectedCityArea,
@@ -190,16 +187,15 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                               setState(() {
                                 selectedCityArea = newValue;
                                 print(selectedCityArea);
-                                Areas areaModel = _areas.firstWhere(
-                                        (element) => element.name == selectedCityArea);
+                                Areas areaModel = _areas.firstWhere((element) =>
+                                    element.name == selectedCityArea);
                                 _branchInfo['area_id'] = areaModel.id;
                               });
                             },
-                            onSaved: (newValue){
-                              Areas areaModel = _areas.firstWhere(
-                                      (element) => element.name == selectedCityArea);
+                            onSaved: (newValue) {
+                              Areas areaModel = _areas.firstWhere((element) =>
+                                  element.name == selectedCityArea);
                               _branchInfo['area_id'] = areaModel.id;
-
                             },
                             items: _areas
                                 .map<DropdownMenuItem<String>>((Areas value) {
@@ -218,9 +214,9 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                     InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (ctx) => CompleteRequest1Map()))
+                                context,
+                                MaterialPageRoute(
+                                    builder: (ctx) => CompleteRequest1Map()))
                             .then((value) {
                           setState(() {
                             _latLng = value as LatLng;
@@ -259,63 +255,65 @@ class _EditBranchClinicState extends State<EditBranchClinic> {
                       ),
                     ),
                     SizedBox(height: ScreenUtil().setHeight(20)),
-                    loading?Center(child: CircularProgressIndicator()): Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        height: ScreenUtil().setHeight(50),
-                        width: 236,
-                        child: CustomRoundedButton(
-                          backgroundColor: ColorsUtils.primaryGreen,
-                          borderColor: ColorsUtils.primaryGreen,
-                          text: 'Save',
-                          pressed: () async {
-                            if (_formKey.currentState.validate()) {
-                              _formKey.currentState.save();
-                              print(_branchInfo.toString());
-                              setState(() {
-                                loading = true;
-                              });
-                              try {
-                            final status=    await clinicProvider.editBranchClinic(
-                                    widget.branchData.id, _branchInfo);
-                                if (status == 200) {
-                                  setState(() {
-                                    loading = false;
-                                  });
-                                  Navigator.pop(context);
-                                  Navigator.pop(context);
-                                } else {
-                                  setState(() {
-                                    loading = false;
-                                  });
-                                  Functions.showCustomSnackBar(
-                                    context: context,
-                                    text: 'The given data was invalid!',
-                                    hasIcon: true,
-                                    iconType: Icons.error_outline,
-                                    iconColor: Colors.red,
-                                  );
-                                }
-                              } catch (err) {
-                                setState(() {
-                                  loading = false;
-                                });
-                                Functions.showCustomSnackBar(
-                                  context: context,
-                                  text: 'The given data  invalid!',
-                                  hasIcon: true,
-                                  iconType: Icons.error_outline,
-                                  iconColor: Colors.red,
-                                );
-                              }
-                            }else{
-
-                            }
-                          },
-                          textColor: Colors.white,
-                        ),
-                      ),
-                    ),
+                    loading
+                        ? Center(child: CircularProgressIndicator())
+                        : Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: ScreenUtil().setHeight(50),
+                              width: 236,
+                              child: CustomRoundedButton(
+                                backgroundColor: ColorsUtils.primaryGreen,
+                                borderColor: ColorsUtils.primaryGreen,
+                                text: 'Save',
+                                pressed: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    _formKey.currentState.save();
+                                    print(_branchInfo.toString());
+                                    setState(() {
+                                      loading = true;
+                                    });
+                                    try {
+                                      final status =
+                                          await clinicProvider.editBranchClinic(
+                                              widget.branchData.id,
+                                              _branchInfo);
+                                      if (status == 200) {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      } else {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                        Functions.showCustomSnackBar(
+                                          context: context,
+                                          text: 'The given data was invalid!',
+                                          hasIcon: true,
+                                          iconType: Icons.error_outline,
+                                          iconColor: Colors.red,
+                                        );
+                                      }
+                                    } catch (err) {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      Functions.showCustomSnackBar(
+                                        context: context,
+                                        text: 'The given data  invalid!',
+                                        hasIcon: true,
+                                        iconType: Icons.error_outline,
+                                        iconColor: Colors.red,
+                                      );
+                                    }
+                                  } else {}
+                                },
+                                textColor: Colors.white,
+                              ),
+                            ),
+                          ),
                     SizedBox(
                       height: ScreenUtil().setHeight(30),
                     ),

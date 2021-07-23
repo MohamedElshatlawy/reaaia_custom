@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/data/signupModels/complete_reg2_model.dart';
 import 'package:reaaia/model/app_data/details.dart';
-import 'package:reaaia/model/data/signup/complete_reg2_model.dart';
 import 'package:reaaia/screens/auth/signup/compelete_reg3.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/profile/custom_view_image.dart';
@@ -31,7 +31,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
   List<MainModel> _dynamicChips = [];
   List<int> _filters = [];
 
-  String selectedScientificDegree='Consultant';
+  String selectedScientificDegree = 'Consultant';
   String selectedLanguage;
   String selectedLevelLanguage;
   List<Specialities> _specialities;
@@ -46,8 +46,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
   @override
   void initState() {
     super.initState();
-    _controller.text='Dentistry';
-
+    _controller.text = 'Dentistry';
   }
 
   @override
@@ -68,514 +67,516 @@ class _EditEducationPageState extends State<EditEducationPage> {
       body: Builder(
         builder: (context) =>
             Consumer<DataProvider>(builder: (_, provider, __) {
-              final providerData = provider.appDataModel.response.data;
-              _specialities=providerData.specialities.where((element) => element.name==_controller.text).toList();
-              _dynamicChips=_specialities.first.subspecialities;
-              print(jsonEncode(_specialities));
-              print(jsonEncode(_dynamicChips));
-              return Form(
-                key: _formKey,
-                child: Container(
-                  margin:
+          final providerData = provider.appDataModel.response.data;
+          _specialities = providerData.specialities
+              .where((element) => element.name == _controller.text)
+              .toList();
+          _dynamicChips = _specialities.first.subspecialities;
+          print(jsonEncode(_specialities));
+          print(jsonEncode(_dynamicChips));
+          return Form(
+            key: _formKey,
+            child: Container(
+              margin:
                   EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: ScreenUtil().setHeight(48)),
+                    Row(
                       children: [
-                        SizedBox(height: ScreenUtil().setHeight(48)),
-                        Row(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                CustomFunctions.popScreen(context);
-                              },
-                              child: Container(
-                                //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey[300]),
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: Icon(
-                                    Icons.arrow_back,
-                                    color: ColorsUtils.blueColor,
-                                  )),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(20)),
-                        Row(
-                          children: [
-                            Text(
-                              'Edit Education',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: ScreenUtil().setSp(24)),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(17)),
-                        Row(
-                          children: [
-                            Flexible(
-                              child: Text(
-                                'Update your profile to get better engagment.',
-                                style: TextStyle(
-                                    color: ColorsUtils.onBoardingTextGrey,
-                                    fontSize: ScreenUtil().setSp(13)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(20)),
-
-                        /// Scientific Degree
-                        DropdownButtonFormField<String>(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return ' Select Scientific Degree';
-                            }
-
-                            return null;
+                        InkWell(
+                          onTap: () {
+                            CustomFunctions.popScreen(context);
                           },
-                          decoration: InputDecoration(
-                            labelText: 'Scientific Degree*',
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: ScreenUtil().setSp(15)),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 5.0),
-                            border: border,
-                            disabledBorder: borderScientificDegree,
-                            enabledBorder: borderScientificDegree,
-                            errorBorder: borderScientificDegree,
-                            focusedBorder: borderScientificDegree,
-                            focusedErrorBorder: borderScientificDegree,
-                            fillColor: Colors.white,
-                            filled: !isSelectedScientificDegree,
+                          child: Container(
+                              //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: ColorsUtils.blueColor,
+                              )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+                    Row(
+                      children: [
+                        Text(
+                          'Edit Education',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w800,
+                              fontSize: ScreenUtil().setSp(24)),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(17)),
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            'Update your profile to get better engagment.',
+                            style: TextStyle(
+                                color: ColorsUtils.onBoardingTextGrey,
+                                fontSize: ScreenUtil().setSp(13)),
                           ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+
+                    /// Scientific Degree
+                    DropdownButtonFormField<String>(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return ' Select Scientific Degree';
+                        }
+
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Scientific Degree*',
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: ScreenUtil().setSp(15)),
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 5.0),
+                        border: border,
+                        disabledBorder: borderScientificDegree,
+                        enabledBorder: borderScientificDegree,
+                        errorBorder: borderScientificDegree,
+                        focusedBorder: borderScientificDegree,
+                        focusedErrorBorder: borderScientificDegree,
+                        fillColor: Colors.white,
+                        filled: !isSelectedScientificDegree,
+                      ),
+                      style: TextStyle(
+                          color: ColorsUtils.blackColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: ScreenUtil().setSp(16)),
+                      icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                      isExpanded: true,
+                      value: selectedScientificDegree,
+                      iconSize: 24,
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedScientificDegree = newValue;
+                          print(newValue);
+                          isSelectedScientificDegree = true;
+                        });
+                      },
+                      onSaved: (val) {
+                        MainModel scientificDegreeModel = providerData
+                            .scientificDegrees
+                            .firstWhere((element) => element.name == val);
+                        _completeReg2Model.scientificDegree =
+                            scientificDegreeModel.id;
+                      },
+                      items: providerData.scientificDegrees
+                          .map<DropdownMenuItem<String>>((MainModel value) {
+                        return new DropdownMenuItem(
+                          child: new Text(value.name),
+                          value: value.name,
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(24),
+                              topLeft: Radius.circular(24),
+                            )),
+                            barrierColor: ColorsUtils.modalSheetBarrierColor,
+                            backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                            context: context,
+                            //isScrollControlled: true,
+                            builder: (context) {
+                              return Scaffold(
+                                body: Container(
+                                  width: ScreenUtil().screenWidth,
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 40.0, horizontal: 25.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(24.0),
+                                      topLeft: Radius.circular(24.0),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Select Speciality',
+                                        style: TextStyle(
+                                            color:
+                                                ColorsUtils.onBoardingTextGrey,
+                                            fontSize: ScreenUtil().setSp(16)),
+                                      ),
+                                      Text(
+                                        'you can select only one Speciality',
+                                        style: TextStyle(
+                                            color:
+                                                ColorsUtils.onBoardingTextGrey,
+                                            fontSize: ScreenUtil().setSp(13)),
+                                      ),
+                                      SizedBox(
+                                          height: ScreenUtil().setHeight(20)),
+                                      Flexible(
+                                        child: ListView.builder(
+                                            itemCount: providerData
+                                                .specialities.length,
+                                            itemBuilder: (context, index) {
+                                              return ListTile(
+                                                onTap: () {
+                                                  setState(() {
+                                                    _filters.clear();
+                                                    _controller.text =
+                                                        providerData
+                                                            .specialities[index]
+                                                            .name;
+                                                    _dynamicChips = providerData
+                                                        .specialities[index]
+                                                        .subspecialities;
+                                                    isSelectedSpeciality = true;
+                                                  });
+                                                  print(providerData
+                                                      .specialities[index]
+                                                      .name);
+
+                                                  Navigator.pop(context);
+                                                },
+                                                leading: Container(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40),
+                                                    width: ScreenUtil()
+                                                        .setWidth(40),
+                                                    padding:
+                                                        EdgeInsets.all(7.0),
+                                                    decoration: BoxDecoration(
+                                                      color: ColorsUtils
+                                                          .primaryGreen,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: SvgPicture.asset(
+                                                        'assets/icons/ic_allergiesonly.svg')),
+                                                title: Text(
+                                                  providerData
+                                                      .specialities[index].name,
+                                                  style: TextStyle(
+                                                    fontSize:
+                                                        ScreenUtil().setSp(15),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            });
+                      },
+                      child: IgnorePointer(
+                        child: CustomTextField(
+                          controller: _controller,
+                          readOnly: true,
+                          filledColor:
+                              isSelectedSpeciality ? null : Colors.white,
+                          lablel: ' Select Specialty*',
                           style: TextStyle(
                               color: ColorsUtils.blackColor,
                               fontWeight: FontWeight.w600,
                               fontSize: ScreenUtil().setSp(16)),
-                          icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                          isExpanded: true,
-                          value: selectedScientificDegree,
-                          iconSize: 24,
-                          onChanged: (newValue) {
-                            setState(() {
-                              selectedScientificDegree = newValue;
-                              print(newValue);
-                              isSelectedScientificDegree = true;
-                            });
-                          },
-                          onSaved: (val) {
-                            MainModel scientificDegreeModel = providerData
-                                .scientificDegrees
-                                .firstWhere((element) => element.name == val);
-                            _completeReg2Model.scientificDegree =
-                                scientificDegreeModel.id;
-                          },
-                          items: providerData.scientificDegrees
-                              .map<DropdownMenuItem<String>>((MainModel value) {
-                            return new DropdownMenuItem(
-                              child: new Text(value.name),
-                              value: value.name,
-                            );
-                          }).toList(),
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(20)),
-                        InkWell(
-                          onTap: () {
-                            showModalBottomSheet(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(24),
-                                      topLeft: Radius.circular(24),
-                                    )),
-                                barrierColor: ColorsUtils.modalSheetBarrierColor,
-                                backgroundColor: ColorsUtils.modalSheetBarrierColor,
-                                context: context,
-                                //isScrollControlled: true,
-                                builder: (context) {
-                                  return Scaffold(
-                                    body: Container(
-                                      width: ScreenUtil().screenWidth,
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 40.0, horizontal: 25.0),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(24.0),
-                                          topLeft: Radius.circular(24.0),
-                                        ),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Select Speciality',
-                                            style: TextStyle(
-                                                color:
-                                                ColorsUtils.onBoardingTextGrey,
-                                                fontSize: ScreenUtil().setSp(16)),
-                                          ),
-                                          Text(
-                                            'you can select only one Speciality',
-                                            style: TextStyle(
-                                                color:
-                                                ColorsUtils.onBoardingTextGrey,
-                                                fontSize: ScreenUtil().setSp(13)),
-                                          ),
-                                          SizedBox(
-                                              height: ScreenUtil().setHeight(20)),
-                                          Flexible(
-                                            child: ListView.builder(
-                                                itemCount: providerData
-                                                    .specialities.length,
-                                                itemBuilder: (context, index) {
-                                                  return ListTile(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        _filters.clear();
-                                                        _controller.text =
-                                                            providerData
-                                                                .specialities[index]
-                                                                .name;
-                                                        _dynamicChips = providerData
-                                                            .specialities[index]
-                                                            .subspecialities;
-                                                        isSelectedSpeciality = true;
-                                                      });
-                                                      print(providerData
-                                                          .specialities[index].name);
-
-                                                      Navigator.pop(context);
-                                                    },
-                                                    leading: Container(
-                                                        height: ScreenUtil()
-                                                            .setHeight(40),
-                                                        width: ScreenUtil()
-                                                            .setWidth(40),
-                                                        padding:
-                                                        EdgeInsets.all(7.0),
-                                                        decoration: BoxDecoration(
-                                                          color: ColorsUtils
-                                                              .primaryGreen,
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                        ),
-                                                        child: SvgPicture.asset(
-                                                            'assets/icons/ic_allergiesonly.svg')),
-                                                    title: Text(
-                                                      providerData
-                                                          .specialities[index].name,
-                                                      style: TextStyle(
-                                                        fontSize:
-                                                        ScreenUtil().setSp(15),
-                                                        fontWeight: FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                });
-                          },
-                          child: IgnorePointer(
-                            child: CustomTextField(
-                              controller: _controller,
-                              readOnly: true,
-                              filledColor:
-                              isSelectedSpeciality ? null : Colors.white,
-                              lablel: ' Select Specialty*',
-                              style: TextStyle(
-                                  color: ColorsUtils.blackColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: ScreenUtil().setSp(16)),
-                              hasBorder: true,
-                              onSaved: (val) {
-                                Specialities specialtyModel = providerData
-                                    .specialities
-                                    .firstWhere((element) => element.name == val);
-                                _completeReg2Model.specialityId = specialtyModel.id;
-                              },
-                              //onSaved: (val) {},
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'This Field Required';
-                                }
-                                return null;
-                              },
-                              sufficIcon: Icon(Icons.keyboard_arrow_down_rounded),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(15)),
-                        Divider(
-                          color: ColorsUtils.lineColor,
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-
-                        /// SubSpecialty
-                        Text(
-                          'Select SubSpecialty ',
-                          style: TextStyle(
-                              color: ColorsUtils.textGrey,
-                              fontWeight: FontWeight.w700,
-                              fontSize: ScreenUtil().setSp(16)),
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(20)),
-                        _dynamicChips.isEmpty
-                            ? Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Center(
-                              child: Text('Not Specialty Selected yet!')),
-                        )
-                            : Wrap(
-                          spacing: 10.0,
-                          runSpacing: 6.0,
-                          children: List<Widget>.generate(
-                              _dynamicChips.length, (int index) {
-                            bool checkContain =
-                            _filters.contains(_dynamicChips[index].id);
-                            return InputChip(
-                              showCheckmark: false,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(
-                                  color: checkContain
-                                      ? ColorsUtils.blueColor
-                                      : ColorsUtils.onBoardingTextGrey,
-                                ),
-                              ),
-                              label: Text(_dynamicChips[index].name),
-                              labelStyle: TextStyle(
-                                fontSize: ScreenUtil().setSp(14),
-                                fontWeight: FontWeight.w600,
-                                color: checkContain
-                                    ? Colors.white
-                                    : ColorsUtils.textGrey,
-                              ),
-                              deleteIconColor: Colors.white,
-                              deleteIcon: checkContain
-                                  ? null
-                                  : Icon(
-                                Icons.add,
-                                color: ColorsUtils.blueColor,
-                              ),
-                              backgroundColor: ColorsUtils.greyColor,
-                              selectedColor: ColorsUtils.blueColor,
-                              selected: checkContain,
-                              selectedShadowColor: null,
-                              onDeleted: () {},
-                              onSelected: (val) {
-                                setState(() {
-                                  if (val) {
-                                    _filters.add(_dynamicChips[index].id);
-                                    _completeReg2Model
-                                        .existingSubspecialities = _filters;
-                                  } else {
-                                    _filters.removeWhere((int name) {
-                                      return name == _dynamicChips[index].id;
-                                    });
-                                    _completeReg2Model
-                                        .existingSubspecialities = _filters;
-                                  }
-                                  print(_completeReg2Model
-                                      .existingSubspecialities
-                                      .toString());
-                                });
-                              },
-                            );
-                          }),
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-
-                        Container(
-                          height: ScreenUtil().setHeight(35),
-                          width: ScreenUtil().setWidth(200.0),
-                          child: InputChip(
-                            padding: EdgeInsets.zero,
-                            showCheckmark: false,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                              side: BorderSide(
-                                color: ColorsUtils.onBoardingTextGrey,
-                              ),
-                            ),
-                            avatar: false
-                                ? null
-                                : Icon(
-                              Icons.add,
-                              color: ColorsUtils.blueColor,
-                            ),
-                            label: TextFormField(
-                              controller: _addSubSpecialityController,
-                              textInputAction: TextInputAction.done,
-                              onFieldSubmitted: (val) {
-                                setState(() {
-                                  //_dynamicChips.add(val.);
-                                  _completeReg2Model.newSubspecialities.first = val;
-                                  _addSubSpecialityController.clear();
-                                });
-                              },
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(bottom: 12.0),
-                                hintText: 'Add Other Specialty',
-                                enabledBorder: InputBorder.none,
-                                border: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                focusedErrorBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                              onSaved: (val) {
-                                _completeReg2Model.newSubspecialities = [];
-                                _addSubSpecialityController.clear();
-                              },
-                            ),
-                            labelStyle: TextStyle(
-                              fontSize: ScreenUtil().setSp(14),
-                              fontWeight: FontWeight.w600,
-                              color: false ? Colors.white : ColorsUtils.textGrey,
-                            ),
-                            deleteIconColor: Colors.white,
-                            deleteIcon: true
-                                ? null
-                                : Icon(
-                              Icons.add,
-                              color: ColorsUtils.blueColor,
-                            ),
-                            backgroundColor: ColorsUtils.greyColor,
-                            selectedColor: ColorsUtils.blueColor,
-                            //selected: checkContain,
-                            selectedShadowColor: null,
-                            onDeleted: true ? null : () {},
-                            onSelected: (val) {},
-                          ),
-                        ),
-                        SizedBox(
-                          height: ScreenUtil().setHeight(15),
-                        ),
-                        Divider(
-                          color: ColorsUtils.lineColor,
-                        ),
-
-                        /// //////////////////////////
-                        SizedBox(height: ScreenUtil().setHeight(20)),
-                        Text(
-                          'Professional Practice Licence',
-                          style: TextStyle(
-                              color: ColorsUtils.textGrey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: ScreenUtil().setSp(16)),
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(6)),
-                        InkWell(
-                          onTap: (){
-                            showModalBottomSheet(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(24),
-                                    topLeft: Radius.circular(24),
-                                  )),
-                              barrierColor: ColorsUtils.modalSheetBarrierColor,
-                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
-                              context: context,
-                              isScrollControlled: true,
-                              builder: (context) {
-                                return CustomViewImage(
-                                  image:'assets/default-avatar.png',
-                                  btnRemoveName: 'Remove Licence',
-                                  btnChangeName: 'Change Licence',
-                                  onChange: (){},
-                                  onRemove: (){},
-                                );
-                              },
-                            );
-                          },
-                          child: Text(
-                            'View Licence',
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                                color: ColorsUtils.blueColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: ScreenUtil().setSp(15)),
-                          ),
-                        ),
-
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        Divider(
-                          color: ColorsUtils.lineColor,
-                        ),
-                        SizedBox(height: ScreenUtil().setHeight(10)),
-                        CustomTextField(
-                          filledColor: Colors.white,
-                          lablel: ' Graduation University',
                           hasBorder: true,
                           onSaved: (val) {
-                            _completeReg2Model.university = val;
+                            Specialities specialtyModel = providerData
+                                .specialities
+                                .firstWhere((element) => element.name == val);
+                            _completeReg2Model.specialityId = specialtyModel.id;
                           },
+                          //onSaved: (val) {},
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'This Field Required';
                             }
                             return null;
                           },
+                          sufficIcon: Icon(Icons.keyboard_arrow_down_rounded),
                         ),
-                        SizedBox(height: ScreenUtil().setHeight(20)),
+                      ),
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(15)),
+                    Divider(
+                      color: ColorsUtils.lineColor,
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(10)),
 
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            height: ScreenUtil().setHeight(50),
-                            width: 236,
-                            child: CustomRoundedButton(
-                              backgroundColor: ColorsUtils.primaryGreen,
-                              borderColor: ColorsUtils.primaryGreen,
-                              text: 'Save',
-                              pressed: () {
-                                if (_formKey.currentState.validate()) {
-                                  _formKey.currentState.save();
-                                  FocusManager.instance.primaryFocus.unfocus();
-                                  if (licenceImage != null  ) {
+                    /// SubSpecialty
+                    Text(
+                      'Select SubSpecialty ',
+                      style: TextStyle(
+                          color: ColorsUtils.textGrey,
+                          fontWeight: FontWeight.w700,
+                          fontSize: ScreenUtil().setSp(16)),
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+                    _dynamicChips.isEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Center(
+                                child: Text('Not Specialty Selected yet!')),
+                          )
+                        : Wrap(
+                            spacing: 10.0,
+                            runSpacing: 6.0,
+                            children: List<Widget>.generate(
+                                _dynamicChips.length, (int index) {
+                              bool checkContain =
+                                  _filters.contains(_dynamicChips[index].id);
+                              return InputChip(
+                                showCheckmark: false,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  side: BorderSide(
+                                    color: checkContain
+                                        ? ColorsUtils.blueColor
+                                        : ColorsUtils.onBoardingTextGrey,
+                                  ),
+                                ),
+                                label: Text(_dynamicChips[index].name),
+                                labelStyle: TextStyle(
+                                  fontSize: ScreenUtil().setSp(14),
+                                  fontWeight: FontWeight.w600,
+                                  color: checkContain
+                                      ? Colors.white
+                                      : ColorsUtils.textGrey,
+                                ),
+                                deleteIconColor: Colors.white,
+                                deleteIcon: checkContain
+                                    ? null
+                                    : Icon(
+                                        Icons.add,
+                                        color: ColorsUtils.blueColor,
+                                      ),
+                                backgroundColor: ColorsUtils.greyColor,
+                                selectedColor: ColorsUtils.blueColor,
+                                selected: checkContain,
+                                selectedShadowColor: null,
+                                onDeleted: () {},
+                                onSelected: (val) {
+                                  setState(() {
+                                    if (val) {
+                                      _filters.add(_dynamicChips[index].id);
+                                      _completeReg2Model
+                                          .existingSubspecialities = _filters;
+                                    } else {
+                                      _filters.removeWhere((int name) {
+                                        return name == _dynamicChips[index].id;
+                                      });
+                                      _completeReg2Model
+                                          .existingSubspecialities = _filters;
+                                    }
+                                    print(_completeReg2Model
+                                        .existingSubspecialities
+                                        .toString());
+                                  });
+                                },
+                              );
+                            }),
+                          ),
+                    SizedBox(height: ScreenUtil().setHeight(10)),
 
-                                    Provider.of<SignUpProvider>(context,
-                                        listen: false)
-                                        .setCompleteReg2Model(_completeReg2Model);
-                                    CustomFunctions.pushScreen(
-                                        context: context,
-                                        widget: CompleteRegister3());
-                                  } else {
-                                    Functions.showCustomSnackBar(
-                                      context: context,
-                                      text: 'all Image Fields Required!',
-                                      hasIcon: false,
-                                    );
-                                  }
-                                }
-                              },
-                              textColor: Colors.white,
-                            ),
+                    Container(
+                      height: ScreenUtil().setHeight(35),
+                      width: ScreenUtil().setWidth(200.0),
+                      child: InputChip(
+                        padding: EdgeInsets.zero,
+                        showCheckmark: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          side: BorderSide(
+                            color: ColorsUtils.onBoardingTextGrey,
                           ),
                         ),
-                        SizedBox(
-                          height: ScreenUtil().setHeight(30),
+                        avatar: false
+                            ? null
+                            : Icon(
+                                Icons.add,
+                                color: ColorsUtils.blueColor,
+                              ),
+                        label: TextFormField(
+                          controller: _addSubSpecialityController,
+                          textInputAction: TextInputAction.done,
+                          onFieldSubmitted: (val) {
+                            setState(() {
+                              //_dynamicChips.add(val.);
+                              _completeReg2Model.newSubspecialities.first = val;
+                              _addSubSpecialityController.clear();
+                            });
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 12.0),
+                            hintText: 'Add Other Specialty',
+                            enabledBorder: InputBorder.none,
+                            border: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                          onSaved: (val) {
+                            _completeReg2Model.newSubspecialities = [];
+                            _addSubSpecialityController.clear();
+                          },
                         ),
-                      ],
+                        labelStyle: TextStyle(
+                          fontSize: ScreenUtil().setSp(14),
+                          fontWeight: FontWeight.w600,
+                          color: false ? Colors.white : ColorsUtils.textGrey,
+                        ),
+                        deleteIconColor: Colors.white,
+                        deleteIcon: true
+                            ? null
+                            : Icon(
+                                Icons.add,
+                                color: ColorsUtils.blueColor,
+                              ),
+                        backgroundColor: ColorsUtils.greyColor,
+                        selectedColor: ColorsUtils.blueColor,
+                        //selected: checkContain,
+                        selectedShadowColor: null,
+                        onDeleted: true ? null : () {},
+                        onSelected: (val) {},
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      height: ScreenUtil().setHeight(15),
+                    ),
+                    Divider(
+                      color: ColorsUtils.lineColor,
+                    ),
+
+                    /// //////////////////////////
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+                    Text(
+                      'Professional Practice Licence',
+                      style: TextStyle(
+                          color: ColorsUtils.textGrey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: ScreenUtil().setSp(16)),
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(6)),
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(24),
+                            topLeft: Radius.circular(24),
+                          )),
+                          barrierColor: ColorsUtils.modalSheetBarrierColor,
+                          backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (context) {
+                            return CustomViewImage(
+                              image: 'assets/default-avatar.png',
+                              btnRemoveName: 'Remove Licence',
+                              btnChangeName: 'Change Licence',
+                              onChange: () {},
+                              onRemove: () {},
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        'View Licence',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: ColorsUtils.blueColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: ScreenUtil().setSp(15)),
+                      ),
+                    ),
+
+                    SizedBox(height: ScreenUtil().setHeight(10)),
+                    Divider(
+                      color: ColorsUtils.lineColor,
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(10)),
+                    CustomTextField(
+                      filledColor: Colors.white,
+                      lablel: ' Graduation University',
+                      hasBorder: true,
+                      onSaved: (val) {
+                        _completeReg2Model.university = val;
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'This Field Required';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: ScreenUtil().setHeight(50),
+                        width: 236,
+                        child: CustomRoundedButton(
+                          backgroundColor: ColorsUtils.primaryGreen,
+                          borderColor: ColorsUtils.primaryGreen,
+                          text: 'Save',
+                          pressed: () {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              FocusManager.instance.primaryFocus.unfocus();
+                              if (licenceImage != null) {
+                                Provider.of<SignUpProvider>(context,
+                                        listen: false)
+                                    .setCompleteReg2Model(_completeReg2Model);
+                                CustomFunctions.pushScreen(
+                                    context: context,
+                                    widget: CompleteRegister3());
+                              } else {
+                                Functions.showCustomSnackBar(
+                                  context: context,
+                                  text: 'all Image Fields Required!',
+                                  hasIcon: false,
+                                );
+                              }
+                            }
+                          },
+                          textColor: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: ScreenUtil().setHeight(30),
+                    ),
+                  ],
                 ),
-              );
-            }),
+              ),
+            ),
+          );
+        }),
       ),
     );
   }

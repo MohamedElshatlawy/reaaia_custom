@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:reaaia/screens/widgets/custom_badge.dart';
-import 'package:reaaia/screens/widgets/custom_card.dart';
-import 'package:reaaia/screens/widgets/custom_textfield.dart';
-import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:reaaia/screens/widgets/custom_badge_widget.dart';
+import 'package:reaaia/screens/widgets/custom_card_widget.dart';
+import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
-
+import 'package:reaaia/utils/reaaia_icons.dart';
 
 class ReaaiaPage extends StatelessWidget {
   @override
@@ -69,7 +68,7 @@ class ReaaiaPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  Badge(
+                  CustomBadgeWidget(
                     child: Container(
                       height: 50.0,
                       width: 50.0,
@@ -84,7 +83,7 @@ class ReaaiaPage extends StatelessWidget {
                           width: 40.0,
                           padding: EdgeInsets.all(5.0),
                           child: Icon(
-                            Reaaia_Icons.notification_icon,
+                            ReaaiaIcons.notification_icon,
                             color: Colors.red,
                           ),
                         ),
@@ -99,7 +98,7 @@ class ReaaiaPage extends StatelessWidget {
               CustomTextField(
                 filledColor: Colors.white,
                 hintText: 'Search patient, health issue, ...',
-                icon: Icon(Reaaia_Icons.search_icon),
+                icon: Icon(ReaaiaIcons.search_icon),
               ),
               SizedBox(height: ScreenUtil().setHeight(30)),
               Row(
@@ -150,16 +149,32 @@ class ReaaiaPage extends StatelessWidget {
               GridView(
                 shrinkWrap: true,
                 physics: ScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1.05,
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 7,
-                      mainAxisSpacing: 7),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1.05,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 7,
+                    mainAxisSpacing: 7),
                 children: [
-                  CustomCardView(namePic: 'assets/images/img_schedule.png',nameText: 'Schedule',onPressed: (){},),
-                  CustomCardView(namePic: 'assets/images/img_consult_history.png',nameText: 'Consult History',onPressed: (){},),
-                  CustomCardView(namePic: 'assets/images/img_patient_management.png',nameText: 'Patient Management',onPressed: (){},),
-                  CustomCardView(namePic: 'assets/images/img_free_question.png',nameText: 'Free Consults',onPressed: (){},),
+                  CustomCardView(
+                    namePic: 'assets/images/img_schedule.png',
+                    nameText: 'Schedule',
+                    onPressed: () {},
+                  ),
+                  CustomCardView(
+                    namePic: 'assets/images/img_consult_history.png',
+                    nameText: 'Consult History',
+                    onPressed: () {},
+                  ),
+                  CustomCardView(
+                    namePic: 'assets/images/img_patient_management.png',
+                    nameText: 'Patient Management',
+                    onPressed: () {},
+                  ),
+                  CustomCardView(
+                    namePic: 'assets/images/img_free_question.png',
+                    nameText: 'Free Consults',
+                    onPressed: () {},
+                  ),
                 ],
               ),
             ],

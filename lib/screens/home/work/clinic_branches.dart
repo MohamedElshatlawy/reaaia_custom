@@ -19,7 +19,7 @@ class ClinicBranches extends StatefulWidget {
 
 class _ClinicBranchesState extends State<ClinicBranches> {
   bool loading;
-  List<bool> toggleStatus=[];
+  List<bool> toggleStatus = [];
 
   @override
   void initState() {
@@ -130,19 +130,18 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                 SizedBox(height: ScreenUtil().setHeight(14)),
                 loading
                     ? Container(
-                  margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.3),
-                      child: Center(
+                        margin: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height * 0.3),
+                        child: Center(
                           child: CircularProgressIndicator(),
                         ),
-                    )
+                      )
                     : Consumer<ClinicsProvider>(
                         builder: (_, clinicsProvider, __) {
-                          clinicsProvider.branches.map((e) {
-                            toggleStatus.add(e.status);
-                          }).toList();
-                          return clinicsProvider
-                                    .branches.length ==
-                                0
+                        clinicsProvider.branches.map((e) {
+                          toggleStatus.add(e.status);
+                        }).toList();
+                        return clinicsProvider.branches.length == 0
                             ? Center(
                                 child: Text('No Branches Found '),
                               )
@@ -151,10 +150,10 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                 shrinkWrap: true,
                                 itemCount: clinicsProvider.branches.length,
                                 itemBuilder: (context, index) {
-
                                   //toggleStatus[index]=clinicsProvider.branches[index].status;
                                   return Dismissible(
-                                    key: Key(clinicsProvider.branches[index].id.toString()),
+                                    key: Key(clinicsProvider.branches[index].id
+                                        .toString()),
                                     direction: DismissDirection.endToStart,
                                     confirmDismiss: (dir) {
                                       return showDialog(
@@ -162,20 +161,35 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                           builder: (ctx) {
                                             return AlertDialog(
                                               title: Text('Are you Sure ?'),
-                                              content: Text('Do you want to remove  This Branch from your Branches ?'),
+                                              content: Text(
+                                                  'Do you want to remove  This Branch from your Branches ?'),
                                               actions: [
-                                                FlatButton(onPressed: () { Navigator.pop(context,false);}, child: Text('No')),
-                                                FlatButton(onPressed: () {Navigator.pop(context,true);}, child: Text('Yes')),
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context, false);
+                                                    },
+                                                    child: Text('No')),
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context, true);
+                                                    },
+                                                    child: Text('Yes')),
                                               ],
                                             );
                                           });
                                     },
                                     onDismissed: (dir) {
-                                      Provider.of<ClinicsProvider>(context, listen: false).deleteBranches(clinicsProvider.branches[index].id,index);
+                                      Provider.of<ClinicsProvider>(context,
+                                              listen: false)
+                                          .deleteBranches(
+                                              clinicsProvider
+                                                  .branches[index].id,
+                                              index);
                                     },
-
                                     background: Container(
-                                      margin: EdgeInsets.only( bottom: 20.0),
+                                      margin: EdgeInsets.only(bottom: 20.0),
                                       padding: EdgeInsets.only(right: 30.0),
                                       color: Theme.of(context).errorColor,
                                       alignment: Alignment.centerRight,
@@ -189,20 +203,31 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                       margin: EdgeInsets.only(bottom: 15.0),
                                       elevation: 2,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15.0),
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
                                       ),
                                       child: InkWell(
                                         onTap: () {
                                           // CustomFunctions.pushScreen(
                                           //     context: context,
                                           //     widget: ClinicAppointments(clinicsProvider.branches[index]));
-                                          Navigator.push(context, MaterialPageRoute(builder: (ctx) => ClinicAppointments(clinicsProvider.branches[index]))).then((value) {
+                                          Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (ctx) =>
+                                                          ClinicAppointments(
+                                                              clinicsProvider
+                                                                      .branches[
+                                                                  index])))
+                                              .then((value) {
                                             setState(() {
-                                              Provider.of<ClinicsProvider>(context, listen: false)
-                                                  .getBranchesData(widget.clinicId);
+                                              Provider.of<ClinicsProvider>(
+                                                      context,
+                                                      listen: false)
+                                                  .getBranchesData(
+                                                      widget.clinicId);
                                             });
                                           });
-
                                         },
                                         child: Container(
                                           padding: EdgeInsets.symmetric(
@@ -217,10 +242,11 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                         color: ColorsUtils
                                                             .lightBlueColor,
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                8)),
+                                                            BorderRadius
+                                                                .circular(8)),
                                                     child: Icon(
-                                                      Icons.location_on_outlined,
+                                                      Icons
+                                                          .location_on_outlined,
                                                       color:
                                                           ColorsUtils.blueColor,
                                                     ),
@@ -232,7 +258,8 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                   ),
                                                   Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         '${clinicsProvider.branches[index].city}, ${clinicsProvider.branches[index].area}',
@@ -241,8 +268,9 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                                 .blueColor,
                                                             fontWeight:
                                                                 FontWeight.bold,
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(16)),
+                                                            fontSize:
+                                                                ScreenUtil()
+                                                                    .setSp(16)),
                                                       ),
                                                       SizedBox(
                                                         height: 5.0,
@@ -256,8 +284,9 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                                 .onBoardingTextGrey,
                                                             fontWeight:
                                                                 FontWeight.w600,
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(13)),
+                                                            fontSize:
+                                                                ScreenUtil()
+                                                                    .setSp(13)),
                                                       ),
                                                     ],
                                                   ),
@@ -278,7 +307,8 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                 children: [
                                                   Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         'Branch Status',
@@ -286,8 +316,9 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                             color: Colors.black,
                                                             fontWeight:
                                                                 FontWeight.bold,
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(13)),
+                                                            fontSize:
+                                                                ScreenUtil()
+                                                                    .setSp(13)),
                                                       ),
                                                       Text(
                                                         'Available to receive appointments',
@@ -296,22 +327,29 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                                 .onBoardingTextGrey,
                                                             fontWeight:
                                                                 FontWeight.w600,
-                                                            fontSize: ScreenUtil()
-                                                                .setSp(13)),
+                                                            fontSize:
+                                                                ScreenUtil()
+                                                                    .setSp(13)),
                                                       ),
                                                     ],
                                                   ),
                                                   CupertinoSwitch(
                                                     value: toggleStatus[index],
                                                     onChanged: (val) {
-                                                     setState(() {
-                                                       toggleStatus[index]=!toggleStatus[index];
-                                                       clinicsProvider.toggleStatusBranchClinic(clinicsProvider.branches[index].id);
-                                                     });
-
+                                                      setState(() {
+                                                        toggleStatus[index] =
+                                                            !toggleStatus[
+                                                                index];
+                                                        clinicsProvider
+                                                            .toggleStatusBranchClinic(
+                                                                clinicsProvider
+                                                                    .branches[
+                                                                        index]
+                                                                    .id);
+                                                      });
                                                     },
-                                                    activeColor:
-                                                        ColorsUtils.primaryGreen,
+                                                    activeColor: ColorsUtils
+                                                        .primaryGreen,
                                                   )
                                                 ],
                                               ),
@@ -322,8 +360,8 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                     ),
                                   );
                                 },
-                              );}
-                      ),
+                              );
+                      }),
               ],
             ),
           ),

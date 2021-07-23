@@ -1,15 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/data/signupModels/address_model.dart';
 import 'package:reaaia/model/data/signup/address_model.dart';
 import 'package:reaaia/model/data/signup/complete_reg1_model.dart';
 import 'package:reaaia/screens/auth/signup/compelete_reg2.dart';
-import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
-import 'package:reaaia/screens/widgets/custom_textfield.dart';
+import 'package:reaaia/screens/home/profile/edit_profile/edit_profile.dart';
+import 'package:reaaia/screens/widgets/custom_rounded_button_widget.dart';
+import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
@@ -39,7 +40,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
 
   @override
   Widget build(BuildContext context) {
-    final signUpProvider= Provider.of<SignUpProvider>(context,listen: false);
+    final signUpProvider = Provider.of<SignUpProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
@@ -172,11 +173,18 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                     setState(() {
                                       image = pickedImage;
                                     });
-                                    try{
-                                      await  Provider.of<SignUpProvider>(context,listen: false).uploadPicture(collection: 'Doctor avatar image',file: image);
-                                      if( signUpProvider.tokenPicture!=null){
-                                        _completeReg1Model.avatarImage=[signUpProvider.tokenPicture];
-                                        print('we found token ${signUpProvider.tokenPicture}');
+                                    try {
+                                      await Provider.of<SignUpProvider>(context,
+                                              listen: false)
+                                          .uploadPicture(
+                                              collection: 'Doctor avatar image',
+                                              file: image);
+                                      if (signUpProvider.tokenPicture != null) {
+                                        _completeReg1Model.avatarImage = [
+                                          signUpProvider.tokenPicture
+                                        ];
+                                        print(
+                                            'we found token ${signUpProvider.tokenPicture}');
                                         Functions.showCustomSnackBar(
                                           context: context,
                                           text: 'Picture Upload Successfully',
@@ -184,7 +192,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                           iconType: Icons.done,
                                           iconColor: Colors.green,
                                         );
-                                      }else{
+                                      } else {
                                         Functions.showCustomSnackBar(
                                           context: context,
                                           text: 'Picture Upload Failed!',
@@ -193,7 +201,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                           iconColor: Colors.red,
                                         );
                                       }
-                                    }catch(err){
+                                    } catch (err) {
                                       Functions.showCustomSnackBar(
                                         context: context,
                                         text: 'Picture Upload Failed!',
@@ -202,7 +210,6 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                         iconColor: Colors.red,
                                       );
                                     }
-
                                   } else {
                                     Functions.showCustomSnackBar(
                                       context: context,
@@ -255,8 +262,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'This Field Required';
-                      }
-                      else if(!isEmail(value)){
+                      } else if (!isEmail(value)) {
                         return 'enter Valid Email';
                       }
                       return null;
@@ -273,8 +279,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'This Field Required';
-                      }
-                      else if(value.length!=14){
+                      } else if (value.length != 14) {
                         return 'this Field Should no less than 14 digits';
                       }
                       return null;
@@ -293,8 +298,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'This Field Required';
-                      }
-                      else if(value.length<8){
+                      } else if (value.length < 8) {
                         return 'this Field Should no less than 8 digits';
                       }
                       return null;
@@ -454,22 +458,22 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
                           FocusManager.instance.primaryFocus.unfocus();
-                          if(image!=null && _completeReg1Model.gender!=null){
-                            _completeReg1Model.doctorUserId=widget.userId;
-                            Provider.of<SignUpProvider>(context,listen: false).setCompleteReg1Model(_completeReg1Model);
+                          if (image != null &&
+                              _completeReg1Model.gender != null) {
+                            _completeReg1Model.doctorUserId = widget.userId;
+                            
+                            Provider.of<SignUpProvider>(context, listen: false)
+                            .setCompleteReg1Model(_completeReg1Model);
                             CustomFunctions.pushScreen(
                                 context: context, widget: CompleteRegister2());
-                          }else{
-
+                          } else {
                             Functions.showCustomSnackBar(
                               context: context,
                               text: 'Some Fields Required- Image Or Gender!',
                               hasIcon: false,
                             );
                           }
-
                         }
-
                       },
                       textColor: Colors.white,
                     ),
@@ -481,56 +485,6 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ChooseGender extends StatelessWidget {
-  final String iconName;
-  final String genderName;
-  final Color iconColor;
-  final Color textColor;
-  final Color backgroundColor;
-  final Function onTap;
-
-  ChooseGender(
-      {this.iconName,
-      this.genderName,
-      this.iconColor,
-      this.textColor,
-      this.onTap,
-      this.backgroundColor});
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        child: Row(
-          children: [
-            Container(
-              width: ScreenUtil().setWidth(45),
-              height: ScreenUtil().setHeight(45),
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: backgroundColor,
-                  border: Border.all(color: Colors.grey[300]),
-                  borderRadius: BorderRadius.circular(15)),
-              child: SvgPicture.asset(
-                iconName,
-                color: iconColor,
-              ),
-            ),
-            SizedBox(width: ScreenUtil().setWidth(10)),
-            Text(
-              genderName,
-              style: TextStyle(
-                  color: textColor,
-                  fontSize: ScreenUtil().setSp(16),
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
         ),
       ),
     );

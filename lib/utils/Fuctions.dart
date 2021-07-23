@@ -1,6 +1,4 @@
 import 'dart:io';
-
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -18,11 +16,14 @@ class Functions {
     Scaffold.of(context).showSnackBar(SnackBar(
       content: Row(
         children: [
-          hasIcon ? Icon(
+          hasIcon
+              ? Icon(
                   iconType,
                   color: iconColor,
                 )
-              : Container(height: 22.0,),
+              : Container(
+                  height: 22.0,
+                ),
           SizedBox(
             width: 10,
           ),
@@ -37,13 +38,14 @@ class Functions {
     ));
   }
 
-   static Future<File> pickImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+  static Future<File> pickImage() async {
+        final ImagePicker _picker = ImagePicker();
+
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       final String fileName = pickedFile.path.split('/').last;
 
-      final imageFile = await MultipartFile.fromPath('file',pickedFile.path,
+      final imageFile = await MultipartFile.fromPath('file', pickedFile.path,
           filename: fileName,
           contentType: MediaType('image', fileName.split('.').last));
 
@@ -55,24 +57,19 @@ class Functions {
     } else {
       return null;
     }
-
   }
 
-static Future<List<File>> pickMultipleImage() async {
-
-  try {
-    final result = await FilePicker.platform.pickFiles(
-      allowMultiple: true,
-      type: FileType.image,
-
-    );
-    return result != null ?  (result.paths.map((path) => File(path)).toList()) : null;
-
-  }catch(err){
-
-    return null;
+  static Future<List<File>> pickMultipleImage() async {
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        allowMultiple: true,
+        type: FileType.image,
+      );
+      return result != null
+          ? (result.paths.map((path) => File(path)).toList())
+          : null;
+    } catch (err) {
+      return null;
+    }
   }
-}
-
-
 }

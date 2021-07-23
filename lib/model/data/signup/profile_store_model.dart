@@ -1,10 +1,9 @@
-
-import 'package:reaaia/model/data/signup/address_model.dart';
-import 'package:reaaia/model/data/signup/awards_model.dart';
-import 'package:reaaia/model/data/signup/certifications_model.dart';
-import 'package:reaaia/model/data/signup/languages_model.dart';
-import 'package:reaaia/model/data/signup/owned_clinic_model.dart';
-import 'package:reaaia/model/data/signup/serving_health_care_model.dart';
+import 'package:reaaia/data/signupModels/address_model.dart';
+import 'package:reaaia/data/signupModels/awards_model.dart';
+import 'package:reaaia/data/signupModels/certifications_model.dart';
+import 'package:reaaia/data/signupModels/languages_model.dart';
+import 'package:reaaia/data/signupModels/owned_clinic_model.dart';
+import 'package:reaaia/data/signupModels/serving_health_care_model.dart';
 
 class ProfileStore {
   List<String> avatarImage;
@@ -31,26 +30,26 @@ class ProfileStore {
 
   ProfileStore(
       {this.avatarImage,
-        this.doctorUserId,
-        this.name,
-        this.email,
-        this.password,
-        this.passwordConfirmation,
-        this.nationalId,
-        this.gender,
-        this.dateOfBirth,
-        this.address,
-        this.scientificDegree,
-        this.specialityId,
-        this.existingSubspecialities,
-        this.newSubspecialities,
-        this.practiceLicenceImage,
-        this.university,
-        this.languages,
-        this.certifications,
-        this.awards,
-        this.servingInHealthcare,
-        this.ownedClinic});
+      this.doctorUserId,
+      this.name,
+      this.email,
+      this.password,
+      this.passwordConfirmation,
+      this.nationalId,
+      this.gender,
+      this.dateOfBirth,
+      this.address,
+      this.scientificDegree,
+      this.specialityId,
+      this.existingSubspecialities,
+      this.newSubspecialities,
+      this.practiceLicenceImage,
+      this.university,
+      this.languages,
+      this.certifications,
+      this.awards,
+      this.servingInHealthcare,
+      this.ownedClinic});
 
   ProfileStore.fromJson(Map<String, dynamic> json) {
     avatarImage = json['avatar_image'];
@@ -63,7 +62,7 @@ class ProfileStore {
     gender = json['gender'];
     dateOfBirth = json['date_of_birth'];
     address =
-    json['address'] != null ? new Address.fromJson(json['address']) : null;
+        json['address'] != null ? new Address.fromJson(json['address']) : null;
     scientificDegree = json['scientific_degree_id'];
     specialityId = json['speciality_id'];
     existingSubspecialities = json['existing_subspecialities'].cast<int>();

@@ -31,13 +31,12 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
 
   String selectedJobNature;
   List<int> selectedBranch = [];
-  List<Branches> _branches=[];
-
+  List<Branches> _branches = [];
 
   @override
   void initState() {
     super.initState();
-    _branches=widget.teamDataModel.branches;
+    _branches = widget.teamDataModel.branches;
     _branches.map((e) => selectedBranch.add(e.id)).toList();
     print(selectedBranch.toString());
   }
@@ -52,8 +51,8 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
         builder: (_, provider, __) => Form(
           key: _formKey,
           child: Padding(
-            padding:
-            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Container(
               width: ScreenUtil().screenWidth,
               padding: EdgeInsets.symmetric(vertical: 35.0, horizontal: 25.0),
@@ -79,7 +78,7 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                     lablel: 'Employee Name',
                     hasBorder: true,
                     onSaved: (val) {
-                      _teamInfo['name']=val;
+                      _teamInfo['name'] = val;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -95,12 +94,12 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                     lablel: 'Phone Number*',
                     hasBorder: true,
                     onSaved: (val) {
-                      _teamInfo['mobile_number']=val;
+                      _teamInfo['mobile_number'] = val;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'This Field Required';
-                      }else if (value.length != 11) {
+                      } else if (value.length != 11) {
                         return 'this Field Should no less than 11 digits';
                       }
                       return null;
@@ -121,7 +120,7 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                           fontWeight: FontWeight.w600,
                           fontSize: ScreenUtil().setSp(15)),
                       contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                       border: border,
                       disabledBorder: border,
                       enabledBorder: border,
@@ -146,10 +145,10 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                     },
                     onSaved: (val) {
                       selectedJobNature = val;
-                      _teamInfo['job_nature']=val;
+                      _teamInfo['job_nature'] = val;
                     },
-                    items:
-                    provider.jobNatures.map<DropdownMenuItem<String>>((JobNaturesData value) {
+                    items: provider.jobNatures
+                        .map<DropdownMenuItem<String>>((JobNaturesData value) {
                       return new DropdownMenuItem(
                         child: new Text(value.jobNatureName),
                         value: value.jobNature,
@@ -177,8 +176,8 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                             labelStyle: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: ScreenUtil().setSp(15)),
-                            contentPadding:
-                            EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 5.0),
                             border: border,
                             disabledBorder: border,
                             enabledBorder: border,
@@ -205,14 +204,14 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                           onSaved: (val) {
                             setState(() {
                               selectedBranch[index] = int.tryParse(val);
-                              _teamInfo['branches']=selectedBranch;
+                              _teamInfo['branches'] = selectedBranch;
                             });
-
                           },
                           items: provider.branches
-                              .map<DropdownMenuItem<String>>((BranchData value) {
+                              .map<DropdownMenuItem<String>>(
+                                  (BranchData value) {
                             return new DropdownMenuItem(
-                              child: new Text(value.city+', '+value.area),
+                              child: new Text(value.city + ', ' + value.area),
                               value: value.id.toString(),
                             );
                           }).toList(),
@@ -220,7 +219,6 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                       );
                     },
                   ),
-
                   SizedBox(height: ScreenUtil().setHeight(15)),
                   Container(
                     height: ScreenUtil().setHeight(50),
@@ -243,61 +241,64 @@ class _EditEmployeeTeamState extends State<EditEmployeeTeam> {
                     ),
                   ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
-                  loading?Center(child: CircularProgressIndicator()):     Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      height: ScreenUtil().setHeight(50),
-                      width: 236,
-                      child: CustomRoundedButton(
-                        backgroundColor: ColorsUtils.primaryGreen,
-                        borderColor: ColorsUtils.primaryGreen,
-                        text: 'Save',
-                        pressed: ()async {
-                          if (_formKey.currentState.validate()) {
-                            _formKey.currentState.save();
-                            print(_teamInfo.toString());
-                            setState(() {
-                              loading = true;
-                            });
-                            try {
-                              final response=  await provider.editTeamMember(
-                                  widget.teamDataModel.id, _teamInfo);
-                              if (response == 200) {
-                                setState(() {
-                                  loading = false;
-                                });
-                                Navigator.pop(context);
-                              } else {
-                                setState(() {
-                                  loading = false;
-                                });
-                                // Functions.showCustomSnackBar(
-                                //   context: context,
-                                //   text: 'The given data was invalid!',
-                                //   hasIcon: true,
-                                //   iconType: Icons.error_outline,
-                                //   iconColor: Colors.red,
-                                // );
-                              }
-                            } catch (err) {
-                              log(err.toString());
-                              setState(() {
-                                loading = false;
-                              });
-                              // Functions.showCustomSnackBar(
-                              //   context: context,
-                              //   text: 'The given data  invalid!',
-                              //   hasIcon: true,
-                              //   iconType: Icons.error_outline,
-                              //   iconColor: Colors.red,
-                              // );
-                            }
-                          }
-                        },
-                        textColor: Colors.white,
-                      ),
-                    ),
-                  ),
+                  loading
+                      ? Center(child: CircularProgressIndicator())
+                      : Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: ScreenUtil().setHeight(50),
+                            width: 236,
+                            child: CustomRoundedButton(
+                              backgroundColor: ColorsUtils.primaryGreen,
+                              borderColor: ColorsUtils.primaryGreen,
+                              text: 'Save',
+                              pressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  _formKey.currentState.save();
+                                  print(_teamInfo.toString());
+                                  setState(() {
+                                    loading = true;
+                                  });
+                                  try {
+                                    final response =
+                                        await provider.editTeamMember(
+                                            widget.teamDataModel.id, _teamInfo);
+                                    if (response == 200) {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      Navigator.pop(context);
+                                    } else {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      // Functions.showCustomSnackBar(
+                                      //   context: context,
+                                      //   text: 'The given data was invalid!',
+                                      //   hasIcon: true,
+                                      //   iconType: Icons.error_outline,
+                                      //   iconColor: Colors.red,
+                                      // );
+                                    }
+                                  } catch (err) {
+                                    log(err.toString());
+                                    setState(() {
+                                      loading = false;
+                                    });
+                                    // Functions.showCustomSnackBar(
+                                    //   context: context,
+                                    //   text: 'The given data  invalid!',
+                                    //   hasIcon: true,
+                                    //   iconType: Icons.error_outline,
+                                    //   iconColor: Colors.red,
+                                    // );
+                                  }
+                                }
+                              },
+                              textColor: Colors.white,
+                            ),
+                          ),
+                        ),
                 ],
               ),
             ),

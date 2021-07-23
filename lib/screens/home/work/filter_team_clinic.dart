@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/reaaia_icons.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
-
 
 class FilterTeamClinicPage extends StatelessWidget {
   @override
@@ -28,24 +28,52 @@ class FilterTeamClinicPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                onTap: (){
-                  Provider.of<ClinicsProvider>(context, listen: false).isSortedByBranch=true;
+                onTap: () {
+                  Provider.of<ClinicsProvider>(context, listen: false)
+                      .isSortedByBranch = true;
                   CustomFunctions.popScreen(context);
-                  },
-                leading:  Icon(Reaaia_Icons.filter_team_icon,size: 22,color: ColorsUtils.primaryGreen,),
-                title: Text('Sort by branches',style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,color: ColorsUtils.textGrey),),
+                },
+                leading: Icon(
+                  Reaaia_Icons.filter_team_icon,
+                  size: 22,
+                  color: ColorsUtils.primaryGreen,
+                ),
+            
+              
+                title: Text(
+                  'Sort by branches',
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                      color: ColorsUtils.textGrey),
+                ),
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 30.0),
-                child: Divider(color: ColorsUtils.lineColor,),
+                child: Divider(
+                  color: ColorsUtils.lineColor,
+                ),
               ),
               ListTile(
-                onTap: (){
-                  Provider.of<ClinicsProvider>(context, listen: false).isSortedByBranch=false;
+                onTap: () {
+                  Provider.of<ClinicsProvider>(context, listen: false)
+                      .isSortedByBranch = false;
                   CustomFunctions.popScreen(context);
                 },
-                leading: Icon(Reaaia_Icons.filter_team_icon,size: 22,color: ColorsUtils.primaryGreen,),
-                title: Text('Sort by job nature',style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600,color: ColorsUtils.textGrey),),
+                leading: Icon(
+                  Reaaia_Icons.filter_team_icon,
+                  size: 22,
+                  color: ColorsUtils.primaryGreen,
+                ),
+             
+               
+                title: Text(
+                  'Sort by job nature',
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                      color: ColorsUtils.textGrey),
+                ),
               ),
             ],
           ),
