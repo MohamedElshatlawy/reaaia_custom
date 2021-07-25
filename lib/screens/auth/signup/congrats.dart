@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
-
 
 class Congrats extends StatelessWidget {
   @override

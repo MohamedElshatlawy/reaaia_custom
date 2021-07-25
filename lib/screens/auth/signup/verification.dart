@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/auth/signup/complete_reg1.dart';
@@ -11,7 +11,6 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
-
 
 class Verification extends StatefulWidget {
   final String mobileNumber;
@@ -204,7 +203,8 @@ class _VerificationState extends State<Verification> {
                                   pressed: () async {
                                     //FocusManager.instance.primaryFocus.unfocus();
                                     if (_controller.text != null &&
-                                        _controller.text.isNotEmpty && _controller.text.length==5) {
+                                        _controller.text.isNotEmpty &&
+                                        _controller.text.length == 5) {
                                       _verifyForm = {
                                         "mobile_number": widget.mobileNumber,
                                         "code": _controller.text,

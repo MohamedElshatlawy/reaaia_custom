@@ -4,10 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/data/signupModels/clinic_address_model.dart';
+import 'package:reaaia/data/signupModels/complete_reg3_model.dart';
+import 'package:reaaia/data/signupModels/owned_clinic_model.dart';
 import 'package:reaaia/model/app_data/details.dart';
-import 'package:reaaia/model/data/signup/clinic_address_model.dart';
-import 'package:reaaia/model/data/signup/complete_reg3_model.dart';
-import 'package:reaaia/model/data/signup/owned_clinic_model.dart';
+
 import 'package:reaaia/screens/auth/signup/add_serve.dart';
 import 'package:reaaia/screens/auth/signup/complete_req1_map.dart';
 import 'package:reaaia/screens/auth/signup/request_sent_success.dart';
@@ -17,7 +18,6 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
-
 
 import '../../customFunctions.dart';
 
@@ -522,8 +522,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 //selected: checkContain,
                                 selectedShadowColor: null,
                                 onDeleted: true ? null : () {},
-                                onSelected: (val) {
-                                },
+                                onSelected: (val) {},
                               ),
                             ),
                             SizedBox(
@@ -1141,7 +1140,9 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 textColor: ColorsUtils.primaryGreen,
                               ),
                             ),
-                            SizedBox(height: ScreenUtil().setHeight(15),),
+                            SizedBox(
+                              height: ScreenUtil().setHeight(15),
+                            ),
                             Align(
                               alignment: Alignment.center,
                               child: loading

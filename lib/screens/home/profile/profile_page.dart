@@ -7,10 +7,11 @@ import 'package:reaaia/screens/home/profile/edit_awards.dart';
 import 'package:reaaia/screens/home/profile/edit_certificates.dart';
 import 'package:reaaia/screens/home/profile/edit_education.dart';
 import 'package:reaaia/screens/home/profile/edit_languages.dart';
-import 'package:reaaia/screens/home/profile/edit_profile.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+
+import 'edit_profile/edit_profile.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -18,8 +19,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
-  List<String> _listTest=['',''];
+  List<String> _listTest = ['', ''];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +67,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             text: 'Edit Profile ',
                             pressed: () {
-                              CustomFunctions.pushScreen(context: context,widget: EditProfilePage());
+                              CustomFunctions.pushScreen(
+                                  context: context, widget: EditProfilePage());
                             },
                             textColor: Colors.white,
                           ),
@@ -112,22 +113,25 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.textGrey),
                             ),
                             trailing: InkWell(
-                              onTap: (){
-                                CustomFunctions.pushScreen(context: context,widget: EditEducationPage());
+                              onTap: () {
+                                CustomFunctions.pushScreen(
+                                    context: context,
+                                    widget: EditEducationPage());
                               },
                               child: Container(
-                                  width: 35,
-                                  height: 35,
-                                  //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      color:
-                                          ColorsUtils.blueColor.withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: Icon(
-                                    Icons.edit,
-                                    color: ColorsUtils.blueColor,
-                                  ),),
+                                width: 35,
+                                height: 35,
+                                //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    color:
+                                        ColorsUtils.blueColor.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Icon(
+                                  Icons.edit,
+                                  color: ColorsUtils.blueColor,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -173,20 +177,22 @@ class _ProfilePageState extends State<ProfilePage> {
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(24),
-                                          topLeft: Radius.circular(24),
-                                        )),
-                                    barrierColor: ColorsUtils.modalSheetBarrierColor,
-                                    backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                      topRight: Radius.circular(24),
+                                      topLeft: Radius.circular(24),
+                                    )),
+                                    barrierColor:
+                                        ColorsUtils.modalSheetBarrierColor,
+                                    backgroundColor:
+                                        ColorsUtils.modalSheetBarrierColor,
                                     context: context,
                                     isScrollControlled: true,
                                     builder: (context) {
                                       return CustomViewImage(
-                                        image:'assets/default-avatar.png',
+                                        image: 'assets/default-avatar.png',
                                         btnRemoveName: 'Remove Licence',
                                         btnChangeName: 'Change Licence',
-                                        onChange: (){},
-                                        onRemove: (){},
+                                        onChange: () {},
+                                        onRemove: () {},
                                       );
                                     },
                                   );
@@ -244,8 +250,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.textGrey),
                             ),
                             trailing: InkWell(
-                              onTap: (){
-                                CustomFunctions.pushScreen(context: context,widget: EditLanguagesPage());
+                              onTap: () {
+                                CustomFunctions.pushScreen(
+                                    context: context,
+                                    widget: EditLanguagesPage());
                               },
                               child: Container(
                                   width: 35,
@@ -253,8 +261,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                                   padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                      color:
-                                          ColorsUtils.blueColor.withOpacity(0.1),
+                                      color: ColorsUtils.blueColor
+                                          .withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Icon(
                                     Icons.edit,
@@ -279,7 +287,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   SizedBox(height: ScreenUtil().setHeight(10)),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15.0),
                                     child: Row(
                                       children: [
                                         Text(
@@ -297,18 +306,18 @@ class _ProfilePageState extends State<ProfilePage> {
                                           '(Level 1)',
                                           style: TextStyle(
                                             fontSize: 14.0,
-                                            color: ColorsUtils.onBoardingTextGrey,
+                                            color:
+                                                ColorsUtils.onBoardingTextGrey,
                                           ),
                                         ),
-
                                       ],
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil().setHeight(10)),
-                                 if (index!=_listTest.length-1)
-                                  Divider(
-                                    color: ColorsUtils.onBoardingTextGrey,
-                                  ),
+                                  if (index != _listTest.length - 1)
+                                    Divider(
+                                      color: ColorsUtils.onBoardingTextGrey,
+                                    ),
                                 ],
                               );
                             },
@@ -354,8 +363,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.textGrey),
                             ),
                             trailing: InkWell(
-                              onTap: (){
-                                CustomFunctions.pushScreen(context: context,widget: EditCertificatesPage());
+                              onTap: () {
+                                CustomFunctions.pushScreen(
+                                    context: context,
+                                    widget: EditCertificatesPage());
                               },
                               child: Container(
                                   width: 35,
@@ -363,8 +374,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                                   padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                      color:
-                                      ColorsUtils.blueColor.withOpacity(0.1),
+                                      color: ColorsUtils.blueColor
+                                          .withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Icon(
                                     Icons.edit,
@@ -389,9 +400,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   SizedBox(height: ScreenUtil().setHeight(10)),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
@@ -410,41 +423,49 @@ class _ProfilePageState extends State<ProfilePage> {
                                               '(2003)',
                                               style: TextStyle(
                                                 fontSize: 14.0,
-                                                color: ColorsUtils.onBoardingTextGrey,
+                                                color: ColorsUtils
+                                                    .onBoardingTextGrey,
                                               ),
                                             ),
-
                                           ],
                                         ),
                                         InkWell(
                                           child: Text(
                                             'View',
                                             style: TextStyle(
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               fontSize: 15.0,
                                               fontWeight: FontWeight.w600,
                                               color: ColorsUtils.blueColor,
                                             ),
                                           ),
-                                          onTap: (){
+                                          onTap: () {
                                             showModalBottomSheet(
-                                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                                              clipBehavior:
+                                                  Clip.antiAliasWithSaveLayer,
                                               shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.only(
-                                                    topRight: Radius.circular(24),
-                                                    topLeft: Radius.circular(24),
-                                                  )),
-                                              barrierColor: ColorsUtils.modalSheetBarrierColor,
-                                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                topRight: Radius.circular(24),
+                                                topLeft: Radius.circular(24),
+                                              )),
+                                              barrierColor: ColorsUtils
+                                                  .modalSheetBarrierColor,
+                                              backgroundColor: ColorsUtils
+                                                  .modalSheetBarrierColor,
                                               context: context,
                                               isScrollControlled: true,
                                               builder: (context) {
                                                 return CustomViewImage(
-                                                  image:'assets/default-avatar.png',
-                                                  btnRemoveName: 'Remove Certificate',
-                                                  btnChangeName: 'Change Certificate',
-                                                  onChange: (){},
-                                                  onRemove: (){},
+                                                  image:
+                                                      'assets/default-avatar.png',
+                                                  btnRemoveName:
+                                                      'Remove Certificate',
+                                                  btnChangeName:
+                                                      'Change Certificate',
+                                                  onChange: () {},
+                                                  onRemove: () {},
                                                 );
                                               },
                                             );
@@ -454,7 +475,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil().setHeight(10)),
-                                  if (index!=_listTest.length-1)
+                                  if (index != _listTest.length - 1)
                                     Divider(
                                       color: ColorsUtils.onBoardingTextGrey,
                                     ),
@@ -503,8 +524,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.textGrey),
                             ),
                             trailing: InkWell(
-                              onTap: (){
-                                CustomFunctions.pushScreen(context: context,widget: EditAwardsPage());
+                              onTap: () {
+                                CustomFunctions.pushScreen(
+                                    context: context, widget: EditAwardsPage());
                               },
                               child: Container(
                                   width: 35,
@@ -512,8 +534,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                                   padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                      color:
-                                      ColorsUtils.blueColor.withOpacity(0.1),
+                                      color: ColorsUtils.blueColor
+                                          .withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Icon(
                                     Icons.edit,
@@ -538,9 +560,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   SizedBox(height: ScreenUtil().setHeight(10)),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
@@ -559,41 +583,47 @@ class _ProfilePageState extends State<ProfilePage> {
                                               '(2002)',
                                               style: TextStyle(
                                                 fontSize: 14.0,
-                                                color: ColorsUtils.onBoardingTextGrey,
+                                                color: ColorsUtils
+                                                    .onBoardingTextGrey,
                                               ),
                                             ),
-
                                           ],
                                         ),
                                         InkWell(
                                           child: Text(
                                             'View',
                                             style: TextStyle(
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               fontSize: 15.0,
                                               fontWeight: FontWeight.w600,
                                               color: ColorsUtils.blueColor,
                                             ),
                                           ),
-                                          onTap: (){
+                                          onTap: () {
                                             showModalBottomSheet(
-                                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                                              clipBehavior:
+                                                  Clip.antiAliasWithSaveLayer,
                                               shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.only(
-                                                    topRight: Radius.circular(24),
-                                                    topLeft: Radius.circular(24),
-                                                  )),
-                                              barrierColor: ColorsUtils.modalSheetBarrierColor,
-                                              backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                topRight: Radius.circular(24),
+                                                topLeft: Radius.circular(24),
+                                              )),
+                                              barrierColor: ColorsUtils
+                                                  .modalSheetBarrierColor,
+                                              backgroundColor: ColorsUtils
+                                                  .modalSheetBarrierColor,
                                               context: context,
                                               isScrollControlled: true,
                                               builder: (context) {
                                                 return CustomViewImage(
-                                                  image:'assets/default-avatar.png',
+                                                  image:
+                                                      'assets/default-avatar.png',
                                                   btnRemoveName: 'Remove Award',
                                                   btnChangeName: 'Change Award',
-                                                  onChange: (){},
-                                                  onRemove: (){},
+                                                  onChange: () {},
+                                                  onRemove: () {},
                                                 );
                                               },
                                             );
@@ -603,7 +633,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil().setHeight(10)),
-                                  if (index!=_listTest.length-1)
+                                  if (index != _listTest.length - 1)
                                     Divider(
                                       color: ColorsUtils.onBoardingTextGrey,
                                     ),

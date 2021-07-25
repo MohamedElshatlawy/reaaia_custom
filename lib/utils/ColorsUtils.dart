@@ -22,5 +22,6 @@ class ColorsUtils {
   static const starColor = Color(0xffFE9870);
   static const darkGreenColor = Color(0xff4AD3D3);
   static const lightGreenColor = Color(0xff4AD3D3);
-
+  static const unSelectTabBarColor = Color(0xff9393aa);
+  static const transparentColor = Color(0x00000000);
 }

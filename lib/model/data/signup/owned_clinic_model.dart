@@ -1,6 +1,4 @@
-
-import 'package:reaaia/model/data/signup/clinic_address_model.dart';
-
+import 'clinic_address_model.dart';
 
 class OwnedClinic {
   String clinicName;
@@ -14,13 +12,13 @@ class OwnedClinic {
 
   OwnedClinic(
       {this.clinicName,
-        this.clinicSpeclialityId,
-        this.existingSubspecialities,
-        this.newSubspecialities,
-        this.clinicAddress,
-        this.clinicPhoneNumbers,
-        this.existingInsurancePlans,
-        this.newInsurancePlans});
+      this.clinicSpeclialityId,
+      this.existingSubspecialities,
+      this.newSubspecialities,
+      this.clinicAddress,
+      this.clinicPhoneNumbers,
+      this.existingInsurancePlans,
+      this.newInsurancePlans});
 
   OwnedClinic.fromJson(Map<String, dynamic> json) {
     clinicName = json['clinic_name'];

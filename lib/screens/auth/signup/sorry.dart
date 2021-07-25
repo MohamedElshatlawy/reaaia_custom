@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/auth/signup/request_sent_success.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
-
 
 class SorryScreen extends StatelessWidget {
   @override

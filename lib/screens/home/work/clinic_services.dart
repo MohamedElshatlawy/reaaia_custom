@@ -5,10 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/work/add_service_clinic.dart';
 import 'package:reaaia/screens/home/work/clinic_service_detail.dart';
-import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/utils/reaaia_icons.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
-
 
 class ClinicServices extends StatefulWidget {
   final int clinicId;
@@ -20,9 +19,7 @@ class ClinicServices extends StatefulWidget {
 }
 
 class _ClinicServicesState extends State<ClinicServices> {
-
   bool loading;
-
 
   @override
   void initState() {
@@ -59,7 +56,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                       CustomFunctions.popScreen(context);
                     },
                     child: Container(
-                      //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                        //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey[300]),
@@ -70,14 +67,18 @@ class _ClinicServicesState extends State<ClinicServices> {
                         )),
                   ),
                   InkWell(
-                    onTap: () async{
+                    onTap: () async {
                       //CustomFunctions.pushScreen(context: context,widget: AddServiceClinic(widget.clinicId));
-                     await Navigator.push(context, MaterialPageRoute(builder: (ctx) => AddServiceClinic(widget.clinicId)));
-                     await Provider.of<ClinicsProvider>(context, listen: false)
-                         .getServiceData(widget.clinicId);
-                      },
+                      await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) =>
+                                  AddServiceClinic(widget.clinicId)));
+                      await Provider.of<ClinicsProvider>(context, listen: false)
+                          .getServiceData(widget.clinicId);
+                    },
                     child: Container(
-                      //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                        //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey[300]),
@@ -104,154 +105,181 @@ class _ClinicServicesState extends State<ClinicServices> {
               SizedBox(height: ScreenUtil().setHeight(15)),
               loading
                   ? Container(
-                margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.3),
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ):  services.length == 0
-                  ? Center(
-                child: Text('No Services Found '),
-              )
-                  : ListView.builder(
-                padding: EdgeInsets.symmetric(vertical: 10.0),
-                physics: ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: services.length,
-                itemBuilder: (context, index) {
-                  final priceInt=num.parse(services[index].price);
-                  return Card(
-                    margin: EdgeInsets.only(bottom: 15.0),
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: InkWell(
-                      onTap: ()async{
-                    await    showModalBottomSheet(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(24),
-                                topLeft: Radius.circular(24),
-                              )),
-                          barrierColor: ColorsUtils.modalSheetBarrierColor,
-                          backgroundColor: ColorsUtils.modalSheetBarrierColor,
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            return ClinicServiceDetail(services[index],index,widget.clinicId);
-                          },
-                        );
-                    await Provider.of<ClinicsProvider>(context, listen: false)
-                        .getServiceData(widget.clinicId);
-
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      color: ColorsUtils.lightBlueColor,
-                                      borderRadius:
-                                      BorderRadius.circular(8)),
-                                  child: Icon(
-                                    Reaaia_Icons.service_icon,
-                                    color: ColorsUtils.blueColor,
-                                  ),
-                                  height: 35.0,
-                                  width: 35.0,
-                                ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                Column(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      services[index].name,
-                                      style: TextStyle(
-                                          color: ColorsUtils.blueColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: ScreenUtil().setSp(15)),
-                                    ),
-                                    SizedBox(height: 5.0,),
-                                    Text(
-                                      services[index].discountPercentage.toString()+' % OFF',
-                                      style: TextStyle(
-                                          color: ColorsUtils
-                                              .onBoardingTextGrey,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: ScreenUtil().setSp(13)),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment:
-                              CrossAxisAlignment.end,
-                              children: [
-                                Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text:  ( priceInt-(priceInt*(services[index].discountPercentage/100))).toStringAsFixed(0),
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: ScreenUtil().setSp(17)),
-                                      ),
-                                      TextSpan(
-                                        text:  ' EGP',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: ScreenUtil().setSp(11)),
-                                      )
-                                    ],
-                                  )
-                                ),
-                                SizedBox(height: 5.0,),
-                                Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text:  num.parse(services[index].price).toStringAsFixed(0),
-
-                                          style: TextStyle(
-                                              color: ColorsUtils.textGrey,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: ScreenUtil().setSp(13),
-                                              decoration: TextDecoration.lineThrough),
-                                        ),
-                                        TextSpan(
-                                          text:  '  EGP',
-                                          style: TextStyle(
-                                              color: ColorsUtils.onBoardingTextGrey,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: ScreenUtil().setSp(10),
-                                              decoration: TextDecoration.lineThrough),
-                                        )
-                                      ],
-                                    )
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
+                      margin: EdgeInsets.symmetric(
+                          vertical: MediaQuery.of(context).size.height * 0.3),
+                      child: Center(
+                        child: CircularProgressIndicator(),
                       ),
-                    ),
-                  );
-                },
-              ),
+                    )
+                  : services.length == 0
+                      ? Center(
+                          child: Text('No Services Found '),
+                        )
+                      : ListView.builder(
+                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                          physics: ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: services.length,
+                          itemBuilder: (context, index) {
+                            final priceInt = num.parse(services[index].price);
+                            return Card(
+                              margin: EdgeInsets.only(bottom: 15.0),
+                              elevation: 4,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              child: InkWell(
+                                onTap: () async {
+                                  await showModalBottomSheet(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(24),
+                                      topLeft: Radius.circular(24),
+                                    )),
+                                    barrierColor:
+                                        ColorsUtils.modalSheetBarrierColor,
+                                    backgroundColor:
+                                        ColorsUtils.modalSheetBarrierColor,
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) {
+                                      return ClinicServiceDetail(
+                                          services[index],
+                                          index,
+                                          widget.clinicId);
+                                    },
+                                  );
+                                  await Provider.of<ClinicsProvider>(context,
+                                          listen: false)
+                                      .getServiceData(widget.clinicId);
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 15.0, vertical: 20.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.all(5),
+                                            decoration: BoxDecoration(
+                                                color:
+                                                    ColorsUtils.lightBlueColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
+                                            child: Icon(
+                                              ReaaiaIcons.service_icon,
+                                              color: ColorsUtils.blueColor,
+                                            ),
+                                            height: 35.0,
+                                            width: 35.0,
+                                          ),
+                                          SizedBox(
+                                            width: 10.0,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                services[index].name,
+                                                style: TextStyle(
+                                                    color:
+                                                        ColorsUtils.blueColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(15)),
+                                              ),
+                                              SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              Text(
+                                                services[index]
+                                                        .discountPercentage
+                                                        .toString() +
+                                                    ' % OFF',
+                                                style: TextStyle(
+                                                    color: ColorsUtils
+                                                        .onBoardingTextGrey,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(13)),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Text.rich(TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: (priceInt -
+                                                        (priceInt *
+                                                            (services[index]
+                                                                    .discountPercentage /
+                                                                100)))
+                                                    .toStringAsFixed(0),
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(17)),
+                                              ),
+                                              TextSpan(
+                                                text: ' EGP',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(11)),
+                                              )
+                                            ],
+                                          )),
+                                          SizedBox(
+                                            height: 5.0,
+                                          ),
+                                          Text.rich(TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: num.parse(
+                                                        services[index].price)
+                                                    .toStringAsFixed(0),
+                                                style: TextStyle(
+                                                    color: ColorsUtils.textGrey,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(13),
+                                                    decoration: TextDecoration
+                                                        .lineThrough),
+                                              ),
+                                              TextSpan(
+                                                text: '  EGP',
+                                                style: TextStyle(
+                                                    color: ColorsUtils
+                                                        .onBoardingTextGrey,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        ScreenUtil().setSp(10),
+                                                    decoration: TextDecoration
+                                                        .lineThrough),
+                                              )
+                                            ],
+                                          )),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
             ],
           ),
         ),

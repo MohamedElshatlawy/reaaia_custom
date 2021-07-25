@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/auth/login/recovery_password.dart';
 import 'package:reaaia/screens/customFunctions.dart';
@@ -12,7 +12,6 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
-
 
 class ForgetPassword extends StatefulWidget {
   @override
@@ -47,7 +46,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
-        builder:(context)=> Form(
+        builder: (context) => Form(
           key: _forgetPassFormKey,
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
@@ -141,7 +140,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           .validate()) {
                                         _forgetPassFormKey.currentState.save();
                                         setState(() {
-                                          loading=true;
+                                          loading = true;
                                         });
                                         checkPlatForm();
                                         _forgetPassInfo['grant_type'] =
@@ -151,9 +150,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           await loginProvider
                                               .forgetPasswordSendOtp(
                                                   _forgetPassInfo);
-                                          if (loginProvider.forgetPassResponse.status == 200) {
+                                          if (loginProvider
+                                                  .forgetPassResponse.status ==
+                                              200) {
                                             setState(() {
-                                              loading=false;
+                                              loading = false;
                                             });
                                             CustomFunctions.pushScreen(
                                                 context: context,
@@ -164,7 +165,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                                 ));
                                           } else {
                                             setState(() {
-                                              loading=false;
+                                              loading = false;
                                             });
                                             Functions.showCustomSnackBar(
                                               context: context,
@@ -176,7 +177,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           }
                                         } catch (error) {
                                           setState(() {
-                                            loading=false;
+                                            loading = false;
                                           });
                                           Functions.showCustomSnackBar(
                                             context: context,
@@ -185,7 +186,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
                                           );
-
                                         }
                                       }
                                     },

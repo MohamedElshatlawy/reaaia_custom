@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/signup/address_model.dart';
+import 'package:reaaia/data/signupModels/address_model.dart';
 import 'package:reaaia/model/data/signup/complete_reg1_model.dart';
 import 'package:reaaia/screens/auth/signup/complete_req1_map.dart';
 import 'package:reaaia/screens/customFunctions.dart';
@@ -15,8 +15,6 @@ import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:validators/validators.dart';
-
-
 
 class EditProfilePage extends StatefulWidget {
   //final int userId;
@@ -39,7 +37,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final signUpProvider= Provider.of<SignUpProvider>(context,listen: false);
+    final signUpProvider = Provider.of<SignUpProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
@@ -59,7 +57,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           CustomFunctions.popScreen(context);
                         },
                         child: Container(
-                          //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
+                            //margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey[300]),
@@ -112,13 +110,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 borderRadius: BorderRadius.circular(17),
                                 child: image != null
                                     ? Image.file(
-                                  image,
-                                  fit: BoxFit.cover,
-                                )
+                                        image,
+                                        fit: BoxFit.cover,
+                                      )
                                     : Image.asset(
-                                  'assets/default-avatar.png',
-                                  fit: BoxFit.cover,
-                                ),
+                                        'assets/default-avatar.png',
+                                        fit: BoxFit.cover,
+                                      ),
                               )),
                           if (image != null)
                             Positioned(
@@ -144,7 +142,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         border:
-                                        Border.all(color: Colors.grey[300]),
+                                            Border.all(color: Colors.grey[300]),
                                         borderRadius: BorderRadius.circular(8)),
                                     child: Icon(
                                       Icons.clear,
@@ -168,16 +166,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 text: 'Update Avatar',
                                 pressed: () async {
                                   final pickedImage =
-                                  await Functions.pickImage();
+                                      await Functions.pickImage();
                                   if (pickedImage != null) {
                                     setState(() {
                                       image = pickedImage;
                                     });
-                                    try{
-                                      await  Provider.of<SignUpProvider>(context,listen: false).uploadPicture(collection: 'Doctor avatar image',file: image);
-                                      if( signUpProvider.tokenPicture!=null){
-                                        _completeReg1Model.avatarImage=[signUpProvider.tokenPicture];
-                                        print('we found token ${signUpProvider.tokenPicture}');
+                                    try {
+                                      await Provider.of<SignUpProvider>(context,
+                                              listen: false)
+                                          .uploadPicture(
+                                              collection: 'Doctor avatar image',
+                                              file: image);
+                                      if (signUpProvider.tokenPicture != null) {
+                                        _completeReg1Model.avatarImage = [
+                                          signUpProvider.tokenPicture
+                                        ];
+                                        print(
+                                            'we found token ${signUpProvider.tokenPicture}');
                                         Functions.showCustomSnackBar(
                                           context: context,
                                           text: 'Picture Upload Successfully',
@@ -185,7 +190,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                           iconType: Icons.done,
                                           iconColor: Colors.green,
                                         );
-                                      }else{
+                                      } else {
                                         Functions.showCustomSnackBar(
                                           context: context,
                                           text: 'Picture Upload Failed!',
@@ -194,7 +199,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                           iconColor: Colors.red,
                                         );
                                       }
-                                    }catch(err){
+                                    } catch (err) {
                                       Functions.showCustomSnackBar(
                                         context: context,
                                         text: 'Picture Upload Failed!',
@@ -203,7 +208,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                         iconColor: Colors.red,
                                       );
                                     }
-
                                   } else {
                                     Functions.showCustomSnackBar(
                                       context: context,
@@ -258,22 +262,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'This Field Required';
-                      }
-                      else if(!isEmail(value)){
+                      } else if (!isEmail(value)) {
                         return 'enter Valid Email';
                       }
                       return null;
                     },
                   ),
                   SizedBox(height: ScreenUtil().setHeight(5)),
-                  Text('  Your public username is the same as your url',style: TextStyle(fontSize: 13.0,fontWeight: FontWeight.w600,color: ColorsUtils.onBoardingTextGrey),),
+                  Text(
+                    '  Your public username is the same as your url',
+                    style: TextStyle(
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.w600,
+                        color: ColorsUtils.onBoardingTextGrey),
+                  ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
                   Row(
                     children: [
                       ChooseGender(
                         iconName: 'assets/icons/ic_male.svg',
                         backgroundColor:
-                        isMale ? ColorsUtils.blueColor : Colors.white,
+                            isMale ? ColorsUtils.blueColor : Colors.white,
                         iconColor: isMale
                             ? Colors.white
                             : ColorsUtils.onBoardingTextGrey,
@@ -293,7 +302,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ChooseGender(
                         iconName: 'assets/icons/ic_female.svg',
                         backgroundColor:
-                        isFemale ? ColorsUtils.blueColor : Colors.white,
+                            isFemale ? ColorsUtils.blueColor : Colors.white,
                         iconColor: isFemale
                             ? Colors.white
                             : ColorsUtils.onBoardingTextGrey,
@@ -359,9 +368,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       // CustomFunctions.pushScreen(context: context,widget: CompleteRequest1Map());
 
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (ctx) => CompleteRequest1Map()))
+                              context,
+                              MaterialPageRoute(
+                                  builder: (ctx) => CompleteRequest1Map()))
                           .then((value) {
                         setState(() {
                           _latLng = value as LatLng;
@@ -434,7 +443,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           //   }
                           //
                           // }
-
                         },
                         textColor: Colors.white,
                       ),
@@ -463,11 +471,11 @@ class ChooseGender extends StatelessWidget {
 
   ChooseGender(
       {this.iconName,
-        this.genderName,
-        this.iconColor,
-        this.textColor,
-        this.onTap,
-        this.backgroundColor});
+      this.genderName,
+      this.iconColor,
+      this.textColor,
+      this.onTap,
+      this.backgroundColor});
   @override
   Widget build(BuildContext context) {
     return InkWell(

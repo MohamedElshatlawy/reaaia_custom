@@ -1,4 +1,3 @@
-
 import 'package:reaaia/helpers/enumeration.dart';
 
 class HttpMethod extends Enum {

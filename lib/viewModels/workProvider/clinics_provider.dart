@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -16,17 +15,15 @@ import 'package:reaaia/model/clinics/teamModels/team.dart';
 import 'package:reaaia/model/data/signup/serving_health_care_model.dart';
 import 'package:reaaia/repository/clinics_repo.dart';
 
-
 class ClinicsProvider extends ChangeNotifier {
-
   String tokenImages;
   ClinicsModel clinicsModel;
-  List<ClinicData> clinics=[];
+  List<ClinicData> clinics = [];
 
   BranchModel branchModel;
   List<BranchData> branches = [];
   AppointmentsModel appointmentsModel;
-  List<AppointmentsData> appointments=[];
+  List<AppointmentsData> appointments = [];
   ServiceModel serviceModel;
   List<ServiceData> serviceClinic = [];
 
@@ -37,16 +34,12 @@ class ClinicsProvider extends ChangeNotifier {
   bool _isSortedByBranch;
 
   JobNaturesModel jobNaturesModel;
-  List<JobNaturesData> jobNatures=[];
+  List<JobNaturesData> jobNatures = [];
 
   int addBranchStatus;
   int deleteBranchStatus;
 
-
   List<ServingInHealthcare> serves = [];
-
-
-
 
   bool loadingClinicsData = true;
 
@@ -57,9 +50,6 @@ class ClinicsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
   void addServeClinic(ServingInHealthcare serveModel) {
     serves.add(serveModel);
     notifyListeners();
@@ -69,12 +59,6 @@ class ClinicsProvider extends ChangeNotifier {
     serves.insert(index, serveModel);
     notifyListeners();
   }
-
-
-
-
-
-
 
   /// get Clinics Data
 
@@ -162,7 +146,6 @@ class ClinicsProvider extends ChangeNotifier {
     }
   }
 
-
   Future<int> toggleStatusBranchClinic(int id) async {
     try {
       final response = await ClinicsRepository.toggleStatusBranch(id);
@@ -179,17 +162,16 @@ class ClinicsProvider extends ChangeNotifier {
   Future<void> getAppointmentsData(int id) async {
     try {
       appointmentsModel = await ClinicsRepository.getAppointmentsData(id);
-      appointments=appointmentsModel.response.data;
+      appointments = appointmentsModel.response.data;
       notifyListeners();
     } catch (e) {
       rethrow;
     }
   }
 
-
-  Future<int> addAppointment(int id,Map<String,dynamic> body) async {
+  Future<int> addAppointment(int id, Map<String, dynamic> body) async {
     try {
-      final response = await ClinicsRepository.addAppointment(id,body);
+      final response = await ClinicsRepository.addAppointment(id, body);
       notifyListeners();
       return response;
     } catch (e) {
@@ -197,22 +179,21 @@ class ClinicsProvider extends ChangeNotifier {
     }
   }
 
-  Future<int> editAppointment(int id,Map<String,dynamic> body) async {
+  Future<int> editAppointment(int id, Map<String, dynamic> body) async {
     try {
-      final response = await ClinicsRepository.editAppointment(id,body);
+      final response = await ClinicsRepository.editAppointment(id, body);
       notifyListeners();
       return response;
     } catch (e) {
       rethrow;
     }
   }
-
 
   /// Services
 
-
-  Future<void> uploadServiceImages({String collection,List<File> files}) async{
-    await ClinicsRepository.uploadServiceImage(collection,files).then((value) {
+  Future<void> uploadServiceImages(
+      {String collection, List<File> files}) async {
+    await ClinicsRepository.uploadServiceImage(collection, files).then((value) {
       tokenImages = value;
       notifyListeners();
     });
@@ -228,9 +209,10 @@ class ClinicsProvider extends ChangeNotifier {
     }
   }
 
-  Future<int> addService( AddServiceModel body, List<MultipartFile> files) async {
+  Future<int> addService(
+      AddServiceModel body, List<MultipartFile> files) async {
     try {
-      final response = await ClinicsRepository.addService( body, files);
+      final response = await ClinicsRepository.addService(body, files);
       notifyListeners();
       return response;
     } catch (e) {
@@ -239,7 +221,8 @@ class ClinicsProvider extends ChangeNotifier {
     }
   }
 
-  Future<int> editService(int id, AddServiceModel body,List<MultipartFile> files) async {
+  Future<int> editService(
+      int id, AddServiceModel body, List<MultipartFile> files) async {
     try {
       final response = await ClinicsRepository.editService(id, body);
       notifyListeners();
@@ -260,7 +243,6 @@ class ClinicsProvider extends ChangeNotifier {
       rethrow;
     }
   }
-
 
   /// Teams
 
@@ -319,31 +301,27 @@ class ClinicsProvider extends ChangeNotifier {
   Future<void> getJobNaturesData() async {
     try {
       jobNaturesModel = await ClinicsRepository.getJobNaturesData();
-      jobNatures=jobNaturesModel.response.data;
+      jobNatures = jobNaturesModel.response.data;
       notifyListeners();
     } catch (e) {
       rethrow;
     }
   }
-
 
   Future<void> getTeamDataByBranch(int id) async {
     try {
       sortBranchModel = await ClinicsRepository.getSortDataByBranch(id);
       notifyListeners();
     } catch (e) {
-
       rethrow;
     }
   }
-
 
   Future<void> getTeamDataByJonNature(int id) async {
     try {
       sortJobNatureModel = await ClinicsRepository.getSortDataByJobNature(id);
       notifyListeners();
     } catch (e) {
-
       rethrow;
     }
   }

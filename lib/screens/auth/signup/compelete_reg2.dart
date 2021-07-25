@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/data/signupModels/awards_model.dart';
+import 'package:reaaia/data/signupModels/certifications_model.dart';
+import 'package:reaaia/data/signupModels/complete_reg2_model.dart';
+import 'package:reaaia/data/signupModels/languages_model.dart';
 import 'package:reaaia/model/app_data/details.dart';
-import 'package:reaaia/model/data/signup/awards_model.dart';
-import 'package:reaaia/model/data/signup/certifications_model.dart';
-import 'package:reaaia/model/data/signup/complete_reg2_model.dart';
-import 'package:reaaia/model/data/signup/languages_model.dart';
 import 'package:reaaia/screens/auth/signup/compelete_reg3.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
@@ -614,7 +614,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   SizedBox(height: ScreenUtil().setHeight(16)),
                                   DropdownButtonFormField<String>(
                                     decoration: InputDecoration(
-                                      labelText: AppLocalizations.of(context).translate('lang'),
+                                      labelText: 'Language',
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: ScreenUtil().setSp(15)),

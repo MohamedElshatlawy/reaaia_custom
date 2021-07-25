@@ -1,17 +1,16 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/screens/auth/login/login.dart';
+import 'package:reaaia/screens/auth/login/login_page.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 
-
 import '../customFunctions.dart';
 
-class Index4 extends StatelessWidget {
+class PrivateCareServicesOnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var onBoardingPageProvider =
@@ -28,7 +27,7 @@ class Index4 extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    onBoardingPageProvider.changePage(2);
+                    onBoardingPageProvider.changePage(0);
                   },
                   child: Container(
                       padding: EdgeInsets.all(5),
@@ -43,14 +42,14 @@ class Index4 extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     OnBoardingUtil.saveKeyOnBoarding('isBoarding');
-                    CustomFunctions.pushScreenRepcalement(context: context, widget: Login());
+                    CustomFunctions.pushScreenRepcalement(
+                        context: context, widget: LoginPage());
                   },
                   child: Text(
-                    AppLocalizations.of(context).translate('skipBoarding'),
-                    style: TextStyle(
+                    AppLocalizations.of(context).translate('skipBoarding'),                    style: TextStyle(
                         color: ColorsUtils.onBoardingTextGrey,
                         fontSize: ScreenUtil().setSp(17),
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
               ],
@@ -61,7 +60,7 @@ class Index4 extends StatelessWidget {
             margin:
                 EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(12.5)),
             child: Image.asset(
-              'assets/onBoarding/onboard_index4.png',
+              'assets/onBoarding/onboard_index2.png',
               height: ScreenUtil().setHeight(289),
             ),
           ),
@@ -70,7 +69,7 @@ class Index4 extends StatelessWidget {
               dotsCount: 4,
               decorator: DotsDecorator(
                   activeColor: ColorsUtils.blueColor, color: Colors.grey[200]),
-              position: 3.0),
+              position: 1.0),
           SizedBox(height: ScreenUtil().setHeight(43)),
           Container(
             margin:
@@ -81,7 +80,7 @@ class Index4 extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      AppLocalizations.of(context).translate('onBoardingText9'),
+                      AppLocalizations.of(context).translate('onBoardingText4'),
                       style: TextStyle(
                           color: ColorsUtils.blueColor,
                           fontSize: ScreenUtil().setSp(22),
@@ -90,12 +89,19 @@ class Index4 extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  AppLocalizations.of(context).translate('onBoardingText10'),
+                  AppLocalizations.of(context).translate('onBoardingText5'),
                   style: TextStyle(
                       color: ColorsUtils.onBoardingTextGrey,
                       fontSize: ScreenUtil().setSp(18),
                       fontWeight: FontWeight.bold),
                 ),
+                Text(
+                  AppLocalizations.of(context).translate('onBoardingText6'),
+                  style: TextStyle(
+                      color: ColorsUtils.onBoardingTextGrey,
+                      fontSize: ScreenUtil().setSp(18),
+                      fontWeight: FontWeight.bold),
+                )
               ],
             ),
           ),

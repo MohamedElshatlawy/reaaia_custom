@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/auth/login/login.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
@@ -12,16 +12,14 @@ class PasswordSuccessChanged extends StatefulWidget {
 }
 
 class _PasswordSuccessChangedState extends State<PasswordSuccessChanged> {
-
   @override
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
-      CustomFunctions.pushScreenRepcalement(
-          widget: Login(), context: context);
+      CustomFunctions.pushScreenRepcalement(widget: Login(), context: context);
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

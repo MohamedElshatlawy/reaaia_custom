@@ -1,17 +1,16 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/screens/auth/login/login.dart';
+import 'package:reaaia/screens/auth/login/login_page.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
 import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 
-
 import '../customFunctions.dart';
 
-class Index3 extends StatelessWidget {
+class TrackYourMedicationOnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var onBoardingPageProvider =
@@ -28,7 +27,7 @@ class Index3 extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    onBoardingPageProvider.changePage(1);
+                    onBoardingPageProvider.changePage(2);
                   },
                   child: Container(
                       padding: EdgeInsets.all(5),
@@ -43,7 +42,8 @@ class Index3 extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     OnBoardingUtil.saveKeyOnBoarding('isBoarding');
-                    CustomFunctions.pushScreenRepcalement(context: context, widget: Login());
+                    CustomFunctions.pushScreenRepcalement(
+                        context: context, widget: LoginPage());
                   },
                   child: Text(
                     AppLocalizations.of(context).translate('skipBoarding'),
@@ -61,7 +61,7 @@ class Index3 extends StatelessWidget {
             margin:
                 EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(12.5)),
             child: Image.asset(
-              'assets/onBoarding/onboard_index3.png',
+              'assets/onBoarding/onboard_index4.png',
               height: ScreenUtil().setHeight(289),
             ),
           ),
@@ -70,7 +70,7 @@ class Index3 extends StatelessWidget {
               dotsCount: 4,
               decorator: DotsDecorator(
                   activeColor: ColorsUtils.blueColor, color: Colors.grey[200]),
-              position: 2.0),
+              position: 3.0),
           SizedBox(height: ScreenUtil().setHeight(43)),
           Container(
             margin:
@@ -81,7 +81,7 @@ class Index3 extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      AppLocalizations.of(context).translate('onBoardingText7'),
+                      AppLocalizations.of(context).translate('onBoardingText9'),
                       style: TextStyle(
                           color: ColorsUtils.blueColor,
                           fontSize: ScreenUtil().setSp(22),
@@ -90,7 +90,7 @@ class Index3 extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  AppLocalizations.of(context).translate('onBoardingText8'),
+                  AppLocalizations.of(context).translate('onBoardingText10'),
                   style: TextStyle(
                       color: ColorsUtils.onBoardingTextGrey,
                       fontSize: ScreenUtil().setSp(18),

@@ -1,6 +1,6 @@
+// import 'package:reaaia/model/data/data/response_data.dart';
 
 import 'package:reaaia/model/app_data/response_data.dart';
-
 
 class AppDataModel {
   int status;
@@ -8,12 +8,18 @@ class AppDataModel {
   ResponseDataApi response;
   //Meta errors;
 
-  AppDataModel({this.status, this.message, this.response,});
+  AppDataModel({
+    this.status,
+    this.message,
+    this.response,
+  });
 
   AppDataModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    response = json['response'] != null ? new ResponseDataApi.fromJson(json['response']) : null;
+    response = json['response'] != null
+        ? new ResponseDataApi.fromJson(json['response'])
+        : null;
     //errors = json['errors'] != null ? new Meta.fromJson(json['errors']) : null;
   }
 

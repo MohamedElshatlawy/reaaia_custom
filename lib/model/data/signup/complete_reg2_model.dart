@@ -1,11 +1,8 @@
+import 'package:reaaia/data/signupModels/awards_model.dart';
+import 'package:reaaia/data/signupModels/certifications_model.dart';
+import 'package:reaaia/data/signupModels/languages_model.dart';
 
-import 'package:reaaia/model/data/signup/awards_model.dart';
-import 'package:reaaia/model/data/signup/certifications_model.dart';
-import 'package:reaaia/model/data/signup/languages_model.dart';
-
-class CompleteReg2Model{
-
-
+class CompleteReg2Model {
   int scientificDegree;
   int specialityId;
   List<int> existingSubspecialities;
