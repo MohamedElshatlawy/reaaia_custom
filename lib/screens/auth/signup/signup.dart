@@ -9,6 +9,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/phoneCode_provider.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 
@@ -67,7 +68,7 @@ class _SignUpState extends State<SignUp> {
                           Row(
                             children: [
                               Text(
-                                'Welcome to Reaaia',
+                               AppLocalizations.of(context).translate('welcomeReaaia'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontWeight: FontWeight.bold,
@@ -79,7 +80,7 @@ class _SignUpState extends State<SignUp> {
                           Row(
                             children: [
                               Text(
-                                'Sign Up',
+                                AppLocalizations.of(context).translate('signUp'),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
@@ -90,50 +91,53 @@ class _SignUpState extends State<SignUp> {
                           SizedBox(
                             height: ScreenUtil().setHeight(38),
                           ),
-                          Row(
-                            children: [
-                              Card(
-                                margin: EdgeInsets.all(0),
-                                color: ColorsUtils.greyColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                    side: BorderSide(
-                                        color: ColorsUtils.borderColor)),
-                                child: CountryCodePicker(
-                                  onChanged: print,
+                          Directionality(
+                            textDirection: TextDirection.ltr,
+                            child: Row(
+                              children: [
+                                Card(
+                                  margin: EdgeInsets.all(0),
+                                  color: ColorsUtils.greyColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                      side: BorderSide(
+                                          color: ColorsUtils.borderColor)),
+                                  child: CountryCodePicker(
+                                    onChanged: print,
 
-                                  // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                                  initialSelection: 'EG',
-                                  favorite: ['EG', 'SA'],
+                                    // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                    initialSelection: 'EG',
+                                    favorite: ['EG', 'SA'],
 
-                                  // flag can be styled with BoxDecoration's `borderRadius` and `shape` fields
+                                    // flag can be styled with BoxDecoration's `borderRadius` and `shape` fields
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 9,
-                              ),
-                              Expanded(
-                                child: CustomTextField(
-                                  lablel: 'Phone Number*',
-                                  hasBorder: true,
-                                  isMobile: true,
-                                  onSaved: (value) {
-                                    mobileNumber =
-                                        phoneCodeProvider.phoneCode + value;
-
-                                  },
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'This Field Required';
-                                    }
-                                    else if(value.length<10){
-                                      return 'this Field Should no less than 10 digits';
-                                    }
-                                    return null;
-                                  },
+                                SizedBox(
+                                  width: 9,
                                 ),
-                              ),
-                            ],
+                                Expanded(
+                                  child: CustomTextField(
+                                    lablel: AppLocalizations.of(context).translate('phoneNumber'),
+                                    hasBorder: true,
+                                    isMobile: true,
+                                    onSaved: (value) {
+                                      mobileNumber =
+                                          phoneCodeProvider.phoneCode + value;
+
+                                    },
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
+                                      }
+                                      else if(value.length<10){
+                                        return AppLocalizations.of(context).translate('phoneNumberValidate2');
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: ScreenUtil().setHeight(15),
@@ -143,23 +147,23 @@ class _SignUpState extends State<SignUp> {
                               children: [
                                 TextSpan(
                                     text:
-                                        'By clicking sign up you are agreeing to the ',
+                            AppLocalizations.of(context).translate('terms1'),
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: ColorsUtils.onBoardingTextGrey)),
                                 TextSpan(
-                                    text: 'Terms of use',
+                                    text:  AppLocalizations.of(context).translate('terms2'),
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: ColorsUtils.blueColor)),
                                 TextSpan(
-                                    text: ' and the ',
+                                    text:  AppLocalizations.of(context).translate('terms3'),
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: ColorsUtils.onBoardingTextGrey)),
                                 TextSpan(
-                                    text: 'Privacy policy',
+                                    text:  AppLocalizations.of(context).translate('terms4'),
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
@@ -178,7 +182,7 @@ class _SignUpState extends State<SignUp> {
                                   child: CustomRoundedButton(
                                     backgroundColor: ColorsUtils.primaryGreen,
                                     borderColor: ColorsUtils.primaryGreen,
-                                    text: 'Sign Up',
+                                    text: AppLocalizations.of(context).translate('signUp'),
                                     pressed: () async {
                                       if (_signupFormKey.currentState
                                           .validate()) {
@@ -216,7 +220,7 @@ class _SignUpState extends State<SignUp> {
                                               });
                                               Functions.showCustomSnackBar(
                                                 context: context,
-                                                text: 'Mobile Number Found!',
+                                                text: AppLocalizations.of(context).translate('mobileFound'),
                                                 hasIcon: true,
                                                 iconType: Icons.error_outline,
                                                 iconColor: Colors.red,
@@ -227,7 +231,7 @@ class _SignUpState extends State<SignUp> {
                                               });
                                               Functions.showCustomSnackBar(
                                                 context: context,
-                                                text: 'Error SignUP!',
+                                                text: AppLocalizations.of(context).translate('errorSignUp'),
                                                 hasIcon: true,
                                                 iconType: Icons.error_outline,
                                                 iconColor: Colors.red,
@@ -240,7 +244,7 @@ class _SignUpState extends State<SignUp> {
                                             });
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Error SignUP!',
+                                              text: AppLocalizations.of(context).translate('errorSignUp'),
                                               hasIcon: true,
                                               iconType: Icons.error_outline,
                                               iconColor: Colors.red,
@@ -250,7 +254,7 @@ class _SignUpState extends State<SignUp> {
                                         }else{
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Enter A Valid Mobile Number!',
+                                            text: AppLocalizations.of(context).translate('enterValidNumber'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -270,7 +274,7 @@ class _SignUpState extends State<SignUp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Already have an account? ',
+                                AppLocalizations.of(context).translate('haveAccount'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(13)),
@@ -281,7 +285,7 @@ class _SignUpState extends State<SignUp> {
                                       context: context, widget: Login());
                                 },
                                 child: Text(
-                                  'Log in',
+                                  AppLocalizations.of(context).translate('login'),
                                   style: TextStyle(
                                       color: ColorsUtils.blueColor,
                                       fontWeight: FontWeight.w800,

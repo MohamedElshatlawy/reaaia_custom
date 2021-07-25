@@ -46,7 +46,8 @@ class MyMaterial extends StatelessWidget {
       designSize: Size(360, 690),
       builder: () => MaterialApp(
         debugShowCheckedModeBanner: false,
-        locale: locProvider.appLocal,
+        //locale: locProvider.appLocal,
+        locale: Locale('ar'),
         theme: ThemeData(
             primaryColor: ColorsUtils.primaryGreen,
             fontFamily: FontUtils.MULI_FONT),

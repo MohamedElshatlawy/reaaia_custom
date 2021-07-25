@@ -9,6 +9,7 @@ import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 
 
@@ -92,7 +93,7 @@ class _VerificationState extends State<Verification> {
                         Row(
                           children: [
                             Text(
-                              'Verification',
+                              AppLocalizations.of(context).translate('verification'),
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w800,
@@ -107,8 +108,7 @@ class _VerificationState extends State<Verification> {
                           children: [
                             Flexible(
                               child: Text(
-                                'Please check you message for a six-digit security code and enter it below.',
-                                style: TextStyle(
+                                AppLocalizations.of(context).translate('verificationDesc'),                                style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(13)),
                               ),
@@ -125,7 +125,7 @@ class _VerificationState extends State<Verification> {
                               Row(
                                 children: [
                                   Text(
-                                    'Verification Code',
+                                    AppLocalizations.of(context).translate('verCode'),
                                     style: TextStyle(
                                         color: ColorsUtils.onBoardingTextGrey,
                                         fontSize: ScreenUtil().setSp(13)),
@@ -200,7 +200,7 @@ class _VerificationState extends State<Verification> {
                                 child: CustomRoundedButton(
                                   backgroundColor: ColorsUtils.primaryGreen,
                                   borderColor: ColorsUtils.primaryGreen,
-                                  text: 'Verify',
+                                  text: AppLocalizations.of(context).translate('verify'),
                                   pressed: () async {
                                     //FocusManager.instance.primaryFocus.unfocus();
                                     if (_controller.text != null &&
@@ -248,7 +248,7 @@ class _VerificationState extends State<Verification> {
                                           });
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Wrong Code!',
+                                            text: AppLocalizations.of(context).translate('wrongCode'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -260,7 +260,7 @@ class _VerificationState extends State<Verification> {
                                         });
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'NetWork Error!',
+                                          text: 'NetWork Error! $error',
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -269,7 +269,7 @@ class _VerificationState extends State<Verification> {
                                     } else {
                                       Functions.showCustomSnackBar(
                                         context: context,
-                                        text: 'Code Should equal 5 digits',
+                                        text: AppLocalizations.of(context).translate('codeValidate'),
                                         hasIcon: true,
                                         iconType: Icons.error_outline,
                                         iconColor: Colors.red,
@@ -286,7 +286,7 @@ class _VerificationState extends State<Verification> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Don\'t get a code?(Wait 00:${_counter.toString().padLeft(2, "0")}) ',
+                              AppLocalizations.of(context).translate('resend_code2')+'${_counter.toString().padLeft(2, "0")}) ',
                               style: TextStyle(
                                   color: ColorsUtils.onBoardingTextGrey,
                                   fontSize: ScreenUtil().setSp(13)),
@@ -305,7 +305,7 @@ class _VerificationState extends State<Verification> {
                                             'Accepted') {
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Code Resend Successfully',
+                                            text: AppLocalizations.of(context).translate('successResendCode'),
                                             hasIcon: true,
                                             iconType: Icons.done,
                                             iconColor: Colors.green,
@@ -314,7 +314,7 @@ class _VerificationState extends State<Verification> {
                                         } else {
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Code Resend Failed',
+                                            text: AppLocalizations.of(context).translate('failedResendCode'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -324,7 +324,7 @@ class _VerificationState extends State<Verification> {
                                       } catch (err) {
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Code Resend Failed',
+                                          text: AppLocalizations.of(context).translate('failedResendCode'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -333,7 +333,7 @@ class _VerificationState extends State<Verification> {
                                       }
                                     },
                               child: Text(
-                                'Resend Code',
+                                  AppLocalizations.of(context).translate('resend_code'),
                                 style: TextStyle(
                                     color: _counter > 0
                                         ? Colors.grey

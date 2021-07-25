@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b7c41bf-2dda-46b5-a74b-9c2104e727e2" name="Default Changelist" comment="sprint 2 logic again teams and appointments  15/7/2021 01:14 AM">
+    <list default="true" id="0b7c41bf-2dda-46b5-a74b-9c2104e727e2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repository/clinics_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repository/clinics_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/change_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/change_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/forget_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/forget_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/password_success_changed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/password_success_changed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/recovery_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/recovery_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/signup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/verification.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_appointment_clnic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_appointment_clnic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_appointments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinic_appointments.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_textfield.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_textfield.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/viewModels/workProvider/clinics_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/viewModels/workProvider/clinics_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index1.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index2.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index3.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index4.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index4.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626305202792</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="sprint 2 logic appointments  15/7/2021 04:55 PM">
+      <created>1626360902006</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1626360902006</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -164,7 +183,8 @@
     <MESSAGE value="sprint 3 Design not complete 12/7/2021 07:32 PM" />
     <MESSAGE value="sprint 3 Design 13/7/2021 02:13 PM" />
     <MESSAGE value="sprint 2 logic again teams and appointments  15/7/2021 01:14 AM" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprint 2 logic again teams and appointments  15/7/2021 01:14 AM" />
+    <MESSAGE value="sprint 2 logic appointments  15/7/2021 04:55 PM" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprint 2 logic appointments  15/7/2021 04:55 PM" />
   </component>
   <component name="WindowStateProjectService">
     <state x="333" y="222" key="#Scopes" timestamp="1624144656101">
@@ -179,14 +199,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1624795771270" />
-    <state x="100" y="100" width="882" height="528" key="AVDManager" timestamp="1626343905645">
+    <state x="100" y="100" width="882" height="528" key="AVDManager" timestamp="1627133396218">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="100" y="100" width="882" height="528" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1626343905645" />
-    <state x="60" y="0" key="CommitChangelistDialog2" timestamp="1626305257338">
+    <state x="100" y="100" width="882" height="528" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1627133396218" />
+    <state x="60" y="0" key="CommitChangelistDialog2" timestamp="1626360900536">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="60" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1626305257338" />
+    <state x="60" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1626360900536" />
     <state x="0" y="55" key="DiffContextDialog" timestamp="1625449305242">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -195,22 +215,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="318" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1625187880295" />
-    <state width="1019" height="219" key="GridCell.Tab.0.bottom" timestamp="1626358991818">
+    <state width="1000" height="284" key="GridCell.Tab.0.bottom" timestamp="1627141844749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1019" height="219" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626358991818" />
-    <state width="1019" height="219" key="GridCell.Tab.0.center" timestamp="1626358991818">
+    <state width="1000" height="284" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
+    <state width="1000" height="284" key="GridCell.Tab.0.center" timestamp="1627141844749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1019" height="219" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626358991818" />
-    <state width="1019" height="219" key="GridCell.Tab.0.left" timestamp="1626358991818">
+    <state width="1000" height="284" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
+    <state width="1000" height="284" key="GridCell.Tab.0.left" timestamp="1627141844749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1019" height="219" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626358991818" />
-    <state width="1019" height="219" key="GridCell.Tab.0.right" timestamp="1626358991818">
+    <state width="1000" height="284" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
+    <state width="1000" height="284" key="GridCell.Tab.0.right" timestamp="1627141844749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1019" height="219" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626358991818" />
+    <state width="1000" height="284" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
     <state x="122" y="110" key="IDE.errors.dialog" timestamp="1625444527148">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -223,14 +243,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1625182289660" />
-    <state x="133" y="97" key="Vcs.Push.Dialog.v2" timestamp="1626305278802">
+    <state x="133" y="97" key="Vcs.Push.Dialog.v2" timestamp="1626360913564">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="133" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1626305278802" />
-    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1626305256200">
+    <state x="133" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1626360913564" />
+    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1626360877321">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1366.728@0.0.1366.728" timestamp="1626305256200" />
+    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1366.728@0.0.1366.728" timestamp="1626360877321" />
     <state x="218" y="156" key="git4idea.merge.GitPullDialog" timestamp="1626178547498">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -245,7 +265,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart</url>
-          <line>965</line>
+          <line>964</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
@@ -254,13 +274,8 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart</url>
-          <line>177</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart</url>
-          <line>590</line>
+          <line>589</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
@@ -270,7 +285,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart</url>
-          <line>759</line>
+          <line>758</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">

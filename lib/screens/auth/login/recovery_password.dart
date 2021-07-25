@@ -11,6 +11,7 @@ import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 
 
@@ -88,7 +89,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                           Row(
                             children: [
                               Text(
-                                'Recovery Password',
+                                AppLocalizations.of(context).translate('recoveryPass'),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
@@ -103,8 +104,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Reset code was sent to your email. Please enter the code and create new password.',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context).translate('resetCode'),                                  style: TextStyle(
                                       color: ColorsUtils.onBoardingTextGrey,
                                       fontSize: ScreenUtil().setSp(13)),
                                 ),
@@ -121,7 +121,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                                 Row(
                                   children: [
                                     Text(
-                                      'Reset Code',
+                                      AppLocalizations.of(context).translate('reset_code'),
                                       style: TextStyle(
                                           color: ColorsUtils.onBoardingTextGrey,
                                           fontSize: ScreenUtil().setSp(13)),
@@ -185,13 +185,13 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Don\'t receive code? ',
+                                AppLocalizations.of(context).translate('notReceiveCode'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(13)),
                               ),
                               Text(
-                                'Resend it',
+                                AppLocalizations.of(context).translate('resendCode'),
                                 style: TextStyle(
                                     color: ColorsUtils.blueColor,
                                     fontWeight: FontWeight.w800,
@@ -209,7 +209,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                             child: CustomRoundedButton(
                               backgroundColor: ColorsUtils.primaryGreen,
                               borderColor: ColorsUtils.primaryGreen,
-                              text: 'Verify',
+                              text: AppLocalizations.of(context).translate('verify'),
                               pressed: () async{
                                 if (_formKey.currentState.validate()) {
                                   _formKey.currentState.save();
@@ -238,7 +238,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                                         });
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Wrong Code!',
+                                          text: AppLocalizations.of(context).translate('wrongCode'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -260,7 +260,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
 
                                     Functions.showCustomSnackBar(
                                       context: context,
-                                      text: 'Code Should be 5 digits',
+                                      text: AppLocalizations.of(context).translate('codeValidate'),
                                       hasIcon: true,
                                       iconType: Icons.error_outline,
                                       iconColor: Colors.red,

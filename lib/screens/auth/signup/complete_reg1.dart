@@ -12,6 +12,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:validators/validators.dart';
 
@@ -74,7 +75,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                   Row(
                     children: [
                       Text(
-                        'Profile',
+                        AppLocalizations.of(context).translate('profileReg1'),
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w800,
@@ -87,7 +88,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     children: [
                       Flexible(
                         child: Text(
-                          'Update your profile to get better engagment.',
+                          AppLocalizations.of(context).translate('profileReg1Desc'),
                           style: TextStyle(
                               color: ColorsUtils.onBoardingTextGrey,
                               fontSize: ScreenUtil().setSp(13)),
@@ -132,7 +133,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
 
                                   Functions.showCustomSnackBar(
                                     context: context,
-                                    text: 'Picture Remove Successfully',
+                                    text: AppLocalizations.of(context).translate('picRemove'),
                                     hasIcon: true,
                                     iconType: Icons.done,
                                     iconColor: Colors.green,
@@ -164,7 +165,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                 width: 185,
                                 backgroundColor: ColorsUtils.primaryGreen,
                                 borderColor: ColorsUtils.primaryGreen,
-                                text: 'Update Avatar',
+                                text: AppLocalizations.of(context).translate('updateAvatar'),
                                 pressed: () async {
                                   final pickedImage =
                                       await Functions.pickImage();
@@ -179,7 +180,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                         print('we found token ${signUpProvider.tokenPicture}');
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Picture Upload Successfully',
+                                          text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                           hasIcon: true,
                                           iconType: Icons.done,
                                           iconColor: Colors.green,
@@ -187,7 +188,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                       }else{
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Picture Upload Failed!',
+                                          text: AppLocalizations.of(context).translate('picLoadFailed'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -196,7 +197,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                     }catch(err){
                                       Functions.showCustomSnackBar(
                                         context: context,
-                                        text: 'Picture Upload Failed!',
+                                        text: AppLocalizations.of(context).translate('picLoadFailed'),
                                         hasIcon: true,
                                         iconType: Icons.error_outline,
                                         iconColor: Colors.red,
@@ -206,7 +207,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                                   } else {
                                     Functions.showCustomSnackBar(
                                       context: context,
-                                      text: 'Picture Upload Failed!',
+                                      text: AppLocalizations.of(context).translate('picLoadFailed'),
                                       hasIcon: true,
                                       iconType: Icons.error_outline,
                                       iconColor: Colors.red,
@@ -217,7 +218,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                               ),
                               SizedBox(height: ScreenUtil().setHeight(12)),
                               Text(
-                                'your avatar should be a friendly and inviting heat shot. clearly indentifiable as you.',
+                                AppLocalizations.of(context).translate('picDesc'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(10)),
@@ -231,14 +232,14 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                   SizedBox(height: ScreenUtil().setHeight(25)),
                   CustomTextField(
                     filledColor: Colors.white,
-                    lablel: ' Full Name*',
+                    lablel: AppLocalizations.of(context).translate('fullName'),
                     hasBorder: true,
                     onSaved: (val) {
                       _completeReg1Model.name = val;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       return null;
                     },
@@ -246,7 +247,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                   SizedBox(height: ScreenUtil().setHeight(20)),
                   CustomTextField(
                     filledColor: Colors.white,
-                    lablel: ' Email*',
+                    lablel: AppLocalizations.of(context).translate('email'),
                     isEmail: true,
                     hasBorder: true,
                     onSaved: (val) {
@@ -254,10 +255,10 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       else if(!isEmail(value)){
-                        return 'enter Valid Email';
+                        return AppLocalizations.of(context).translate('emailValidate');
                       }
                       return null;
                     },
@@ -265,17 +266,17 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                   SizedBox(height: ScreenUtil().setHeight(20)),
                   CustomTextField(
                     filledColor: Colors.white,
-                    lablel: ' National ID*',
+                    lablel: AppLocalizations.of(context).translate('national_id'),
                     hasBorder: true,
                     onSaved: (val) {
                       _completeReg1Model.nationalId = val;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       else if(value.length!=14){
-                        return 'this Field Should no less than 14 digits';
+                        return AppLocalizations.of(context).translate('national_id_validate');
                       }
                       return null;
                     },
@@ -283,7 +284,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                   SizedBox(height: ScreenUtil().setHeight(20)),
                   CustomTextField(
                     filledColor: Colors.white,
-                    lablel: ' Password*',
+                    lablel: AppLocalizations.of(context).translate('Password'),
                     hasBorder: true,
                     hasPassword: true,
                     onSaved: (val) {
@@ -292,10 +293,10 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       else if(value.length<8){
-                        return 'this Field Should no less than 8 digits';
+                        return AppLocalizations.of(context).translate('passwordValidate');
                       }
                       return null;
                     },
@@ -313,7 +314,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                         textColor: isMale
                             ? Colors.black
                             : ColorsUtils.onBoardingTextGrey,
-                        genderName: 'MALE',
+                        genderName: AppLocalizations.of(context).translate('male'),
                         onTap: () {
                           setState(() {
                             isMale = true;
@@ -333,7 +334,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                         textColor: isFemale
                             ? Colors.black
                             : ColorsUtils.onBoardingTextGrey,
-                        genderName: 'FEMALE',
+                        genderName: AppLocalizations.of(context).translate('female'),
                         onTap: () {
                           setState(() {
                             isMale = false;
@@ -370,7 +371,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                         controller: _controller,
                         readOnly: true,
                         filledColor: Colors.white,
-                        lablel: ' Date of Birthday*',
+                        lablel: AppLocalizations.of(context).translate('dateOfBirthDay'),
                         hasBorder: true,
                         sufficIcon: Icon(
                           Icons.date_range,
@@ -379,7 +380,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                         onSaved: (val) {},
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'This Field Required';
+                            return AppLocalizations.of(context).translate('fieldRequiredValidate');
                           }
                           return null;
                         },
@@ -417,11 +418,11 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                       child: CustomTextField(
                         controller: _mapController,
                         filledColor: Colors.white,
-                        lablel: ' Main Address*',
+                        lablel: AppLocalizations.of(context).translate('mainAddress'),
                         hasBorder: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'This Field Required';
+                            return AppLocalizations.of(context).translate('fieldRequiredValidate');
                           }
                           return null;
                         },
@@ -449,7 +450,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
                         Icons.arrow_forward,
                         color: Colors.white,
                       ),
-                      text: 'Continue',
+                      text: AppLocalizations.of(context).translate('continue'),
                       pressed: () {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
@@ -463,7 +464,7 @@ class _CompleteRegister1State extends State<CompleteRegister1> {
 
                             Functions.showCustomSnackBar(
                               context: context,
-                              text: 'Some Fields Required- Image Or Gender!',
+                              text: AppLocalizations.of(context).translate('fieldsRequired'),
                               hasIcon: false,
                             );
                           }

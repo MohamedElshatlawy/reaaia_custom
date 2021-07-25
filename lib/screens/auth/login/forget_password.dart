@@ -10,6 +10,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 
 
@@ -83,7 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           Row(
                             children: [
                               Text(
-                                'Forget Password',
+                               AppLocalizations.of(context).translate('forgetPass'),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
@@ -98,8 +99,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Please enter your email below to receive your password reset instructions.',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context).translate('forgetPassDesc'),                                  style: TextStyle(
                                       color: ColorsUtils.onBoardingTextGrey,
                                       fontSize: ScreenUtil().setSp(13)),
                                 ),
@@ -110,13 +110,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             height: ScreenUtil().setHeight(31),
                           ),
                           CustomTextField(
-                            lablel: 'Email / Phone Number*',
+                            lablel: AppLocalizations.of(context).translate('email_phoneNumber'),
                             hasBorder: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'This Field Required';
+                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                               } else if (value.length < 11) {
-                                return 'this Field Should no less than 11 digits';
+                                return AppLocalizations.of(context).translate('phoneNumberValidate');
                               }
                               return null;
                             },
@@ -135,7 +135,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                   child: CustomRoundedButton(
                                     backgroundColor: ColorsUtils.primaryGreen,
                                     borderColor: ColorsUtils.primaryGreen,
-                                    text: 'Send Email',
+                                    text: AppLocalizations.of(context).translate('sendEmail'),
                                     pressed: () async {
                                       if (_forgetPassFormKey.currentState
                                           .validate()) {
@@ -168,7 +168,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                             });
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Invalid Phone Number!',
+                                              text: AppLocalizations.of(context).translate('inValidPhoneNumber'),
                                               hasIcon: true,
                                               iconType: Icons.error_outline,
                                               iconColor: Colors.red,

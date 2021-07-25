@@ -17,6 +17,7 @@ import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -51,8 +52,6 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
 
   List<TextEditingController> _controllersCertificationName = [];
   List<TextEditingController> _controllersCertificationYear = [];
-  List<TextEditingController> _controllersAwardName = [];
-  List<TextEditingController> _controllersAwardYear = [];
 
   @override
   void initState() {
@@ -118,7 +117,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                     Row(
                       children: [
                         Text(
-                          'Education',
+                         AppLocalizations.of(context).translate('education'),
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w800,
@@ -131,7 +130,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                       children: [
                         Flexible(
                           child: Text(
-                            'Update your profile to get better engagment.',
+                            AppLocalizations.of(context).translate('profileReg1Desc'),
                             style: TextStyle(
                                 color: ColorsUtils.onBoardingTextGrey,
                                 fontSize: ScreenUtil().setSp(13)),
@@ -145,13 +144,13 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                     DropdownButtonFormField<String>(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return ' Select Scientific Degree';
+                          return AppLocalizations.of(context).translate('scientificDegreeValidate');
                         }
 
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: 'Scientific Degree*',
+                        labelText: AppLocalizations.of(context).translate('scientificDegree'),
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: ScreenUtil().setSp(15)),
@@ -227,14 +226,14 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Select Speciality',
+                                        AppLocalizations.of(context).translate('selectSpecialty'),
                                         style: TextStyle(
                                             color:
                                                 ColorsUtils.onBoardingTextGrey,
                                             fontSize: ScreenUtil().setSp(16)),
                                       ),
                                       Text(
-                                        'you can select only one Speciality',
+                                        AppLocalizations.of(context).translate('selectOneSpecialty'),
                                         style: TextStyle(
                                             color:
                                                 ColorsUtils.onBoardingTextGrey,
@@ -303,7 +302,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                           readOnly: true,
                           filledColor:
                               isSelectedSpeciality ? null : Colors.white,
-                          lablel: ' Select Specialty*',
+                          lablel: AppLocalizations.of(context).translate('selectSpecialty'),
                           style: TextStyle(
                               color: ColorsUtils.blackColor,
                               fontWeight: FontWeight.w600,
@@ -318,7 +317,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                           //onSaved: (val) {},
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'This Field Required';
+                              return AppLocalizations.of(context).translate('fieldRequiredValidate');
                             }
                             return null;
                           },
@@ -334,7 +333,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
 
                     /// SubSpecialty
                     Text(
-                      'Select SubSpecialty ',
+                      AppLocalizations.of(context).translate('selectSubSpecialty'),
                       style: TextStyle(
                           color: ColorsUtils.textGrey,
                           fontWeight: FontWeight.w700,
@@ -345,7 +344,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                         ? Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Center(
-                                child: Text('Not Specialty Selected yet!')),
+                                child: Text(AppLocalizations.of(context).translate('notSelectedSpecialty'),)),
                           )
                         : Wrap(
                             spacing: 10.0,
@@ -437,7 +436,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                           },
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(bottom: 12.0),
-                            hintText: 'Add Other Specialty',
+                            hintText: AppLocalizations.of(context).translate('addOtherSpecialty'),
                             enabledBorder: InputBorder.none,
                             border: InputBorder.none,
                             disabledBorder: InputBorder.none,
@@ -498,7 +497,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   'we found token ${signUpProvider.tokenPicture}');
                               Functions.showCustomSnackBar(
                                 context: context,
-                                text: 'Picture Upload Successfully',
+                                text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                 hasIcon: true,
                                 iconType: Icons.done,
                                 iconColor: Colors.green,
@@ -506,7 +505,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                             } else {
                               Functions.showCustomSnackBar(
                                 context: context,
-                                text: 'Picture Upload Failed!',
+                                text: AppLocalizations.of(context).translate('picLoadFailed'),
                                 hasIcon: true,
                                 iconType: Icons.error_outline,
                                 iconColor: Colors.red,
@@ -515,7 +514,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                           } catch (err) {
                             Functions.showCustomSnackBar(
                               context: context,
-                              text: 'Picture Upload Failed!',
+                              text: AppLocalizations.of(context).translate('picLoadFailed'),
                               hasIcon: true,
                               iconType: Icons.error_outline,
                               iconColor: Colors.red,
@@ -524,7 +523,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                         } else {
                           Functions.showCustomSnackBar(
                             context: context,
-                            text: 'Picture Upload Failed!',
+                            text: AppLocalizations.of(context).translate('picLoadFailed'),
                             hasIcon: true,
                             iconType: Icons.error_outline,
                             iconColor: Colors.red,
@@ -555,7 +554,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                               child: Text(
                                 licenceImage != null
                                     ? path.basename(licenceImage.path)
-                                    : 'Upload Latest \nProfessional Practice licence',
+                                    : AppLocalizations.of(context).translate('image_licence'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: ScreenUtil().setSp(12),
@@ -569,14 +568,14 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                     SizedBox(height: ScreenUtil().setHeight(15)),
                     CustomTextField(
                       filledColor: Colors.white,
-                      lablel: ' Graduation University',
+                      lablel: AppLocalizations.of(context).translate('grad_university'),
                       hasBorder: true,
                       onSaved: (val) {
                         _completeReg2Model.university = val;
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -599,7 +598,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Language',
+                            AppLocalizations.of(context).translate('lang'),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: ScreenUtil().setSp(16),
@@ -615,7 +614,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   SizedBox(height: ScreenUtil().setHeight(16)),
                                   DropdownButtonFormField<String>(
                                     decoration: InputDecoration(
-                                      labelText: 'Language',
+                                      labelText: AppLocalizations.of(context).translate('lang'),
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: ScreenUtil().setSp(15)),
@@ -662,7 +661,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                     }).toList(),
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return 'Select Language';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       }
                                       return null;
                                     },
@@ -670,7 +669,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   SizedBox(height: ScreenUtil().setHeight(20)),
                                   DropdownButtonFormField<String>(
                                     decoration: InputDecoration(
-                                      labelText: 'Level of Language',
+                                      labelText: AppLocalizations.of(context).translate('levelOfLang'),
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: ScreenUtil().setSp(15)),
@@ -718,7 +717,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                     }).toList(),
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return 'Select Level Of Language';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       }
                                       return null;
                                     },
@@ -740,7 +739,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                 Icons.add,
                                 color: ColorsUtils.primaryGreen,
                               ),
-                              text: 'Add More Language ',
+                              text: AppLocalizations.of(context).translate('addMoreLang'),
                               pressed: () {
                                 setState(() {
                                   _languages.add(Languages());
@@ -767,7 +766,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Certification',
+                            AppLocalizations.of(context).translate('certification'),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: ScreenUtil().setSp(16),
@@ -784,14 +783,14 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                         height: ScreenUtil().setHeight(16)),
                                     CustomTextField(
                                       filledColor: Colors.white,
-                                      lablel: ' Certificate Name',
+                                      lablel: AppLocalizations.of(context).translate('certificateName'),
                                       hasBorder: true,
                                       onSaved: (val) {
                                         _certifications[index].name = val;
                                       },
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'This Field Required';
+                                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                         }
                                         return null;
                                       },
@@ -803,14 +802,14 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                         height: ScreenUtil().setHeight(20)),
                                     CustomTextField(
                                       filledColor: Colors.white,
-                                      lablel: ' Year',
+                                      lablel: AppLocalizations.of(context).translate('year'),
                                       hasBorder: true,
                                       onSaved: (val) {
                                         _certifications[index].year = val;
                                       },
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'This Field Required';
+                                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                         }
                                         return null;
                                       },
@@ -845,7 +844,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                               Functions.showCustomSnackBar(
                                                 context: context,
                                                 text:
-                                                    'Picture Upload Successfully',
+                                                AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                                 hasIcon: true,
                                                 iconType: Icons.done,
                                                 iconColor: Colors.green,
@@ -853,7 +852,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                             } else {
                                               Functions.showCustomSnackBar(
                                                 context: context,
-                                                text: 'Picture Upload Failed!',
+                                                text: AppLocalizations.of(context).translate('picLoadFailed'),
                                                 hasIcon: true,
                                                 iconType: Icons.error_outline,
                                                 iconColor: Colors.red,
@@ -862,7 +861,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                           } catch (err) {
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Picture Upload Failed!',
+                                              text: AppLocalizations.of(context).translate('picLoadFailed'),
                                               hasIcon: true,
                                               iconType: Icons.error_outline,
                                               iconColor: Colors.red,
@@ -871,7 +870,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                         } else {
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Picture Upload Failed!',
+                                            text: AppLocalizations.of(context).translate('picLoadFailed'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -914,7 +913,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                                     ? path.basename(
                                                         certificateImage[index]
                                                             .path)
-                                                    : 'Attach Certificate Photo',
+                                                    : AppLocalizations.of(context).translate('attachCertificatePic'),
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w600,
                                                     fontSize:
@@ -943,7 +942,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                 Icons.add,
                                 color: ColorsUtils.primaryGreen,
                               ),
-                              text: 'Add More Certificate ',
+                              text: AppLocalizations.of(context).translate('addMoreCert'),
                               pressed: () {
                                 setState(() {
                                   _certifications.add(Certifications());
@@ -971,7 +970,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Awards',
+                            AppLocalizations.of(context).translate('awards'),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: ScreenUtil().setSp(16),
@@ -986,14 +985,14 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   SizedBox(height: ScreenUtil().setHeight(16)),
                                   CustomTextField(
                                     filledColor: Colors.white,
-                                    lablel: ' Award Name ',
+                                    lablel: AppLocalizations.of(context).translate('awardName'),
                                     hasBorder: true,
                                     onSaved: (val) {
                                       _awards[index].name = val;
                                     },
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return 'This Field Required';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       }
                                       return null;
                                     },
@@ -1004,14 +1003,14 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   SizedBox(height: ScreenUtil().setHeight(20)),
                                   CustomTextField(
                                     filledColor: Colors.white,
-                                    lablel: ' Year',
+                                    lablel: AppLocalizations.of(context).translate('year'),
                                     hasBorder: true,
                                     onSaved: (val) {
                                       _awards[index].year = val;
                                     },
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return 'This Field Required';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       }
                                       return null;
                                     },
@@ -1041,7 +1040,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                                 'we found token ${signUpProvider.tokenPicture}');
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Picture Upload Successfully',
+                                              text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                               hasIcon: true,
                                               iconType: Icons.done,
                                               iconColor: Colors.green,
@@ -1049,7 +1048,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                           } else {
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Picture Upload Failed!',
+                                              text: AppLocalizations.of(context).translate('picLoadFailed'),
                                               hasIcon: true,
                                               iconType: Icons.error_outline,
                                               iconColor: Colors.red,
@@ -1058,7 +1057,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                         } catch (err) {
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Picture Upload Failed!',
+                                            text: AppLocalizations.of(context).translate('picLoadFailed'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -1067,7 +1066,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                       } else {
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Picture Upload Failed!',
+                                          text: AppLocalizations.of(context).translate('picLoadFailed'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -1102,7 +1101,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                             child: Text(
                                               awardImage[index] != null
                                                   ? path.basename(awardImage[index].path)
-                                                  : 'Attach Award Photo',
+                                                  : AppLocalizations.of(context).translate('attachAwardPic'),
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: ScreenUtil().setSp(13),
@@ -1128,7 +1127,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                 Icons.add,
                                 color: ColorsUtils.primaryGreen,
                               ),
-                              text: 'Add More Award ',
+                              text: AppLocalizations.of(context).translate('addMoreAward'),
                               pressed: () {
                                 setState(() {
                                   _awards.add(Awards());
@@ -1156,7 +1155,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                             Icons.arrow_forward,
                             color: Colors.white,
                           ),
-                          text: 'Continue',
+                          text: AppLocalizations.of(context).translate('continue'),
                           pressed: () {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
@@ -1177,7 +1176,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                               } else {
                                 Functions.showCustomSnackBar(
                                   context: context,
-                                  text: 'all Image Fields Required!',
+                                  text: AppLocalizations.of(context).translate('allFieldsRequired'),
                                   hasIcon: false,
                                 );
                               }

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:reaaia/screens/auth/login/login.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/onBoardingUtil.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/onBoardingProvider.dart';
 
 
@@ -45,8 +46,7 @@ class Index2 extends StatelessWidget {
                     CustomFunctions.pushScreenRepcalement(context: context, widget: Login());
                   },
                   child: Text(
-                    'Skip',
-                    style: TextStyle(
+                    AppLocalizations.of(context).translate('skipBoarding'),                    style: TextStyle(
                         color: ColorsUtils.onBoardingTextGrey,
                         fontSize: ScreenUtil().setSp(17),
                         fontWeight: FontWeight.w700),
@@ -80,7 +80,7 @@ class Index2 extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Private Care Services',
+                      AppLocalizations.of(context).translate('onBoardingText4'),
                       style: TextStyle(
                           color: ColorsUtils.blueColor,
                           fontSize: ScreenUtil().setSp(22),
@@ -89,14 +89,14 @@ class Index2 extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Book an online in-person',
+                  AppLocalizations.of(context).translate('onBoardingText5'),
                   style: TextStyle(
                       color: ColorsUtils.onBoardingTextGrey,
                       fontSize: ScreenUtil().setSp(18),
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'appointment with a Doctor',
+                  AppLocalizations.of(context).translate('onBoardingText6'),
                   style: TextStyle(
                       color: ColorsUtils.onBoardingTextGrey,
                       fontSize: ScreenUtil().setSp(18),

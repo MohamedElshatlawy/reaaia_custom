@@ -262,9 +262,6 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                                   );
                                 }
 
-
-
-
                               }else{
                                 print('u should enter at least day');
                               }
