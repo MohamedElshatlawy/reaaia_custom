@@ -5,6 +5,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 
@@ -49,7 +50,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'New Appointment',
+                      AppLocalizations.of(context).translate('newAppointment'),
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: ScreenUtil().setSp(17),
@@ -64,7 +65,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'From',
+                                AppLocalizations.of(context).translate('from'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(13),
@@ -76,7 +77,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                                   color: ColorsUtils.blueColor,
                                 ),
                                 filledColor: Colors.white,
-                                hintText: '08:00 AM or PM',
+                                hintText: AppLocalizations.of(context).translate('fromHint'),
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 hasBorder: true,
                                 onSaved: (val) {
@@ -84,7 +85,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                                 },
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return 'This Field Required';
+                                    return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                   }
                                   return null;
                                 },
@@ -100,7 +101,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'To',
+                                AppLocalizations.of(context).translate('to'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(13),
@@ -112,7 +113,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                                   color: ColorsUtils.blueColor,
                                 ),
                                 filledColor: Colors.white,
-                                hintText: '09:00 AM or PM',
+                                hintText: AppLocalizations.of(context).translate('toHint'),
                                 hintStyle: TextStyle(fontSize: 12.0),
                                 hasBorder: true,
                                 onSaved: (val) {
@@ -120,7 +121,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                                 },
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return 'This Field Required';
+                                    return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                   }
                                   return null;
                                 },
@@ -133,21 +134,21 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                     SizedBox(height: ScreenUtil().setHeight(20)),
                     CustomTextField(
                       filledColor: Colors.white,
-                      lablel: ' Time Slot ( Min.)',
+                      lablel: AppLocalizations.of(context).translate('timeSlot'),
                       hasBorder: true,
                       onSaved: (val) {
                         _appointmentInfo['time_slot']=int.tryParse(val);
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
                     ),
                     SizedBox(height: ScreenUtil().setHeight(30)),
                     Text(
-                      'Working Day',
+                      AppLocalizations.of(context).translate('workingDay'),
                       style: TextStyle(
                           color: ColorsUtils.onBoardingTextGrey,
                           fontSize: ScreenUtil().setSp(13),
@@ -217,7 +218,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                         child: CustomRoundedButton(
                           backgroundColor: ColorsUtils.primaryGreen,
                           borderColor: ColorsUtils.primaryGreen,
-                          text: 'Add',
+                          text: AppLocalizations.of(context).translate('add'),
                           pressed: () async{
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();

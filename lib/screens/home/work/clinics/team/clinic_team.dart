@@ -3,11 +3,12 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/add_employee_team.dart';
-import 'package:reaaia/screens/home/work/edit_employee_team.dart';
-import 'package:reaaia/screens/home/work/filter_team_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/team/add_employee_team.dart';
+import 'package:reaaia/screens/home/work/clinics/team/edit_employee_team.dart';
+import 'package:reaaia/screens/home/work/clinics/team/filter_team_clinic.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/reaaia_icons.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicTeamPage extends StatefulWidget {
@@ -165,7 +166,7 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
               Row(
                 children: [
                   Text(
-                    'Team',
+                    AppLocalizations.of(context).translate('team'),
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w800,
@@ -189,7 +190,7 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                               ? Center(
                                   child: Container(
                                     child: Text(
-                                      'No Team found',
+                                      AppLocalizations.of(context).translate('noTeam'),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -208,22 +209,22 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                             context: context,
                                             builder: (ctx) {
                                               return AlertDialog(
-                                                title: Text('Are you Sure ?'),
+                                                title: Text(AppLocalizations.of(context).translate('areYouSure'),),
                                                 content: Text(
-                                                    'Do you want to remove  This Branch from your Branches ?'),
+                                                  AppLocalizations.of(context).translate('doYouWantRemove'),),
                                                 actions: [
                                                   FlatButton(
                                                       onPressed: () {
                                                         Navigator.pop(
                                                             context, false);
                                                       },
-                                                      child: Text('No')),
+                                                      child: Text(AppLocalizations.of(context).translate('no'),)),
                                                   FlatButton(
                                                       onPressed: () {
                                                         Navigator.pop(
                                                             context, true);
                                                       },
-                                                      child: Text('Yes')),
+                                                      child: Text(AppLocalizations.of(context).translate('yes'),)),
                                                 ],
                                               );
                                             });
@@ -436,22 +437,22 @@ class _ClinicTeamPageState extends State<ClinicTeamPage> {
                                               context: context,
                                               builder: (ctx) {
                                                 return AlertDialog(
-                                                  title: Text('Are you Sure ?'),
+                                                  title: Text(AppLocalizations.of(context).translate('areYouSure'),),
                                                   content: Text(
-                                                      'Do you want to remove  This Branch from your Branches ?'),
+                                                    AppLocalizations.of(context).translate('doYouWantRemove'),),
                                                   actions: [
                                                     FlatButton(
                                                         onPressed: () {
                                                           Navigator.pop(
                                                               context, false);
                                                         },
-                                                        child: Text('No')),
+                                                        child: Text(AppLocalizations.of(context).translate('no'),)),
                                                     FlatButton(
                                                         onPressed: () {
                                                           Navigator.pop(
                                                               context, true);
                                                         },
-                                                        child: Text('Yes')),
+                                                        child: Text(AppLocalizations.of(context).translate('yes'),)),
                                                   ],
                                                 );
                                               });

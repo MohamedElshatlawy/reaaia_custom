@@ -8,6 +8,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class EditAppointmentPage extends StatefulWidget {
@@ -96,7 +97,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'From',
+                                                  AppLocalizations.of(context).translate('from'),
                                                   style: TextStyle(
                                                       color: ColorsUtils
                                                           .onBoardingTextGrey,
@@ -113,7 +114,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                                     color: ColorsUtils.blueColor,
                                                   ),
                                                   filledColor: Colors.white,
-                                                  hintText: '08:00 AM or PM',
+                                                  hintText: AppLocalizations.of(context).translate('fromHint'),
                                                   hintStyle:
                                                       TextStyle(fontSize: 12.0),
                                                   hasBorder: true,
@@ -124,7 +125,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                                   validator: (value) {
                                                     if (value == null ||
                                                         value.isEmpty) {
-                                                      return 'This Field Required';
+                                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                                     }
                                                     return null;
                                                   },
@@ -141,7 +142,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'To',
+                                                  AppLocalizations.of(context).translate('to'),
                                                   style: TextStyle(
                                                       color: ColorsUtils
                                                           .onBoardingTextGrey,
@@ -158,7 +159,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                                     color: ColorsUtils.blueColor,
                                                   ),
                                                   filledColor: Colors.white,
-                                                  hintText: '09:00 AM or PM',
+                                                  hintText: AppLocalizations.of(context).translate('toHint'),
                                                   hintStyle:
                                                       TextStyle(fontSize: 12.0),
                                                   hasBorder: true,
@@ -168,7 +169,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                                   validator: (value) {
                                                     if (value == null ||
                                                         value.isEmpty) {
-                                                      return 'This Field Required';
+                                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                                     }
                                                     return null;
                                                   },
@@ -183,7 +184,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                         key: Key(widget.appointmentData.appointments[index].timeSlot.toString()),
                                         initialValue: widget.appointmentData.appointments[index].timeSlot.toString(),
                                         filledColor: Colors.white,
-                                        lablel: ' Time Slot ( Min.)',
+                                        lablel: AppLocalizations.of(context).translate('timeSlot'),
                                         hasBorder: true,
                                         onSaved: (val) {
                                           appointments[index]['time_slot']  = int.tryParse(val);
@@ -191,7 +192,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                                         },
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
-                                            return 'This Field Required';
+                                            return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                           }
                                           return null;
                                         },
@@ -261,7 +262,7 @@ class _EditAppointmentPageState extends State<EditAppointmentPage> {
                               child: CustomRoundedButton(
                                 backgroundColor: ColorsUtils.primaryGreen,
                                 borderColor: ColorsUtils.primaryGreen,
-                                text: 'Save',
+                                text: AppLocalizations.of(context).translate('save'),
                                 pressed: () async {
                                   if (_formKey.currentState.validate()) {
                                     _formKey.currentState.save();

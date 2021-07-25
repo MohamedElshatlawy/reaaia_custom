@@ -17,6 +17,7 @@ import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 
 import '../../customFunctions.dart';
@@ -126,7 +127,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                       Row(
                         children: [
                           Text(
-                            'Healthcare',
+                            AppLocalizations.of(context).translate('healthCare'),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -139,7 +140,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                         children: [
                           Flexible(
                             child: Text(
-                              'Select you Healthcare Type',
+                              AppLocalizations.of(context).translate('selectHealthCare'),
                               style: TextStyle(
                                   color: ColorsUtils.onBoardingTextGrey,
                                   fontSize: ScreenUtil().setSp(13)),
@@ -169,7 +170,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 textColor: _isOwn
                                     ? Colors.white
                                     : ColorsUtils.onBoardingTextGrey,
-                                text: 'I Own',
+                                text:  AppLocalizations.of(context).translate('iOwn'),
                                 pressed: () {
                                   setState(() {
                                     _isOwn = true;
@@ -191,7 +192,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 textColor: _isOwn
                                     ? ColorsUtils.onBoardingTextGrey
                                     : Colors.white,
-                                text: 'I Serve',
+                                text: AppLocalizations.of(context).translate('iServe'),
                                 pressed: () {
                                   setState(() {
                                     _isOwn = false;
@@ -210,14 +211,14 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                             /// Hospital / Clinic Name
                             CustomTextField(
                               filledColor: Colors.white,
-                              lablel: ' Hospital / Clinic Name',
+                              lablel: AppLocalizations.of(context).translate('hospitalName'),
                               hasBorder: true,
                               onSaved: (val) {
                                 ownedClinic.clinicName = val;
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'This Field Required';
+                                  return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                 }
                                 return null;
                               },
@@ -256,7 +257,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Select Speciality',
+                                              AppLocalizations.of(context).translate('selectSpecialty'),
                                                 style: TextStyle(
                                                     color: ColorsUtils
                                                         .onBoardingTextGrey,
@@ -264,7 +265,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                                         ScreenUtil().setSp(16)),
                                               ),
                                               Text(
-                                                'you can select only one Speciality',
+                                                AppLocalizations.of(context).translate('selectOneSpecialty'),
                                                 style: TextStyle(
                                                     color: ColorsUtils
                                                         .onBoardingTextGrey,
@@ -349,7 +350,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   filledColor: isSelectedSpeciality
                                       ? null
                                       : Colors.white,
-                                  lablel: ' Select Specialty*',
+                                  lablel: AppLocalizations.of(context).translate('selectSpecialty'),
                                   style: TextStyle(
                                       color: ColorsUtils.blackColor,
                                       fontWeight: FontWeight.w600,
@@ -366,7 +367,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   },
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'This Field Required';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
                                     return null;
                                   },
@@ -382,7 +383,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
 
                             /// SubSpecialty
                             Text(
-                              'Select SubSpecialty ',
+                            AppLocalizations.of(context).translate('selectSubSpecialty'),
                               style: TextStyle(
                                   color: ColorsUtils.textGrey,
                                   fontWeight: FontWeight.w700,
@@ -394,7 +395,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                     padding: const EdgeInsets.all(10.0),
                                     child: Center(
                                         child: Text(
-                                            'Not Specialty Selected yet!')),
+                                          AppLocalizations.of(context).translate('notSelectedSpecialty'),)),
                                   )
                                 : Wrap(
                                     spacing: 10.0,
@@ -491,7 +492,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   decoration: InputDecoration(
                                     contentPadding:
                                         EdgeInsets.only(bottom: 12.0),
-                                    hintText: 'Add Other Specialty',
+                                    hintText: AppLocalizations.of(context).translate('addOtherSpecialty'),
                                     enabledBorder: InputBorder.none,
                                     border: InputBorder.none,
                                     disabledBorder: InputBorder.none,
@@ -540,13 +541,13 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   child: DropdownButtonFormField<String>(
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return ' Select City!';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       }
 
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                      labelText: 'City',
+                                      labelText: AppLocalizations.of(context).translate('city'),
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: ScreenUtil().setSp(15)),
@@ -609,13 +610,13 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   child: DropdownButtonFormField<String>(
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return ' Select Area!';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       }
 
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                      labelText: 'Area',
+                                      labelText: AppLocalizations.of(context).translate('area'),
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: ScreenUtil().setSp(15)),
@@ -692,11 +693,11 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                 child: CustomTextField(
                                   controller: _mapController,
                                   filledColor: Colors.white,
-                                  lablel: ' Main Address*',
+                                  lablel: AppLocalizations.of(context).translate('mainAddress'),
                                   hasBorder: true,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'This Field Required';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
                                     return null;
                                   },
@@ -752,13 +753,13 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                       });
                                     },
                                     filledColor: Colors.white,
-                                    lablel: ' Phone Number*',
+                                    lablel: AppLocalizations.of(context).translate('phoneNumber'),
                                     hasBorder: true,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return 'This Field Required';
+                                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                       } else if (value.length != 11) {
-                                        return 'this Field Should no less than 11 digits';
+                                        return AppLocalizations.of(context).translate('phoneNumberValidate');
                                       }
                                       return null;
                                     },
@@ -777,7 +778,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   Icons.add,
                                   color: ColorsUtils.primaryGreen,
                                 ),
-                                text: 'Add More Phone Numbers ',
+                                text: AppLocalizations.of(context).translate('addMorePhoneNumbers'),
                                 pressed: () {
                                   setState(() {
                                     _textFieldControllers
@@ -797,7 +798,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
 
                             /// Accepted Insurance Plans
                             Text(
-                              'Accepted Insurance Plans',
+                              AppLocalizations.of(context).translate('acceptedInsurancePlans'),
                               style: TextStyle(
                                   color: ColorsUtils.textGrey,
                                   fontWeight: FontWeight.w700,
@@ -896,7 +897,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                   decoration: InputDecoration(
                                     contentPadding:
                                         EdgeInsets.only(bottom: 12.0),
-                                    hintText: 'Add Other Plan',
+                                    hintText: AppLocalizations.of(context).translate('addOtherPlan'),
                                     enabledBorder: InputBorder.none,
                                     border: InputBorder.none,
                                     disabledBorder: InputBorder.none,
@@ -956,7 +957,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                     Icons.arrow_forward,
                                     color: Colors.white,
                                   ),
-                                  text: 'Continue',
+                                  text: AppLocalizations.of(context).translate('continue'),
                                   pressed: () {
                                     if (_formKey.currentState.validate()) {
                                       _formKey.currentState.save();
@@ -1041,7 +1042,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                     //     ],
                                     //   )
                                     ? Center(
-                                        child: Text('No Places Added Yet'),
+                                        child: Text(AppLocalizations.of(context).translate('noPlacesAddedYet'),),
                                       )
                                     : ListView.builder(
                                         physics: ScrollPhysics(),
@@ -1069,7 +1070,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                                 children: [
                                                   Text(
                                                     serve.hospitalJobTitle +
-                                                        ' at ' +
+                                                        AppLocalizations.of(context).translate('at') +
                                                         serve.hospitalName,
                                                     style: TextStyle(
                                                         color: ColorsUtils
@@ -1116,8 +1117,8 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                             .serves
                                             .length ==
                                         0
-                                    ? 'Add Place'
-                                    : 'Add Another Place',
+                                    ? AppLocalizations.of(context).translate('addPlace')
+                                    : AppLocalizations.of(context).translate('addAnotherPlace'),
                                 pressed: () {
                                   showModalBottomSheet(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -1158,7 +1159,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                           Icons.arrow_forward,
                                           color: Colors.white,
                                         ),
-                                        text: 'Send Verify Request',
+                                        text: AppLocalizations.of(context).translate('sendVerifyRequest'),
                                         pressed: () async {
                                           if (_formKey.currentState
                                               .validate()) {
@@ -1201,7 +1202,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                                 });
                                                 Functions.showCustomSnackBar(
                                                   context: context,
-                                                  text: 'Error SignUp!',
+                                                  text: AppLocalizations.of(context).translate('errorSignUp'),
                                                   hasIcon: true,
                                                   iconType: Icons.error_outline,
                                                   iconColor: Colors.red,
@@ -1214,7 +1215,7 @@ class _CompleteRegister3State extends State<CompleteRegister3> {
                                               });
                                               Functions.showCustomSnackBar(
                                                 context: context,
-                                                text: 'Error Server!',
+                                                text: 'Error Server! $error',
                                                 hasIcon: true,
                                                 iconType: Icons.error_outline,
                                                 iconColor: Colors.red,

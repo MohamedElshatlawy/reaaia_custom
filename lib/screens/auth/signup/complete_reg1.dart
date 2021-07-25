@@ -1,11 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:reaaia/model/data/signup/address_model.dart';
+
 import 'package:reaaia/model/data/signup/complete_reg1_model.dart';
 import 'package:reaaia/screens/auth/signup/compelete_reg2.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
@@ -16,6 +17,7 @@ import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:validators/validators.dart';
 
+import '../../../data/signupModels/address_model.dart';
 import '../../customFunctions.dart';
 import 'complete_req1_map.dart';
 

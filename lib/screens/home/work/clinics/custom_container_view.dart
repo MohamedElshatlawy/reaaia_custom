@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class CustomContainerView extends StatelessWidget {
   final String imageName;
@@ -99,6 +100,7 @@ class CustomContainerView extends StatelessWidget {
                           fontSize: ScreenUtil().setSp(13)),
                     ),
                     Text(
+                     // '  ($numOfReviews ${AppLocalizations.of(context).translate('reviews')})',
                       '  ($numOfReviews reviews)',
                       style: TextStyle(
                           color: ColorsUtils.copyRightsColor,

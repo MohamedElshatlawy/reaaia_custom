@@ -41,7 +41,7 @@ class Functions {
   static Future<File> pickImage() async {
         final ImagePicker _picker = ImagePicker();
 
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await _picker.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       final String fileName = pickedFile.path.split('/').last;
 

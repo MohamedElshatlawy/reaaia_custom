@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/auth/signup/congrats.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class RequestSentSuccess extends StatelessWidget {
   @override
@@ -28,7 +29,7 @@ class RequestSentSuccess extends StatelessWidget {
               height: 21,
             ),
             Text(
-              'Request Sent Successful',
+              AppLocalizations.of(context).translate('reqSent1'),
               style: TextStyle(
                   color: ColorsUtils.primaryGreen,
                   fontWeight: FontWeight.w800,
@@ -40,7 +41,7 @@ class RequestSentSuccess extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                  'Wait Within 2-3 Business Days For Our Medical Expert To Check And Confirm',
+                  AppLocalizations.of(context).translate('reqSent2'),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: ColorsUtils.onBoardingTextGrey,

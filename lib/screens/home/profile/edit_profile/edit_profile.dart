@@ -9,6 +9,7 @@ import 'package:reaaia/data/signupModels/address_model.dart';
 import 'package:reaaia/model/data/signup/complete_reg1_model.dart';
 import 'package:reaaia/screens/auth/signup/complete_req1_map.dart';
 import 'package:reaaia/screens/customFunctions.dart';
+import 'package:reaaia/screens/home/profile/choose_gender.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
@@ -461,52 +462,4 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 }
 
-class ChooseGender extends StatelessWidget {
-  final String iconName;
-  final String genderName;
-  final Color iconColor;
-  final Color textColor;
-  final Color backgroundColor;
-  final Function onTap;
 
-  ChooseGender(
-      {this.iconName,
-      this.genderName,
-      this.iconColor,
-      this.textColor,
-      this.onTap,
-      this.backgroundColor});
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        child: Row(
-          children: [
-            Container(
-              width: ScreenUtil().setWidth(45),
-              height: ScreenUtil().setHeight(45),
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: backgroundColor,
-                  border: Border.all(color: Colors.grey[300]),
-                  borderRadius: BorderRadius.circular(15)),
-              child: SvgPicture.asset(
-                iconName,
-                color: iconColor,
-              ),
-            ),
-            SizedBox(width: ScreenUtil().setWidth(10)),
-            Text(
-              genderName,
-              style: TextStyle(
-                  color: textColor,
-                  fontSize: ScreenUtil().setSp(16),
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

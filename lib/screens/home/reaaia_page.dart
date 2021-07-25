@@ -7,6 +7,7 @@ import 'package:reaaia/screens/widgets/custom_card_widget.dart';
 import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/reaaia_icons.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class ReaaiaPage extends StatelessWidget {
   @override
@@ -51,14 +52,14 @@ class ReaaiaPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Hi Dr,',
+                            AppLocalizations.of(context).translate('hiDr'),
                             style: TextStyle(
                                 color: ColorsUtils.textGrey,
                                 fontWeight: FontWeight.w700,
                                 fontSize: ScreenUtil().setSp(17)),
                           ),
                           Text(
-                            'How’re you today?',
+                            AppLocalizations.of(context).translate('howAreYou'),
                             style: TextStyle(
                                 color: ColorsUtils.onBoardingTextGrey,
                                 fontWeight: FontWeight.w700,
@@ -97,7 +98,7 @@ class ReaaiaPage extends StatelessWidget {
               SizedBox(height: ScreenUtil().setHeight(25)),
               CustomTextField(
                 filledColor: Colors.white,
-                hintText: 'Search patient, health issue, ...',
+                hintText: AppLocalizations.of(context).translate('searchPatient'),
                 icon: Icon(ReaaiaIcons.search_icon),
               ),
               SizedBox(height: ScreenUtil().setHeight(30)),
@@ -108,14 +109,14 @@ class ReaaiaPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Consults for today ',
+                        AppLocalizations.of(context).translate('consultsForToday'),
                         style: TextStyle(
                             color: ColorsUtils.textGrey,
                             fontWeight: FontWeight.w700,
                             fontSize: ScreenUtil().setSp(24)),
                       ),
                       Text(
-                        '5 of 9 completed ',
+                        ' 5 '+ AppLocalizations.of(context).translate('of') +' 9 '+ AppLocalizations.of(context).translate('completed'),
                         style: TextStyle(
                             color: ColorsUtils.onBoardingTextGrey,
                             fontSize: ScreenUtil().setSp(13)),
@@ -157,22 +158,22 @@ class ReaaiaPage extends StatelessWidget {
                 children: [
                   CustomCardView(
                     namePic: 'assets/images/img_schedule.png',
-                    nameText: 'Schedule',
+                    nameText: AppLocalizations.of(context).translate('schedule'),
                     onPressed: () {},
                   ),
                   CustomCardView(
                     namePic: 'assets/images/img_consult_history.png',
-                    nameText: 'Consult History',
+                    nameText: AppLocalizations.of(context).translate('consultHistory'),
                     onPressed: () {},
                   ),
                   CustomCardView(
                     namePic: 'assets/images/img_patient_management.png',
-                    nameText: 'Patient Management',
+                    nameText: AppLocalizations.of(context).translate('patientManagement'),
                     onPressed: () {},
                   ),
                   CustomCardView(
                     namePic: 'assets/images/img_free_question.png',
-                    nameText: 'Free Consults',
+                    nameText: AppLocalizations.of(context).translate('freeConsults'),
                     onPressed: () {},
                   ),
                 ],

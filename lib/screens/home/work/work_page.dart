@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/clinics_page.dart';
+import 'package:reaaia/screens/home/work/clinics/clinics_page.dart';
 import 'package:reaaia/screens/widgets/custom_card.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 
 class WorkPage extends StatelessWidget {
@@ -17,7 +18,7 @@ class WorkPage extends StatelessWidget {
           children: [
             SizedBox(height: ScreenUtil().setHeight(48)),
             Text(
-              ' My Work ',
+              AppLocalizations.of(context).translate('myWork'),
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
@@ -32,16 +33,16 @@ class WorkPage extends StatelessWidget {
                   crossAxisSpacing: 7,
                   mainAxisSpacing: 7),
               children: [
-                CustomCardView(namePic: 'assets/images/003-folder.png',nameText: 'Clinics',onPressed: (){
+                CustomCardView(namePic: 'assets/images/003-folder.png',nameText: AppLocalizations.of(context).translate('clinics'),onPressed: (){
                   CustomFunctions.pushScreen(context: context,widget: ClinicsPage());
                 },),
-                CustomCardView(namePic: 'assets/images/img_health_feed.png',nameText: 'Library',onPressed: (){},),
-                CustomCardView(namePic: 'assets/images/img_consult_mange.png',nameText: 'Appointments Management',onPressed: (){},),
-                CustomCardView(namePic: 'assets/images/img_work_profile.png',nameText: 'Profile Management',onPressed: (){},),
-                CustomCardView(namePic: 'assets/images/img_health_guide.png',nameText: 'Health Guides',onPressed: (){},),
-                CustomCardView(namePic: 'assets/images/img_health_tip.png',nameText: 'Health Tips',onPressed: (){},),
-                CustomCardView(namePic: 'assets/images/img_care_team.png',nameText: 'My Network',onPressed: (){},),
-                CustomCardView(namePic: 'assets/images/img_finance_report.png',nameText: 'Finance Report',onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_health_feed.png',nameText: AppLocalizations.of(context).translate('library'),onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_consult_mange.png',nameText: AppLocalizations.of(context).translate('appointmentsManagement'),onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_work_profile.png',nameText: AppLocalizations.of(context).translate('profileManagement'),onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_health_guide.png',nameText: AppLocalizations.of(context).translate('healthGuides'),onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_health_tip.png',nameText: AppLocalizations.of(context).translate('healthTips'),onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_care_team.png',nameText: AppLocalizations.of(context).translate('myNetwork'),onPressed: (){},),
+                CustomCardView(namePic: 'assets/images/img_finance_report.png',nameText: AppLocalizations.of(context).translate('financeReport'),onPressed: (){},),
               ],
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class Congrats extends StatelessWidget {
   @override
@@ -26,7 +27,7 @@ class Congrats extends StatelessWidget {
               height: 21,
             ),
             Text(
-              'Congrats! (100%)',
+              AppLocalizations.of(context).translate('congrats100'),
               style: TextStyle(
                   color: ColorsUtils.primaryGreen,
                   fontWeight: FontWeight.w800,
@@ -38,7 +39,7 @@ class Congrats extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                'Successfully Accepted to be with us',
+                AppLocalizations.of(context).translate('acceptedWithUs'),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: ColorsUtils.onBoardingTextGrey,

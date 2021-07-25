@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:reaaia/data/signupModels/complete_reg2_model.dart';
 import 'package:reaaia/model/app_data/details.dart';
 import 'package:reaaia/screens/auth/signup/compelete_reg3.dart';
-
 import 'package:reaaia/screens/customFunctions.dart';
+import 'package:reaaia/screens/home/profile/custom_view_image.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
@@ -480,13 +480,38 @@ class _EditEducationPageState extends State<EditEducationPage> {
                           fontSize: ScreenUtil().setSp(16)),
                     ),
                     SizedBox(height: ScreenUtil().setHeight(6)),
-                    Text(
-                      'View Licence',
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: ColorsUtils.blueColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: ScreenUtil().setSp(15)),
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(24),
+                            topLeft: Radius.circular(24),
+                          )),
+                          barrierColor: ColorsUtils.modalSheetBarrierColor,
+                          backgroundColor: ColorsUtils.modalSheetBarrierColor,
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (context) {
+                            return CustomViewImage(
+                              image: 'assets/default-avatar.png',
+                              btnRemoveName: 'Remove Licence',
+                              btnChangeName: 'Change Licence',
+                              onChange: () {},
+                              onRemove: () {},
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        'View Licence',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: ColorsUtils.blueColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: ScreenUtil().setSp(15)),
+                      ),
                     ),
 
                     SizedBox(height: ScreenUtil().setHeight(10)),

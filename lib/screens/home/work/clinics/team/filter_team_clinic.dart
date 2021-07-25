@@ -5,6 +5,7 @@ import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/reaaia_icons.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class FilterTeamClinicPage extends StatelessWidget {
@@ -41,7 +42,7 @@ class FilterTeamClinicPage extends StatelessWidget {
             
               
                 title: Text(
-                  'Sort by branches',
+                  AppLocalizations.of(context).translate('sortByBranch'),
                   style: TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.w600,
@@ -68,7 +69,7 @@ class FilterTeamClinicPage extends StatelessWidget {
              
                
                 title: Text(
-                  'Sort by job nature',
+                  AppLocalizations.of(context).translate('sortByJobNature'),
                   style: TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.w600,

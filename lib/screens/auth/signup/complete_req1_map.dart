@@ -5,6 +5,7 @@ import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_button_widget.dart';
 import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 // ignore: must_be_immutable
 class CompleteRequest1Map extends StatelessWidget {
@@ -48,11 +49,11 @@ class CompleteRequest1Map extends StatelessWidget {
                   Expanded(
                     child: CustomTextField(
                       filledColor: ColorsUtils.containerHealthCareColor,
-                      lablel: ' Enter address or zip code...',
+                      lablel: AppLocalizations.of(context).translate('enterAddress'),
                       hasBorder: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -89,7 +90,7 @@ class CompleteRequest1Map extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Current Location',
+                        AppLocalizations.of(context).translate('currentLocation'),
                         style: TextStyle(
                             color: ColorsUtils.primaryGreen,
                             fontWeight: FontWeight.bold,
@@ -131,7 +132,7 @@ class CompleteRequest1Map extends StatelessWidget {
               child: CustomRoundedButton(
                 backgroundColor: ColorsUtils.primaryGreen,
                 borderColor: ColorsUtils.primaryGreen,
-                text: 'Choose Location',
+                text: AppLocalizations.of(context).translate('chooseLocation'),
                 pressed: () {
                   Navigator.pop(context, latLng);
                 },

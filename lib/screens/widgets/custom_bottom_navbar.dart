@@ -3,6 +3,7 @@ import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/homeProvider/navigation_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   @override
@@ -37,27 +38,23 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Reaaia_Icons.reaaia_icon),
-            label: 'Reaaia',
+            label: AppLocalizations.of(context).translate('reaaia'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Reaaia_Icons.chat_icon),
-            label: 'Chat',
-            backgroundColor: Colors.green,
+            label: AppLocalizations.of(context).translate('chat'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Reaaia_Icons.icon),
-            label: 'Care+',
-            backgroundColor: Colors.purple,
+            label: AppLocalizations.of(context).translate('care'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Reaaia_Icons.work_icon),
-            label: 'Work',
-            backgroundColor: Colors.pink,
+            label: AppLocalizations.of(context).translate('work'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Reaaia_Icons.account_icon),
-            label: 'Account',
-            backgroundColor: Colors.pink,
+            label: AppLocalizations.of(context).translate('account'),
           ),
         ],
       ),

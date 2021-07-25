@@ -6,15 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/model/data/loginResponse/foreget_pass_response.dart';
+import 'package:reaaia/screens/auth/password/change_password.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/widgets/custom_rounded_button_widget.dart';
+import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 
-import 'change_password.dart';
+
 
 class RecoveryPassword extends StatefulWidget {
+
   final ForgetPassResponse forgetPassResponse;
   RecoveryPassword({@required this.forgetPassResponse});
   @override
@@ -32,25 +35,24 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
     if (Platform.isAndroid) {
       _forgetPassInfo['client_id'] = 2;
       _forgetPassInfo['client_secret'] =
-          '6sjRgmybLz8iR9pUQi1BHmHGCPAuAN7PiJRMWK6h';
+      '6sjRgmybLz8iR9pUQi1BHmHGCPAuAN7PiJRMWK6h';
     } else if (Platform.isIOS) {
       _forgetPassInfo['client_id'] = 3;
       _forgetPassInfo['client_secret'] =
-          'X0hau6BzbHnxL2XsvDigbQ6FeItpqcldsbiivrr0';
+      'X0hau6BzbHnxL2XsvDigbQ6FeItpqcldsbiivrr0';
     } else if (kIsWeb) {
       _forgetPassInfo['client_id'] = 4;
       _forgetPassInfo['client_secret'] =
-          'VFzrXDR9DBNzZl6YYIsgum4HdOTEML6tAFAAx7WB';
+      'VFzrXDR9DBNzZl6YYIsgum4HdOTEML6tAFAAx7WB';
     }
   }
-
   @override
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<LoginProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
-        builder: (context) => Form(
+        builder:(context)=> Form(
           key: _formKey,
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(24)),
@@ -78,8 +80,8 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                   ),
                   Expanded(
                       child: Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: ScreenUtil().setWidth(7)),
+                    margin:
+                        EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(7)),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -87,7 +89,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                           Row(
                             children: [
                               Text(
-                                'Recovery Password',
+                                AppLocalizations.of(context).translate('recoveryPass'),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
@@ -102,8 +104,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Reset code was sent to your email. Please enter the code and create new password.',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context).translate('resetCode'),                                  style: TextStyle(
                                       color: ColorsUtils.onBoardingTextGrey,
                                       fontSize: ScreenUtil().setSp(13)),
                                 ),
@@ -120,7 +121,7 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                                 Row(
                                   children: [
                                     Text(
-                                      'Reset Code',
+                                      AppLocalizations.of(context).translate('reset_code'),
                                       style: TextStyle(
                                           color: ColorsUtils.onBoardingTextGrey,
                                           fontSize: ScreenUtil().setSp(13)),
@@ -139,10 +140,8 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                                       PinCodeTextField(
                                         controller: _controller,
                                         autofocus: true,
-                                        defaultBorderColor:
-                                            ColorsUtils.borderColor,
-                                        hasTextBorderColor:
-                                            ColorsUtils.greenBorder,
+                                        defaultBorderColor: ColorsUtils.borderColor,
+                                        hasTextBorderColor: ColorsUtils.greenBorder,
                                         maxLength: 5,
                                         onTextChanged: (text) {
                                           _forgetPassInfo['otp'] = text;
@@ -151,11 +150,9 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                                         pinBoxWidth: 50,
                                         pinBoxHeight: 55,
                                         pinBoxRadius: 14,
-                                        wrapAlignment:
-                                            WrapAlignment.spaceAround,
-                                        pinBoxDecoration:
-                                            ProvidedPinBoxDecoration
-                                                .defaultPinBoxDecoration,
+                                        wrapAlignment: WrapAlignment.spaceAround,
+                                        pinBoxDecoration: ProvidedPinBoxDecoration
+                                            .defaultPinBoxDecoration,
                                         pinTextStyle: TextStyle(fontSize: 22.0),
                                         pinTextAnimatedSwitcherTransition:
                                             ProvidedPinBoxTextAnimation
@@ -164,10 +161,8 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                                         pinTextAnimatedSwitcherDuration:
                                             Duration(milliseconds: 300),
 //                    highlightAnimation: true,
-                                        highlightAnimationBeginColor:
-                                            Colors.black,
-                                        highlightAnimationEndColor:
-                                            Colors.white12,
+                                        highlightAnimationBeginColor: Colors.black,
+                                        highlightAnimationEndColor: Colors.white12,
 
                                         keyboardType: TextInputType.number,
                                       ),
@@ -190,13 +185,13 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Don\'t receive code? ',
+                                AppLocalizations.of(context).translate('notReceiveCode'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(13)),
                               ),
                               Text(
-                                'Resend it',
+                                AppLocalizations.of(context).translate('resendCode'),
                                 style: TextStyle(
                                     color: ColorsUtils.blueColor,
                                     fontWeight: FontWeight.w800,
@@ -207,82 +202,75 @@ class _RecoveryPasswordState extends State<RecoveryPassword> {
                           SizedBox(
                             height: ScreenUtil().setHeight(29),
                           ),
-                          loading
-                              ? CircularProgressIndicator()
-                              : Container(
-                                  height: ScreenUtil().setHeight(50),
-                                  width: 236,
-                                  child: CustomRoundedButton(
-                                    backgroundColor: ColorsUtils.primaryGreen,
-                                    borderColor: ColorsUtils.primaryGreen,
-                                    text: 'Verify',
-                                    pressed: () async {
-                                      if (_formKey.currentState.validate()) {
-                                        _formKey.currentState.save();
-                                        if (_controller.text.length == 5) {
-                                          setState(() {
-                                            loading = true;
-                                          });
-                                          checkPlatForm();
-                                          _forgetPassInfo['grant_type'] =
-                                              'activation';
-                                          _forgetPassInfo['token'] = widget
-                                              .forgetPassResponse
-                                              .response
-                                              .data
-                                              .token;
-                                          print(_forgetPassInfo.toString());
-                                          try {
-                                            await loginProvider
-                                                .forgetPasswordVerifyOtp(
-                                                    _forgetPassInfo);
-                                            if (loginProvider
-                                                    .loginResponse.status ==
-                                                200) {
-                                              setState(() {
-                                                loading = false;
-                                              });
-                                              CustomFunctions.pushScreen(
-                                                  context: context,
-                                                  widget: ChangePassword());
-                                            } else {
-                                              setState(() {
-                                                loading = false;
-                                              });
-                                              Functions.showCustomSnackBar(
-                                                context: context,
-                                                text: 'Wrong Code!',
-                                                hasIcon: true,
-                                                iconType: Icons.error_outline,
-                                                iconColor: Colors.red,
-                                              );
-                                            }
-                                          } catch (error) {
-                                            setState(() {
-                                              loading = false;
-                                            });
-                                            Functions.showCustomSnackBar(
-                                              context: context,
-                                              text: 'Server Error! $error',
-                                              hasIcon: true,
-                                              iconType: Icons.error_outline,
-                                              iconColor: Colors.red,
-                                            );
-                                          }
-                                        } else {
-                                          Functions.showCustomSnackBar(
+
+                         loading?CircularProgressIndicator(): Container(
+                            height: ScreenUtil().setHeight(50),
+                            width: 236,
+                            child: CustomRoundedButton(
+                              backgroundColor: ColorsUtils.primaryGreen,
+                              borderColor: ColorsUtils.primaryGreen,
+                              text: AppLocalizations.of(context).translate('verify'),
+                              pressed: () async{
+                                if (_formKey.currentState.validate()) {
+                                  _formKey.currentState.save();
+                                  if(_controller.text.length==5){
+                                    setState(() {
+                                      loading=true;
+                                    });
+                                    checkPlatForm();
+                                    _forgetPassInfo['grant_type'] = 'activation';
+                                    _forgetPassInfo['token'] = widget.forgetPassResponse.response.data.token;
+                                    print(_forgetPassInfo.toString());
+                                    try {
+                                      await loginProvider
+                                          .forgetPasswordVerifyOtp(_forgetPassInfo);
+                                      if (loginProvider.loginResponse.status ==
+                                          200) {
+                                        setState(() {
+                                          loading=false;
+                                        });
+                                        CustomFunctions.pushScreen(
                                             context: context,
-                                            text: 'Code Should be 5 digits',
-                                            hasIcon: true,
-                                            iconType: Icons.error_outline,
-                                            iconColor: Colors.red,
-                                          );
-                                        }
+                                            widget: ChangePassword());
+                                      } else {
+                                        setState(() {
+                                          loading=false;
+                                        });
+                                        Functions.showCustomSnackBar(
+                                          context: context,
+                                          text: AppLocalizations.of(context).translate('wrongCode'),
+                                          hasIcon: true,
+                                          iconType: Icons.error_outline,
+                                          iconColor: Colors.red,
+                                        );
                                       }
-                                    },
-                                    textColor: Colors.white,
-                                  ),
-                                ),
+                                    } catch (error) {
+                                      setState(() {
+                                        loading=false;
+                                      });
+                                      Functions.showCustomSnackBar(
+                                        context: context,
+                                        text: 'Server Error! $error',
+                                        hasIcon: true,
+                                        iconType: Icons.error_outline,
+                                        iconColor: Colors.red,
+                                      );
+                                    }
+                                  }else{
+
+                                    Functions.showCustomSnackBar(
+                                      context: context,
+                                      text: AppLocalizations.of(context).translate('codeValidate'),
+                                      hasIcon: true,
+                                      iconType: Icons.error_outline,
+                                      iconColor: Colors.red,
+                                    );
+                                  }
+                                }
+                              },
+                              textColor: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),

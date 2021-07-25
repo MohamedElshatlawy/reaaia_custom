@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/auth/login/login_page.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 import '../../customFunctions.dart';
 
@@ -15,8 +16,7 @@ class _PasswordSuccessChangedState extends State<PasswordSuccessChanged> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
-      CustomFunctions.pushScreenRepcalement(
-          widget: LoginPage(), context: context);
+      CustomFunctions.pushScreenRepcalement(widget: LoginPage(), context: context);
     });
   }
 
@@ -38,7 +38,7 @@ class _PasswordSuccessChangedState extends State<PasswordSuccessChanged> {
               height: 21,
             ),
             Text(
-              'Congrats!',
+              AppLocalizations.of(context).translate('congrats'),
               style: TextStyle(
                   color: ColorsUtils.primaryGreen,
                   fontWeight: FontWeight.w800,
@@ -50,7 +50,7 @@ class _PasswordSuccessChangedState extends State<PasswordSuccessChanged> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                'successfully change password.',
+                AppLocalizations.of(context).translate('successChangePass'),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: ColorsUtils.onBoardingTextGrey,

@@ -10,14 +10,15 @@ import 'package:reaaia/model/data/signup/clinic_address_model.dart';
 import 'package:reaaia/model/data/signup/owned_clinic_model.dart';
 import 'package:reaaia/screens/auth/signup/complete_req1_map.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/add_serve_clinic.dart';
-import 'package:reaaia/screens/home/work/clinic_detail_page.dart';
-import 'package:reaaia/screens/home/work/custom_container_view.dart';
+import 'package:reaaia/screens/home/work/clinics/add_serve_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/clinic_detail_page.dart';
+import 'package:reaaia/screens/home/work/clinics/custom_container_view.dart';
 import 'package:reaaia/screens/widgets/custom_bottom_navbar.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicsPage extends StatefulWidget {
@@ -112,7 +113,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                       Row(
                         children: [
                           Text(
-                            'My Clinics',
+                          AppLocalizations.of(context).translate('myClinics'),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -144,7 +145,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                 textColor: _isOwn
                                     ? Colors.white
                                     : ColorsUtils.onBoardingTextGrey,
-                                text: 'I Own',
+                                text: AppLocalizations.of(context).translate('iOwn'),
                                 pressed: () {
                                   setState(() {
                                     _isOwn = true;
@@ -166,7 +167,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                 textColor: _isOwn
                                     ? ColorsUtils.onBoardingTextGrey
                                     : Colors.white,
-                                text: 'I Serve',
+                                text: AppLocalizations.of(context).translate('iServe'),
                                 pressed: () {
                                   setState(() {
                                     _isOwn = false;
@@ -196,7 +197,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                           clinicsProvider.clinics.length == 0
                                               ? Center(
                                                   child:
-                                                      Text('No Places Added Yet'),
+                                                      Text(AppLocalizations.of(context).translate('noPlacesAddedYet'),),
                                                 )
                                               : Container(
                                                   child: ListView.builder(
@@ -238,93 +239,6 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                                             hasIcon: false,
                                                           ),
                                                         ),
-                                                        // Container(
-                                                        //   padding:
-                                                        //       EdgeInsets.symmetric(
-                                                        //           horizontal: 15.0,
-                                                        //           vertical: 20.0),
-                                                        //   child: Row(
-                                                        //     crossAxisAlignment:
-                                                        //         CrossAxisAlignment
-                                                        //             .start,
-                                                        //     children: [
-                                                        //       Container(
-                                                        //         padding:
-                                                        //             EdgeInsets.all(
-                                                        //                 5.0),
-                                                        //         width: ScreenUtil()
-                                                        //                 .screenWidth *
-                                                        //             0.2,
-                                                        //         child: Image.asset(
-                                                        //           'assets/images/Hospital Logo.png',
-                                                        //           fit: BoxFit.cover,
-                                                        //         ),
-                                                        //       ),
-                                                        //       SizedBox(
-                                                        //         width: 20.0,
-                                                        //       ),
-                                                        //       Container(
-                                                        //         width: ScreenUtil()
-                                                        //                 .screenWidth *
-                                                        //             0.53,
-                                                        //         child: Column(
-                                                        //           crossAxisAlignment:
-                                                        //               CrossAxisAlignment
-                                                        //                   .start,
-                                                        //           children: [
-                                                        //             Text(
-                                                        //               'Dr.Mohamed Gaawan Clinic',
-                                                        //               style: TextStyle(
-                                                        //                   color: ColorsUtils
-                                                        //                       .blueColor,
-                                                        //                   fontWeight:
-                                                        //                       FontWeight
-                                                        //                           .bold,
-                                                        //                   fontSize: ScreenUtil()
-                                                        //                       .setSp(
-                                                        //                           15)),
-                                                        //             ),
-                                                        //             Text(
-                                                        //               '2 5th Ave Suite 8, NY 10011',
-                                                        //               style: TextStyle(
-                                                        //                   color: ColorsUtils
-                                                        //                       .onBoardingTextGrey,
-                                                        //                   fontWeight:
-                                                        //                       FontWeight
-                                                        //                           .w600,
-                                                        //                   fontSize: ScreenUtil()
-                                                        //                       .setSp(
-                                                        //                           12)),
-                                                        //             ),
-                                                        //             SizedBox(height: 10.0,),
-                                                        //             Row(
-                                                        //               crossAxisAlignment: CrossAxisAlignment.end,
-                                                        //               children: [
-                                                        //                 Icon(Icons.star,color: ColorsUtils.starColor,size: 22,),
-                                                        //                 Text(
-                                                        //                   ' 4.8',
-                                                        //                   style: TextStyle(
-                                                        //                       color: Colors.black,
-                                                        //                       fontWeight: FontWeight.w600,
-                                                        //                       fontSize: ScreenUtil().setSp(13)),
-                                                        //                 ),
-                                                        //                 Text(
-                                                        //                   '  (141 reviews)',
-                                                        //                   style: TextStyle(
-                                                        //                       color: ColorsUtils
-                                                        //                           .copyRightsColor,
-                                                        //                       fontSize: ScreenUtil()
-                                                        //                           .setSp(
-                                                        //                           13)),
-                                                        //                 ),
-                                                        //               ],
-                                                        //             ),
-                                                        //           ],
-                                                        //         ),
-                                                        //       ),
-                                                        //     ],
-                                                        //   ),
-                                                        // ),
                                                       );
                                                     },
                                                   ),
@@ -348,8 +262,8 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                                           .primaryGreen,
                                                     ),
                                                     text: clinicsProvider.clinics.length == 0
-                                                        ? 'Add Place'
-                                                        : 'Add Another Place',
+                                                        ? AppLocalizations.of(context).translate('addPlace')
+                                                        : AppLocalizations.of(context).translate('addAnotherPlace'),
                                                     pressed: () {
                                                       setState(() {
                                                         _addPlace = true;
@@ -371,14 +285,14 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                     /// Hospital / Clinic Name
                                     CustomTextField(
                                       filledColor: Colors.white,
-                                      lablel: ' Hospital / Clinic Name',
+                                      lablel: AppLocalizations.of(context).translate('hospitalName'),
                                       hasBorder: true,
                                       onSaved: (val) {
                                         ownedClinic.clinicName = val;
                                       },
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'This Field Required';
+                                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                         }
                                         return null;
                                       },
@@ -425,7 +339,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        'Select Speciality',
+                                                      AppLocalizations.of(context).translate('selectSpecialty'),
                                                         style: TextStyle(
                                                             color: ColorsUtils
                                                                 .onBoardingTextGrey,
@@ -434,7 +348,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                                                     .setSp(16)),
                                                       ),
                                                       Text(
-                                                        'you can select only one Speciality',
+                                                        AppLocalizations.of(context).translate('selectOneSpecialty'),
                                                         style: TextStyle(
                                                             color: ColorsUtils
                                                                 .onBoardingTextGrey,
@@ -524,7 +438,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                           filledColor: isSelectedSpeciality
                                               ? null
                                               : Colors.white,
-                                          lablel: ' Select Specialty*',
+                                          lablel: AppLocalizations.of(context).translate('selectSpecialty'),
                                           style: TextStyle(
                                               color: ColorsUtils.blackColor,
                                               fontWeight: FontWeight.w600,
@@ -544,7 +458,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                           validator: (value) {
                                             if (value == null ||
                                                 value.isEmpty) {
-                                              return 'This Field Required';
+                                              return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                             }
                                             return null;
                                           },
@@ -561,7 +475,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
 
                                     /// SubSpecialty
                                     Text(
-                                      'Select SubSpecialty ',
+                                      AppLocalizations.of(context).translate('selectSubSpecialty'),
                                       style: TextStyle(
                                           color: ColorsUtils.textGrey,
                                           fontWeight: FontWeight.w700,
@@ -574,7 +488,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                             padding: const EdgeInsets.all(10.0),
                                             child: Center(
                                                 child: Text(
-                                                    'Not Specialty Selected yet!')),
+                                                  AppLocalizations.of(context).translate('notSelectedSpecialty'),)),
                                           )
                                         : Wrap(
                                             spacing: 10.0,
@@ -687,7 +601,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                           decoration: InputDecoration(
                                             contentPadding:
                                                 EdgeInsets.only(bottom: 12.0),
-                                            hintText: 'Add Other Specialty',
+                                            hintText: AppLocalizations.of(context).translate('addOtherSpecialty'),
                                             enabledBorder: InputBorder.none,
                                             border: InputBorder.none,
                                             disabledBorder: InputBorder.none,
@@ -740,13 +654,13 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                             validator: (value) {
                                               if (value == null ||
                                                   value.isEmpty) {
-                                                return ' Select City!';
+                                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                               }
 
                                               return null;
                                             },
                                             decoration: InputDecoration(
-                                              labelText: 'City',
+                                              labelText: AppLocalizations.of(context).translate('city'),
                                               labelStyle: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize:
@@ -820,13 +734,13 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                             validator: (value) {
                                               if (value == null ||
                                                   value.isEmpty) {
-                                                return ' Select Area!';
+                                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                               }
 
                                               return null;
                                             },
                                             decoration: InputDecoration(
-                                              labelText: 'Area',
+                                              labelText: AppLocalizations.of(context).translate('area'),
                                               labelStyle: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize:
@@ -915,12 +829,12 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                         child: CustomTextField(
                                           controller: _mapController,
                                           filledColor: Colors.white,
-                                          lablel: ' Main Address*',
+                                          lablel: AppLocalizations.of(context).translate('mainAddress'),
                                           hasBorder: true,
                                           validator: (value) {
                                             if (value == null ||
                                                 value.isEmpty) {
-                                              return 'This Field Required';
+                                              return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                             }
                                             return null;
                                           },
@@ -980,14 +894,14 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                               });
                                             },
                                             filledColor: Colors.white,
-                                            lablel: ' Phone Number*',
+                                            lablel: AppLocalizations.of(context).translate('phoneNumber'),
                                             hasBorder: true,
                                             validator: (value) {
                                               if (value == null ||
                                                   value.isEmpty) {
-                                                return 'This Field Required';
+                                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                               } else if (value.length != 11) {
-                                                return 'this Field Should no less than 11 digits';
+                                                return AppLocalizations.of(context).translate('phoneNumberValidate');
                                               }
                                               return null;
                                             },
@@ -1009,7 +923,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                           Icons.add,
                                           color: ColorsUtils.primaryGreen,
                                         ),
-                                        text: 'Add More Phone Numbers ',
+                                        text: AppLocalizations.of(context).translate('addMorePhoneNumbers'),
                                         pressed: () {
                                           setState(() {
                                             _textFieldControllers
@@ -1031,7 +945,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
 
                                     /// Accepted Insurance Plans
                                     Text(
-                                      'Accepted Insurance Plans',
+                                      AppLocalizations.of(context).translate('acceptedInsurancePlans'),
                                       style: TextStyle(
                                           color: ColorsUtils.textGrey,
                                           fontWeight: FontWeight.w700,
@@ -1136,7 +1050,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                           decoration: InputDecoration(
                                             contentPadding:
                                                 EdgeInsets.only(bottom: 12.0),
-                                            hintText: 'Add Other Plan',
+                                            hintText: AppLocalizations.of(context).translate('addOtherPlan'),
                                             enabledBorder: InputBorder.none,
                                             border: InputBorder.none,
                                             disabledBorder: InputBorder.none,
@@ -1197,7 +1111,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                             Icons.arrow_forward,
                                             color: Colors.white,
                                           ),
-                                          text: 'Continue',
+                                          text: AppLocalizations.of(context).translate('continue'),
                                           pressed: () {
                                             if (_formKey.currentState
                                                 .validate()) {
@@ -1227,7 +1141,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                   builder: (context, provider, child) {
                                     return provider.serves.length == 0
                                         ? Center(
-                                            child: Text('No Places Added Yet'),
+                                            child: Text(AppLocalizations.of(context).translate('noPlacesAddedYet'),),
                                           )
                                         : ListView.builder(
                                             physics: ScrollPhysics(),
@@ -1258,7 +1172,7 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                                     children: [
                                                       Text(
                                                         serve.hospitalJobTitle +
-                                                            ' at ' +
+                                                            AppLocalizations.of(context).translate('at') +
                                                             serve.hospitalName,
                                                         style: TextStyle(
                                                             color: ColorsUtils
@@ -1308,8 +1222,8 @@ class _ClinicsPageState extends State<ClinicsPage> {
                                                 .serves
                                                 .length ==
                                             0
-                                        ? 'Add Place'
-                                        : 'Add Another Place',
+                                        ? AppLocalizations.of(context).translate('addPlace')
+                                        : AppLocalizations.of(context).translate('addAnotherPlace'),
                                     pressed: () {
                                       showModalBottomSheet(
                                         clipBehavior:

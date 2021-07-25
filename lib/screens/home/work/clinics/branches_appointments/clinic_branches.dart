@@ -4,9 +4,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/add_branch_clinic.dart';
-import 'package:reaaia/screens/home/work/clinic_appointments.dart';
+import 'package:reaaia/screens/home/work/clinics/branches_appointments/add_branch_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/branches_appointments/clinic_appointments.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicBranches extends StatefulWidget {
@@ -106,7 +107,7 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                 Row(
                   children: [
                     Text(
-                      'Branches',
+                      AppLocalizations.of(context).translate('branches'),
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
@@ -119,7 +120,7 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                   children: [
                     Flexible(
                       child: Text(
-                        'Select branch you want to add its appointments.',
+                        AppLocalizations.of(context).translate('branchesDesc'),
                         style: TextStyle(
                             color: ColorsUtils.onBoardingTextGrey,
                             fontSize: ScreenUtil().setSp(13)),
@@ -143,7 +144,7 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                         }).toList();
                         return clinicsProvider.branches.length == 0
                             ? Center(
-                                child: Text('No Branches Found '),
+                                child: Text(AppLocalizations.of(context).translate('noBranches'),),
                               )
                             : ListView.builder(
                                 physics: ScrollPhysics(),
@@ -160,22 +161,22 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                           context: context,
                                           builder: (ctx) {
                                             return AlertDialog(
-                                              title: Text('Are you Sure ?'),
+                                              title: Text(AppLocalizations.of(context).translate('areYouSure'),),
                                               content: Text(
-                                                  'Do you want to remove  This Branch from your Branches ?'),
+                                                AppLocalizations.of(context).translate('doYouWantRemove'),),
                                               actions: [
                                                 FlatButton(
                                                     onPressed: () {
                                                       Navigator.pop(
                                                           context, false);
                                                     },
-                                                    child: Text('No')),
+                                                    child: Text(AppLocalizations.of(context).translate('no'),)),
                                                 FlatButton(
                                                     onPressed: () {
                                                       Navigator.pop(
                                                           context, true);
                                                     },
-                                                    child: Text('Yes')),
+                                                    child: Text(AppLocalizations.of(context).translate('yes'),)),
                                               ],
                                             );
                                           });
@@ -188,16 +189,23 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                   .branches[index].id,
                                               index);
                                     },
-                                    background: Container(
-                                      margin: EdgeInsets.only(bottom: 20.0),
-                                      padding: EdgeInsets.only(right: 30.0),
-                                      color: Theme.of(context).errorColor,
-                                      alignment: Alignment.centerRight,
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.white,
-                                        size: 40.0,
-                                      ),
+                                    background: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            margin: EdgeInsets.only(bottom: 20.0),
+                                            padding: EdgeInsets.only(right: 30.0),
+                                            color: Theme.of(context).errorColor,
+                                            alignment: Alignment.centerRight,
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Colors.white,
+                                              size: 40.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+
                                     ),
                                     child: Card(
                                       margin: EdgeInsets.only(bottom: 15.0),
@@ -311,7 +319,7 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        'Branch Status',
+                                                        AppLocalizations.of(context).translate('branchStatus'),
                                                         style: TextStyle(
                                                             color: Colors.black,
                                                             fontWeight:
@@ -321,7 +329,7 @@ class _ClinicBranchesState extends State<ClinicBranches> {
                                                                     .setSp(13)),
                                                       ),
                                                       Text(
-                                                        'Available to receive appointments',
+                                                        AppLocalizations.of(context).translate('branchStatusDesc'),
                                                         style: TextStyle(
                                                             color: ColorsUtils
                                                                 .onBoardingTextGrey,

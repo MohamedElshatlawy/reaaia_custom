@@ -9,6 +9,7 @@ import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 
@@ -60,7 +61,7 @@ class _AddBranchClinicState extends State<AddBranchClinic> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Add Branch',
+                        AppLocalizations.of(context).translate('addBranch'),
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: ScreenUtil().setSp(17)),
@@ -72,13 +73,13 @@ class _AddBranchClinicState extends State<AddBranchClinic> {
                             child: DropdownButtonFormField<String>(
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return ' Select City!';
+                                  return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                 }
 
                                 return null;
                               },
                               decoration: InputDecoration(
-                                labelText: 'City',
+                                labelText: AppLocalizations.of(context).translate('city'),
                                 labelStyle: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: ScreenUtil().setSp(15)),
@@ -140,13 +141,13 @@ class _AddBranchClinicState extends State<AddBranchClinic> {
                             child: DropdownButtonFormField<String>(
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return ' Select Area!';
+                                  return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                 }
 
                                 return null;
                               },
                               decoration: InputDecoration(
-                                labelText: 'Area',
+                                labelText: AppLocalizations.of(context).translate('area'),
                                 labelStyle: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: ScreenUtil().setSp(15)),
@@ -218,11 +219,11 @@ class _AddBranchClinicState extends State<AddBranchClinic> {
                           child: CustomTextField(
                             controller: _mapController,
                             filledColor: Colors.white,
-                            lablel: ' Main Address*',
+                            lablel: AppLocalizations.of(context).translate('mainAddress'),
                             hasBorder: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'This Field Required';
+                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                               }
                               return null;
                             },
@@ -246,7 +247,7 @@ class _AddBranchClinicState extends State<AddBranchClinic> {
                           child: CustomRoundedButton(
                             backgroundColor: ColorsUtils.primaryGreen,
                             borderColor: ColorsUtils.primaryGreen,
-                            text: 'Save',
+                            text: AppLocalizations.of(context).translate('save'),
                             pressed: () async {
                               if (_formKey.currentState.validate()) {
                                 _formKey.currentState.save();

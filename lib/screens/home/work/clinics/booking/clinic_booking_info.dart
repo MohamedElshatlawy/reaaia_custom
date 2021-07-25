@@ -4,6 +4,7 @@ import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 
 class ClinicBookingInfoPage extends StatelessWidget {
@@ -41,7 +42,7 @@ class ClinicBookingInfoPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Booking Info',
+                      AppLocalizations.of(context).translate('booking'),
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
@@ -52,12 +53,12 @@ class ClinicBookingInfoPage extends StatelessWidget {
                 SizedBox(height: ScreenUtil().setHeight(35)),
                 CustomTextField(
                   filledColor: Colors.white,
-                  lablel: 'Average Waiting Time (Min.)',
+                  lablel: AppLocalizations.of(context).translate('waitTime'),
                   hasBorder: true,
                   onSaved: (val) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'This Field Required';
+                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                     }
                     return null;
                   },
@@ -65,12 +66,12 @@ class ClinicBookingInfoPage extends StatelessWidget {
                 SizedBox(height: ScreenUtil().setHeight(17)),
                 CustomTextField(
                   filledColor: Colors.white,
-                  lablel: 'Clinic Fees (egp)',
+                  lablel: AppLocalizations.of(context).translate('fees'),
                   hasBorder: true,
                   onSaved: (val) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'This Field Required';
+                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                     }
                     return null;
                   },
@@ -78,12 +79,12 @@ class ClinicBookingInfoPage extends StatelessWidget {
                 SizedBox(height: ScreenUtil().setHeight(17)),
                 CustomTextField(
                   filledColor: Colors.white,
-                  lablel: 'Follow-up Fees (egp)',
+                  lablel: AppLocalizations.of(context).translate('followUpFees'),
                   hasBorder: true,
                   onSaved: (val) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'This Field Required';
+                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                     }
                     return null;
                   },
@@ -91,20 +92,19 @@ class ClinicBookingInfoPage extends StatelessWidget {
                 SizedBox(height: ScreenUtil().setHeight(17)),
                 CustomTextField(
                   filledColor: Colors.white,
-                  lablel: 'Follow-up allowance (Day)',
+                  lablel: AppLocalizations.of(context).translate('followAllowance'),
                   hasBorder: true,
                   onSaved: (val) {},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'This Field Required';
+                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                     }
                     return null;
                   },
                 ),
                 SizedBox(height: ScreenUtil().setHeight(7)),
                 Text(
-                  'Duration after that follow-up expired. Patient couldn`t reserve it and will have to set a new appointment.',
-                  style: TextStyle(
+                  AppLocalizations.of(context).translate('bookingDesc'),                  style: TextStyle(
                     color: ColorsUtils.onBoardingTextGrey,
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
@@ -119,7 +119,7 @@ class ClinicBookingInfoPage extends StatelessWidget {
                     child: CustomRoundedButton(
                       backgroundColor: ColorsUtils.primaryGreen,
                       borderColor: ColorsUtils.primaryGreen,
-                      text: 'Save',
+                      text: AppLocalizations.of(context).translate('save'),
                       pressed: () {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();

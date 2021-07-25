@@ -5,6 +5,7 @@ import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/views/widgets/text_style_widget.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+
 import '../../customFunctions.dart';
 
 class CalendarRelatedTimeDoctor extends StatefulWidget {
@@ -88,7 +89,9 @@ class _CalendarRelatedTimeDoctorState extends State<CalendarRelatedTimeDoctor> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // ignore: missing_required_param
         TableCalendar<Event>(
+
           firstDay: kFirstDay,
           lastDay: kLastDay,
           focusedDay: _focusedDay,

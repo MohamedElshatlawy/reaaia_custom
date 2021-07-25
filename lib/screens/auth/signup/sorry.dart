@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/screens/auth/signup/request_sent_success.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class SorryScreen extends StatelessWidget {
   @override
@@ -28,7 +29,7 @@ class SorryScreen extends StatelessWidget {
               height: 21,
             ),
             Text(
-              'We`re sorry',
+              AppLocalizations.of(context).translate('sorry'),
               style: TextStyle(
                   color: ColorsUtils.primaryGreen,
                   fontWeight: FontWeight.w800,
@@ -40,7 +41,7 @@ class SorryScreen extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                  'You Account Unfortunately not approved contact With Reaaia Team For More Details',
+                  AppLocalizations.of(context).translate('sorry2'),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: ColorsUtils.onBoardingTextGrey,

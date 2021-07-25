@@ -6,11 +6,12 @@ import 'package:reaaia/model/clinics/branchModels/appointments_model.dart';
 import 'package:reaaia/model/clinics/branchModels/branch_model.dart';
 
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/add_appointment_clnic.dart';
-import 'package:reaaia/screens/home/work/edit_appointment_clinic.dart';
-import 'package:reaaia/screens/home/work/edit_branch_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/branches_appointments/add_appointment_clnic.dart';
+import 'package:reaaia/screens/home/work/clinics/branches_appointments/edit_appointment_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/branches_appointments/edit_branch_clinic.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/reaaia_icons.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicAppointments extends StatefulWidget {
@@ -210,7 +211,7 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 25.0),
                           child: Text(
-                            ' Appointments',
+                            AppLocalizations.of(context).translate('appointments'),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -231,7 +232,7 @@ class _ClinicAppointmentsState extends State<ClinicAppointments> {
                                 ? Center(
                                     child: Container(
                                       child: Text(
-                                        'No Appointments found',
+                                        AppLocalizations.of(context).translate('noAppointments'),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
@@ -377,7 +378,7 @@ class CustomAppointmentDayView extends StatelessWidget {
                                 fontSize: ScreenUtil().setSp(15)),
                           ),
                           TextSpan(
-                            text: ' (${appointments[index].timeSlot} Mins)',
+                            text: ' (${appointments[index].timeSlot} ${AppLocalizations.of(context).translate('mins')})',
                             style: TextStyle(
                                 color: ColorsUtils.onBoardingTextGrey,
                                 fontSize: ScreenUtil().setSp(14)),

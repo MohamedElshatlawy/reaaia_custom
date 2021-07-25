@@ -3,10 +3,12 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/add_service_clinic.dart';
-import 'package:reaaia/screens/home/work/clinic_service_detail.dart';
+import 'package:reaaia/screens/home/work/clinics/services/add_service_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/services/clinic_service_detail.dart';
+
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/reaaia_icons.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicServices extends StatefulWidget {
@@ -94,7 +96,7 @@ class _ClinicServicesState extends State<ClinicServices> {
               Row(
                 children: [
                   Text(
-                    'Services',
+                    AppLocalizations.of(context).translate('services'),
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w800,
@@ -113,7 +115,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                     )
                   : services.length == 0
                       ? Center(
-                          child: Text('No Services Found '),
+                          child: Text(AppLocalizations.of(context).translate('noServices'),),
                         )
                       : ListView.builder(
                           padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -200,7 +202,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                                 services[index]
                                                         .discountPercentage
                                                         .toString() +
-                                                    ' % OFF',
+                                                    AppLocalizations.of(context).translate('off'),
                                                 style: TextStyle(
                                                     color: ColorsUtils
                                                         .onBoardingTextGrey,
@@ -232,7 +234,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                                         ScreenUtil().setSp(17)),
                                               ),
                                               TextSpan(
-                                                text: ' EGP',
+                                                text: AppLocalizations.of(context).translate('egp'),
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.bold,
@@ -259,7 +261,7 @@ class _ClinicServicesState extends State<ClinicServices> {
                                                         .lineThrough),
                                               ),
                                               TextSpan(
-                                                text: '  EGP',
+                                                text: AppLocalizations.of(context).translate('egp'),
                                                 style: TextStyle(
                                                     color: ColorsUtils
                                                         .onBoardingTextGrey,

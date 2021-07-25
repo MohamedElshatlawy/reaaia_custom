@@ -5,11 +5,12 @@ import 'package:reaaia/screens/auth/password/forget_password.dart';
 import 'package:reaaia/screens/auth/signup/signup_page.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/home/home_page.dart';
-import 'package:reaaia/screens/widgets/custom_rounded_button_widget.dart';
-import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
+import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
+import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/utils/TokenUtil.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: ColorsUtils.greyColor,
       body: Builder(
-        builder: (context) => Form(
+        builder:(context)=> Form(
           key: _loginFormKey,
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
@@ -72,14 +73,14 @@ class _LoginPageState extends State<LoginPage> {
                           height: ScreenUtil().setHeight(14),
                         ),
                         Text(
-                          'Reaaia',
+                          AppLocalizations.of(context).translate('reaaia'),
                           style: TextStyle(
                               color: ColorsUtils.textGrey,
                               fontWeight: FontWeight.w800,
                               fontSize: ScreenUtil().setSp(25)),
                         ),
                         Text(
-                          'For Doctor',
+                          AppLocalizations.of(context).translate('forDoctors'),
                           style: TextStyle(
                               color: ColorsUtils.textGrey,
                               fontSize: ScreenUtil().setSp(11)),
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                         Row(
                           children: [
                             Text(
-                              'Log in',
+                              AppLocalizations.of(context).translate('login'),
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w800,
@@ -112,16 +113,16 @@ class _LoginPageState extends State<LoginPage> {
                           height: ScreenUtil().setHeight(37),
                         ),
                         CustomTextField(
-                          lablel: 'Phone Number*',
+                          lablel: AppLocalizations.of(context).translate('phoneNumber'),
                           hasBorder: true,
                           onSaved: (value) {
                             _loginInfo['username'] = value;
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'This Field Required';
-                            } else if (value.length < 11) {
-                              return 'this Field Should no less than 11 digits';
+                              return AppLocalizations.of(context).translate('fieldRequiredValidate');
+                            }else if(value.length<11){
+                              return AppLocalizations.of(context).translate('phoneNumberValidate');
                             }
                             return null;
                           },
@@ -130,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: ScreenUtil().setHeight(20),
                         ),
                         CustomTextField(
-                          lablel: 'Password*',
+                          lablel: AppLocalizations.of(context).translate('Password'),
                           hasBorder: true,
                           hasPassword: true,
                           onSaved: (value) {
@@ -138,9 +139,9 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'This Field Required';
-                            } else if (value.length < 8) {
-                              return 'this Field Should no less than 8 digits';
+                              return AppLocalizations.of(context).translate('fieldRequiredValidate');
+                            }else if(value.length<8){
+                              return AppLocalizations.of(context).translate('passwordValidate');
                             }
                             return null;
                           },
@@ -157,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                                     context: context, widget: ForgetPassword());
                               },
                               child: Text(
-                                'Forget Password?',
+                                  AppLocalizations.of(context).translate('forgetPassword'),
                                 style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontWeight: FontWeight.w800,
@@ -177,13 +178,12 @@ class _LoginPageState extends State<LoginPage> {
                                 child: CustomRoundedButton(
                                   backgroundColor: ColorsUtils.primaryGreen,
                                   borderColor: ColorsUtils.primaryGreen,
-                                  text: 'Log in',
+                                  text: AppLocalizations.of(context).translate('login'),
                                   textColor: Colors.white,
                                   pressed: () async {
                                     if (_loginFormKey.currentState.validate()) {
                                       _loginFormKey.currentState.save();
-                                      FocusManager.instance.primaryFocus
-                                          .unfocus();
+                                      FocusManager.instance.primaryFocus.unfocus();
 
                                       checkPlatForm();
                                       _loginInfo['grant_type'] = 'password';
@@ -196,20 +196,13 @@ class _LoginPageState extends State<LoginPage> {
                                       try {
                                         await loginProvider.login(_loginInfo);
 
-                                        if (loginProvider
-                                                .loginResponse.message ==
+                                        if (loginProvider.loginResponse.message ==
                                             'api.success.success') {
                                           setState(() {
                                             loading = false;
                                           });
-                                          TokenUtil.saveToken(loginProvider
-                                              .loginResponse
-                                              .response
-                                              .data
-                                              .accessToken);
-                                          CustomFunctions.pushScreenRepcalement(
-                                              context: context,
-                                              widget: HomePage());
+                                          TokenUtil.saveToken(loginProvider.loginResponse.response.data.accessToken);
+                                         CustomFunctions.pushScreenRepcalement(context: context,widget:  HomePage());
                                           print('Login Success');
                                         } else {
                                           setState(() {
@@ -218,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
 
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Mobile OR Password Wrong!',
+                                            text: AppLocalizations.of(context).translate('errorLogin'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -231,11 +224,12 @@ class _LoginPageState extends State<LoginPage> {
                                         });
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Mobile OR Password Wrong!',
+                                          text: AppLocalizations.of(context).translate('errorLogin'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
                                         );
+
                                       }
                                     } else {
                                       setState(() {
@@ -258,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Don\'t have account? ',
+                              AppLocalizations.of(context).translate('dontHaveAccount'),
                               style: TextStyle(
                                   color: ColorsUtils.onBoardingTextGrey,
                                   fontSize: ScreenUtil().setSp(13)),
@@ -272,7 +266,7 @@ class _LoginPageState extends State<LoginPage> {
                                 //     widget: CompleteRegister2());
                               },
                               child: Text(
-                                'Sign Up',
+                                AppLocalizations.of(context).translate('signUp'),
                                 style: TextStyle(
                                     color: ColorsUtils.blueColor,
                                     fontWeight: FontWeight.w800,

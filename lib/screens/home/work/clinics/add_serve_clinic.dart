@@ -6,6 +6,7 @@ import 'package:reaaia/model/data/signup/serving_health_care_model.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 
@@ -46,18 +47,18 @@ class _AddServeClinicState extends State<AddServeClinic> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'I Serve',
+                  AppLocalizations.of(context).translate('iServe'),
                   style: TextStyle(
                       color: Colors.black, fontSize: ScreenUtil().setSp(17)),
                 ),
                 SizedBox(height: ScreenUtil().setHeight(20)),
                 CustomTextField(
                   filledColor: Colors.white,
-                  lablel: ' Hospital / Clinic Name',
+                  lablel: AppLocalizations.of(context).translate('hospitalName'),
                   hasBorder: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'This Field Required';
+                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                     }
                     return null;
                   },
@@ -90,11 +91,11 @@ class _AddServeClinicState extends State<AddServeClinic> {
                       readOnly: true,
                       controller: _controller,
                       filledColor: Colors.white,
-                      lablel: ' Started from',
+                      lablel: AppLocalizations.of(context).translate('startFrom'),
                       hasBorder: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -111,11 +112,11 @@ class _AddServeClinicState extends State<AddServeClinic> {
                 SizedBox(height: ScreenUtil().setHeight(20)),
                 CustomTextField(
                   filledColor: Colors.white,
-                  lablel: ' Job Title',
+                  lablel: AppLocalizations.of(context).translate('jobTitle'),
                   hasBorder: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'This Field Required';
+                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                     }
                     return null;
                   },
@@ -132,7 +133,7 @@ class _AddServeClinicState extends State<AddServeClinic> {
                     child: CustomRoundedButton(
                       backgroundColor: ColorsUtils.primaryGreen,
                       borderColor: ColorsUtils.primaryGreen,
-                      text: 'Save',
+                      text: AppLocalizations.of(context).translate('save'),
                       pressed: () {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();

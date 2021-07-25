@@ -15,6 +15,7 @@ import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 
 class ClinicInfoPage extends StatefulWidget {
@@ -104,7 +105,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                       Row(
                         children: [
                           Text(
-                            'Clinic Info',
+                          AppLocalizations.of(context).translate('clinicInfo'),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w800,
@@ -153,7 +154,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
 
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Picture Remove Successfully',
+                                          text: AppLocalizations.of(context).translate('picRemove'),
                                           hasIcon: true,
                                           iconType: Icons.done,
                                           iconColor: Colors.green,
@@ -186,7 +187,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                       width: 185,
                                       backgroundColor: ColorsUtils.primaryGreen,
                                       borderColor: ColorsUtils.primaryGreen,
-                                      text: 'Update Avatar',
+                                      text: AppLocalizations.of(context).translate('updateAvatar'),
                                       pressed: () async {
                                         final pickedImage =
                                             await Functions.pickImage();
@@ -206,8 +207,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                                   'we found token ${signUpProvider.tokenPicture}');
                                               Functions.showCustomSnackBar(
                                                 context: context,
-                                                text:
-                                                    'Picture Upload Successfully',
+                                                text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                                 hasIcon: true,
                                                 iconType: Icons.done,
                                                 iconColor: Colors.green,
@@ -215,7 +215,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                             } else {
                                               Functions.showCustomSnackBar(
                                                 context: context,
-                                                text: 'Picture Upload Failed!',
+                                                text: AppLocalizations.of(context).translate('picLoadFailed'),
                                                 hasIcon: true,
                                                 iconType: Icons.error_outline,
                                                 iconColor: Colors.red,
@@ -224,7 +224,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                           } catch (err) {
                                             Functions.showCustomSnackBar(
                                               context: context,
-                                              text: 'Picture Upload Failed!',
+                                              text: AppLocalizations.of(context).translate('picLoadFailed'),
                                               hasIcon: true,
                                               iconType: Icons.error_outline,
                                               iconColor: Colors.red,
@@ -233,7 +233,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                         } else {
                                           Functions.showCustomSnackBar(
                                             context: context,
-                                            text: 'Picture Upload Failed!',
+                                            text: AppLocalizations.of(context).translate('picLoadFailed'),
                                             hasIcon: true,
                                             iconType: Icons.error_outline,
                                             iconColor: Colors.red,
@@ -245,8 +245,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                     SizedBox(
                                         height: ScreenUtil().setHeight(12)),
                                     Text(
-                                      'your avatar should be a friendly and inviting heat shot. clearly indentifiable as you.',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context).translate('picDesc'),                                      style: TextStyle(
                                           color: ColorsUtils.onBoardingTextGrey,
                                           fontSize: ScreenUtil().setSp(10)),
                                     ),
@@ -264,14 +263,14 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                           /// Hospital / Clinic Name
                           CustomTextField(
                             initialValue: 'Diamond Clinic for Skin care',
-                            lablel: ' Hospital / Clinic Name',
+                            lablel: AppLocalizations.of(context).translate('hospitalName'),
                             hasBorder: true,
                             onSaved: (val) {
                               ownedClinic.clinicName = val;
                             },
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'This Field Required';
+                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                               }
                               return null;
                             },
@@ -318,7 +317,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                               .start,
                                           children: [
                                             Text(
-                                              'Select Speciality',
+                                              AppLocalizations.of(context).translate('selectSpecialty'),
                                               style: TextStyle(
                                                   color: ColorsUtils
                                                       .onBoardingTextGrey,
@@ -327,7 +326,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                                       .setSp(16)),
                                             ),
                                             Text(
-                                              'you can select only one Speciality',
+                                              AppLocalizations.of(context).translate('selectOneSpecialty'),
                                               style: TextStyle(
                                                   color: ColorsUtils
                                                       .onBoardingTextGrey,
@@ -417,7 +416,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                 filledColor: isSelectedSpeciality
                                     ? null
                                     : Colors.white,
-                                lablel: ' Select Specialty*',
+                                lablel: AppLocalizations.of(context).translate('selectSpecialty'),
                                 style: TextStyle(
                                     color: ColorsUtils.blackColor,
                                     fontWeight: FontWeight.w600,
@@ -437,7 +436,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                 validator: (value) {
                                   if (value == null ||
                                       value.isEmpty) {
-                                    return 'This Field Required';
+                                    return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                   }
                                   return null;
                                 },
@@ -454,7 +453,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
 
                           /// SubSpecialty
                           Text(
-                            'Select SubSpecialty ',
+                            AppLocalizations.of(context).translate('selectSubSpecialty'),
                             style: TextStyle(
                                 color: ColorsUtils.textGrey,
                                 fontWeight: FontWeight.w700,
@@ -467,7 +466,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                             padding: const EdgeInsets.all(10.0),
                             child: Center(
                                 child: Text(
-                                    'Not Specialty Selected yet!')),
+                                  AppLocalizations.of(context).translate('notSelectedSpecialty'),)),
                           )
                               : Wrap(
                             spacing: 10.0,
@@ -580,7 +579,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                 decoration: InputDecoration(
                                   contentPadding:
                                   EdgeInsets.only(bottom: 12.0),
-                                  hintText: 'Add Other Specialty',
+                                  hintText: AppLocalizations.of(context).translate('addOtherSpecialty'),
                                   enabledBorder: InputBorder.none,
                                   border: InputBorder.none,
                                   disabledBorder: InputBorder.none,
@@ -633,13 +632,13 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                   validator: (value) {
                                     if (value == null ||
                                         value.isEmpty) {
-                                      return ' Select City!';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
 
                                     return null;
                                   },
                                   decoration: InputDecoration(
-                                    labelText: 'City',
+                                    labelText: AppLocalizations.of(context).translate('city'),
                                     labelStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize:
@@ -713,13 +712,13 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                   validator: (value) {
                                     if (value == null ||
                                         value.isEmpty) {
-                                      return ' Select Area!';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
 
                                     return null;
                                   },
                                   decoration: InputDecoration(
-                                    labelText: 'Area',
+                                    labelText: AppLocalizations.of(context).translate('area'),
                                     labelStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize:
@@ -806,12 +805,12 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                               child: CustomTextField(
                                 controller: _mapController,
                                 filledColor: Colors.white,
-                                lablel: ' Main Address*',
+                                lablel: AppLocalizations.of(context).translate('mainAddress'),
                                 hasBorder: true,
                                 validator: (value) {
                                   if (value == null ||
                                       value.isEmpty) {
-                                    return 'This Field Required';
+                                    return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                   }
                                   return null;
                                 },
@@ -871,14 +870,14 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                     });
                                   },
                                   filledColor: Colors.white,
-                                  lablel: ' Phone Number*',
+                                  lablel: AppLocalizations.of(context).translate('phoneNumber'),
                                   hasBorder: true,
                                   validator: (value) {
                                     if (value == null ||
                                         value.isEmpty) {
-                                      return 'This Field Required';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     } else if (value.length != 11) {
-                                      return 'this Field Should no less than 11 digits';
+                                      return AppLocalizations.of(context).translate('phoneNumberValidate');
                                     }
                                     return null;
                                   },
@@ -900,7 +899,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                 Icons.add,
                                 color: ColorsUtils.primaryGreen,
                               ),
-                              text: 'Add More Phone Numbers ',
+                              text: AppLocalizations.of(context).translate('addMorePhoneNumbers'),
                               pressed: () {
                                 setState(() {
                                   _textFieldControllers
@@ -922,7 +921,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
 
                           /// Accepted Insurance Plans
                           Text(
-                            'Accepted Insurance Plans',
+                            AppLocalizations.of(context).translate('acceptedInsurancePlans'),
                             style: TextStyle(
                                 color: ColorsUtils.textGrey,
                                 fontWeight: FontWeight.w700,
@@ -1027,7 +1026,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                 decoration: InputDecoration(
                                   contentPadding:
                                   EdgeInsets.only(bottom: 12.0),
-                                  hintText: 'Add Other Plan',
+                                  hintText: AppLocalizations.of(context).translate('addOtherPlan'),
                                   enabledBorder: InputBorder.none,
                                   border: InputBorder.none,
                                   disabledBorder: InputBorder.none,
@@ -1088,7 +1087,7 @@ class _ClinicInfoPageState extends State<ClinicInfoPage> {
                                   Icons.arrow_forward,
                                   color: Colors.white,
                                 ),
-                                text: 'Continue',
+                                text: AppLocalizations.of(context).translate('continue'),
                                 pressed: () {
                                   if (_formKey.currentState
                                       .validate()) {

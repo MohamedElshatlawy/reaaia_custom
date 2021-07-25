@@ -39,7 +39,7 @@ class MyMaterial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var locProvider = Provider.of<LocalProvider>(context);
-final localeLanguage = Platform.localeName; 
+//final localeLanguage = Platform.localeName;
     return ScreenUtilInit(
       designSize: Size(360, 690),
       builder: () => MaterialApp(
@@ -49,31 +49,27 @@ final localeLanguage = Platform.localeName;
         theme: ThemeData(
             primaryColor: ColorsUtils.primaryGreen,
             fontFamily: FontUtils.MULI_FONT),
-        supportedLocales: 
-        localeLanguage == 'ar_EG' ? 
-        [
+        supportedLocales: [
+          Locale('en', 'US'),
           Locale('ar', ''),
-        ]
-        : [
-           Locale('en', 'US'),
         ],
         localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        localeResolutionCallback:
-         (local, supportedLocals) {
-          for(var supportedLocal in supportedLocals) {
-            if (supportedLocal.languageCode == local.languageCode
-            &&
-            supportedLocal.countryCode == local.countryCode
-            ) {
-                return supportedLocal;
-            }
-          }
-          return supportedLocals.first;
-        },
+        // localeResolutionCallback:
+        //  (local, supportedLocals) {
+        //   for(var supportedLocal in supportedLocals) {
+        //     if (supportedLocal.languageCode == local.languageCode
+        //     &&
+        //     supportedLocal.countryCode == local.countryCode
+        //     ) {
+        //         return supportedLocal;
+        //     }
+        //   }
+        //   return supportedLocals.first;
+        // },
         home: Splash(),
       ),
     );

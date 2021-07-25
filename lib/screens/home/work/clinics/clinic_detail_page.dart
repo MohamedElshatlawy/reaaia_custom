@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reaaia/model/clinics/clinics_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/clinic_booking_info.dart';
-import 'package:reaaia/screens/home/work/clinic_branches.dart';
-import 'package:reaaia/screens/home/work/clinic_info.dart';
-import 'package:reaaia/screens/home/work/clinic_services.dart';
-import 'package:reaaia/screens/home/work/clinic_team.dart';
-import 'package:reaaia/screens/home/work/custom_container_view.dart';
+import 'package:reaaia/screens/home/work/clinics/booking/clinic_booking_info.dart';
+import 'package:reaaia/screens/home/work/clinics/branches_appointments/clinic_branches.dart';
+import 'package:reaaia/screens/home/work/clinics/clinic_info/clinic_info.dart';
+import 'package:reaaia/screens/home/work/clinics/services/clinic_services.dart';
+import 'package:reaaia/screens/home/work/clinics/team/clinic_team.dart';
+import 'package:reaaia/screens/home/work/clinics/custom_container_view.dart';
 
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/reaaia_icons.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class ClinicDetailPage extends StatelessWidget {
   final ClinicData clinicData;
@@ -98,19 +99,19 @@ class ClinicDetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             CustomTextWidget(
-                              name: 'Patients',
+                              name: AppLocalizations.of(context).translate('patients'),
                               numbers: '1,523',
                             ),
                             CustomTextWidget(
-                              name: 'Saved lives',
+                              name: AppLocalizations.of(context).translate('savedLives'),
                               numbers: '423',
                             ),
                             CustomTextWidget(
-                              name: 'Helped people',
+                              name: AppLocalizations.of(context).translate('helpedPeople'),
                               numbers: '423.2K',
                             ),
                             CustomTextWidget(
-                              name: 'Thanks for',
+                              name: AppLocalizations.of(context).translate('thanksFor'),
                               numbers: '24.2K',
                             ),
                           ],
@@ -134,8 +135,8 @@ class ClinicDetailPage extends StatelessWidget {
                             CustomFunctions.pushScreen(
                                 context: context, widget: ClinicInfoPage());
                           },
-                          name: 'Clinic Info',
-                          decs: 'Basic Information of Clinic',
+                          name: AppLocalizations.of(context).translate('clinicInfo'),
+                          decs: AppLocalizations.of(context).translate('clinicInfoDesc'),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
@@ -149,8 +150,8 @@ class ClinicDetailPage extends StatelessWidget {
                                 context: context,
                                 widget: ClinicBranches(clinicData.id));
                           },
-                          name: 'Branches/Appointments',
-                          decs: 'Control branches and appointments',
+                          name: AppLocalizations.of(context).translate('branch'),
+                          decs: AppLocalizations.of(context).translate('branchInfo'),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
@@ -164,8 +165,8 @@ class ClinicDetailPage extends StatelessWidget {
                                 context: context,
                                 widget: ClinicServices(clinicData.id));
                           },
-                          name: 'Services',
-                          decs: 'Clinic main services and offers',
+                          name: AppLocalizations.of(context).translate('services'),
+                          decs: AppLocalizations.of(context).translate('servicesInfo'),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
@@ -179,8 +180,8 @@ class ClinicDetailPage extends StatelessWidget {
                                 context: context,
                                 widget: ClinicBookingInfoPage());
                           },
-                          name: 'Booking Info',
-                          decs: 'Clinic Fees and waiting time',
+                          name: AppLocalizations.of(context).translate('booking'),
+                          decs: AppLocalizations.of(context).translate('bookingInfo'),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 30.0),
@@ -194,8 +195,8 @@ class ClinicDetailPage extends StatelessWidget {
                                 context: context,
                                 widget: ClinicTeamPage(clinicData.id));
                           },
-                          name: 'Team',
-                          decs: 'add / view clinic employees',
+                          name: AppLocalizations.of(context).translate('team'),
+                          decs: AppLocalizations.of(context).translate('teamInfo'),
                         ),
                       ],
                     ),
@@ -280,8 +281,9 @@ class CustomListTile extends StatelessWidget {
         ),
       ),
       trailing: Icon(
-        Icons.keyboard_arrow_right,
+        Icons.arrow_forward_ios,
         color: ColorsUtils.onBoardingTextGrey,
+        size: 18,
       ),
     );
   }

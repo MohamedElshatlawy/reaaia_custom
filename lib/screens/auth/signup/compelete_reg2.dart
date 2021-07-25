@@ -435,7 +435,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                             });
                           },
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(bottom: 12.0),
+                            contentPadding: EdgeInsets.only(bottom:9.0),
                             hintText: AppLocalizations.of(context).translate('addOtherSpecialty'),
                             enabledBorder: InputBorder.none,
                             border: InputBorder.none,
@@ -614,7 +614,7 @@ class _CompleteRegister2State extends State<CompleteRegister2> {
                                   SizedBox(height: ScreenUtil().setHeight(16)),
                                   DropdownButtonFormField<String>(
                                     decoration: InputDecoration(
-                                      labelText: 'Language',
+                                      labelText: AppLocalizations.of(context).translate('lang'),
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: ScreenUtil().setSp(15)),

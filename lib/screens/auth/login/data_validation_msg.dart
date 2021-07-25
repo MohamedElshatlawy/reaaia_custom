@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reaaia/screens/auth/login/recovery_password.dart';
+import 'package:reaaia/screens/auth/password/recovery_password.dart';
 import 'package:reaaia/screens/customFunctions.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';

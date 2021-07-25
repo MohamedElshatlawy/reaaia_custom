@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/screens/auth/password/password_success_changed.dart';
-import 'package:reaaia/screens/widgets/custom_rounded_button_widget.dart';
-import 'package:reaaia/screens/widgets/custom_textfield_widget.dart';
+import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
+import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/login_provider.dart';
 
 
@@ -65,7 +66,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           Row(
                             children: [
                               Text(
-                                'Set New Password',
+                               AppLocalizations.of(context).translate('setNewPassword'),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
@@ -80,8 +81,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Reset code was sent to your email. Please enter the code and create new password.',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context).translate('resetCode'),                                  style: TextStyle(
                                       color: ColorsUtils.onBoardingTextGrey,
                                       fontSize: ScreenUtil().setSp(13)),
                                 ),
@@ -94,14 +94,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                           CustomTextField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'This Field Required';
+                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                               }else if(value.length<8){
-                                return 'this Field Should more than 8 digits';
+                                return AppLocalizations.of(context).translate('passwordValidate');
                               }
                               return null;
                             },
 
-                            lablel: 'New Password*',
+                            lablel:  AppLocalizations.of(context).translate('newPassword'),
                             hasBorder: true,
                             hasPassword: true,
                             onSaved: (val) {
@@ -114,13 +114,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                           CustomTextField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'This Field Required';
+                                return AppLocalizations.of(context).translate('fieldRequiredValidate');
                               }else if(value.length<8){
-                                return 'this Field Should more than 8 digits';
+                                return AppLocalizations.of(context).translate('passwordValidate');
                               }
                               return null;
                             },
-                              lablel: 'Confirm New Password*',
+                              lablel: AppLocalizations.of(context).translate('confirmNewPassword'),
                               hasBorder: true,
                               hasPassword: true,
                               onSaved: (val) {
@@ -136,7 +136,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                             child: CustomRoundedButton(
                               backgroundColor: ColorsUtils.primaryGreen,
                               borderColor: ColorsUtils.primaryGreen,
-                              text: 'Change Password',
+                              text: AppLocalizations.of(context).translate('changePassword'),
                               pressed: () async {
                                 if (_formKey.currentState.validate()) {
                                   _formKey.currentState.save();
@@ -166,7 +166,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                         });
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Can\'t Change Passwrod',
+                                          text: AppLocalizations.of(context).translate('cantChangePassword'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -187,7 +187,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   } else {
                                     Functions.showCustomSnackBar(
                                       context: context,
-                                      text: 'Password didn\'t match',
+                                      text: AppLocalizations.of(context).translate('passwordNotMatch'),
                                       hasIcon: true,
                                       iconType: Icons.error_outline,
                                       iconColor: Colors.red,

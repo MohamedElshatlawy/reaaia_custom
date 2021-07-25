@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
+import '../../../views/widgets/flat_button_widget.dart';
+import '../../../views/widgets/scroll_view_widget.dart';
+import '../../../views/widgets/text_style_widget.dart';
 import '../doctors_work_library_consult.dart';
-import './/viewModels/locale/appLocalization.dart';
-import './/views/widgets/flat_button_widget.dart';
-import './/views/widgets/scroll_view_widget.dart';
-import './/views/widgets/text_style_widget.dart';
 import '../../customFunctions.dart';
 
+// ignore: must_be_immutable
 class DetailStatusConsultsSelectedRealtedDoctorWork extends StatefulWidget {
   String typeConsults;
   DetailStatusConsultsSelectedRealtedDoctorWork(this.typeConsults, {Key key})

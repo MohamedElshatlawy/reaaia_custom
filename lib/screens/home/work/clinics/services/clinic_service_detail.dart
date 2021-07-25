@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:reaaia/model/clinics/service_model.dart';
 import 'package:reaaia/screens/customFunctions.dart';
-import 'package:reaaia/screens/home/work/edit_service_clinic.dart';
+import 'package:reaaia/screens/home/work/clinics/services/edit_service_clinic.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/workProvider/clinics_provider.dart';
 
 class ClinicServiceDetail extends StatefulWidget {
@@ -39,23 +40,23 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
             children: [
               SizedBox(height: ScreenUtil().setHeight(20)),
               CustomText(
-                name: 'Service Name',
+                name: AppLocalizations.of(context).translate('serviceName'),
                 decs: widget.serviceModel.name,
               ),
               CustomText(
-                name: 'Service Description',
+                name: AppLocalizations.of(context).translate('serviceDescription'),
                 decs: widget.serviceModel.description,
               ),
               CustomText(
-                name: 'Service Requirements',
+                name: AppLocalizations.of(context).translate('serviceReq'),
                 decs: widget.serviceModel.requirements,
               ),
               CustomText(
-                name: 'Service Cost',
-                decs: widget.serviceModel.price + ' EGP',
+                name: AppLocalizations.of(context).translate('serviceCost'),
+                decs: widget.serviceModel.price +' '+AppLocalizations.of(context).translate('egp'),
               ),
               CustomText(
-                name: 'DisCount %',
+                name: AppLocalizations.of(context).translate('discount'),
                 decs: widget.serviceModel.discountPercentage.toString() + ' %',
               ),
               SizedBox(height: ScreenUtil().setHeight(10)),
@@ -109,7 +110,7 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
                       child: CustomRoundedButton(
                         backgroundColor: Colors.white,
                         borderColor: ColorsUtils.primaryGreen,
-                        text: 'Delete',
+                        text: AppLocalizations.of(context).translate('delete'),
                         pressed: () async{
                         await  Provider.of<ClinicsProvider>(context, listen: false)
                               .deleteService(widget.serviceModel.id,widget.index);
@@ -128,7 +129,7 @@ class _ClinicServiceDetailState extends State<ClinicServiceDetail> {
                       child: CustomRoundedButton(
                         backgroundColor: ColorsUtils.primaryGreen,
                         borderColor: ColorsUtils.primaryGreen,
-                        text: 'Edit Service',
+                        text: AppLocalizations.of(context).translate('editService'),
                         pressed: ()  {
                           CustomFunctions.pushScreen(context: context,widget: EditServiceClinic(serviceModel: widget.serviceModel, index: widget.index,clinicID: widget.clinicID,));
 

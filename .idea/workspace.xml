@@ -2,27 +2,88 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b7c41bf-2dda-46b5-a74b-9c2104e727e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/fonts/Reaaia_Icons.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ar 2.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/en 2.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/change_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/change_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/forget_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/forget_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/password_success_changed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/password_success_changed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/recovery_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/recovery_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/change_password.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/data_validation_message.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/data_validation_msg.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/data_validation_msg.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/forget_password.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/login.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/login/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/password_success_changed.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/login/recovery_password.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/password/change_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/password/change_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/password/forget_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/password/forget_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/password/password_success_changed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/password/password_success_changed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/password/recovery_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/password/recovery_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/add_serve.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/add_serve.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg3.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/complete_reg1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/signup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/verification.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_appointment_clnic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/add_appointment_clnic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index3.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/onBoarding/index4.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/onBoarding/index4.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/complete_req1_map.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/complete_req1_map.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/congrats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/congrats.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/request_sent_success.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/request_sent_success.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/signup.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/auth/signup/sorry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/auth/signup/sorry.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/consults/calendar_related_time_doctor/calendar_time_doctor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/consults/calendar_related_time_doctor/calendar_time_doctor.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/consults/detail_status_consult_related_doctor_work/detail_status_consult_doctor_work_library.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/consults/detail_status_consult_related_doctor_work/detail_status_consult_doctor_work_library.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/add_award.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/add_profile/add_award.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/add_certificate.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/add_language.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/add_profile/add_certificate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/add_profile/add_certificate.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/add_profile/add_language.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/add_profile/add_language.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_awards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_awards.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_certificates.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_education.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_languages.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_certificates.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_certificates.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_education.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_education.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_languages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_languages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/profile/profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/reaaia_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/reaaia_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_appointment_clnic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/branches_appointments/add_appointment_clnic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_branch_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/branches_appointments/add_branch_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_employee_team.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/team/add_employee_team.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_serve_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/add_serve_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/add_service_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/services/add_service_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_appointments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/branches_appointments/clinic_appointments.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_booking_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/booking/clinic_booking_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_branches.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/branches_appointments/clinic_branches.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/clinic_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/clinic_info/clinic_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_service_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/services/clinic_service_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/services/clinic_services.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinic_team.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/team/clinic_team.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/clinics_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/clinics_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/custom_container_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/custom_container_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/edit_appointment_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/branches_appointments/edit_appointment_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/edit_branch_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/branches_appointments/edit_branch_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/edit_employee_team.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/team/edit_employee_team.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/edit_service_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/services/edit_service_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/filter_team_clinic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/clinics/team/filter_team_clinic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/work/work_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/work/work_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/profile/choose_gender.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/profile/choose_gender.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_bottom_navbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_bottom_navbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/Fuctions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Fuctions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,19 +113,19 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/icons" />
-    <property name="settings.editor.selected.configurable" value="memory.settings" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\work\clinics\team" />
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\work\clinics\services" />
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\work\clinics\clinic_info" />
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\work\clinics\branches_appointments" />
+      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\work\clinics\booking" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\assets\icons" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\widgets" />
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\fonts" />
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\model\clinics\branchModels" />
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\screens\home\profile" />
-      <recent name="C:\Users\ahmed\AndroidStudioProjects\reaaia_custom\lib\model" />
     </key>
   </component>
   <component name="RunManager">
@@ -168,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626360902006</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="localization">
+      <created>1627199846619</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1627199846619</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -184,7 +252,8 @@
     <MESSAGE value="sprint 3 Design 13/7/2021 02:13 PM" />
     <MESSAGE value="sprint 2 logic again teams and appointments  15/7/2021 01:14 AM" />
     <MESSAGE value="sprint 2 logic appointments  15/7/2021 04:55 PM" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprint 2 logic appointments  15/7/2021 04:55 PM" />
+    <MESSAGE value="localization" />
+    <option name="LAST_COMMIT_MESSAGE" value="localization" />
   </component>
   <component name="WindowStateProjectService">
     <state x="333" y="222" key="#Scopes" timestamp="1624144656101">
@@ -199,14 +268,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1624795771270" />
-    <state x="100" y="100" width="882" height="528" key="AVDManager" timestamp="1627133396218">
+    <state x="100" y="100" width="882" height="528" key="AVDManager" timestamp="1627215775015">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="100" y="100" width="882" height="528" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1627133396218" />
-    <state x="60" y="0" key="CommitChangelistDialog2" timestamp="1626360900536">
+    <state x="100" y="100" width="882" height="528" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1627215775015" />
+    <state x="60" y="0" key="CommitChangelistDialog2" timestamp="1627199845151">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="60" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1626360900536" />
+    <state x="60" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627199845151" />
     <state x="0" y="55" key="DiffContextDialog" timestamp="1625449305242">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -215,46 +284,62 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="318" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1625187880295" />
-    <state width="1000" height="284" key="GridCell.Tab.0.bottom" timestamp="1627141844749">
+    <state width="1008" height="219" key="GridCell.Tab.0.bottom" timestamp="1627247109395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1000" height="284" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
-    <state width="1000" height="284" key="GridCell.Tab.0.center" timestamp="1627141844749">
+    <state width="1008" height="219" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1627247109395" />
+    <state width="1008" height="219" key="GridCell.Tab.0.center" timestamp="1627247109395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1000" height="284" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
-    <state width="1000" height="284" key="GridCell.Tab.0.left" timestamp="1627141844749">
+    <state width="1008" height="219" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1627247109395" />
+    <state width="1008" height="219" key="GridCell.Tab.0.left" timestamp="1627247109395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1000" height="284" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
-    <state width="1000" height="284" key="GridCell.Tab.0.right" timestamp="1627141844749">
+    <state width="1008" height="219" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1627247109395" />
+    <state width="1008" height="219" key="GridCell.Tab.0.right" timestamp="1627247109395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1000" height="284" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1627141844749" />
+    <state width="1008" height="219" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1627247109395" />
     <state x="122" y="110" key="IDE.errors.dialog" timestamp="1625444527148">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="122" y="110" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1625444527148" />
-    <state x="43" y="12" key="SettingsEditor" timestamp="1625446289085">
+    <state x="8" y="90" key="MergeDialog" timestamp="1627200615194">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="43" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1625446289085" />
+    <state x="8" y="90" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1627200615194" />
+    <state x="168" y="125" key="MultipleFileMergeDialog" timestamp="1627200616892">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="168" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1627200616892" />
+    <state x="58" y="16" key="SettingsEditor" timestamp="1627216131689">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="58" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627216131689" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1625182289660">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1625182289660" />
-    <state x="133" y="97" key="Vcs.Push.Dialog.v2" timestamp="1626360913564">
+    <state x="246" y="122" key="Vcs.Multiple.Commit.Info.Dialog.Key" timestamp="1627200168542">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="133" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1626360913564" />
-    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1626360877321">
+    <state x="246" y="122" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1366.728@0.0.1366.728" timestamp="1627200168542" />
+    <state x="133" y="97" key="Vcs.Push.Dialog.v2" timestamp="1627199859684">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1366.728@0.0.1366.728" timestamp="1626360877321" />
-    <state x="218" y="156" key="git4idea.merge.GitPullDialog" timestamp="1626178547498">
+    <state x="133" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1627199859684" />
+    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1627199801562">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="218" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1626178547498" />
+    <state x="284" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1366.728@0.0.1366.728" timestamp="1627199801562" />
+    <state x="218" y="156" key="git4idea.merge.GitPullDialog" timestamp="1627199953443">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="218" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1627199953443" />
+    <state x="190" y="166" key="run.anything.popup" timestamp="1627244082307">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="190" y="166" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1627244082307" />
     <state x="195" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1625684974816">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -269,7 +354,7 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/home/work/clinics_page.dart</url>
+          <url>file://$PROJECT_DIR$/lib/screens/home/work/clinics/clinics_page.dart</url>
           <line>189</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
@@ -279,18 +364,13 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/home/profile/edit_certificates.dart</url>
-          <line>46</line>
+          <url>file://$PROJECT_DIR$/lib/screens/home/profile/edit_profile/edit_certificates.dart</url>
+          <line>45</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/auth/signup/compelete_reg2.dart</url>
-          <line>758</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/home/work/clinic_team.dart</url>
-          <line>361</line>
+          <url>file://$PROJECT_DIR$/lib/screens/home/work/clinics/team/clinic_team.dart</url>
+          <line>378</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
