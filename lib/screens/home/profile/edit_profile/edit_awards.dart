@@ -7,6 +7,7 @@ import 'package:reaaia/screens/home/profile/custom_view_image.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class EditAwardsPage extends StatefulWidget {
   @override
@@ -96,7 +97,7 @@ class _EditAwardsPageState extends State<EditAwardsPage> {
                   Row(
                     children: [
                       Text(
-                        'Edit Awards',
+                       AppLocalizations.of(context).translate('editAwards'),
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w800,
@@ -125,14 +126,14 @@ class _EditAwardsPageState extends State<EditAwardsPage> {
                             SizedBox(height: ScreenUtil().setHeight(16)),
                             CustomTextField(
                               filledColor: Colors.white,
-                              lablel: ' Award Name ',
+                              lablel: AppLocalizations.of(context).translate('awardName'),
                               hasBorder: true,
                               onSaved: (val) {
                                 _awards[index].name = val;
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'This Field Required';
+                                  return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                 }
                                 return null;
                               },
@@ -143,14 +144,14 @@ class _EditAwardsPageState extends State<EditAwardsPage> {
                             SizedBox(height: ScreenUtil().setHeight(20)),
                             CustomTextField(
                               filledColor: Colors.white,
-                              lablel: ' Year',
+                              lablel: AppLocalizations.of(context).translate('year'),
                               hasBorder: true,
                               onSaved: (val) {
                                 _awards[index].year = val;
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'This Field Required';
+                                  return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                 }
                                 return null;
                               },
@@ -163,7 +164,7 @@ class _EditAwardsPageState extends State<EditAwardsPage> {
                             ),
                             InkWell(
                               child: Text(
-                                'View Award',
+                                AppLocalizations.of(context).translate('viewAward'),
                                 style: TextStyle(
                                   decoration: TextDecoration.underline,
                                   fontSize: 15.0,
@@ -188,8 +189,8 @@ class _EditAwardsPageState extends State<EditAwardsPage> {
                                   builder: (context) {
                                     return CustomViewImage(
                                       image: 'assets/default-avatar.png',
-                                      btnRemoveName: 'Remove Award',
-                                      btnChangeName: 'Change Award',
+                                      btnRemoveName: AppLocalizations.of(context).translate('removeAward'),
+                                      btnChangeName: AppLocalizations.of(context).translate('changeAward'),
                                       onChange: () {},
                                       onRemove: () {},
                                     );
@@ -206,7 +207,7 @@ class _EditAwardsPageState extends State<EditAwardsPage> {
                                 iconLeft: true,
                                 backgroundColor: Colors.red.withOpacity(0.1),
                                 borderColor: Colors.red,
-                                text: 'Remove Award ',
+                                text: AppLocalizations.of(context).translate('removeAward'),
                                 pressed: () {
                                   setState(() {
                                     _awards.removeAt(index);

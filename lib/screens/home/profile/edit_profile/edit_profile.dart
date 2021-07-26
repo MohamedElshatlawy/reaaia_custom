@@ -14,6 +14,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:validators/validators.dart';
 
@@ -74,7 +75,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   Row(
                     children: [
                       Text(
-                        'Edit Profile',
+                        AppLocalizations.of(context).translate('editProfile'),
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w800,
@@ -87,7 +88,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: [
                       Flexible(
                         child: Text(
-                          'Update your profile to get better engagment.',
+                          AppLocalizations.of(context).translate('profileReg1Desc'),
                           style: TextStyle(
                               color: ColorsUtils.onBoardingTextGrey,
                               fontSize: ScreenUtil().setSp(13)),
@@ -132,7 +133,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
                                   Functions.showCustomSnackBar(
                                     context: context,
-                                    text: 'Picture Remove Successfully',
+                                    text: AppLocalizations.of(context).translate('picRemove'),
                                     hasIcon: true,
                                     iconType: Icons.done,
                                     iconColor: Colors.green,
@@ -164,7 +165,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 width: 185,
                                 backgroundColor: ColorsUtils.primaryGreen,
                                 borderColor: ColorsUtils.primaryGreen,
-                                text: 'Update Avatar',
+                                text: AppLocalizations.of(context).translate('updateAvatar'),
                                 pressed: () async {
                                   final pickedImage =
                                       await Functions.pickImage();
@@ -186,7 +187,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                             'we found token ${signUpProvider.tokenPicture}');
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Picture Upload Successfully',
+                                          text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                           hasIcon: true,
                                           iconType: Icons.done,
                                           iconColor: Colors.green,
@@ -194,7 +195,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                       } else {
                                         Functions.showCustomSnackBar(
                                           context: context,
-                                          text: 'Picture Upload Failed!',
+                                          text: AppLocalizations.of(context).translate('picLoadFailed'),
                                           hasIcon: true,
                                           iconType: Icons.error_outline,
                                           iconColor: Colors.red,
@@ -203,7 +204,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                     } catch (err) {
                                       Functions.showCustomSnackBar(
                                         context: context,
-                                        text: 'Picture Upload Failed!',
+                                        text: AppLocalizations.of(context).translate('picLoadFailed'),
                                         hasIcon: true,
                                         iconType: Icons.error_outline,
                                         iconColor: Colors.red,
@@ -212,7 +213,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   } else {
                                     Functions.showCustomSnackBar(
                                       context: context,
-                                      text: 'Picture Upload Failed!',
+                                      text: AppLocalizations.of(context).translate('picLoadFailed'),
                                       hasIcon: true,
                                       iconType: Icons.error_outline,
                                       iconColor: Colors.red,
@@ -223,8 +224,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               ),
                               SizedBox(height: ScreenUtil().setHeight(5)),
                               Text(
-                                'your avatar should be a friendly and inviting heat shot. clearly indentifiable as you.',
-                                style: TextStyle(
+                                AppLocalizations.of(context).translate('picDesc'),                                style: TextStyle(
                                     color: ColorsUtils.onBoardingTextGrey,
                                     fontSize: ScreenUtil().setSp(10)),
                               ),
@@ -238,14 +238,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   CustomTextField(
                     initialValue: 'MOhamed Gwaan',
                     filledColor: Colors.white,
-                    lablel: ' Full Name',
+                    lablel: AppLocalizations.of(context).translate('fullName'),
                     hasBorder: true,
                     onSaved: (val) {
                       _completeReg1Model.name = val;
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       return null;
                     },
@@ -254,7 +254,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   CustomTextField(
                     initialValue: '@MOhamedGwaan',
                     filledColor: Colors.white,
-                    lablel: ' UserName/Url*',
+                    lablel: AppLocalizations.of(context).translate('userName'),
                     isEmail: true,
                     hasBorder: true,
                     onSaved: (val) {
@@ -262,16 +262,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
-                      } else if (!isEmail(value)) {
-                        return 'enter Valid Email';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
+                      // else if (!isEmail(value)) {
+                      //   return 'enter Valid Email';
+                      // }
                       return null;
                     },
                   ),
                   SizedBox(height: ScreenUtil().setHeight(5)),
                   Text(
-                    '  Your public username is the same as your url',
+                    AppLocalizations.of(context).translate('userNameDesc'),
                     style: TextStyle(
                         fontSize: 13.0,
                         fontWeight: FontWeight.w600,
@@ -290,7 +291,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         textColor: isMale
                             ? Colors.black
                             : ColorsUtils.onBoardingTextGrey,
-                        genderName: 'MALE',
+                        genderName: AppLocalizations.of(context).translate('male'),
                         onTap: () {
                           setState(() {
                             isMale = true;
@@ -310,7 +311,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         textColor: isFemale
                             ? Colors.black
                             : ColorsUtils.onBoardingTextGrey,
-                        genderName: 'FEMALE',
+                        genderName: AppLocalizations.of(context).translate('female'),
                         onTap: () {
                           setState(() {
                             isMale = false;
@@ -347,7 +348,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         controller: _controller,
                         readOnly: true,
                         filledColor: Colors.white,
-                        lablel: ' Date of Birthday*',
+                        lablel: AppLocalizations.of(context).translate('dateOfBirthDay'),
                         hasBorder: true,
                         sufficIcon: Icon(
                           Icons.date_range,
@@ -356,7 +357,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         onSaved: (val) {},
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'This Field Required';
+                            return AppLocalizations.of(context).translate('fieldRequiredValidate');
                           }
                           return null;
                         },
@@ -394,11 +395,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       child: CustomTextField(
                         controller: _mapController,
                         filledColor: Colors.white,
-                        lablel: ' Main Address*',
+                        lablel: AppLocalizations.of(context).translate('mainAddress'),
                         hasBorder: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'This Field Required';
+                            return AppLocalizations.of(context).translate('fieldRequiredValidate');
                           }
                           return null;
                         },
@@ -424,7 +425,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       child: CustomRoundedButton(
                         backgroundColor: ColorsUtils.primaryGreen,
                         borderColor: ColorsUtils.primaryGreen,
-                        text: 'Save',
+                        text: AppLocalizations.of(context).translate('save'),
                         pressed: () {
                           // if (_formKey.currentState.validate()) {
                           //   _formKey.currentState.save();

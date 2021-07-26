@@ -8,6 +8,7 @@ import 'package:reaaia/screens/home/profile/add_profile/add_language.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class EditLanguagesPage extends StatefulWidget {
   @override
@@ -108,7 +109,7 @@ class _EditLanguagesPageState extends State<EditLanguagesPage> {
                       Row(
                         children: [
                           Text(
-                            'Edit Languages',
+                            AppLocalizations.of(context).translate('editLangs'),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w800,
@@ -137,7 +138,7 @@ class _EditLanguagesPageState extends State<EditLanguagesPage> {
                                 SizedBox(height: ScreenUtil().setHeight(16)),
                                 DropdownButtonFormField<String>(
                                   decoration: InputDecoration(
-                                    labelText: 'Language',
+                                    labelText: AppLocalizations.of(context).translate('lang'),
                                     labelStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: ScreenUtil().setSp(15)),
@@ -184,7 +185,7 @@ class _EditLanguagesPageState extends State<EditLanguagesPage> {
                                   }).toList(),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Select Language';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
                                     return null;
                                   },
@@ -192,7 +193,7 @@ class _EditLanguagesPageState extends State<EditLanguagesPage> {
                                 SizedBox(height: ScreenUtil().setHeight(20)),
                                 DropdownButtonFormField<String>(
                                   decoration: InputDecoration(
-                                    labelText: 'Level of Language',
+                                    labelText: AppLocalizations.of(context).translate('levelOfLang'),
                                     labelStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: ScreenUtil().setSp(15)),
@@ -239,7 +240,7 @@ class _EditLanguagesPageState extends State<EditLanguagesPage> {
                                   }).toList(),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Select Level Of Language';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
                                     return null;
                                   },
@@ -254,7 +255,7 @@ class _EditLanguagesPageState extends State<EditLanguagesPage> {
                                     backgroundColor:
                                         Colors.red.withOpacity(0.1),
                                     borderColor: Colors.red,
-                                    text: 'Remove Language ',
+                                    text: AppLocalizations.of(context).translate('removeLang'),
                                     pressed: () {
                                       setState(() {
                                         _languages.add(Languages());

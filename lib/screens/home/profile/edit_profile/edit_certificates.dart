@@ -9,6 +9,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class EditCertificatesPage extends StatefulWidget {
   @override
@@ -104,7 +105,7 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                       Row(
                         children: [
                           Text(
-                            'Edit Certificates',
+                            AppLocalizations.of(context).translate('editCert'),
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w800,
@@ -133,14 +134,14 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                                 SizedBox(height: ScreenUtil().setHeight(16)),
                                 CustomTextField(
                                   filledColor: Colors.white,
-                                  lablel: ' Certificate Name',
+                                  lablel: AppLocalizations.of(context).translate('certName'),
                                   hasBorder: true,
                                   onSaved: (val) {
                                     _certifications[index].name = val;
                                   },
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'This Field Required';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
                                     return null;
                                   },
@@ -151,14 +152,14 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                                 SizedBox(height: ScreenUtil().setHeight(20)),
                                 CustomTextField(
                                   filledColor: Colors.white,
-                                  lablel: ' Year',
+                                  lablel: AppLocalizations.of(context).translate('certYear'),
                                   hasBorder: true,
                                   onSaved: (val) {
                                     _certifications[index].year = val;
                                   },
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'This Field Required';
+                                      return AppLocalizations.of(context).translate('fieldRequiredValidate');
                                     }
                                     return null;
                                   },
@@ -171,7 +172,7 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                                 ),
                                 InkWell(
                                   child: Text(
-                                    'View Certificate',
+                                  AppLocalizations.of(context).translate('viewCert'),
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       fontSize: 15.0,
@@ -196,8 +197,8 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                                       builder: (context) {
                                         return CustomViewImage(
                                           image: 'assets/default-avatar.png',
-                                          btnRemoveName: 'Remove Certificate',
-                                          btnChangeName: 'Change Certificate',
+                                          btnRemoveName: AppLocalizations.of(context).translate('removeCert'),
+                                          btnChangeName: AppLocalizations.of(context).translate('changeCert'),
                                           onChange: () {},
                                           onRemove: () {},
                                         );
@@ -215,7 +216,7 @@ class _EditCertificatesPageState extends State<EditCertificatesPage> {
                                     backgroundColor:
                                         Colors.red.withOpacity(0.1),
                                     borderColor: Colors.red,
-                                    text: 'Remove Certificate ',
+                                    text: AppLocalizations.of(context).translate('removeCert'),
                                     pressed: () {
                                       setState(() {
                                         _certifications.removeAt(index);

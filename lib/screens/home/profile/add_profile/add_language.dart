@@ -8,6 +8,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Constants.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 class AddLanguage extends StatefulWidget {
   @override
@@ -46,7 +47,7 @@ class _AddLanguageState extends State<AddLanguage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Add Language',
+                      AppLocalizations.of(context).translate('addLang'),
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: ScreenUtil().setSp(17)),
@@ -54,7 +55,7 @@ class _AddLanguageState extends State<AddLanguage> {
                     SizedBox(height: ScreenUtil().setHeight(20)),
                     DropdownButtonFormField<String>(
                       decoration: InputDecoration(
-                        labelText: 'Language',
+                        labelText: AppLocalizations.of(context).translate('lang'),
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: ScreenUtil().setSp(15)),
@@ -98,7 +99,7 @@ class _AddLanguageState extends State<AddLanguage> {
                       }).toList(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Select Language';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -106,7 +107,7 @@ class _AddLanguageState extends State<AddLanguage> {
                     SizedBox(height: ScreenUtil().setHeight(20)),
                     DropdownButtonFormField<String>(
                       decoration: InputDecoration(
-                        labelText: 'Level of Language',
+                        labelText: AppLocalizations.of(context).translate('levelOfLang'),
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: ScreenUtil().setSp(15)),
@@ -149,7 +150,7 @@ class _AddLanguageState extends State<AddLanguage> {
                       }).toList(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Select Level Of Language';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -165,7 +166,7 @@ class _AddLanguageState extends State<AddLanguage> {
                         child: CustomRoundedButton(
                           backgroundColor: ColorsUtils.primaryGreen,
                           borderColor: ColorsUtils.primaryGreen,
-                          text: 'Add',
+                          text: AppLocalizations.of(context).translate('add'),
                           pressed: () {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();

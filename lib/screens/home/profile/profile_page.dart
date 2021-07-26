@@ -10,6 +10,7 @@ import 'package:reaaia/screens/home/profile/edit_profile/edit_languages.dart';
 import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/reaaia__icons_icons.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 
 import 'edit_profile/edit_profile.dart';
 
@@ -65,7 +66,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Icons.edit,
                               color: Colors.white,
                             ),
-                            text: 'Edit Profile ',
+                            text: AppLocalizations.of(context).translate('editProfile'),
                             pressed: () {
                               CustomFunctions.pushScreen(
                                   context: context, widget: EditProfilePage());
@@ -106,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(
-                              'Education',
+                              AppLocalizations.of(context).translate('education'),
                               style: TextStyle(
                                   fontSize: 17.0,
                                   fontWeight: FontWeight.bold,
@@ -144,27 +145,27 @@ class _ProfilePageState extends State<ProfilePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CustomTextView(
-                                name: 'Scientific Degree',
+                                name: AppLocalizations.of(context).translate('scientificDegree'),
                                 desc: 'Consultant',
                               ),
                               CustomTextView(
-                                name: 'Specialty',
+                                name: AppLocalizations.of(context).translate('specialty'),
                                 desc: 'Allergy & Immunology',
                               ),
                               CustomTextView(
-                                name: 'SubSpecialty',
+                                name: AppLocalizations.of(context).translate('subSpecialty'),
                                 desc:
                                     'Adult Internal Medicine \n Adult Allergy / Immunology ',
                               ),
                               CustomTextView(
-                                name: 'Graduation University',
+                                name: AppLocalizations.of(context).translate('grad_university'),
                                 desc: 'Alexandria University',
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                'Professional Practice Licence',
+                                AppLocalizations.of(context).translate('professionalLicence'),
                                 style: TextStyle(
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.bold,
@@ -189,8 +190,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     builder: (context) {
                                       return CustomViewImage(
                                         image: 'assets/default-avatar.png',
-                                        btnRemoveName: 'Remove Licence',
-                                        btnChangeName: 'Change Licence',
+                                        btnRemoveName: AppLocalizations.of(context).translate('removeLicence'),
+                                        btnChangeName: AppLocalizations.of(context).translate('changeLicence'),
                                         onChange: () {},
                                         onRemove: () {},
                                       );
@@ -198,7 +199,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   );
                                 },
                                 child: Text(
-                                  'View Licence',
+                                  AppLocalizations.of(context).translate('viewLicence'),
                                   style: TextStyle(
                                     decoration: TextDecoration.underline,
                                     fontSize: 15.0,
@@ -243,7 +244,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(
-                              'Languages',
+                              AppLocalizations.of(context).translate('langs'),
                               style: TextStyle(
                                   fontSize: 17.0,
                                   fontWeight: FontWeight.bold,
@@ -356,7 +357,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(
-                              'Certifications',
+                              AppLocalizations.of(context).translate('certs'),
                               style: TextStyle(
                                   fontSize: 17.0,
                                   fontWeight: FontWeight.bold,
@@ -431,7 +432,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         InkWell(
                                           child: Text(
-                                            'View',
+                                            AppLocalizations.of(context).translate('view'),
                                             style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline,
@@ -461,9 +462,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   image:
                                                       'assets/default-avatar.png',
                                                   btnRemoveName:
-                                                      'Remove Certificate',
+                                                  AppLocalizations.of(context).translate('removeCert'),
                                                   btnChangeName:
-                                                      'Change Certificate',
+                                                  AppLocalizations.of(context).translate('changeCert'),
                                                   onChange: () {},
                                                   onRemove: () {},
                                                 );
@@ -517,7 +518,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   color: ColorsUtils.primaryGreen,
                                 )),
                             title: Text(
-                              'Awards',
+                              AppLocalizations.of(context).translate('awards'),
                               style: TextStyle(
                                   fontSize: 17.0,
                                   fontWeight: FontWeight.bold,
@@ -591,7 +592,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         InkWell(
                                           child: Text(
-                                            'View',
+                                            AppLocalizations.of(context).translate('view'),
                                             style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline,
@@ -620,8 +621,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 return CustomViewImage(
                                                   image:
                                                       'assets/default-avatar.png',
-                                                  btnRemoveName: 'Remove Award',
-                                                  btnChangeName: 'Change Award',
+                                                  btnRemoveName: AppLocalizations.of(context).translate('removeAward'),
+                                                  btnChangeName: AppLocalizations.of(context).translate('changeAward'),
                                                   onChange: () {},
                                                   onRemove: () {},
                                                 );

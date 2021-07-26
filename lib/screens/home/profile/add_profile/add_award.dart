@@ -8,6 +8,7 @@ import 'package:reaaia/screens/widgets/custom_rounded_btn.dart';
 import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -43,21 +44,21 @@ class _AddAwardPageState extends State<AddAwardPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Add Award',
+                    AppLocalizations.of(context).translate('addAward'),
                     style: TextStyle(
                         color: Colors.black, fontSize: ScreenUtil().setSp(17)),
                   ),
                   SizedBox(height: ScreenUtil().setHeight(16)),
                   CustomTextField(
                     filledColor: Colors.white,
-                    lablel: ' Award Name ',
+                    lablel: AppLocalizations.of(context).translate('awardName'),
                     hasBorder: true,
                     onSaved: (val) {
 
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       return null;
                     },
@@ -68,14 +69,14 @@ class _AddAwardPageState extends State<AddAwardPage> {
                   SizedBox(height: ScreenUtil().setHeight(20)),
                   CustomTextField(
                     filledColor: Colors.white,
-                    lablel: ' Year',
+                    lablel: AppLocalizations.of(context).translate('year'),
                     hasBorder: true,
                     onSaved: (val) {
 
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This Field Required';
+                        return AppLocalizations.of(context).translate('fieldRequiredValidate');
                       }
                       return null;
                     },
@@ -105,8 +106,7 @@ class _AddAwardPageState extends State<AddAwardPage> {
                             //     .toString());
                             Functions.showCustomSnackBar(
                               context: context,
-                              text:
-                              'Picture Upload Successfully',
+                              text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                               hasIcon: true,
                               iconType: Icons.done,
                               iconColor: Colors.green,
@@ -114,7 +114,7 @@ class _AddAwardPageState extends State<AddAwardPage> {
                           } else {
                             Functions.showCustomSnackBar(
                               context: context,
-                              text: 'Picture Upload Failed!',
+                              text: AppLocalizations.of(context).translate('picLoadFailed'),
                               hasIcon: true,
                               iconType: Icons.error_outline,
                               iconColor: Colors.red,
@@ -123,7 +123,7 @@ class _AddAwardPageState extends State<AddAwardPage> {
                         } catch (err) {
                           Functions.showCustomSnackBar(
                             context: context,
-                            text: 'Picture Upload Failed!',
+                            text: AppLocalizations.of(context).translate('picLoadFailed'),
                             hasIcon: true,
                             iconType: Icons.error_outline,
                             iconColor: Colors.red,
@@ -132,7 +132,7 @@ class _AddAwardPageState extends State<AddAwardPage> {
                       } else {
                         Functions.showCustomSnackBar(
                           context: context,
-                          text: 'Picture Upload Failed!',
+                          text: AppLocalizations.of(context).translate('picLoadFailed'),
                           hasIcon: true,
                           iconType: Icons.error_outline,
                           iconColor: Colors.red,
@@ -175,7 +175,7 @@ class _AddAwardPageState extends State<AddAwardPage> {
                                   ? path.basename(
                                   awardImage
                                       .path)
-                                  : 'Attach Award Photo',
+                                  : AppLocalizations.of(context).translate('attachAwardPic'),
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize:
@@ -199,7 +199,7 @@ class _AddAwardPageState extends State<AddAwardPage> {
                       child: CustomRoundedButton(
                         backgroundColor: ColorsUtils.primaryGreen,
                         borderColor: ColorsUtils.primaryGreen,
-                        text: 'Add',
+                        text: AppLocalizations.of(context).translate('add'),
                         pressed: () {
                           if (_formKey.currentState.validate()) {
                             _formKey.currentState.save();

@@ -10,6 +10,7 @@ import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -49,7 +50,7 @@ class _AddCertificateState extends State<AddCertificate> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Add Certificate',
+                      AppLocalizations.of(context).translate('addCert'),
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: ScreenUtil().setSp(17)),
@@ -57,14 +58,14 @@ class _AddCertificateState extends State<AddCertificate> {
                     SizedBox(height: ScreenUtil().setHeight(16)),
                     CustomTextField(
                       filledColor: Colors.white,
-                      lablel: ' Certificate Name',
+                      lablel: AppLocalizations.of(context).translate('certName'),
                       hasBorder: true,
                       onSaved: (val) {
                         //_certifications[index].name = val;
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -75,14 +76,14 @@ class _AddCertificateState extends State<AddCertificate> {
                     SizedBox(height: ScreenUtil().setHeight(20)),
                     CustomTextField(
                       filledColor: Colors.white,
-                      lablel: ' Year',
+                      lablel: AppLocalizations.of(context).translate('certYear'),
                       hasBorder: true,
                       onSaved: (val) {
                         //_certifications[index].year = val;
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -111,7 +112,7 @@ class _AddCertificateState extends State<AddCertificate> {
                               //     .toString());
                               Functions.showCustomSnackBar(
                                 context: context,
-                                text: 'Picture Upload Successfully',
+                                text: AppLocalizations.of(context).translate('picLoadSuccessfully'),
                                 hasIcon: true,
                                 iconType: Icons.done,
                                 iconColor: Colors.green,
@@ -119,7 +120,7 @@ class _AddCertificateState extends State<AddCertificate> {
                             } else {
                               Functions.showCustomSnackBar(
                                 context: context,
-                                text: 'Picture Upload Failed!',
+                                text: AppLocalizations.of(context).translate('picLoadFailed'),
                                 hasIcon: true,
                                 iconType: Icons.error_outline,
                                 iconColor: Colors.red,
@@ -128,7 +129,7 @@ class _AddCertificateState extends State<AddCertificate> {
                           } catch (err) {
                             Functions.showCustomSnackBar(
                               context: context,
-                              text: 'Picture Upload Failed!',
+                              text: AppLocalizations.of(context).translate('picLoadFailed'),
                               hasIcon: true,
                               iconType: Icons.error_outline,
                               iconColor: Colors.red,
@@ -137,7 +138,7 @@ class _AddCertificateState extends State<AddCertificate> {
                         } else {
                           Functions.showCustomSnackBar(
                             context: context,
-                            text: 'Picture Upload Failed!',
+                            text: AppLocalizations.of(context).translate('picLoadFailed'),
                             hasIcon: true,
                             iconType: Icons.error_outline,
                             iconColor: Colors.red,
@@ -172,7 +173,7 @@ class _AddCertificateState extends State<AddCertificate> {
                               child: Text(
                                 certificateImage != null
                                     ? path.basename(certificateImage.path)
-                                    : 'Attach Certificate Photo',
+                                    : AppLocalizations.of(context).translate('attachCertificatePic'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: ScreenUtil().setSp(13),
@@ -194,7 +195,7 @@ class _AddCertificateState extends State<AddCertificate> {
                         child: CustomRoundedButton(
                           backgroundColor: ColorsUtils.primaryGreen,
                           borderColor: ColorsUtils.primaryGreen,
-                          text: 'Add',
+                          text: AppLocalizations.of(context).translate('add'),
                           pressed: () {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();

@@ -15,6 +15,7 @@ import 'package:reaaia/screens/widgets/custom_textfield.dart';
 import 'package:reaaia/utils/ColorsUtils.dart';
 import 'package:reaaia/utils/Fuctions.dart';
 import 'package:reaaia/viewModels/data_provider.dart';
+import 'package:reaaia/viewModels/locale/appLocalization.dart';
 import 'package:reaaia/viewModels/sign_up_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -107,7 +108,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                     Row(
                       children: [
                         Text(
-                          'Edit Education',
+                          AppLocalizations.of(context).translate('editEducation'),
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w800,
@@ -120,7 +121,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                       children: [
                         Flexible(
                           child: Text(
-                            'Update your profile to get better engagment.',
+                            AppLocalizations.of(context).translate('profileReg1Desc'),
                             style: TextStyle(
                                 color: ColorsUtils.onBoardingTextGrey,
                                 fontSize: ScreenUtil().setSp(13)),
@@ -134,13 +135,13 @@ class _EditEducationPageState extends State<EditEducationPage> {
                     DropdownButtonFormField<String>(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return ' Select Scientific Degree';
+                          return AppLocalizations.of(context).translate('scientificDegreeValidate');
                         }
 
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: 'Scientific Degree*',
+                        labelText: AppLocalizations.of(context).translate('scientificDegree'),
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: ScreenUtil().setSp(15)),
@@ -217,14 +218,14 @@ class _EditEducationPageState extends State<EditEducationPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Select Speciality',
+                                        AppLocalizations.of(context).translate('selectSpecialty'),
                                         style: TextStyle(
                                             color:
                                                 ColorsUtils.onBoardingTextGrey,
                                             fontSize: ScreenUtil().setSp(16)),
                                       ),
                                       Text(
-                                        'you can select only one Speciality',
+                                        AppLocalizations.of(context).translate('selectOneSpecialty'),
                                         style: TextStyle(
                                             color:
                                                 ColorsUtils.onBoardingTextGrey,
@@ -296,7 +297,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                           readOnly: true,
                           filledColor:
                               isSelectedSpeciality ? null : Colors.white,
-                          lablel: ' Select Specialty*',
+                          lablel: AppLocalizations.of(context).translate('selectSpecialty'),
                           style: TextStyle(
                               color: ColorsUtils.blackColor,
                               fontWeight: FontWeight.w600,
@@ -311,7 +312,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                           //onSaved: (val) {},
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'This Field Required';
+                              return AppLocalizations.of(context).translate('fieldRequiredValidate');
                             }
                             return null;
                           },
@@ -327,7 +328,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
 
                     /// SubSpecialty
                     Text(
-                      'Select SubSpecialty ',
+                      AppLocalizations.of(context).translate('selectSubSpecialty'),
                       style: TextStyle(
                           color: ColorsUtils.textGrey,
                           fontWeight: FontWeight.w700,
@@ -338,7 +339,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                         ? Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Center(
-                                child: Text('Not Specialty Selected yet!')),
+                                child: Text(AppLocalizations.of(context).translate('notSelectedSpecialty'),)),
                           )
                         : Wrap(
                             spacing: 10.0,
@@ -429,8 +430,8 @@ class _EditEducationPageState extends State<EditEducationPage> {
                             });
                           },
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(bottom: 12.0),
-                            hintText: 'Add Other Specialty',
+                            contentPadding: EdgeInsets.only(bottom: 9.0),
+                            hintText: AppLocalizations.of(context).translate('addOtherSpecialty'),
                             enabledBorder: InputBorder.none,
                             border: InputBorder.none,
                             disabledBorder: InputBorder.none,
@@ -473,8 +474,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                     /// //////////////////////////
                     SizedBox(height: ScreenUtil().setHeight(20)),
                     Text(
-                      'Professional Practice Licence',
-                      style: TextStyle(
+                      AppLocalizations.of(context).translate('professionalLicence'),                      style: TextStyle(
                           color: ColorsUtils.textGrey,
                           fontWeight: FontWeight.bold,
                           fontSize: ScreenUtil().setSp(16)),
@@ -496,8 +496,8 @@ class _EditEducationPageState extends State<EditEducationPage> {
                           builder: (context) {
                             return CustomViewImage(
                               image: 'assets/default-avatar.png',
-                              btnRemoveName: 'Remove Licence',
-                              btnChangeName: 'Change Licence',
+                              btnRemoveName: AppLocalizations.of(context).translate('removeLicence'),
+                              btnChangeName: AppLocalizations.of(context).translate('changeLicence'),
                               onChange: () {},
                               onRemove: () {},
                             );
@@ -505,7 +505,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                         );
                       },
                       child: Text(
-                        'View Licence',
+                        AppLocalizations.of(context).translate('viewLicence'),
                         style: TextStyle(
                             decoration: TextDecoration.underline,
                             color: ColorsUtils.blueColor,
@@ -521,14 +521,14 @@ class _EditEducationPageState extends State<EditEducationPage> {
                     SizedBox(height: ScreenUtil().setHeight(10)),
                     CustomTextField(
                       filledColor: Colors.white,
-                      lablel: ' Graduation University',
+                      lablel: AppLocalizations.of(context).translate('grad_university'),
                       hasBorder: true,
                       onSaved: (val) {
                         _completeReg2Model.university = val;
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This Field Required';
+                          return AppLocalizations.of(context).translate('fieldRequiredValidate');
                         }
                         return null;
                       },
@@ -543,7 +543,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                         child: CustomRoundedButton(
                           backgroundColor: ColorsUtils.primaryGreen,
                           borderColor: ColorsUtils.primaryGreen,
-                          text: 'Save',
+                          text: AppLocalizations.of(context).translate('save'),
                           pressed: () {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
@@ -558,7 +558,7 @@ class _EditEducationPageState extends State<EditEducationPage> {
                               } else {
                                 Functions.showCustomSnackBar(
                                   context: context,
-                                  text: 'all Image Fields Required!',
+                                  text: AppLocalizations.of(context).translate('allFieldsRequired'),
                                   hasIcon: false,
                                 );
                               }
